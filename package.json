@@ -44,6 +44,8 @@
         "loader-utils": "^1.1.0",
         "lodash": "^4.17.2",
         "lottie-web": "^5.4.1",
+        "material-ui": "^1.0.0-beta.30",
+        "material-ui-icons": "^1.0.0-beta.17",
         "matriks2": "0.0.10",
         "mdast-util-heading-range": "2.1.0",
         "mdast-util-to-string": "1.0.4",

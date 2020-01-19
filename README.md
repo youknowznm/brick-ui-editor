@@ -1,6 +1,14 @@
 !!! 以下是 README.md 例子, 请根据项目实际信息更新 !!!
 =======
 
+---
+
+devPort: 5147,
+prodTestPort: 5148,
+prodPort: 5149,
+
+---
+
 ### 启动开发环境
 ```sh
 # make sure node 版本在6以上
