@@ -1,0 +1,334 @@
+@import (reference) '/frontend/style/global.less';
+
+.mobile-main-approve-wrapper {
+  @line-height: 50px;
+  @line-padding: 15px;
+  @line-height-two-rows: 70px;
+
+  @primary-font-size: 16px;
+  @secondary-font-size: 14px;
+
+  @font-weight-bold: 700;
+
+  @margin-inner: 8px;
+
+  @color-contract-type: #5ccaaf;
+
+  @color-indicator-available: #80D9A9;
+  @color-indicator-unavailable: #EB8080;
+
+  width: 100%;
+  overflow: auto;
+
+  font-size: @primary-font-size;
+  padding-bottom: 46px;
+
+  background: #f5f8fd;
+
+  * {
+    outline: none;
+    -webkit-tap-highlight-color:transparent;
+  }
+
+  li {
+    margin: 0;
+    padding: 0;
+  }
+
+  .information-section {
+    background: #fff;
+    margin-bottom: 5px;
+
+    li {
+      box-sizing: border-box;
+      padding: 0 @line-padding;
+      line-height: @line-height;
+      border-bottom: 1px solid #f7f9fa;
+    }
+
+    .list-head {
+      color: #58a0f1;
+      line-height: @line-height;
+    }
+
+    .list-title {
+      display: inline-block;
+    }
+
+    .list-content {
+      float: right;
+      text-align: right;
+    }
+
+    .list-title-note {
+      color: #333;
+      font-size: 12px;
+      padding-left: @margin-inner;
+    }
+
+    // mobile 下的 icon 控制 (正常情况下, 默认为 none)
+    .mobile-icon {
+      height: @line-height / 2;
+      display: none;
+      vertical-align: top;
+
+      transform: translateY(100%);
+
+      img {
+        transform: translateY(-50%);
+        width: 20px;
+      }
+    }
+
+    .icon-arrow-blue-down {
+      display: inline-block;
+    }
+
+    // start: 行内编辑 icon 样式处理
+    .inline-edit {
+      input {
+        box-sizing: border-box;
+
+        line-height: @line-height - 20px;
+        height: @line-height;
+
+        text-align: right;
+
+        margin-right: @margin-inner;
+
+        outline: none;
+        border: 0;
+
+        // @todo:dev-only
+        //border: 1px #ccc solid;
+      }
+
+      &.edit-focus {
+        .icon-arrow-grey-right {
+          display: none;
+        }
+
+        .icon-delete-icon {
+          display: inline-block;
+        }
+      }
+    }
+
+    .icon-arrow-grey-right, .icon-delete-icon {
+      @icon-size: 12px;
+      width: @icon-size;
+
+      img {
+        width: @icon-size;
+      }
+    }
+
+    .icon-arrow-grey-right {
+      display: inline-block;
+    }
+    // end: 行内编辑
+
+    // start: 通用样式控制
+    .content-inner {
+      display: inline-block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 50vw;
+      white-space: nowrap;
+
+      line-height: @line-height;
+    }
+
+    .long-text {
+      height: @line-height;
+      box-sizing: border-box;
+      margin-right: @margin-inner;
+    }
+
+    .long-content {
+      width: 65vw;
+    }
+
+    .long-input {
+      width: 60vw;
+
+      .long-input {
+        width: 55vw;
+      }
+    }
+
+    .secondary-row {
+      margin-top: @margin-inner;
+      font-size: @secondary-font-size;
+    }
+
+    .item-content {
+      position: relative;
+      display: table;
+      table-layout: fixed;
+      width: 100%;
+
+      .primary-content {
+        display: table-cell;
+
+        padding: @line-padding 0;
+      }
+
+      .primary-title {
+        font-size: @primary-font-size;
+        font-weight: @font-weight-bold;
+      }
+
+      .sub-info {
+        font-size: @secondary-font-size;
+        margin-left: @margin-inner;
+      }
+
+      .secondary-content {
+        display: table-cell;
+        width: 40px;
+        vertical-align: middle;
+
+        text-align: right;
+        padding: @line-padding 0;
+
+        .mobile-icon {
+          transform: none;
+
+          img {
+            transform: none;
+          }
+        }
+      }
+
+      .content-row {
+        line-height: normal;
+
+        > span {
+          vertical-align: middle;
+        }
+      }
+
+      .content-row ~ .content-row {
+        margin-top: @margin-inner;
+      }
+    }
+    // end: 通用样式控制
+
+    // start: 双行的内容, 信息区域展示 (职级 / 职位)
+    li.two-rows {
+      line-height: @line-height-two-rows;
+
+      .content-inner {
+        line-height: 1;
+        margin-top: @line-padding;
+
+        ~ .content-inner {
+          margin-top: @margin-inner;
+        }
+      }
+    }
+    // end: 双行的内容
+
+    // start: 信息区域关闭
+    &.section-closed {
+      // closed 下的 icon 控制
+      .icon-arrow-blue-down {
+        display: none;
+      }
+
+      .icon-arrow-blue-up {
+        display: inline-block;
+      }
+
+      // closed 状态下的内容隐藏
+      li {
+        display: none;
+      }
+
+      li.visible-on-closed {
+        display: block;
+      }
+    }
+    // end: 信息区域关闭
+
+    // start: 历史合同记录
+    .history-contract {
+      line-height: @line-height / 2;
+      padding: @line-padding;
+
+      .value-item {
+        display: inline-block;
+      }
+
+      .contract-number, .contract-type {
+        position: absolute;
+        right: @line-padding;
+      }
+
+      .contract-title {
+        font-weight: @font-weight-bold;
+      }
+
+      .contract-type {
+        padding: 0 2px;
+        border-radius: 2px;
+        color: @color-contract-type;
+        border: 1px @color-contract-type solid;
+      }
+    }
+    // end: 历史合同记录
+
+    // start: 批次选择
+    .batch-indicator {
+      @size: 8px;
+
+      width: @size;
+      height: @size;
+
+      // @todo:doc 为什么不是 Xpx
+      border-radius: 100%;
+
+      display: inline-block;
+      background-color: @color-indicator-available;
+
+      margin-right: @margin-inner;
+
+      &.batch-unavailable {
+        background-color: @color-indicator-unavailable;
+      }
+    }
+
+    .icon-checkbox-unchecked {
+      display: inline-block;
+    }
+
+    .batch-picked {
+      .icon-checkbox-unchecked {
+        display: none;
+      }
+
+      .icon-checkbox-checked {
+        display: inline-block;
+      }
+    }
+    // end: 批次选择
+
+    // start: 合同预览
+    .icon-arrow-blue-right {
+      display: inline-block;
+
+      img {
+        height: 16px;
+        width: auto;
+      }
+    }
+    // end: 合同预览
+  }
+
+  .title {
+    padding: 0 @line-padding;
+    line-height: 50px;
+  }
+
+}

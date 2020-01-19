@@ -1,0 +1,93 @@
+/*
+ * 移动端适配代码，建议移动端项目都引入
+ */
+body {
+    padding-bottom: constant(safe-area-inset-bottom); // 兼容 iOS < 11.2
+    padding-bottom: env(safe-area-inset-bottom); // 兼容 iOS >= 11.2
+
+    -webkit-appearance: none;        /*可以改变按钮或者其它控件看起来类似本地的控件*/
+    -webkit-tap-highlight-color: transparent;/*Mobile上点击链接高亮的时候设置颜色为透明*/
+    -webkit-text-size-adjust: none;    /* 字型大小是不會變的，而使用者就無法透過縮放網頁來達成放大字型 */
+    -webkit-touch-callout: none;    /*在iOS浏览器里面，假如用户长按a标签，都会出现默认的弹出菜单事件*/
+    -webkit-user-drag: none;         /*-webkit-user-drag CSS 属性控制能否将元素作为一个整体拖动。*/
+}
+a {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /*很多Android 浏览器的 a 链接有边框，这里取消它*/
+}
+/* For WebApp */
+body {
+    -webkit-user-select: none; /* 如果用户长按web网页的文本内容，都会出现选中的行为，提供复制文字等功能。禁止用户选中文字 for iOS */
+}
+a,
+img {
+    -webkit-touch-callout: none;  /* 禁止用户在新窗口打开页面、如何禁止用户保存图片＼复制图片 for iOS */
+}
+
+input,
+button {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+}
+
+button:disabled,
+input[type="submit"]:disabled {
+            opacity: 1;
+
+    -webkit-appearance: none;
+       -moz-appearance: none;
+    -webkit-opacity: 1; /* Override iOS opacity change affecting text & background*/
+    //-webkit-text-fill-color:#ffffff; /* Override iOS / Android font color change */
+    //color:#ffffff; /* Override IE font color change */
+}
+
+html,
+#root,
+.content {
+    height: 100%;
+}
+#root {
+    position: relative;
+    z-index: 0;
+}
+body {
+    overflow: hidden;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica", "PingFangSC-Regular", "sans-serif", "Microsoft Yahei", "STXihei", "arial", "宋体";
+}
+
+.erp-svg-icon-lib {
+    position: absolute;
+    overflow: hidden;
+    width: 0;
+    height: 0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* map.api 获取定位时会在body下添加一个iframe，影响页面高度 */
+iframe {
+    display: none;
+}
+
+.text-ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+body {
+    padding-top: constant(safe-area-inset-top);   // 为导航栏+状态栏的高度 88px
+    padding-right: constant(safe-area-inset-right); // 如果未竖屏时为0
+    padding-left: constant(safe-area-inset-left);   // 如果未竖屏时为0
+    padding-bottom: constant(safe-area-inset-bottom);// 为底下圆弧的高度 34px
+}
+.app-view.app-view-mobile-module-wrapper {
+    overflow: hidden;
+    height: 100%;
+}

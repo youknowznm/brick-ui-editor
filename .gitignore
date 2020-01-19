@@ -1,0 +1,21 @@
+/_unbroken-doc/
+.DS_Store
+.idea/
+*.iml
+.vscode/
+.DS_Store
+/node_modules/
+
+# folders for temp files
+/tmp/*
+!/tmp/useful-temp-files
+.happypack
+npm-debug.log
+.git/
+lazy-tests/reports
+/webpack-runtime.config.json
+jsconfig.json
+/yarn-error.log
+
+/output/
+output.zip

@@ -1,0 +1,26 @@
+/**
+ * @file 用于提供给 fecs check 的配置
+ * @author Liang
+ */
+
+var fecs = require('fecs')
+
+var npath = require('path');
+var root = npath.resolve(__dirname + '/../../../');
+
+fecs.leadName = 'FECS';
+var options = fecs.getOptions()
+
+options._ = [
+    root,
+    npath.resolve(root + '/src/backend/node_modules'),
+    npath.resolve(root + '/src/frontend/node_modules')
+];
+
+options.ignore = [
+    'dest/**/*',
+    'node_modules/**/*'
+];
+
+module.exports = options;
+

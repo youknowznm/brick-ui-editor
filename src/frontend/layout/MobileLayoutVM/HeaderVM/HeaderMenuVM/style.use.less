@@ -1,0 +1,40 @@
+@import "/frontend/module/TestMobile/variable.less";
+
+.header-menu-wrapper {
+    position: absolute;
+    overflow: hidden;
+    z-index: 250;
+    top: @header-height;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: rgba(255, 255, 255, .5);
+    &.mask-wrapper {
+        top: @header-height;
+    }
+
+    .header-menu-content {
+        top: 10px;
+        width: 200px;
+        padding: 0 10px;
+        list-style: none;
+        border-radius: 4px;
+        background: #fff;
+        box-shadow: 0 0 5px 0 rgba(182,188,194,.50);
+
+        .absolute-center();
+
+        li {
+            height: 45px;
+            font-size: @font-size-title;
+            line-height: 45px;
+            text-align: center;
+            color: @font-color-title;
+
+            &:not(:last-child) {
+                .border-bottom(1px, solid, @font-color-notice);
+            }
+        }
+    }
+}

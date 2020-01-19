@@ -1,0 +1,25 @@
+@import (reference) "/frontend/style/global.less";
+
+.page-content-inner {
+    transition: opacity 300ms;
+
+    &.is-loading {
+        opacity: 0;
+    }
+}
+
+.page-content-loading.erp-dialog-container {
+    position: absolute;
+    z-index: @zindex-modal * 2;
+
+    .erp-dialog-mask {
+        background-color: rgba(255,255,255, @loading-mask-opacity);
+    }
+
+    .page-content-loading-inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+}

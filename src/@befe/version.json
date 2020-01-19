@@ -1,0 +1,12 @@
+{
+    "utils": {
+        "remote": "http://gitlab.baidu.com/be-fe/befe-utils.git",
+        "branch": "develop/v2.1",
+        "hash": "63aab09942f97566c5b057e25b17d8fbd2301d57"
+    },
+    "erp-comps": {
+        "remote": "http://gitlab.baidu.com/be-fe/erp-comps-react-mobx.git",
+        "branch": "develop/v2.1",
+        "hash": "aa173373d5c9bc6c11108cf161b9de0857f58725"
+    }
+}

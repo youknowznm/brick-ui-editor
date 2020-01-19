@@ -1,0 +1,159 @@
+@import (reference) "/frontend/style/global.less";
+
+@prefix: rich-editor;
+
+.@{prefix} {
+    &-toolbar {
+        position: relative;
+        padding: 10px;
+        background-color: #d4dbe1;
+    }
+
+    &-separator {
+        display: inline-block;
+        width: 2px;
+        //position: absolute;
+        //top: 4px;
+        //bottom: 4px;
+        height: 18px;
+        margin-right: 4px;
+        margin-left: 4px;
+        vertical-align: middle;
+        background-color: #4c5664;
+    }
+    &-icon {
+        display: inline-block;
+        padding: 4px;
+        vertical-align: middle;
+        cursor: pointer;
+    }
+
+    &-body {
+        display: block;
+        overflow: auto;
+        min-height: 200px;
+        padding: 0 10px;
+        border: 1px solid #4c5664;
+        font-size: 16px;
+        word-wrap: break-word;
+        outline: 0;
+        cursor: text;
+    }
+}
+
+.froala-rich-editor {
+    position: relative;
+    button[data-cmd="fontFamily"],
+    button[data-cmd="fontSize"] {
+        //display: none;
+    }
+    ul {
+        padding-left: 40px;
+        list-style-type: disc;
+    }
+    .unavailable {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(227, 227, 227, .5);
+        .browser-incompatibility {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 42px;
+            height: 38px;
+            margin-top: -19px;
+            margin-left: -20px;
+            background-image: url(/frontend/style/image/browser-incompatibility-small.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .tips {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: 20px;
+            margin-left: -200px;
+            font-size: 14px;
+            color: #798194;
+        }
+    }
+    .fr-box {
+        //.fr-counter {
+        //  display: none;
+        //}
+        //.fr-counter + div {
+        //  display: none;
+        //}
+        //.fr-wrapper ~ div {
+        //  display: none;
+        //}
+        .fr-wrapper {
+            .fr-element {
+                padding-bottom: 20px;
+            }
+            .fr-view {
+                table {
+                    border-collapse: collapse;
+                }
+            }
+        }
+        .fr-counter {
+            padding: 0;
+            border: 0;
+            font-size: 14px;
+            background: transparent;
+        }
+    }
+    .gray-theme.fr-box.fr-basic.fr-top {
+        .fr-toolbar.gray-theme.fr-basic {
+            border: 1px solid #ccc;
+            border-bottom: none;
+            box-shadow: none;
+        }
+        .fr-wrapper {
+            border: 1px solid #ccc;
+            box-shadow: none;
+        }
+    }
+    .fr-toolbar.gray-theme {
+        border-top-width: .5px;
+    }
+
+    .gray-theme.fr-box.fr-basic .fr-element {
+        min-height: 180px;
+    }
+}
+
+.fr-tooltip.gray-theme {
+    font-family: "Microsoft YaHei", "STXihei", Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    background-color: #333;
+    box-shadow: none;
+}
+
+.gray-theme {
+    .fr-line-breaker {
+        position: fixed;
+        z-index: 2;
+        display: none;
+        border-top: 1px solid #1e88e5;
+        cursor: text;
+    }
+    .fr-visible {
+        top: -10px;
+        display: block;
+        a.fr-floating-btn {
+            position: relative;
+        }
+    }
+}
+
+.fr-modal {
+    .fr-modal-wrapper {
+        border-top: 0 !important;
+    }
+}

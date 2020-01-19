@@ -1,0 +1,50 @@
+@import (reference) "/frontend/style/global.less";
+
+body {
+  background-color: #F5F8FD;
+}
+
+.app-view-information-edit {
+  @inner-padding: 15px;
+  @edit-textarea-height: 150px;
+
+  position: relative;
+  height: @edit-textarea-height;
+
+  textarea {
+    font-size: 18px;
+    font-family: @font-family;
+
+    border: 0;
+    outline: none;
+
+    width: 100vw;
+    height: @edit-textarea-height;
+
+    padding: 15px;
+
+    box-shadow: 0 2px 15px 0 rgba(209, 225, 255, .5),
+    0 20px 20px -16px rgba(209, 225, 255, .5) inset;
+
+    box-sizing: border-box;
+  }
+
+  .wording-count {
+    position: absolute;
+    display: inline-block;
+
+    color: #BCC7CF;
+
+    pointer-events: none;
+
+    font-size: 16px;
+    font-weight: 200;
+
+    bottom: @inner-padding;
+    right: @inner-padding;
+
+    &.content-overflow {
+      color: #EB8080;
+    }
+  }
+}

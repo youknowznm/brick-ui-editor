@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>cannot</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="375" height="1048"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="续签批次选择-收起状态" transform="translate(-335.000000, -936.000000)">
+            <g id="移动端-续-签合同审批-单据信息">
+                <g id="Rectangle">
+                    <use fill="#F5F8FD" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <rect stroke="#EEF1F4" stroke-width="0.5" x="-0.25" y="-0.25" width="375.5" height="1048.5"></rect>
+                </g>
+                <g id="续签批次选择" transform="translate(0.000000, 579.000000)">
+                    <rect id="Rectangle-3" fill="#FFFFFF" x="0" y="0" width="375" height="418"></rect>
+                    <g id="Group-7" transform="translate(15.000000, 336.000000)" stroke="#B2C1C6" fill-rule="nonzero" fill="#F4F6FA" stroke-linejoin="round">
+                        <circle id="cannot" cx="332.5" cy="33.5" r="11.5"></circle>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
