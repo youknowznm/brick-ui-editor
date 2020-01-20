@@ -15,7 +15,7 @@ import {
 @bind(BaseAppView)
 class AppState extends BaseModel {
 
-    moduleClassName = 'fssc-approval-module-wrapper';
+    moduleClassName = '';
 
     constructor(initProps, syncProps) {
         super(initProps, syncProps);
