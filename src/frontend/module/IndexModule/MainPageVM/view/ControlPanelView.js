@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import {
     React,
     Component,
@@ -55,7 +53,7 @@ export default class Comp extends Component {
     renderControlPanelContent = () => {
         return h.div('control-panel-content', {},
             
-        )
+        );
     }
 
     render() {
@@ -70,11 +68,11 @@ export default class Comp extends Component {
                     variant: 'persistent',
                     open: props.showControlPanelDrawer,
                     onMouseOut() {
-                        props.triggerControlPanelDrawer(false)
+                        props.triggerControlPanelDrawer(false);
                     }
                 },
                 this.renderControlPanelContent()
             )
-        )
+        );
     }
 }

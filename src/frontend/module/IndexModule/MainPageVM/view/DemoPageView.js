@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import {
     React,
     Component,
@@ -64,18 +62,18 @@ export default class Comp extends Component {
                     variant: 'persistent',
                     open: props.showDemoPageDrawer,
                     onMouseOut() {
-                        props.triggerDemoDrawer(false)
+                        props.triggerDemoDrawer(false);
                     }
                 },
                 h.iframe('demo-page-iframe', {
                     width: '100%',
                     height: '100%',
                     style: {
-                        width: `${props.demoPageMinWidth}px`,
+                        width: `${props.demoPageWidth}px`,
                     },
                     src: props.demoPageSrc
                 })
             )
-        )
+        );
     }
 }

@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 /**
  * @author zhangenming
  */
@@ -45,32 +43,42 @@ class IndexPageVM extends BaseModel {
         });
     }
 
+    @observable frameWindowRef = null;
+
+    @observable metaKeyPressed = false;
+
     // ##### 头部操作卡片 #####
 
     @observable showControlPanelDrawer = false;
 
     triggerControlPanelDrawer = target => {
-        const result = typeof target === 'boolean' ? target : !this.showControlPanelDrawer
+        const result = typeof target === 'boolean' ? target : !this.showControlPanelDrawer;
         this.setProps({
-           showControlPanelDrawer: result
+            showControlPanelDrawer: result
         });
     }
 
     // ##### 左侧 demo 容器 #####
 
+    @observable componentLibName = 'erp-comps'
+
     @observable demoPageSrc = 'http://localhost:18988/pages/ui-demo-shared.html#/button';
-    @observable demoPageMinWidth = 1075;
+    @observable demoPageWidth = 1075;
 
     @observable showDemoPageDrawer = false;
 
     triggerDemoDrawer = target => {
-        const result = typeof target === 'boolean' ? target : !this.showDemoPageDrawer
+        const result = typeof target === 'boolean' ? target : !this.showDemoPageDrawer;
         this.setProps({
-           showDemoPageDrawer: result
+            showDemoPageDrawer: result
         });
     }
 
     @observable componentsUsed = [];
+
+    @action appendDemoComponent = comp => {
+        this.componentsUsed.push(comp);
+    }
 
     // ##### 右侧实际内容(默认下的全屏) #####
 

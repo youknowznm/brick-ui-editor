@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import {
     React,
     Component,
@@ -17,7 +15,6 @@ import {
 import PropTypes from 'prop-types';
 import {PropTypes as MobxPropTypes} from 'mobx-react';
 
-import SectionForm from '@befe/erp-comps/v2/components/SectionForm';
 
 import {pcNormalAgentTheme as theme} from 'frontend/service/agent-theme/pc-normal-agent-theme';
 
@@ -26,6 +23,9 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
+import ERPCompsButton from '@befe/erp-comps/v2/components/Button';
+
+import PlaygroundCompWrap from '../components/PlaygroundCompWrap';
 
 import Card from '@material-ui/core/Card';
 
@@ -60,22 +60,37 @@ export default class Comp extends Component {
     }
 
     renderPlaygroundContent = () => {
+        const {props} = this;
+        
         return h.div(
             'playground',
             {
                 onMouseOver: () => {
-                    this.props.triggerDemoDrawer(false);
-                }   
+                    props.triggerDemoDrawer(false);
+                }
             },
+            ...props.componentsUsed
         );
     }
 
     render() {
         const {local, props, triggerDemoDrawer} = this;
         const {demoPageState} = local;
+        const {
+            demoPageWidth,
+            showDemoPageDrawer
+        } = props;
+        const offSet = demoPageWidth - 20;
         return h.div(
-            'playground',
-            {},
+            c(
+                'playground-wrap',
+            ),
+            {
+                style: {
+                    marginLeft: `${showDemoPageDrawer ? offSet : 0}px`,
+                    right: `${showDemoPageDrawer ? -offSet : 0}px`,
+                }
+            },
             this.renderPlaygroundContent(),
         );
     }

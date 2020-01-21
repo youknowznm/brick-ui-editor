@@ -6,6 +6,7 @@ import {
     React,
     computed,
     Component,
+    action,
     h,
     toJS,
     suh,
@@ -23,6 +24,12 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Card from '@material-ui/core/Card';
 
+import Draggable from 'react-draggable';
+
+import ERPCompsButton from '@befe/erp-comps/v2/components/Button';
+
+import PlaygroundCompWrap from './components/PlaygroundCompWrap';
+
 import pageStyle from './style.use.less';
 
 @suh(pageStyle)
@@ -32,38 +39,62 @@ export default class extends Component {
     // 是否注入全局的 app 对象
     static shouldInjectApp = true;
     
-    state = {
-        compsUsed: []
-    }
-
-    pushCompUsed = comp => {
-    }
-
     componentDidMount() {
-        const {local, props, pushCompUsed} = this;
+        const {local, props, appendDemoComponent} = this;
         const {
         } = local;
+        this.registerMessageListener();
+        this.registerMetaKeyListener();
+    }
 
+    registerMessageListener = () => {
+        const {local} = this;
         const {
-            expHeaderId
-        } = props.location.query;
-
-        window.addEventListener('message', function (event) {
-            // event.data 数据；event.origin 发送消息窗口的源；event.source 发送消息的窗口对象
+            appendDemoComponent,
+            metaKeyPressed
+        } = local;
+        window.addEventListener('message', event => {
             const {
                 data,
                 type
-            } = event;
-            if (data.type === 'ERP_UI_PREVIEWER') {
-                console.log(data.data);
-                let a = React.createElement(
-                    Button,
-                    data.data.props
-                );
-                console.log({a});
-                pushCompUsed(a);
+            } = event.data;
+            if (type && type.indexOf('EUP') === 0) {
+                switch (type) {
+                    case 'EUP_APPEND_COMP':
+                        appendDemoComponent(h(PlaygroundCompWrap, {
+                            originCompProps: data.props
+                        }));
+                        break;
+                    case 'EUP_META_KEY_ACTION':
+                        local.setProps({
+                            metaKeyPressed: data.metaKeyPressed
+                        });
+                        break;
+                }
             }
+            
         });
+    }
+
+    registerMetaKeyListener = () => {
+        const {local} = this;
+        const triggerMetaKeyPressed = (evt, target) => {
+            if (evt.key === 'Meta') {
+                local.setProps({
+                    metaKeyPressed: target
+                });
+            }
+        };
+        
+        if (!window._eupKeyListenerRegistered) {
+            window.addEventListener('keydown', event => {
+                triggerMetaKeyPressed(event, true);
+            });
+            window.addEventListener('keyup', event => {
+                triggerMetaKeyPressed(event, false);
+            });
+            window._eupKeyListenerRegistered = true;
+        }
     }
 
     renderControlPanelDrawerTrigger = () => {
@@ -113,7 +144,7 @@ export default class extends Component {
             h(DemoPageView, {
                 showDemoPageDrawer: local.showDemoPageDrawer,
                 demoPageSrc: local.demoPageSrc,
-                demoPageMinWidth: local.demoPageMinWidth,
+                demoPageWidth: local.demoPageWidth,
                 triggerDemoDrawer: local.triggerDemoDrawer
             }),
             this.renderDemoDrawerTrigger(),
@@ -123,8 +154,12 @@ export default class extends Component {
             }),
             this.renderControlPanelDrawerTrigger(),
             h(PlaygroundView, {
+                componentsUsed: local.componentsUsed,
+                demoPageWidth: local.demoPageWidth,
+                showDemoPageDrawer: local.showDemoPageDrawer,
+                triggerDemoDrawer: local.triggerDemoDrawer,
+                triggerControlPanelDrawer: local.triggerControlPanelDrawer
             }),
-            ...this.state.compsUsed
         );
     }
 }
