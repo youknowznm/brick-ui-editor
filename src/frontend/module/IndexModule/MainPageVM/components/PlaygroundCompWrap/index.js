@@ -75,6 +75,7 @@ export default class PlaygroundCompWrap extends React.Component {
                 {
                     handle: '.action-wrap'
                 },
+                // TODO: fragment
                 h.div('', {},
                     React.createElement(
                         ERPCompsButton,

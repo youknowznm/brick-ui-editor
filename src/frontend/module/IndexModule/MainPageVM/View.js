@@ -40,11 +40,10 @@ export default class extends Component {
     static shouldInjectApp = true;
     
     componentDidMount() {
-        const {local, props, appendDemoComponent} = this;
-        const {
-        } = local;
+        const {local, props} = this;
         this.registerMessageListener();
         this.registerMetaKeyListener();
+        this.registerBodyMouseEnterListener();
     }
 
     registerMessageListener = () => {
@@ -97,6 +96,16 @@ export default class extends Component {
         }
     }
 
+    // 从其它应用切换至浏览器时, 移除焦点
+    registerBodyMouseEnterListener = () => {
+        const {local} = this;
+        window.document.body.addEventListener('mouseenter', event => {
+            local.setProps({
+                metaKeyPressed: false
+            });
+        });
+    }
+
     renderControlPanelDrawerTrigger = () => {
         return h(
             Card,
@@ -104,7 +113,9 @@ export default class extends Component {
             {
                 raised: true,
                 onMouseOver: () => {
+                    // 打开一个抽屉时, 关闭另一个
                     this.local.triggerControlPanelDrawer(true);
+                    this.local.triggerDemoDrawer(false);
                 }
             },
             h(
@@ -125,6 +136,7 @@ export default class extends Component {
                 raised: true,
                 onMouseOver: () => {
                     this.local.triggerDemoDrawer(true);
+                    this.local.triggerControlPanelDrawer(false);
                 }
             },
             h(
