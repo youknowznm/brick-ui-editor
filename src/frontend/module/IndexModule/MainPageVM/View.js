@@ -16,6 +16,7 @@ import {
 import DemoPageView from './view/DemoPageView';
 import ControlPanelView from './view/ControlPanelView';
 import PlaygroundView from './view/PlaygroundView';
+import AttrEditorView from './view/AttrEditorView';
 
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
@@ -57,10 +58,13 @@ export default class extends Component {
                 data,
                 type
             } = event.data;
+            
             if (type && type.indexOf('EUP') === 0) {
+                console.log('msg data: ', data);
                 switch (type) {
                     case 'EUP_APPEND_COMP':
                         appendDemoComponent(h(PlaygroundCompWrap, {
+                            id: data.id,
                             originCompProps: data.props
                         }));
                         break;
@@ -172,6 +176,10 @@ export default class extends Component {
                 triggerDemoDrawer: local.triggerDemoDrawer,
                 triggerControlPanelDrawer: local.triggerControlPanelDrawer
             }),
+            h(AttrEditorView, {
+                componentInEdit: local.componentInEdit,
+                
+            })
         );
     }
 }

@@ -30,8 +30,11 @@ export default class PlaygroundCompWrap extends React.Component {
     state = {
         // ownState: null,
         // ownProps: null,
+        isEditing: false,
         width: '0px',
         height: '0px',
+
+        id: '',
         // display: '0px'
     }
 
@@ -39,6 +42,7 @@ export default class PlaygroundCompWrap extends React.Component {
         // metaKeyPressed:
         // originCompDisplayName:
         // originCompProps:
+        // id:
     }
 
     createRef = reactElem => {
@@ -51,7 +55,12 @@ export default class PlaygroundCompWrap extends React.Component {
                 height: computedStyle.height
             });
         }
+    }
 
+    componentDidMount() {
+        this.setState({
+            id: this.props.id
+        });
     }
 
     render() {
@@ -66,9 +75,6 @@ export default class PlaygroundCompWrap extends React.Component {
                     width: state.width,
                     height: state.height
                 },
-                onMouseEnter() {
-                    
-                }
             },
             h(
                 Draggable,
@@ -83,7 +89,24 @@ export default class PlaygroundCompWrap extends React.Component {
                             ref: this.createRef
                         }),
                     ),
-                    h.div('action-wrap', {})
+                    h.div(
+                        'action-wrap',
+                        {
+                            onClick: () => {
+                                this.setState({
+                                    isEditing: true
+                                });
+                                props.app.root.setEditingComponentId(props.id);
+                                console.log(35, props.id);
+                                
+                            }
+                        },
+                        h.span(
+                            'text',
+                            {},
+                            '选择'
+                        )
+                    )
                 )
             ),
         );

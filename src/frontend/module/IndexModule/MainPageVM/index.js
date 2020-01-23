@@ -60,7 +60,7 @@ class IndexPageVM extends BaseModel {
 
     // ##### 左侧 demo 容器 #####
 
-    @observable componentLibName = 'erp-comps'
+    @observable componentLibName = 'erp-comps';
 
     @observable demoPageSrc = 'http://localhost:18988/pages/ui-demo-shared.html#/button';
     @observable demoPageWidth = 1075;
@@ -80,9 +80,25 @@ class IndexPageVM extends BaseModel {
         this.componentsUsed.push(comp);
     }
 
+    @observable componentInEditId = '';
+
+    setEditingComponentId = id => {
+        this.setProps({
+            componentInEditId: id
+        });
+    }
+
+    @computed get componentInEdit() {
+        return this.componentsUsed.find(item => {
+            return item.props.id === this.componentInEditId;
+        }) || null;
+    }
+
     // ##### 右侧实际内容(默认下的全屏) #####
 
     @observable showDemoPageDrawer = false;
+
+    // @observable selectedComponent = null;
 
     // ==========
 
