@@ -15,6 +15,7 @@ import {
 import PropTypes from 'prop-types';
 import {PropTypes as MobxPropTypes} from 'mobx-react';
 
+import HtmlMeasure from 'html-measure';
 
 import {pcNormalAgentTheme as theme} from 'frontend/service/agent-theme/pc-normal-agent-theme';
 
@@ -63,7 +64,7 @@ export default class Comp extends Component {
         const {props} = this;
         const {root} = props.app;
         return h.div(
-            'playground',
+            'playground-content',
             {
                 onMouseOver: evt => {
                     if (evt.target.className.indexOf('playground') > -1) {
@@ -126,7 +127,11 @@ export default class Comp extends Component {
                     right: `${showDemoPageDrawer ? -offSet : 0}px`,
                 }
             },
-            this.renderPlaygroundContent(),
+            // h(
+            //     HtmlMeasure,
+            //     {},
+                this.renderPlaygroundContent(),
+            // ),
             this.renderBlockLayer()
         );
     }

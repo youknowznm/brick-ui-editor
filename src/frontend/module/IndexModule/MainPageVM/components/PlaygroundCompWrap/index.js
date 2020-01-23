@@ -60,13 +60,14 @@ export default class PlaygroundCompWrap extends React.Component {
     render() {
         const {props, state} = this;
         const {root} = props.app;
-        // 被编辑 id 非空, 并且与当前组件 id 不等时, 认为其它组件在被编辑, 而当前组件应禁止交互
-        const notInEdit = root.componentInEditId !== '' && root.componentInEditId !== props.id;
+        // // 被编辑 id 非空, 并且与当前组件 id 不等时, 认为其它组件在被编辑, 而当前组件应禁止交互
+        // const selected = root.componentInEditId !== '' && root.componentInEditId !== props.id;
+        const selected = root.componentInEditId === props.id;
         return h.div(
             c(
                 'playground-comp-wrap',
                 root.metaKeyPressed && 'meta-key-pressed',
-                notInEdit && 'not-in-edit'
+                selected && 'selected'
             ), 
             {
                 style: {
@@ -77,16 +78,14 @@ export default class PlaygroundCompWrap extends React.Component {
             h(
                 Draggable,
                 {
-                    handle: '.action-wrap',
+                    handle: '.action-layer',
                     onStop() {
                         console.log('stopd');
-                        
                         root.setProps({
                             componentInEditId: ''
                         });
                     }
                 },
-                // TODO: fragment
                 h.div('', {},
                     React.createElement(
                         ERPCompsButton,
@@ -95,7 +94,7 @@ export default class PlaygroundCompWrap extends React.Component {
                         }),
                     ),
                     h.div(
-                        'action-wrap',
+                        'action-layer',
                         {
                             onClick: () => {
                                 root.setEditingComponentId(props.id);
@@ -108,6 +107,25 @@ export default class PlaygroundCompWrap extends React.Component {
                             {},
                             '选择'
                         )
+                    ),
+                    h.div(
+                        'selected-layer',
+                        {
+                            // onClick: () => {
+                            //     root.setEditingComponentId(props.id);
+                            //     root.triggerDemoDrawer(false);
+                            //     root.triggerControlPanelDrawer(false);
+                            // }
+                        },
+                        h.span(
+                            'text',
+                            {},
+                            ''
+                        ),
+                        h.span('spot tl'),
+                        h.span('spot tr'),
+                        h.span('spot br'),
+                        h.span('spot bl'),
                     ),
                 )
             ),

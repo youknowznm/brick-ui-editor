@@ -22,7 +22,7 @@ import Typography from '@material-ui/core/Typography';
 import {withStyles} from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
-// import Divider from '@material-ui/core/Divider';
+import Divider from '@material-ui/core/Divider';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 
@@ -56,22 +56,52 @@ export default class Comp extends Component {
     renderAttrEditorContent = () => {
         const {local, props} = this;
         const {componentInEdit} = props;
-        // if (componentInEdit === null) {
-        //     return null;
-        // }
-        // const originCompData = componentInEdit.props;
+        if (componentInEdit === null) {
+            return null;
+        }
+        const originCompData = componentInEdit.props;
         // console.log('componentInEdit: ', componentInEdit);
         // console.table('originCompData: ', originCompData);
+        const {
+            id,
+            originDisplayName,
+            originCompProps,
+            originCompState,
+            playgroundTopOffset,
+            playgroundLeftOffset,
+        } = originCompData;
+
+        const propInputs = [];
+        for (let key in originCompProps) {
+            propInputs.push(h(TextField, {
+                value: originCompProps[key],
+                label: key,
+                fullWidth: true,
+                margin: 'dense'
+            }));
+        }
+
+        const stateInputs = [];
+        for (let key in originCompState) {
+            stateInputs.push(h(TextField, {
+                value: originCompState[key],
+                label: key,
+                fullWidth: true,
+                margin: 'dense'
+            }));
+        }
+
         return h.div('attr-editor-content', {},
             // componentInEdit.displayName
-            h.div('title-wrap', {},
-                h.h3('title', {}, 'Button'),
-                h.p('desc', {}, '按钮'),
+            h.h3('title', {},
+                h.span('code', {}, 'Button'),
+                h.span('name', {}, '按钮'),
             ),
+            h(Divider),
             h.ul('type-position', {},
                 h(TextField, {
                     value: '',
-                    label: '左边距',
+                    label: '上边距 top',
                     size: 'small',
                     style: {
                         width: 150,
@@ -87,7 +117,7 @@ export default class Comp extends Component {
                 }),
                 h(TextField, {
                     value: '',
-                    label: '上边距',
+                    label: '左边距 left',
                     style: {
                         width: 150,
                     },
@@ -100,7 +130,7 @@ export default class Comp extends Component {
                 }),
                 h(TextField, {
                     value: '',
-                    label: '宽度',
+                    label: '宽度 width',
                     style: {
                         width: 150,
                         marginRight: 20,
@@ -115,7 +145,7 @@ export default class Comp extends Component {
                 }),
                 h(TextField, {
                     value: '',
-                    label: '高度',
+                    label: '高度 height',
                     style: {
                         width: 150,
                     },
@@ -126,6 +156,13 @@ export default class Comp extends Component {
                     },
                     margin: 'dense'
                 }),
+            ),
+            h(Divider),
+            h.ul('type-data', {},
+                ...propInputs,
+            // ),
+            // h.ul('type-data', {},
+                ...stateInputs
             )
         );
     }
@@ -140,8 +177,8 @@ export default class Comp extends Component {
                 {
                     anchor: 'right',
                     variant: 'persistent',
-                    open: true,
-                    // open: props.componentInEdit !== null,
+                    // open: true,
+                    open: props.componentInEdit !== null,
                 },
                 this.renderAttrEditorContent()
             )
