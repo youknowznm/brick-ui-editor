@@ -45,6 +45,7 @@ export default class extends Component {
         this.registerMessageListener();
         this.registerMetaKeyListener();
         this.registerBodyMouseEnterListener();
+        this.registerResizeListener();
     }
 
     registerMessageListener = () => {
@@ -60,13 +61,15 @@ export default class extends Component {
             } = event.data;
             
             if (type && type.indexOf('EUP') === 0) {
-                console.log('msg data: ', data);
                 switch (type) {
                     case 'EUP_APPEND_COMP':
-                        appendDemoComponent(h(PlaygroundCompWrap, {
-                            id: data.id,
-                            originCompProps: data.props
-                        }));
+                        console.log('msg data: ', data);
+                        appendDemoComponent(h(PlaygroundCompWrap, data));
+                        // appendDemoComponent(h(PlaygroundCompWrap, {
+                        //     id: data.id,
+                        //     originCompProps: data.props,
+                        //     originCompStates: data.state,
+                        // }));
                         break;
                     case 'EUP_META_KEY_ACTION':
                         local.setProps({
@@ -100,14 +103,41 @@ export default class extends Component {
         }
     }
 
-    // 从其它应用切换至浏览器时, 移除焦点
+    // 从其它应用切换至浏览器时, 移除焦点, 聚焦自身
     registerBodyMouseEnterListener = () => {
         const {local} = this;
         window.document.body.addEventListener('mouseenter', event => {
-            local.setProps({
-                metaKeyPressed: false
-            });
+            window.focus();
         });
+        // TODO:
+        // window.document.body.addEventListener('mouseout', event => {
+        //     local.setProps({
+        //         metaKeyPressed: false
+        //     });
+        // });
+    }
+
+ 
+
+    registerResizeListener = () => {
+        const {local} = this;
+        const getPlaygroundSize = () => {
+            const playgroundDOM = document.querySelector('.playground-wrap .playground');
+            if (playgroundDOM) {
+                const {
+                    width,
+                    height
+                } = document.defaultView.getComputedStyle(playgroundDOM);
+                local.setProps({
+                    playgroundWidth: parseInt(width, 10),
+                    playgroundHeight: parseInt(height, 10),
+                });
+            }
+        };
+        window.addEventListener('resize', event => {
+            getPlaygroundSize();
+        });
+        getPlaygroundSize();
     }
 
     renderControlPanelDrawerTrigger = () => {
@@ -115,11 +145,13 @@ export default class extends Component {
             Card,
             'top-actions-drawer-trigger', 
             {
-                raised: true,
+                // raised: true,
                 onMouseOver: () => {
-                    // 打开一个抽屉时, 关闭另一个
                     this.local.triggerControlPanelDrawer(true);
                     this.local.triggerDemoDrawer(false);
+                    this.local.setProps({
+                        componentInEditId: ''
+                    });
                 }
             },
             h(
@@ -137,10 +169,13 @@ export default class extends Component {
             Card,
             'demo-drawer-trigger', 
             {
-                raised: true,
+                // raised: true,
                 onMouseOver: () => {
                     this.local.triggerDemoDrawer(true);
                     this.local.triggerControlPanelDrawer(false);
+                    this.local.setProps({
+                        componentInEditId: ''
+                    });
                 }
             },
             h(
@@ -164,22 +199,23 @@ export default class extends Component {
                 triggerDemoDrawer: local.triggerDemoDrawer
             }),
             this.renderDemoDrawerTrigger(),
+            h(PlaygroundView, {
+                playgroundWidth: local.playgroundWidth,
+                playgroundHeight: local.playgroundHeight,
+                componentsUsed: local.componentsUsed,
+                demoPageWidth: local.demoPageWidth,
+                showDemoPageDrawer: local.showDemoPageDrawer,
+                triggerDemoDrawer: local.triggerDemoDrawer,
+                triggerControlPanelDrawer: local.triggerControlPanelDrawer,
+            }),
+            h(AttrEditorView, {
+                componentInEdit: local.componentInEdit,
+            }),
             h(ControlPanelView, {
                 showControlPanelDrawer: local.showControlPanelDrawer,
                 triggerControlPanelDrawer: local.triggerControlPanelDrawer
             }),
             this.renderControlPanelDrawerTrigger(),
-            h(PlaygroundView, {
-                componentsUsed: local.componentsUsed,
-                demoPageWidth: local.demoPageWidth,
-                showDemoPageDrawer: local.showDemoPageDrawer,
-                triggerDemoDrawer: local.triggerDemoDrawer,
-                triggerControlPanelDrawer: local.triggerControlPanelDrawer
-            }),
-            h(AttrEditorView, {
-                componentInEdit: local.componentInEdit,
-                
-            })
         );
     }
 }

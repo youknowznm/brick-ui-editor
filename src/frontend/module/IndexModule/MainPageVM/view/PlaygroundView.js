@@ -61,16 +61,51 @@ export default class Comp extends Component {
 
     renderPlaygroundContent = () => {
         const {props} = this;
-        
+        const {root} = props.app;
         return h.div(
             'playground',
             {
-                onMouseOver: () => {
-                    props.triggerDemoDrawer(false);
+                onMouseOver: evt => {
+                    if (evt.target.className.indexOf('playground') > -1) {
+                        props.triggerDemoDrawer(false);
+                    }
+                },
+                onClick: evt => {
+                    if (evt.target.className.indexOf('playground') > -1) {
+                        root.setProps({
+                            componentInEditId: ''
+                        });
+                    };
                 }
             },
             ...props.componentsUsed
         );
+    }
+
+    renderBlockLayer = () => {
+        const {local, props} = this;
+        const {
+            playgroundWidth,
+            playgroundHeight
+        } = props;
+        // console.log(133, props.playgroundWidth, props.playgroundHeight);
+
+        // const tl = 100;
+        // const tr = 100;
+        // const br = 100;
+        // const bl = 100;
+        // const width = 
+        
+        // return h.div('block-layer', {},
+        //     h.div('area-top-left', {
+        //         style: {
+        //             top: 0,
+        //             right: playgroundWidth - tl,
+        //             bottom: playgroundHeight - bl,
+        //             left: 0,
+        //         }
+        //     }),
+        // )
     }
 
     render() {
@@ -92,6 +127,7 @@ export default class Comp extends Component {
                 }
             },
             this.renderPlaygroundContent(),
+            this.renderBlockLayer()
         );
     }
 }

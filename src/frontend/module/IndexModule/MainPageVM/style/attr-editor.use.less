@@ -4,8 +4,44 @@
 .attr-editor {
     .attr-editor-drawer {
         .attr-editor-content {
-            width: 240px;
+            position: relative;
+            width: 360px;
+            height: 100%;
+            padding: 40px 0;
         }
+    }
+    .title-wrap {
+        position: relative;
+        border-bottom: 1px solid rgba(0,0,0,.12);
+        padding-bottom: 10px;
+        .title {
+            padding: 0 20px;
+            font-size: 28px;
+            line-height: 32px;
+            // letter-spacing: -.01em;
+            margin: 0;
+            // padding-bottom: 3px;
+            color: #212121;
+            font-weight: 300;
+            word-break: normal;
+            word-wrap: break-word;
+        }
+        .desc {
+            position: absolute;
+            right: 20px;
+            bottom: 10px;
+            line-height: 32px;
+            margin: 0;
+            font-weight: 300;
+            color: #999;
+            font-size: 14px;
+            // font-style: italic;
+        }
+    }
+    .type-position {
+        position: relative;
+        padding: 10px 20px 10px;
+        border-bottom: 1px solid rgba(0,0,0,.12);
     }
 }
 

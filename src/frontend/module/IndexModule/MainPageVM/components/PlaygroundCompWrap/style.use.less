@@ -1,16 +1,30 @@
+@stripe-width: 15px;
+@stripe-color: #999;
+@stripe-color-active: #298ef2;
+
+.stripe-bg {
+    background: #fff linear-gradient(
+        45deg, 
+        @stripe-color 0, @stripe-color 25%, transparent 25%, transparent 50%, 
+        @stripe-color 50%, @stripe-color 75%, transparent 75%, transparent
+    );
+    background-size: @stripe-width @stripe-width;
+}
+
+.stripe-bg-active {
+    background: #fff linear-gradient(
+        45deg, 
+        @stripe-color-active 0, @stripe-color-active 25%, transparent 25%, transparent 50%, 
+        @stripe-color-active 50%, @stripe-color-active 75%, transparent 75%, transparent
+    );
+    background-size: @stripe-width @stripe-width;
+}
+
 .playground-comp-wrap {
     position: relative;
     display: block;
     margin-left: 10px;
     margin-bottom: 10px;
-    .action-button {
-        position: absolute;
-        right: 0;
-        bottom: -32px;
-    }
-    @stripe-color: #999;
-    @stripe-width: 15px;
-    @stripe-color-hovered: #298ef2;
     .action-wrap {
         display: none;
         position: absolute;
@@ -21,41 +35,32 @@
         // opacity: .5;
         // transition: all .4s;
         border: 1px solid @stripe-color;
-        background: #fff linear-gradient(
-            45deg, 
-            @stripe-color 0, @stripe-color 25%, transparent 25%, transparent 50%, 
-            @stripe-color 50%, @stripe-color 75%, transparent 75%, transparent
-        );
-        background-size: @stripe-width @stripe-width;
+        .stripe-bg;
+        .text {
+            display: none;
+            font-size: 12px;
+            position: absolute;
+            transition: all .4s;
+            overflow: hidden;
+            background-color: #fff;
+            text-overflow: ellipsis;
+            color: #000;
+            white-space: nowrap;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
         &:hover {
             // opacity: .5;
-            // background: stripe-color;
-            background: #fff linear-gradient(
-                45deg, 
-                @stripe-color-hovered 0, @stripe-color-hovered 25%, transparent 25%, transparent 50%, 
-                @stripe-color-hovered 50%, @stripe-color-hovered 75%, transparent 75%, transparent
-            );
-            background-size: @stripe-width @stripe-width;
+            .stripe-bg-active;
         }
     }
-   
     &.meta-key-pressed {
         cursor: grab;
         .action-wrap {
             display: block;
             .text {
                 display: block;
-                font-size: 12px;
-                position: absolute;
-                transition: all .4s;
-                overflow: hidden;
-                background-color: #fff;
-                text-overflow: ellipsis;
-                color: #000;
-                white-space: nowrap;
-                top: 50%;
-                left: 50%;
-                transform: translateX(-50%) translateY(-50%);
             }
         }
     }

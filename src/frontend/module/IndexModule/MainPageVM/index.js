@@ -74,11 +74,33 @@ class IndexPageVM extends BaseModel {
         });
     }
 
+    // @observable visibleDrawerName = ''; // DEMO_PAGE | CONTROL_PANEL | ATTR_EDITOR
+
+    // @computed get demoPageVisible() {
+    //     return this.visibleDrawerName === 'DEMO_PAGE';
+    // }
+    // @computed get controlPanelVisible() {
+    //     return this.visibleDrawerName === 'CONTROL_PANEL';
+    // }
+    // @computed get attrEditorVisible() {
+    //     return this.visibleDrawerName === 'ATTR_EDITOR';
+    // }
+
     @observable componentsUsed = [];
 
     @action appendDemoComponent = comp => {
         this.componentsUsed.push(comp);
     }
+
+    @observable componentsUsedPosition = null;
+    @observable playgroundWidth = 0;
+    @observable playgroundHeight = 0;
+
+    // ##### 中间 实际内容(默认下的全屏) #####
+
+    @observable showDemoPageDrawer = false;
+
+    // ##### 右侧 属性编辑器 #####
 
     @observable componentInEditId = '';
 
@@ -93,12 +115,6 @@ class IndexPageVM extends BaseModel {
             return item.props.id === this.componentInEditId;
         }) || null;
     }
-
-    // ##### 右侧实际内容(默认下的全屏) #####
-
-    @observable showDemoPageDrawer = false;
-
-    // @observable selectedComponent = null;
 
     // ==========
 

@@ -30,11 +30,8 @@ export default class PlaygroundCompWrap extends React.Component {
     state = {
         // ownState: null,
         // ownProps: null,
-        isEditing: false,
         width: '0px',
         height: '0px',
-
-        id: '',
         // display: '0px'
     }
 
@@ -58,17 +55,18 @@ export default class PlaygroundCompWrap extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({
-            id: this.props.id
-        });
     }
 
     render() {
         const {props, state} = this;
+        const {root} = props.app;
+        // 被编辑 id 非空, 并且与当前组件 id 不等时, 认为其它组件在被编辑, 而当前组件应禁止交互
+        const notInEdit = root.componentInEditId !== '' && root.componentInEditId !== props.id;
         return h.div(
             c(
                 'playground-comp-wrap',
-                props.app.root.metaKeyPressed && 'meta-key-pressed'
+                root.metaKeyPressed && 'meta-key-pressed',
+                notInEdit && 'not-in-edit'
             ), 
             {
                 style: {
@@ -79,7 +77,14 @@ export default class PlaygroundCompWrap extends React.Component {
             h(
                 Draggable,
                 {
-                    handle: '.action-wrap'
+                    handle: '.action-wrap',
+                    onStop() {
+                        console.log('stopd');
+                        
+                        root.setProps({
+                            componentInEditId: ''
+                        });
+                    }
                 },
                 // TODO: fragment
                 h.div('', {},
@@ -93,12 +98,9 @@ export default class PlaygroundCompWrap extends React.Component {
                         'action-wrap',
                         {
                             onClick: () => {
-                                this.setState({
-                                    isEditing: true
-                                });
-                                props.app.root.setEditingComponentId(props.id);
-                                console.log(35, props.id);
-                                
+                                root.setEditingComponentId(props.id);
+                                root.triggerDemoDrawer(false);
+                                root.triggerControlPanelDrawer(false);
                             }
                         },
                         h.span(
@@ -106,7 +108,7 @@ export default class PlaygroundCompWrap extends React.Component {
                             {},
                             '选择'
                         )
-                    )
+                    ),
                 )
             ),
         );
