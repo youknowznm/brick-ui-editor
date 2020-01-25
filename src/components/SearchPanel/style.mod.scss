@@ -1,0 +1,25 @@
+@import "src/style/theme";
+.search-panel-container{
+  border: 1px solid #ccc;
+  padding: 10px 15px;
+  .search-panel-button{
+    display: flex;
+    justify-content: center;
+  }
+  .col-wrapper {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding: 15px 0;
+    width: 80%;
+    .col-label {
+      width: 100px;
+      text-align: right;
+      font-weight: bold;
+      padding-right: 10px;
+    }
+    .col-content {
+      width: 100%;
+    }
+  }
+}

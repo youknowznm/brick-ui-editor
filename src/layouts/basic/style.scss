@@ -1,0 +1,98 @@
+@import "src/style/theme";
+@import "src/style/main";
+
+$app-header-height: $layout-header-height;
+$app-side-menu-width: auto;
+$app-content-padding: padding(5);
+$app-header-menu-item-color: #fff;
+
+$app-side-menu-handle-size: padding(10);
+
+#app {
+  height: 100%;
+}
+
+.app-container {
+  .app-header {
+    @include clearfix();
+    height: $app-header-height;
+    background: color-brand();
+    //padding: 0 padding(5);
+  }
+
+  .app-header-logo {
+    display: inline-block;
+    float: left;
+    height: $app-header-height;
+    line-height: $app-header-height;
+    a {
+      display: inline-block;
+      color: $color-text-reverse;
+      font-size: 20px;
+
+    }
+  }
+
+  .app-header-menu {
+    float: right;
+    a {
+      display: inline-block;
+      color: $color-text-reverse;
+    }
+  }
+
+  .app-header-menu {
+    width: $app-side-menu-width;
+    height: 100%;
+    float: right;
+  }
+  .brick-layout-sidebar-inner {
+    padding: 0;
+  }
+  .brick-menu-item-content-inner {
+    a {
+      color: $app-header-menu-item-color;
+    }
+  }
+  .app-side-menu {
+    height: 100%;
+    width: $app-side-menu-width;
+    //padding: ($layout-padding - padding(1)) 0;
+    //background: color-gray(1);
+    //border-right: border();
+    list-style-type: none;
+    color: $app-header-menu-item-color;
+    z-index: 1;
+  }
+
+  .app-content {}
+
+  .brick-layout-footer-inner {
+    line-height: $layout-footer-min-height;
+  }
+
+  &.is-min-width {
+    .brick-layout-sidebar {
+      width: auto;
+    }
+    .app-side-menu-handle {
+      display: flex;
+    }
+    .app-side-menu-wrap {
+      left: -$app-side-menu-width;
+      &:hover {
+        left: 0;
+        //.app-side-menu-handle {
+        //  display: none;
+        //}
+      }
+    }
+  }
+  .brick-menu-submenu.brick-menu-submenu-has-descendant-selected {
+    .brick-menu-item-content {
+      .brick-menu-item-content-inner {
+        color: $app-header-menu-item-color;
+      }
+    }
+  }
+}

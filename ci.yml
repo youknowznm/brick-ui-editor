@@ -12,7 +12,7 @@ Profiles:
       AGILE_TRIGGER_USER=$AGILE_TRIGGER_USER
       AGILE_COMPILE_BRANCH=$AGILE_COMPILE_BRANCH
       AGILE_REVISION=$AGILE_REVISION
-      sh script/test.sh
+      sh ci/test.sh
     release: false
 
   - profile:
@@ -20,7 +20,7 @@ Profiles:
     env: cmc_standard
     command: >-
       WEBPACK_ENV=dev
-      sh script/build-for-deploy.sh
+      sh ci/build-for-deploy.sh
     release: true
 
   - profile:
@@ -28,7 +28,7 @@ Profiles:
     env: cmc_standard
     command: >-
       WEBPACK_ENV=sit
-      sh script/build-for-deploy.sh
+      sh ci/build-for-deploy.sh
     release: true
 
   - profile:
@@ -36,7 +36,7 @@ Profiles:
     env: cmc_standard
     command: >-
       WEBPACK_ENV=uat
-      sh script/build-for-deploy.sh
+      sh ci/build-for-deploy.sh
     release: true
 
   - profile:
@@ -44,7 +44,7 @@ Profiles:
     env: cmc_standard
     command: >-
       WEBPACK_ENV=pot
-      sh script/build-for-deploy.sh
+      sh ci/build-for-deploy.sh
     release: true
 
   - profile:
@@ -52,25 +52,5 @@ Profiles:
     env: cmc_standard
     command: >-
       WEBPACK_ENV=prd
-      sh script/build-for-deploy.sh
-    release: true
-
-  - profile:
-    name: backend
-    env: cmc_standard
-    command: >-
-      WEBPACK_ENV=backend
-      AGILE_TRIGGER_USER=$AGILE_TRIGGER_USER
-      AGILE_COMPILE_BRANCH=$AGILE_COMPILE_BRANCH
-      AGILE_REVISION=$AGILE_REVISION
-      BACKEND_BRANCH=$BACKEND_BRANCH
-      sh script/build-for-backend.sh
-    release: false
-
-  - profile:
-    name: standalone
-    env: cmc_standard
-    command: >-
-      WEBPACK_ENV=standalone
-      sh script/build-for-standalone.sh
+      sh ci/build-for-deploy.sh
     release: true

@@ -1,0 +1,84 @@
+@import "src/style/theme";
+
+$single-box-width: 244px;
+$box-space-width: 20px;
+$box-border: 1px solid #EEEEEE;
+$box-border-radius: 4px 4px 0 0;
+$box-head-height: 32px;
+$box-head-background-color: #FAFAFA;
+$head-padding: 0 16px 0 12px;
+$content-height: 177px;
+$content-item-padding: 0 16px 0 11px;
+$content-item-height: 28px;
+
+.add-user-group-shuttle-boxes {
+
+  .box-head {
+    display: inline-block;
+    line-height: $box-head-height;
+    width: 100%;
+    background-color: $box-head-background-color;
+    padding: $head-padding;
+    color: #666666;
+
+    .action-button {
+      float: right;
+    }
+  }
+
+  .box-content {
+    height: $content-height;
+    padding-top: 4px;
+    overflow-y:auto;
+
+    .box-content-item {
+      display: inline-block;
+      width: 100%;
+      line-height: $content-item-height;
+      padding: $content-item-padding;
+
+      .content-item-span {
+        display: inline-block;
+        line-height: $content-item-height;
+        float: left;
+        width: 194px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space:nowrap;
+      }
+
+      .content-item-action-checkbox {
+        display: inline-block;
+        float: right;
+        text-align: center;
+        vertical-align: middle;
+      }
+
+      .content-item-action-button {
+        text-align: center;
+        vertical-align: middle;
+      }
+    }
+
+    .box-content-item:hover {
+      background-color: $box-head-background-color;
+    }
+  }
+
+  .unselected-users {
+    display: inline-block;
+    width: $single-box-width;
+    border: $box-border;
+    border-radius: $box-border-radius;
+  }
+
+  .selected-users {
+    display: inline-block;
+    width: $single-box-width;
+    margin-left: $box-space-width;
+    border: $box-border;
+    border-radius: $box-border-radius;
+
+  }
+
+}

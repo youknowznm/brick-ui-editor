@@ -31,7 +31,8 @@
                     "functions": "ignore"
                 }
             ],
-            "semi": "error",
+            "semi": "never",
+            "no-unexpected-multiline": "error",
             "camelcase": "off",
             "no-unused-vars": "error",
             "no-var": "off",

@@ -1,0 +1,9 @@
+@import "src/style/theme";
+
+.operation-list {
+  .operation-table {
+    :global(.brick-button) {
+        margin: 10px 0;
+    }
+  }
+}

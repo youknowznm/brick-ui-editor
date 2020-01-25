@@ -1,0 +1,45 @@
+@import "src/style/theme";
+
+.my-section {
+  padding: 15px 20px;
+  .my-section-header {
+    @include clearfix();
+    position: relative;
+    margin: 0 -20px;
+    margin-bottom: 9px;
+    margin-top: -6px;
+    color: #333;
+    .my-section-header-title {
+      display: inline-block;
+      float: left;
+      padding: 6px 20px 2px 0;
+      max-width: 100%;
+      .my-section-header-title-label {
+        display: inline-block;
+        line-height: 20px;
+        padding-right: 10px;
+        max-width: 100%;
+        span {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          display: inline-block;
+          font-size: 16px;
+          margin-left: 12px;
+          max-width: 100%;
+        }
+      }
+      .my-section-header-title-label:before {
+        content: " ";
+        position: absolute;
+        top: 6px;
+        height: 20px;
+        width: 4px;
+        background: #3999f7;
+      }
+    }
+  }
+  .my-section-content {
+
+  }
+}

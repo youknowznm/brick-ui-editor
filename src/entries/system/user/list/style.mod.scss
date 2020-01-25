@@ -1,0 +1,33 @@
+@import "src/style/theme";
+@import "src/style/main";
+
+.page-user-list {
+  .search-form {
+    height: 200px;
+    width: 100%;
+
+  }
+  .list-action {
+    margin: 20px 0;
+    @include clearfix();
+    .action-left {
+      @include clearfix();
+      float: left;
+      min-width: 300px;
+      :global(.brick-button) {
+        margin-left: 10px;
+      }
+    }
+    .action-right {
+      float: right;
+    }
+  }
+  :global(.brick-close-x) {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    z-index: 7;
+  }
+}
+
+

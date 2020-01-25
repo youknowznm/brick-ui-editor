@@ -1,64 +1,67 @@
-!!! 以下是 README.md 例子, 请根据项目实际信息更新 !!!
-=======
+## Development
+### node version
+- ^v10.15 lts
 
----
+### scripts
+- `npm run setup` 初始化安装
+- `npm run dev` 启动 dev server
+- `npm run build` 构建 production
+- `npm run start` 启动 prod server
+- `npm run dll:dev` 构建 dev dll，在打到 vendor 包里的依赖有更新是需要重新执行
+- `npm run dll:prod` 构建 prod dll，在打到 vendor 包里的依赖有更新是需要重新执行
 
-devPort: 5147,
-prodTestPort: 5148,
-prodPort: 5149,
+### idea
+- mark root directory as resource root: Preference > Directory
+- enable eslint: Preference > Languages & Frameworks > JavaScript > Code Quality Tools > ESLint > Automatic ESLint Configuration
 
----
+### react
+- 不使用旧的 lifecycle api `componentWillMount`, `componentWillReceiveProps`, `componentWillUpdate`
+- 使用新的 `getDerivedStateFromProps`, `getSnapshotBeforeUpdate`
+- prefer `Function Components` to `Class Component`
 
-### 启动开发环境
-```sh
-# make sure node 版本在6以上
+### prefer `named exports` to `default exports`
+- 通常情况下使用 `named exports`
+- 某些情景，可将 `defaul exports` 作为特殊的 `named exports` 使用（比如 demo 使用 `require.context` 动态加载页面以及demo cases）
+- 主要原因
+    - 首先两者没有冲突，`default exports` 完全可以理解为一种特殊的 `named exports`，是一种命名上的约定
+    - 考虑有周全的明确命名的正向约束
+    - 易于扩展 
+    - generally more easy to statically analyze, and IDEs have an easier time of autocompleting / autoimporting functions by name
+    - default exports cause losing some ES6 module benefits (tree-shaking and faster access to imports)
+- `named exports` vs `default exports`? refs 
+    - https://blog.neufund.org/why-we-have-banned-default-exports-and-you-should-do-the-same-d51fdc2cf2ad   
+    - https://humanwhocodes.com/blog/2019/01/stop-using-default-exports-javascript-module/
+    - https://basarat.gitbooks.io/typescript/docs/tips/defaultIsBad.html
+    - https://blog.bigfont.ca/export-default-vs-export-in-typescript/
+    - https://news.ycombinator.com/item?id=15765409
 
-# 如未曾安装过，先全局安装 matriks2 和 plop
+### typescript-eslint
+- 谨慎地，先尽量保持 base/recommended 配置，以便于提示快速学习 ts 直到我们有 ts best practice 的理解
 
-npm install matriks2 -g
-npm install plop -g
+### 样式
+### react css module
+- entries / pages 写模块样式
+    - 样式文件后缀 `.mod.scss` 
+    - 样式应用在 `props.styleName`， 如 `<div styleName="some-class-name" />`
+- components / layout 写全局样式
+    - 样式文件后缀 `.scss`
+    - 样式应用在 `props.className`，如 <div className="some-class-name" />
+- references
+    - https://github.com/gajus/react-css-modules
+    - https://github.com/gajus/babel-plugin-react-css-modules
 
-# 进行项目 setup
-cd ${FE_SRC_REPO}
-npm run setup
+### sass guide
+- https://css-tricks.com/sass-style-guide/
+- https://sass-guidelin.es/
 
-# 在 package.json 中补全字段 `icafe` (对应项目 icafe 空间 id) 用于使用 `issue-reporter`
+#### 克制 selector lists 长度 和 nesting 深度
+- https://sass-lang.com/documentation/style-rules#nesting
+- 深度一般建议不要超过 4 层
+- 善用[interpolation](https://sass-lang.com/documentation/interpolation)
+    - 如，components/button/src/style.scss 关于"反白文字"的处理
+    
+#### 关于 theme variable
+- !default variable 的规则是“先入为主”，所以 theme-overrides 要在引入 theme 之前
+- 普通 variable 是后置覆盖
 
-
-# 启动开发环境
-matriks2 dev
-
-
-# 各个项目端口应该不同 默认 devPort 为 8988
-# 启动项目时可在 src/backend/node_modules/common/config.js 配置 `devPort`, `prodTestPort`, `prodPort`
-
-# 打开页面
-# open http://localhost:8988
-
-```
-
-### 配置 issue-reporter
-在 package.json 中补全字段 `icafe` (对应项目 icafe 空间 id) 用于使用 `issue-reporter`
-
-```json
-{
-    "icafe": "befe-erp"
-}
-```
-
-### 必要时的库更新
-```sh
-# lock `@befe`公共库 版本
-matriks2 gn-lock 
-
-# 更新 `@befe`公共库 版本
-matriks2 gn-update
-
-# dll打包
-matriks2 dll
-```
-
-### 发版部署流水线
-- 见 http://linky.dev.weiyun.baidu.com:8339/pages/linky.html#/index?main=_s_es64sb35ksr__20190423_1821&side=_s_fck3qcizgtw__20190424_1701
-- 关键文件 ci.yml, script/config-backend.sh, webpack-config/env-config.js
 

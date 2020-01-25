@@ -1,0 +1,45 @@
+@import "src/style/theme";
+@import "src/style/main";
+
+.page-user-list {
+  .search-form {
+    height: 200px;
+    width: 100%;
+
+  }
+  .list-action {
+    margin: 20px 0;
+    @include clearfix();
+    .action-left {
+      @include clearfix();
+      float: left;
+      min-width: 300px;
+    }
+    .action-right {
+      float: right;
+    }
+  }
+}
+.extend-item {
+  @include clearfix();
+  :global(.brick-input) {
+    display: inline-block;
+    float: left;
+  }
+  > span {
+    display: inline-block;
+    padding-left: 8px;
+    color: $color-text-hint;
+    float: left;
+    line-height: 28px;
+  }
+
+}
+:global(.brick-input) {
+  width: 160px;
+}
+
+
+
+
+
