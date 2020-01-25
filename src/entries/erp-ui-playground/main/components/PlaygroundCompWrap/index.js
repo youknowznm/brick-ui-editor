@@ -54,6 +54,10 @@ export default class PlaygroundCompWrap extends React.Component {
         const {props, state} = this
         const selected = props.componentInEditId === props.id
         const {originCompProps} = props.originDemoProps;
+        return <BrickButton
+            ref={this.createRef}
+            {...originCompProps}
+        />;
         return <div
             className={c(
                 'playground-comp-wrap',
@@ -65,7 +69,13 @@ export default class PlaygroundCompWrap extends React.Component {
                 height: state.height
             }}
         >
-            <Draggable>
+            <Draggable
+                handle=".action-layer"
+                onStop={() => {
+                    console.log('drag stop')
+                    props.setEditingComponentId('')
+                }}
+            >
                 <div>
                     <BrickButton
                         ref={this.createRef}
