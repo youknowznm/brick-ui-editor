@@ -1,38 +1,38 @@
-import * as React from 'react';
-import {c} from 'classnames';
-import {toJS, computed, observable, action} from 'mobx';
-import {inject, observer} from 'mobx-react';
+import * as React from 'react'
+import {c} from 'classnames'
+import {toJS, computed, observable, action} from 'mobx'
+import {inject, observer} from 'mobx-react'
 
-import PropTypes from 'prop-types';
-import {PropTypes as MobxPropTypes} from 'mobx-react';
+import PropTypes from 'prop-types'
+import {PropTypes as MobxPropTypes} from 'mobx-react'
 
-import Typography from '@material-ui/core/Typography';
+import Typography from '@material-ui/core/Typography'
 
-import {withStyles} from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import Button from '@material-ui/core/Button';
-import Divider from '@material-ui/core/Divider';
-import TextField from '@material-ui/core/TextField';
-import InputAdornment from '@material-ui/core/InputAdornment';
+import {withStyles} from '@material-ui/core/styles'
+import Drawer from '@material-ui/core/Drawer'
+import Button from '@material-ui/core/Button'
+import Divider from '@material-ui/core/Divider'
+import TextField from '@material-ui/core/TextField'
+import InputAdornment from '@material-ui/core/InputAdornment'
 
-import AttrEditorState from '../states/AttrEditorState';
+import AttrEditorState from '../states/AttrEditorState'
 
-import '../style/attr-editor.scss';
+import '../style/attr-editor.scss'
 
 @observer
 export default class Comp extends React.Component {
 
     static propTypes = {
         // componentInEdit
-    };
+    }
 
     local = {
         attrEditorState: new AttrEditorState(),
-    };
+    }
 
     constructor(props) {
-        super(props);
-        const {local} = this;
+        super(props)
+        const {local} = this
     }
 
     componentDidMount() {
@@ -41,14 +41,14 @@ export default class Comp extends React.Component {
     componentDidUpdate() {}
 
     renderAttrEditorContent = () => {
-        const {local, props} = this;
-        const {componentInEdit} = props;
+        const {local, props} = this
+        const {componentInEdit} = props
         if (componentInEdit === null) {
-            return null;
+            return null
         }
-        const originCompData = componentInEdit.props;
-        // console.log('componentInEdit: ', componentInEdit);
-        // console.table('originCompData: ', originCompData);
+        const originCompData = componentInEdit.props
+        // console.log('componentInEdit: ', componentInEdit)
+        // console.table('originCompData: ', originCompData)
         const {
             id,
             originDisplayName,
@@ -56,26 +56,26 @@ export default class Comp extends React.Component {
             originCompState,
             playgroundTopOffset,
             playgroundLeftOffset,
-        } = originCompData;
+        } = originCompData
 
-        const propInputs = [];
+        const propInputs = []
         for (let key in originCompProps) {
             propInputs.push(<TextField
                 value={originCompProps[key]}
                 label={key}
                 fullWidth={true}
                 margin="dense"
-            ></TextField>);
+            ></TextField>)
         }
 
-        const stateInputs = [];
+        const stateInputs = []
         for (let key in originCompState) {
             stateInputs.push(<TextField
                 value={originCompState[key]}
                 label={key}
                 fullWidth={true}
                 margin="dense"
-            ></TextField>);
+            ></TextField>)
         }
 
         return <div className="attr-editor-content">
@@ -161,12 +161,12 @@ export default class Comp extends React.Component {
             <ul className="type-data">
                 {/* {...stateInputs} */}
             </ul>
-        </div>;
+        </div>
     }
 
     render() {
-        const {local, props} = this;
-        const {attrEditorState} = local;
+        const {local, props} = this
+        const {attrEditorState} = local
         return <div className="attr-editor">
             <Drawer
                 className="attr-editor-drawer"
@@ -176,6 +176,6 @@ export default class Comp extends React.Component {
             >
                 {this.renderAttrEditorContent()}
             </Drawer>
-        </div>;
+        </div>
     }
 }
