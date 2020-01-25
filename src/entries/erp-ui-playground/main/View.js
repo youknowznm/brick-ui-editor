@@ -3,7 +3,7 @@
  */
 
 import * as React from 'react'
-import {c} from 'classnames'
+import {default as c} from 'classnames'
 import {toJS, computed, observable, action} from 'mobx'
 import {observer} from 'mobx-react'
 
@@ -58,12 +58,15 @@ export default class extends React.Component {
                 switch (type) {
                     case 'EUP_APPEND_COMP':
                         console.log('msg data: ', data)
-                        appendDemoComponent(<PlaygroundCompWrap {...data} />)
-                        // appendDemoComponent(h(PlaygroundCompWrap, {
-                        //     id: data.id,
-                        //     originCompProps: data.props,
-                        //     originCompStates: data.state,
-                        // }))
+                        appendDemoComponent(<PlaygroundCompWrap
+                            key={data.id}
+                            originDemoProps={data}
+                            componentInEditId={local.componentInEditId}
+                            metaKeyPressing={local.metaKeyPressing}
+                            setEditingComponentId={local.setEditingComponentId}
+                            triggerDemoDrawer={local.triggerDemoDrawer}
+                            triggerControlPanelDrawer={local.triggerControlPanelDrawer}
+                        />)
                         break
                     case 'EUP_META_KEY_ACTION':
                         console.log('metaKeyPressing: ', data.metaKeyPressing)
@@ -138,7 +141,6 @@ export default class extends React.Component {
     renderControlPanelDrawerTrigger = () => {
         return <Card
             className="top-actions-drawer-trigger"
-            raised
             onMouseOver={() => {
                 this.local.mainState.triggerControlPanelDrawer(true)
                 this.local.mainState.triggerDemoDrawer(false)
@@ -157,7 +159,6 @@ export default class extends React.Component {
     renderDemoDrawerTrigger = () => {
         return <Card
             className="demo-drawer-trigger"
-            raised
             onMouseOver={() => {
                 this.local.mainState.triggerDemoDrawer(true)
                 this.local.mainState.triggerControlPanelDrawer(false)
@@ -193,6 +194,7 @@ export default class extends React.Component {
                 showDemoPageDrawer={mainState.showDemoPageDrawer}
                 triggerDemoDrawer={mainState.triggerDemoDrawer}
                 triggerControlPanelDrawer={mainState.triggerControlPanelDrawer}
+                setEditingComponentId={local.setEditingComponentId}
             ></PlaygroundView>
             <AttrEditorView
                 componentInEdit={mainState.componentInEdit}

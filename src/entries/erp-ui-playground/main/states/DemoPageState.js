@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {c} from 'classnames'
+import {default as c} from 'classnames'
 import {toJS, computed, observable, action} from 'mobx'
 import {observer} from 'mobx-react'
 

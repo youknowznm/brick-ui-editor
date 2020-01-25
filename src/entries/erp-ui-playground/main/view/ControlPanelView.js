@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {c} from 'classnames'
+import {default as c} from 'classnames'
 import {toJS, computed, observable, action} from 'mobx'
 import {inject, observer} from 'mobx-react'
 
@@ -15,14 +15,14 @@ import DemoPageState from '../states/DemoPageState'
 import '../style/control-panel.scss'
 
 @observer
-export default class Comp extends React.Component {
+export default class ControlPanelView extends React.Component {
 
     static propTypes = {
         // showControlPanelDrawer
     }
 
     local = {
-        demoPageState: new DemoPageState(),
+        demoPageState: new DemoPageState()
     }
 
     constructor(props) {

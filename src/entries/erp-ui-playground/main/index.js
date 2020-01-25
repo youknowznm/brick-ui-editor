@@ -3,25 +3,41 @@
  */
 
 import * as React from 'react'
-import {c} from 'classnames'
+import {default as c} from 'classnames'
 import {toJS, computed, observable, action} from 'mobx'
 import {observer} from 'mobx-react'
+import BaseModel from './components/BaseModel'
 
 import View from './View'
 import moment from 'moment'
 
-class IndexPageVM {
+import {MobXProviderContext} from 'mobx-react'
 
-    static injectKey = 'root'
+// function useStores() {
+//   return React.useContext(MobXProviderContext)
+// }
 
-    @action
-    setProps = action(obj => {
-        for (let key in obj) {
-            if (this[key] !== undefined) {
-                this[key] = obj.key
-            }
-        }
-    })
+// function useUserData() {
+//     const { user, order } = useStores()
+//     return {
+//       username: user.name,
+//       orderId: order.id,
+//     }
+// }
+
+// const UserOrderInfo = observer(() => {
+//     // Do not destructure data!
+//     const data = useUserData()
+//     return (
+//         <div>
+//         {data.username} has order {data.orderId}
+//         </div>
+//     )
+// })
+
+class IndexPageVM extends BaseModel {
+
+    // static injectKey = 'root'
 
     // ##### 全局 #####
 

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {c} from 'classnames'
+import {default as c} from 'classnames'
 import {toJS, computed, observable, action} from 'mobx'
 import {inject, observer} from 'mobx-react'
 
@@ -52,13 +52,12 @@ export default class PlaygroundCompWrap extends React.Component {
 
     render() {
         const {props, state} = this
-        // // 被编辑 id 非空, 并且与当前组件 id 不等时, 认为其它组件在被编辑, 而当前组件应禁止交互
-        // const selected = root.componentInEditId !== '' && root.componentInEditId !== props.id
-        const selected = root.componentInEditId === props.id
-        return <div 
+        const selected = props.componentInEditId === props.id
+        const {originCompProps} = props.originDemoProps;
+        return <div
             className={c(
                 'playground-comp-wrap',
-                root.metaKeyPressing && 'meta-key-pressed',
+                props.metaKeyPressing && 'meta-key-pressed',
                 selected && 'selected'
             )}
             style={{
@@ -66,33 +65,30 @@ export default class PlaygroundCompWrap extends React.Component {
                 height: state.height
             }}
         >
-            <Draggable
-                handle=".action-layer"
-                onStop={() => {
-                    console.log('stopd')
-                    root.setProps({
-                        componentInEditId: ''
-                    })
-                }}
-            >
-                <div
-                    className="action-layer"
-                    onClick={() => {
-                        root.setEditingComponentId(props.id)
-                        root.triggerDemoDrawer(false)
-                        root.triggerControlPanelDrawer(false)
-                    }}
-                >
-                    {/* <span>选择</span> */}
-                </div>
-                <div
-                    className="selected-layer"
-                    onClick={() => {}}
-                >
-                    <span className="spot tl"></span>
-                    <span className="spot tr"></span>
-                    <span className="spot br"></span>
-                    <span className="spot bl"></span>
+            <Draggable>
+                <div>
+                    <BrickButton
+                        ref={this.createRef}
+                        {...originCompProps}
+                    />
+                    <div
+                        className="action-layer"
+                        onClick={() => {
+                            props.setEditingComponentId(props.id)
+                            props.triggerDemoDrawer(false)
+                            props.triggerControlPanelDrawer(false)
+                        }}
+                    >
+                    </div>
+                    <div
+                        className="selected-layer"
+                        onClick={() => {}}
+                    >
+                        <span className="spot tl"></span>
+                        <span className="spot tr"></span>
+                        <span className="spot br"></span>
+                        <span className="spot bl"></span>
+                    </div>
                 </div>
             </Draggable>
         </div>

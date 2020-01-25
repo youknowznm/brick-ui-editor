@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {c} from 'classnames'
+import {default as c} from 'classnames'
 import {toJS, computed, observable, action} from 'mobx'
 import {inject, observer} from 'mobx-react'
 
@@ -20,10 +20,15 @@ import PlaygroundState from '../states/PlaygroundState'
 import '../style/playground.scss'
 
 @observer
-export default class Comp extends React.Component {
+export default class PlaygroundView extends React.Component {
 
     static propTypes = {
         // triggerDemoDrawer
+    }
+
+    static defaultProps = {
+        triggerDemoDrawer: () => {},
+        setEditingComponentId: () => {},
     }
 
     local = {
@@ -53,13 +58,11 @@ export default class Comp extends React.Component {
             }}
             onClick={evt => {
                 if (evt.target.className.indexOf('playground') > -1) {
-                    root.setProps({
-                        componentInEditId: ''
-                    })
+                    props.setEditingComponentId('')
                 }
             }}
         >
-            {/* {...props.componentsUsed} */}
+            {props.componentsUsed}
         </div>
     }
 

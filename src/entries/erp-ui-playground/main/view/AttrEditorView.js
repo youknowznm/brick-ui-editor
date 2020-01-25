@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {c} from 'classnames'
+import {default as c} from 'classnames'
 import {toJS, computed, observable, action} from 'mobx'
 import {inject, observer} from 'mobx-react'
 
@@ -20,7 +20,7 @@ import AttrEditorState from '../states/AttrEditorState'
 import '../style/attr-editor.scss'
 
 @observer
-export default class Comp extends React.Component {
+export default class AttrEditorView extends React.Component {
 
     static propTypes = {
         // componentInEdit
@@ -61,6 +61,7 @@ export default class Comp extends React.Component {
         const propInputs = []
         for (let key in originCompProps) {
             propInputs.push(<TextField
+                key={key}
                 value={originCompProps[key]}
                 label={key}
                 fullWidth={true}
@@ -71,6 +72,7 @@ export default class Comp extends React.Component {
         const stateInputs = []
         for (let key in originCompState) {
             stateInputs.push(<TextField
+                key={key}
                 value={originCompState[key]}
                 label={key}
                 fullWidth={true}
@@ -84,8 +86,9 @@ export default class Comp extends React.Component {
                 <span className="name">按钮</span>
             </h3>
             <Divider />
-            <ul className="type-position">
+            <ul className="type-style">
                 <TextField
+                    key="style-top"
                     value=""
                     label="上边距 top"
                     size="small"
@@ -103,6 +106,7 @@ export default class Comp extends React.Component {
                     margin="dense"
                 ></TextField>
                 <TextField
+                    key="style-left"
                     value=""
                     label="左边距 left"
                     size="small"
@@ -120,6 +124,7 @@ export default class Comp extends React.Component {
                     margin="dense"
                 ></TextField>
                 <TextField
+                    key="style-width"
                     value=""
                     label="宽度 width"
                     size="small"
@@ -137,6 +142,7 @@ export default class Comp extends React.Component {
                     margin="dense"
                 ></TextField>
                 <TextField
+                    key="style-height"
                     value=""
                     label="高度 height"
                     size="small"
@@ -156,10 +162,10 @@ export default class Comp extends React.Component {
             </ul>
             <Divider />
             <ul className="type-data">
-                {/* {...propInputs} */}
+                ...propInputs
             </ul>
             <ul className="type-data">
-                {/* {...stateInputs} */}
+                ...stateInputs
             </ul>
         </div>
     }
