@@ -25,12 +25,14 @@ import PlaygroundCompWrap from './components/PlaygroundCompWrap';
 
 import './style.scss';
 
-@suh(pageStyle)
-@observer
-export default class extends Component {
+import MainState from './index';
 
-    // 是否注入全局的 app 对象
-    static shouldInjectApp = true;
+@observer
+export default class extends React.Component {
+
+    local = {
+        mainState: new MainState(),
+    };
     
     componentDidMount() {
         const {local, props} = this;
@@ -45,7 +47,7 @@ export default class extends Component {
         const {
             appendDemoComponent,
             metaKeyPressing
-        } = local;
+        } = local.mainState;
         window.addEventListener('message', event => {
             const {
                 data,
@@ -56,7 +58,7 @@ export default class extends Component {
                 switch (type) {
                     case 'EUP_APPEND_COMP':
                         console.log('msg data: ', data);
-                        appendDemoComponent(h(PlaygroundCompWrap, data));
+                        appendDemoComponent(<PlaygroundCompWrap {...data} />);
                         // appendDemoComponent(h(PlaygroundCompWrap, {
                         //     id: data.id,
                         //     originCompProps: data.props,
@@ -65,7 +67,7 @@ export default class extends Component {
                         break;
                     case 'EUP_META_KEY_ACTION':
                         console.log('metaKeyPressing: ', data.metaKeyPressing);
-                        local.setProps({
+                        local.mainState.setProps({
                             metaKeyPressing: data.metaKeyPressing
                         });
                         break;
@@ -79,7 +81,7 @@ export default class extends Component {
         const {local} = this;
         const triggerMetaKeyPressed = (evt, target) => {
             if (evt.key === 'Meta') {
-                local.setProps({
+                local.mainState.setProps({
                     metaKeyPressing: target
                 });
             }
@@ -121,7 +123,7 @@ export default class extends Component {
                     width,
                     height
                 } = document.defaultView.getComputedStyle(playgroundDOM);
-                local.setProps({
+                local.mainState.setProps({
                     playgroundWidth: parseInt(width, 10),
                     playgroundHeight: parseInt(height, 10),
                 });
@@ -134,81 +136,72 @@ export default class extends Component {
     }
 
     renderControlPanelDrawerTrigger = () => {
-        return h(
-            Card,
-            'top-actions-drawer-trigger', 
-            {
-                // raised: true,
-                onMouseOver: () => {
-                    this.local.triggerControlPanelDrawer(true);
-                    this.local.triggerDemoDrawer(false);
-                    this.local.setProps({
-                        componentInEditId: ''
-                    });
-                }
-            },
-            h(
-                MoreHorizIcon,
-                'trigger-icon',
-                {
-                    fontSize: 'small'
-                }
-            )
-        );
+        return <Card
+            className="top-actions-drawer-trigger"
+            raised
+            onMouseOver={() => {
+                this.local.mainState.triggerControlPanelDrawer(true);
+                this.local.mainState.triggerDemoDrawer(false);
+                this.local.mainState.setProps({
+                    componentInEditId: ''
+                });
+            }}
+        >
+            <MoreHorizIcon
+                className="trigger-icon"
+                fontSize="small"
+            ></MoreHorizIcon>
+        </Card>;
     }
 
     renderDemoDrawerTrigger = () => {
-        return h(
-            Card,
-            'demo-drawer-trigger', 
-            {
-                // raised: true,
-                onMouseOver: () => {
-                    this.local.triggerDemoDrawer(true);
-                    this.local.triggerControlPanelDrawer(false);
-                    this.local.setProps({
-                        componentInEditId: ''
-                    });
-                }
-            },
-            h(
-                MoreVertIcon,
-                'trigger-icon',
-                {
-                    fontSize: 'small'
-                }
-            )
-        );
+        return <Card
+            className="demo-drawer-trigger"
+            raised
+            onMouseOver={() => {
+                this.local.mainState.triggerDemoDrawer(true);
+                this.local.mainState.triggerControlPanelDrawer(false);
+                this.local.mainState.setProps({
+                    componentInEditId: ''
+                });
+            }}
+        >
+            <MoreVertIcon
+                className="trigger-icon"
+                fontSize="small"
+            ></MoreVertIcon>
+        </Card>;
     }
 
 
     render() {
         const {props, local} = this;
-        return h.div('index-page', {},
-            h(DemoPageView, {
-                showDemoPageDrawer: local.showDemoPageDrawer,
-                demoPageSrc: local.demoPageSrc,
-                demoPageWidth: local.demoPageWidth,
-                triggerDemoDrawer: local.triggerDemoDrawer
-            }),
-            this.renderDemoDrawerTrigger(),
-            h(PlaygroundView, {
-                playgroundWidth: local.playgroundWidth,
-                playgroundHeight: local.playgroundHeight,
-                componentsUsed: local.componentsUsed,
-                demoPageWidth: local.demoPageWidth,
-                showDemoPageDrawer: local.showDemoPageDrawer,
-                triggerDemoDrawer: local.triggerDemoDrawer,
-                triggerControlPanelDrawer: local.triggerControlPanelDrawer,
-            }),
-            h(AttrEditorView, {
-                componentInEdit: local.componentInEdit,
-            }),
-            h(ControlPanelView, {
-                showControlPanelDrawer: local.showControlPanelDrawer,
-                triggerControlPanelDrawer: local.triggerControlPanelDrawer
-            }),
-            this.renderControlPanelDrawerTrigger(),
-        );
+        const {mainState} = local;
+        return <div className="index-page">
+            <DemoPageView
+                showDemoPageDrawer={mainState.showDemoPageDrawer}
+                demoPageSrc={mainState.demoPageSrc}
+                demoPageWidth={mainState.demoPageWidth}
+                triggerDemoDrawer={mainState.triggerDemoDrawer}
+            />
+            {this.renderDemoDrawerTrigger()}
+            <PlaygroundView
+                playgroundWidth={mainState.playgroundWidth}
+                playgroundHeight={mainState.playgroundHeight}
+                componentsUsed={mainState.componentsUsed}
+                demoPageWidth={mainState.demoPageWidth}
+                showDemoPageDrawer={mainState.showDemoPageDrawer}
+                triggerDemoDrawer={mainState.triggerDemoDrawer}
+                triggerControlPanelDrawer={mainState.triggerControlPanelDrawer}
+            ></PlaygroundView>
+            <AttrEditorView
+                componentInEdit={mainState.componentInEdit}
+            />
+            <ControlPanelView
+                showControlPanelDrawer={mainState.showControlPanelDrawer}
+                triggerControlPanelDrawer={mainState.triggerControlPanelDrawer}
+            />
+            {this.renderControlPanelDrawerTrigger()}
+        </div>;
     }
 }

@@ -5,7 +5,8 @@ import {start} from 'src/layouts/bootstrap'
 import {BasicLayout} from 'src/layouts'
 
 import './style.scss'
-import {routes} from './routes'
 
-const App = hot(() => <BasicLayout routes={routes} />)
+import Main from './main/View.js'
+
+const App = hot(() => <Main/>)
 start(App)

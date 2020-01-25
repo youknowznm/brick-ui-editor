@@ -3,7 +3,7 @@ import {c} from 'classnames';
 import {toJS, computed, observable, action} from 'mobx';
 import {observer} from 'mobx-react';
 
-export default class State extends BaseModel {
+export default class State {
 
     // 编辑中标识
     @observable editingFlag = false;

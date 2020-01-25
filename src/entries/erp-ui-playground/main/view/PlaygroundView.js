@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {c} from 'classnames';
 import {toJS, computed, observable, action} from 'mobx';
-import {observer} from 'mobx-react';
+import {inject, observer} from 'mobx-react';
 
 import PropTypes from 'prop-types';
 import {PropTypes as MobxPropTypes} from 'mobx-react';
@@ -19,10 +19,8 @@ import PlaygroundState from '../states/PlaygroundState';
 
 import '../style/playground.scss';
 
-@inject('app')
 @observer
-@suh(compStyle)
-export default class Comp extends Component {
+export default class Comp extends React.Component {
 
     static propTypes = {
         // triggerDemoDrawer
@@ -47,25 +45,22 @@ export default class Comp extends Component {
 
     renderPlaygroundContent = () => {
         const {props} = this;
-        const {root} = props.app;
-        return h.div(
-            'playground-content',
-            {
-                onMouseOver: evt => {
-                    if (evt.target.className.indexOf('playground') > -1) {
-                        props.triggerDemoDrawer(false);
-                    }
-                },
-                onClick: evt => {
-                    if (evt.target.className.indexOf('playground') > -1) {
-                        root.setProps({
-                            componentInEditId: ''
-                        });
-                    };
+        return <div className="playground-content"
+            onMouseOver={evt => {
+                if (evt.target.className.indexOf('playground') > -1) {
+                    props.triggerDemoDrawer(false);
                 }
-            },
-            ...props.componentsUsed
-        );
+            }}
+            onClick={evt => {
+                if (evt.target.className.indexOf('playground') > -1) {
+                    root.setProps({
+                        componentInEditId: ''
+                    });
+                };
+            }}
+        >
+            {/* {...props.componentsUsed} */}
+        </div>;
     }
 
     renderBlockLayer = () => {
@@ -102,22 +97,14 @@ export default class Comp extends Component {
             showDemoPageDrawer
         } = props;
         const offSet = demoPageWidth - 20;
-        return h.div(
-            c(
-                'playground-wrap',
-            ),
-            {
-                style: {
-                    marginLeft: `${showDemoPageDrawer ? offSet : 0}px`,
-                    right: `${showDemoPageDrawer ? -offSet : 0}px`,
-                }
-            },
-            // h(
-            //     HtmlMeasure,
-            //     {},
-                this.renderPlaygroundContent(),
-            // ),
-            this.renderBlockLayer()
-        );
+        return <div className="playground-wrap"
+            style={{
+                marginLeft: `${showDemoPageDrawer ? offSet : 0}px`,
+                right: `${showDemoPageDrawer ? -offSet : 0}px`,
+            }}
+            >
+            {this.renderPlaygroundContent()}
+            {this.renderBlockLayer()}
+        </div>;
     }
 }

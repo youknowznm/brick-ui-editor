@@ -10,17 +10,18 @@ import {observer} from 'mobx-react';
 import View from './View';
 import moment from 'moment';
 
-@bind(View)
-class IndexPageVM extends BaseModel {
+class IndexPageVM {
 
     static injectKey = 'root';
 
-    constructor(initData, syncConfig) {
-        super(initData, syncConfig);
-    }
-
     @action
-    initProps() {}
+    setProps = action(obj => {
+        for (let key in obj) {
+            if (this[key] !== undefined) {
+                this[key] = obj.key;
+            }
+        }
+    })
 
     // ##### 全局 #####
 
@@ -105,21 +106,6 @@ class IndexPageVM extends BaseModel {
         return this.componentsUsed.find(item => {
             return item.props.id === this.componentInEditId;
         }) || null;
-    }
-
-    // ==========
-
-    reactions = new ReactionManager()
-
-    prepare(props) {}
-
-    @action
-    init(props) {}
-
-    update(nextProps) {}
-
-    exit(props) {
-        this.reactions.dispose();
     }
 }
 
