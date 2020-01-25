@@ -53,11 +53,10 @@ export default class PlaygroundCompWrap extends React.Component {
     render() {
         const {props, state} = this
         const selected = props.componentInEditId === props.id
-        const {originCompProps} = props.originDemoProps;
-        return <BrickButton
-            ref={this.createRef}
-            {...originCompProps}
-        />;
+        const {
+            originCompProps,
+            id
+        } = props;
         return <div
             className={c(
                 'playground-comp-wrap',
@@ -84,7 +83,7 @@ export default class PlaygroundCompWrap extends React.Component {
                     <div
                         className="action-layer"
                         onClick={() => {
-                            props.setEditingComponentId(props.id)
+                            props.setEditingComponentId(id)
                             props.triggerDemoDrawer(false)
                             props.triggerControlPanelDrawer(false)
                         }}

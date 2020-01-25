@@ -33,6 +33,7 @@ $stripe-color-selected: #EE6723;
 .playground-comp-wrap {
     position: relative;
     display: block;
+    white-space: nowrap;
     margin-left: 10px;
     margin-bottom: 10px;
     .action-layer {

@@ -11,33 +11,7 @@ import BaseModel from './components/BaseModel'
 import View from './View'
 import moment from 'moment'
 
-import {MobXProviderContext} from 'mobx-react'
-
-// function useStores() {
-//   return React.useContext(MobXProviderContext)
-// }
-
-// function useUserData() {
-//     const { user, order } = useStores()
-//     return {
-//       username: user.name,
-//       orderId: order.id,
-//     }
-// }
-
-// const UserOrderInfo = observer(() => {
-//     // Do not destructure data!
-//     const data = useUserData()
-//     return (
-//         <div>
-//         {data.username} has order {data.orderId}
-//         </div>
-//     )
-// })
-
 class IndexPageVM extends BaseModel {
-
-    // static injectKey = 'root'
 
     // ##### 全局 #####
 
@@ -53,7 +27,7 @@ class IndexPageVM extends BaseModel {
 
     @observable metaKeyPressing = false
 
-    // ##### 头部操作卡片 #####
+    // ##### 头部 控制面板 #####
 
     @observable showControlPanelDrawer = false
 
@@ -70,8 +44,6 @@ class IndexPageVM extends BaseModel {
 
     @observable demoPageSrc = 'http://localhost:3008/main/components/button?embedded-in-eup=true'
     @observable demoPageWidth = 1160
-    // @observable demoPageSrc = 'http://localhost:18988/pages/ui-demo-shared.html?embedded-in-eup=true#/button'
-    // @observable demoPageWidth = 1075
 
     @observable showDemoPageDrawer = false
 
@@ -82,25 +54,13 @@ class IndexPageVM extends BaseModel {
         })
     }
 
-    // @observable visibleDrawerName = '' // DEMO_PAGE | CONTROL_PANEL | ATTR_EDITOR
+    @observable componentsUsedDataArray = []
 
-    // @computed get demoPageVisible() {
-    //     return this.visibleDrawerName === 'DEMO_PAGE'
-    // }
-    // @computed get controlPanelVisible() {
-    //     return this.visibleDrawerName === 'CONTROL_PANEL'
-    // }
-    // @computed get attrEditorVisible() {
-    //     return this.visibleDrawerName === 'ATTR_EDITOR'
-    // }
-
-    @observable componentsUsed = []
-
-    @action appendDemoComponent = comp => {
-        this.componentsUsed.push(comp)
+    @action pushUsedCompData = data => {
+        this.componentsUsedDataArray.push(data)
     }
 
-    @observable componentsUsedPosition = null
+    @observable componentsUsedDataArrayPosition = null
     @observable playgroundWidth = 0
     @observable playgroundHeight = 0
 
@@ -119,8 +79,8 @@ class IndexPageVM extends BaseModel {
     }
 
     @computed get componentInEdit() {
-        return this.componentsUsed.find(item => {
-            return item.props.id === this.componentInEditId
+        return this.componentsUsedDataArray.find(item => {
+            return item.id === this.componentInEditId
         }) || null
     }
 }

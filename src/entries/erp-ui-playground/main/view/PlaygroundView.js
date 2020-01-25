@@ -49,7 +49,14 @@ export default class PlaygroundView extends React.Component {
     }
 
     renderPlaygroundContent = () => {
-        const {props} = this
+        const {local, props} = this
+        const {
+            metaKeyPressing,
+            componentInEditId,
+            setEditingComponentId,
+            triggerDemoDrawer,
+            triggerControlPanelDrawer
+        } = props
         return <div className="playground-content"
             onMouseOver={evt => {
                 if (evt.target.className.indexOf('playground') > -1) {
@@ -62,34 +69,28 @@ export default class PlaygroundView extends React.Component {
                 }
             }}
         >
-            {props.componentsUsed}
+            {props.componentsUsedDataArray.map(item => {
+                console.log('componentsUsedData', item);
+                {/* console.log('children', item.originCompProps.children); */}
+                return <PlaygroundCompWrap
+                    key={item.id}
+                    metaKeyPressing={metaKeyPressing}
+                    componentInEditId={componentInEditId}
+                    setEditingComponentId={setEditingComponentId}
+                    triggerDemoDrawer={triggerDemoDrawer}
+                    triggerControlPanelDrawer={triggerControlPanelDrawer}
+                    originCompProps={item.originCompProps}
+                    originCompState={item.originCompState}
+
+                    // id: "gcxcsy5"
+                    // originDisplayName: "Button"
+                    // originCompProps: {type: "important", children: "important", className: "", color: "normal", disabled: false, …}
+                    // originCompState: {asyncLoading: false, showLoading: false}
+                    // playgroundTop: 0
+                    // playgroundLeft: 0
+                />;
+            })}
         </div>
-    }
-
-    renderBlockLayer = () => {
-        const {local, props} = this
-        const {
-            playgroundWidth,
-            playgroundHeight
-        } = props
-        // console.log(133, props.playgroundWidth, props.playgroundHeight)
-
-        // const tl = 100
-        // const tr = 100
-        // const br = 100
-        // const bl = 100
-        // const width = 
-        
-        // return h.div('block-layer', {},
-        //     h.div('area-top-left', {
-        //         style: {
-        //             top: 0,
-        //             right: playgroundWidth - tl,
-        //             bottom: playgroundHeight - bl,
-        //             left: 0,
-        //         }
-        //     }),
-        // )
     }
 
     render() {
@@ -107,7 +108,6 @@ export default class PlaygroundView extends React.Component {
             }}
             >
             {this.renderPlaygroundContent()}
-            {this.renderBlockLayer()}
         </div>
     }
 }

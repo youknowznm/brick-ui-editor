@@ -54,8 +54,8 @@ export default class AttrEditorView extends React.Component {
             originDisplayName,
             originCompProps,
             originCompState,
-            playgroundTopOffset,
-            playgroundLeftOffset,
+            playgroundTop,
+            playgroundLeft,
         } = originCompData
 
         const propInputs = []

@@ -42,10 +42,12 @@ export default class extends React.Component {
         this.registerResizeListener()
     }
 
+    // appendDemoComponent
+
     registerMessageListener = () => {
         const {local} = this
         const {
-            appendDemoComponent,
+            pushUsedCompData,
             metaKeyPressing
         } = local.mainState
         window.addEventListener('message', event => {
@@ -58,15 +60,11 @@ export default class extends React.Component {
                 switch (type) {
                     case 'EUP_APPEND_COMP':
                         console.log('msg data: ', data)
-                        appendDemoComponent(<PlaygroundCompWrap
-                            key={data.id}
-                            originDemoProps={data}
-                            componentInEditId={local.componentInEditId}
-                            metaKeyPressing={local.metaKeyPressing}
-                            setEditingComponentId={local.setEditingComponentId}
-                            triggerDemoDrawer={local.triggerDemoDrawer}
-                            triggerControlPanelDrawer={local.triggerControlPanelDrawer}
-                        />)
+                        pushUsedCompData(data);
+                        // id: "gcxcsy5"
+                        // originDisplayName: "Button"
+                        // originCompProps: {type: "important", children: "important", className: "", color: "normal", disabled: false, …}
+                        // originCompState: {asyncLoading: false, showLoading: false}
                         break
                     case 'EUP_META_KEY_ACTION':
                         console.log('metaKeyPressing: ', data.metaKeyPressing)
@@ -115,7 +113,6 @@ export default class extends React.Component {
         // })
     }
 
- 
 
     registerResizeListener = () => {
         const {local} = this
@@ -174,7 +171,6 @@ export default class extends React.Component {
         </Card>
     }
 
-
     render() {
         const {props, local} = this
         const {mainState} = local
@@ -189,7 +185,8 @@ export default class extends React.Component {
             <PlaygroundView
                 playgroundWidth={mainState.playgroundWidth}
                 playgroundHeight={mainState.playgroundHeight}
-                componentsUsed={mainState.componentsUsed}
+                metaKeyPressing={mainState.metaKeyPressing}
+                componentsUsedDataArray={mainState.componentsUsedDataArray}
                 demoPageWidth={mainState.demoPageWidth}
                 showDemoPageDrawer={mainState.showDemoPageDrawer}
                 triggerDemoDrawer={mainState.triggerDemoDrawer}
