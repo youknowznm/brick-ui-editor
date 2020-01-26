@@ -4,6 +4,9 @@
 .control-panel {
     .control-panel-drawer {
         .control-panel-content {
+            position: relative;
+            width: 100%;
+            background-color: #eee;
             height: 200px;
         }
     }

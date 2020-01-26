@@ -33,12 +33,13 @@ const IconDemo = () => {
                 <ul className={'icon-list'} >
                     {Object.keys(group).map(renderIcon)}
                 </ul>
+                <Divider className="demo-block-separator" />
             </div>
         )
     }
 
-    return <div className="icon-demo-wrap">
-        {/* <Divider className="demo-area-hr" /> */}
+    return <div className="demo-block icon-demo-block">
+        {/* <Divider className="demo-block-separator" /> */}
         {/* ===== 0 basic ===== */}
         <div>
             <ul className={'icon-list'}>
@@ -105,6 +106,7 @@ const IconDemo = () => {
                 </li>
             </ul>
         </div>
+        <Divider className="demo-block-separator" />
         <div className="icon-group-map">
             {Object.keys(ICON_GROUP_MAP_MAIN).map(renderGroup)}
             <Icon />

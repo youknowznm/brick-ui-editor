@@ -14,6 +14,9 @@ import {PropTypes as MobxPropTypes} from 'mobx-react'
 
 import ButtonDemo from '../demos/ButtonDemo'
 import IconDemo from '../demos/IconDemo'
+import LinkDemo from '../demos/LinkDemo'
+import CollapseDemo from '../demos/CollapseDemo'
+import DialogDemo from '../demos/DialogDemo'
 
 import {withStyles} from '@material-ui/core/styles'
 import MUIDrawer from '@material-ui/core/Drawer'
@@ -67,6 +70,18 @@ export default class DemoListView extends React.Component {
                 label: 'Icon',
                 Demo: IconDemo
             },
+            {
+                label: 'Link',
+                Demo: LinkDemo
+            },
+            {
+                label: 'Collapse',
+                Demo: CollapseDemo
+            },
+            {
+                label: 'Dialog',
+                Demo: DialogDemo
+            }
         ]
         return <div>
             {
@@ -76,6 +91,7 @@ export default class DemoListView extends React.Component {
                     const expanded = expandedDemoPanelKey === key
                     return <ExpansionPanel
                         key={key}
+                        square={true}
                         expanded={expanded}
                         onChange={(evt, value) => {
                             setExpandedDemoPanelKey(value ? key : '')

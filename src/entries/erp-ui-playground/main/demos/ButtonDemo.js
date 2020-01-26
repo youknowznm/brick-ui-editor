@@ -11,8 +11,8 @@ const Button = wrapDemoComp(OriginButton)
 
 const ButtonDemo = () => {
     const loading = true;
-    return <div className="button-demo-wrap">
-        {/* <Divider className="demo-area-hr" /> */}
+    return <div className="demo-block">
+        {/* <Divider className="demo-block-separator" /> */}
         {/* ===== 0 basic ===== */}
         <div className="demo-group">
             <Button>普通</Button>
@@ -62,7 +62,7 @@ const ButtonDemo = () => {
             <Button disabled={true} type={'ghost'}>禁用</Button>
             <Button icon={SvgEdit} type={'ghost'} />
         </div> */}
-        <Divider className="demo-area-hr" />
+        <Divider className="demo-block-separator" />
         {/* ===== 1 size ===== */}
         <div className="demo-group">
             <Button size={'xs'}>xs</Button>
@@ -109,7 +109,7 @@ const ButtonDemo = () => {
             <Button size={'xl'} type={'plain'}>文字按钮</Button>
             <Button size={'xl'} icon={SvgEdit} type={'plain'} />
         </div>
-        <Divider className="demo-area-hr" />
+        <Divider className="demo-block-separator" />
         {/* ===== 2 color ===== */}
         <div className="demo-group">
             <Button color={'primary'}>普通</Button>
@@ -182,7 +182,7 @@ const ButtonDemo = () => {
             <Button color={'warning'} icon={SvgEdit} type={'translucent'}/>
             <Button color={'warning'} icon={SvgEdit} type={'plain'} />
         </div>
-        <Divider className="demo-area-hr" />
+        <Divider className="demo-block-separator" />
         {/* ===== 3 loading ===== */}
         <div className="demo-group">
             <Button loading={loading} loadingDelayInMS={0}>普通</Button>
@@ -226,7 +226,7 @@ const ButtonDemo = () => {
             <Button shape={'capsule'} loading={loading} style={{minWidth: 'auto'}} type={'ghost'}><Icon svg={SvgEdit}/></Button>
             <Button shape={'capsule'} loading={loading} type={'ghost'} icon={SvgEdit} />
         </div> */}
-        <Divider className="demo-area-hr" />
+        <Divider className="demo-block-separator" />
         {/* ===== 6 shape ===== */}
         <div className="demo-group">
             <Button shape={'capsule'}>normal</Button>
