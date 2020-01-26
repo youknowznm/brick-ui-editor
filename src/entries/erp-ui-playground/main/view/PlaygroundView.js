@@ -71,7 +71,7 @@ export default class PlaygroundView extends React.Component {
                 }
             }}
         >
-            {props.componentsUsedDataArray.map(item => {
+            {props.usedCompsDataArray.map(item => {
                 {/* console.log('componentsUsedData', item); */}
                 {/* console.log('children', item.originCompProps.children); */}
                 return <PlaygroundCompWrap

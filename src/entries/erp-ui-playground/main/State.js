@@ -12,16 +12,6 @@ class MainState extends BaseModel {
 
     // ##### 全局 #####
 
-    @observable loadingFlag = false
-
-    triggerLoading = bool => {
-        this.setProps({
-            loadingFlag: bool
-        })
-    }
-
-    @observable frameWindowRef = null
-
     @observable metaKeyPressing = false
 
     // ##### 头部 控制面板 #####
@@ -48,13 +38,13 @@ class MainState extends BaseModel {
         })
     }
 
-    @observable componentsUsedDataArray = []
+    @observable usedCompsDataArray = []
 
     @action pushUsedCompData = data => {
-        this.componentsUsedDataArray.push(data)
+        this.usedCompsDataArray.push(data)
     }
 
-    @observable componentsUsedDataArrayPosition = null
+    @observable usedCompsDataArrayPosition = null
     @observable playgroundWidth = 0
     @observable playgroundHeight = 0
 
@@ -73,7 +63,7 @@ class MainState extends BaseModel {
     }
 
     @computed get componentInEdit() {
-        return this.componentsUsedDataArray.find(item => {
+        return this.usedCompsDataArray.find(item => {
             return item.id === this.componentInEditId
         }) || null
     }

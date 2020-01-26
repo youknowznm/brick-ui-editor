@@ -5,7 +5,7 @@
 import * as React from 'react'
 import {default as c} from 'classnames'
 import {toJS, computed, observable, action} from 'mobx'
-import {observer} from 'mobx-react'
+import {Provider, observer} from 'mobx-react'
 
 import DemoListView from './view/DemoListView'
 import ControlPanelView from './view/ControlPanelView'
@@ -36,47 +36,17 @@ export default class extends React.Component {
     
     componentDidMount() {
         const {local, props} = this
-        this.registerMessageListener()
         this.registerMetaKeyListener()
         this.registerBodyMouseEnterListener()
         this.registerResizeListener()
     }
+    
+    // pushUsedCompData(data);
 
-    // appendDemoComponent
-
-    registerMessageListener = () => {
-        const {local} = this
-        const {
-            pushUsedCompData,
-            metaKeyPressing
-        } = local.mainState
-        window.addEventListener('message', event => {
-            const {
-                data,
-                type
-            } = event.data
-            
-            if (type && type.indexOf('EUP') === 0) {
-                switch (type) {
-                    case 'EUP_APPEND_COMP':
-                        console.log('msg data: ', data)
-                        pushUsedCompData(data);
-                        // id: "gcxcsy5"
-                        // originDisplayName: "Button"
-                        // originCompProps: {type: "important", children: "important", className: "", color: "normal", disabled: false, …}
-                        // originCompState: {asyncLoading: false, showLoading: false}
-                        break
-                    case 'EUP_META_KEY_ACTION':
-                        console.log('metaKeyPressing: ', data.metaKeyPressing)
-                        local.mainState.setProps({
-                            metaKeyPressing: data.metaKeyPressing
-                        })
-                        break
-                }
-            }
-            
-        })
-    }
+    // // id: "gcxcsy5"
+    // // originDisplayName: "Button"
+    // // originCompProps: {type: "important", children: "important", className: "", color: "normal", disabled: false, …}
+    // // originCompState: {asyncLoading: false, showLoading: false}
 
     registerMetaKeyListener = () => {
         const {local} = this
@@ -87,16 +57,12 @@ export default class extends React.Component {
                 })
             }
         }
-        
-        if (!window._eupKeyListenerRegistered) {
-            window.addEventListener('keydown', event => {
-                triggerMetaKeyPressed(event, true)
-            })
-            window.addEventListener('keyup', event => {
-                triggerMetaKeyPressed(event, false)
-            })
-            window._eupKeyListenerRegistered = true
-        }
+        window.addEventListener('keydown', event => {
+            triggerMetaKeyPressed(event, true)
+        })
+        window.addEventListener('keyup', event => {
+            triggerMetaKeyPressed(event, false)
+        })
     }
 
     // 从其它应用切换至浏览器时, 移除焦点, 聚焦自身
@@ -104,20 +70,16 @@ export default class extends React.Component {
         const {local} = this
         window.document.body.addEventListener('mouseenter', event => {
             window.focus()
+            local.mainState.setProps({
+                metaKeyPressing: false
+            })
         })
-        // TODO:
-        // window.document.body.addEventListener('mouseout', event => {
-        //     local.setProps({
-        //         metaKeyPressing: false
-        //     })
-        // })
     }
-
 
     registerResizeListener = () => {
         const {local} = this
         const getPlaygroundSize = () => {
-            const playgroundDOM = document.querySelector('.playground-wrap .playground')
+            const playgroundDOM = document.querySelector('.playground-content')
             if (playgroundDOM) {
                 const {
                     width,
@@ -174,32 +136,35 @@ export default class extends React.Component {
     render() {
         const {props, local} = this
         const {mainState} = local
-        return <div className="index-page">
-            <DemoListView
-                demoListWidth={mainState.demoListWidth}
-                showDemoListDrawer={mainState.showDemoListDrawer}
-                triggerDemoDrawer={mainState.triggerDemoDrawer}
-            />
-            {this.renderDemoDrawerTrigger()}
-            <PlaygroundView
-                demoListWidth={mainState.demoListWidth}
-                playgroundWidth={mainState.playgroundWidth}
-                playgroundHeight={mainState.playgroundHeight}
-                metaKeyPressing={mainState.metaKeyPressing}
-                componentsUsedDataArray={mainState.componentsUsedDataArray}
-                showDemoListDrawer={mainState.showDemoListDrawer}
-                triggerDemoDrawer={mainState.triggerDemoDrawer}
-                triggerControlPanelDrawer={mainState.triggerControlPanelDrawer}
-                setEditingComponentId={local.setEditingComponentId}
-            ></PlaygroundView>
-            <AttrEditorView
-                componentInEdit={mainState.componentInEdit}
-            />
-            <ControlPanelView
-                showControlPanelDrawer={mainState.showControlPanelDrawer}
-                triggerControlPanelDrawer={mainState.triggerControlPanelDrawer}
-            />
-            {this.renderControlPanelDrawerTrigger()}
-        </div>
+        return <Provider root={mainState}>
+            <div className="index-page">
+                <DemoListView
+                    demoListWidth={mainState.demoListWidth}
+                    showDemoListDrawer={mainState.showDemoListDrawer}
+                    metaKeyPressing={mainState.metaKeyPressing}
+                    triggerDemoDrawer={mainState.triggerDemoDrawer}
+                />
+                {this.renderDemoDrawerTrigger()}
+                <PlaygroundView
+                    demoListWidth={mainState.demoListWidth}
+                    playgroundWidth={mainState.playgroundWidth}
+                    playgroundHeight={mainState.playgroundHeight}
+                    metaKeyPressing={mainState.metaKeyPressing}
+                    usedCompsDataArray={mainState.usedCompsDataArray}
+                    showDemoListDrawer={mainState.showDemoListDrawer}
+                    triggerDemoDrawer={mainState.triggerDemoDrawer}
+                    triggerControlPanelDrawer={mainState.triggerControlPanelDrawer}
+                    setEditingComponentId={local.setEditingComponentId}
+                ></PlaygroundView>
+                <AttrEditorView
+                    componentInEdit={mainState.componentInEdit}
+                />
+                <ControlPanelView
+                    showControlPanelDrawer={mainState.showControlPanelDrawer}
+                    triggerControlPanelDrawer={mainState.triggerControlPanelDrawer}
+                />
+                {this.renderControlPanelDrawerTrigger()}
+            </div>
+        </Provider>
     }
 }
