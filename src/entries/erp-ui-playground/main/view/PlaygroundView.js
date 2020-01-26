@@ -59,18 +59,20 @@ export default class PlaygroundView extends React.Component {
         } = props
         return <div className="playground-content"
             onMouseOver={evt => {
-                if (evt.target.className.indexOf('playground') > -1) {
+                const {className} = evt.target
+                if (className && className.indexOf('playground-content') > -1) {
                     props.triggerDemoDrawer(false)
                 }
             }}
             onClick={evt => {
-                if (evt.target.className.indexOf('playground') > -1) {
+                const {className} = evt.target
+                if (className && className.indexOf('playground-content') > -1) {
                     props.setEditingComponentId('')
                 }
             }}
         >
             {props.componentsUsedDataArray.map(item => {
-                console.log('componentsUsedData', item);
+                {/* console.log('componentsUsedData', item); */}
                 {/* console.log('children', item.originCompProps.children); */}
                 return <PlaygroundCompWrap
                     key={item.id}
@@ -95,16 +97,16 @@ export default class PlaygroundView extends React.Component {
 
     render() {
         const {local, props, triggerDemoDrawer} = this
-        const {demoPageState} = local
+        const {demoListState} = local
         const {
-            demoPageWidth,
-            showDemoPageDrawer
+            demoListWidth,
+            showDemoListDrawer
         } = props
-        const offSet = demoPageWidth - 20
+        const offSet = demoListWidth - 20
         return <div className="playground-wrap"
             style={{
-                marginLeft: `${showDemoPageDrawer ? offSet : 0}px`,
-                right: `${showDemoPageDrawer ? -offSet : 0}px`,
+                marginLeft: `${showDemoListDrawer ? offSet : 0}px`,
+                right: `${showDemoListDrawer ? -offSet : 0}px`,
             }}
             >
             {this.renderPlaygroundContent()}

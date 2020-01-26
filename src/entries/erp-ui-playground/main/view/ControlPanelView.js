@@ -10,7 +10,7 @@ import {withStyles} from '@material-ui/core/styles'
 import Drawer from '@material-ui/core/Drawer'
 import Button from '@material-ui/core/Button'
 
-import DemoPageState from '../states/DemoPageState'
+import DemoListState from '../states/DemoListState'
 
 import '../style/control-panel.scss'
 
@@ -22,7 +22,7 @@ export default class ControlPanelView extends React.Component {
     }
 
     local = {
-        demoPageState: new DemoPageState()
+        demoListState: new DemoListState()
     }
 
     constructor(props) {
@@ -43,7 +43,7 @@ export default class ControlPanelView extends React.Component {
 
     render() {
         const {local, props} = this
-        const {demoPageState} = local
+        const {demoListState} = local
         return <div className="control-panel">
             <Drawer
                 className="control-panel-drawer"

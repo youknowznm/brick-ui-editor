@@ -7,7 +7,7 @@ import {default as c} from 'classnames'
 import {toJS, computed, observable, action} from 'mobx'
 import {observer} from 'mobx-react'
 
-import DemoPageView from './view/DemoPageView'
+import DemoListView from './view/DemoListView'
 import ControlPanelView from './view/ControlPanelView'
 import PlaygroundView from './view/PlaygroundView'
 import AttrEditorView from './view/AttrEditorView'
@@ -25,7 +25,7 @@ import PlaygroundCompWrap from './components/PlaygroundCompWrap'
 
 import './style.scss'
 
-import MainState from './index'
+import MainState from './State'
 
 @observer
 export default class extends React.Component {
@@ -175,20 +175,19 @@ export default class extends React.Component {
         const {props, local} = this
         const {mainState} = local
         return <div className="index-page">
-            <DemoPageView
-                showDemoPageDrawer={mainState.showDemoPageDrawer}
-                demoPageSrc={mainState.demoPageSrc}
-                demoPageWidth={mainState.demoPageWidth}
+            <DemoListView
+                demoListWidth={mainState.demoListWidth}
+                showDemoListDrawer={mainState.showDemoListDrawer}
                 triggerDemoDrawer={mainState.triggerDemoDrawer}
             />
             {this.renderDemoDrawerTrigger()}
             <PlaygroundView
+                demoListWidth={mainState.demoListWidth}
                 playgroundWidth={mainState.playgroundWidth}
                 playgroundHeight={mainState.playgroundHeight}
                 metaKeyPressing={mainState.metaKeyPressing}
                 componentsUsedDataArray={mainState.componentsUsedDataArray}
-                demoPageWidth={mainState.demoPageWidth}
-                showDemoPageDrawer={mainState.showDemoPageDrawer}
+                showDemoListDrawer={mainState.showDemoListDrawer}
                 triggerDemoDrawer={mainState.triggerDemoDrawer}
                 triggerControlPanelDrawer={mainState.triggerControlPanelDrawer}
                 setEditingComponentId={local.setEditingComponentId}

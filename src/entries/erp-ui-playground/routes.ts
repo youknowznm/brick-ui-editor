@@ -6,7 +6,7 @@ const routes: RouteItem[] = [
     {
         key: 'operation-list',
         ...SITE_NODE_MAIN_LIST,
-        component: React.lazy(() => import('./main/view')),
+        component: React.lazy(() => import('./main/View')),
     },
 ]
 

@@ -8,10 +8,7 @@ import {toJS, computed, observable, action} from 'mobx'
 import {observer} from 'mobx-react'
 import BaseModel from './components/BaseModel'
 
-import View from './View'
-import moment from 'moment'
-
-class IndexPageVM extends BaseModel {
+class MainState extends BaseModel {
 
     // ##### 全局 #####
 
@@ -40,17 +37,14 @@ class IndexPageVM extends BaseModel {
 
     // ##### 左侧 demo 容器 #####
 
-    @observable componentLibName = 'erp-comps'
+    @observable showDemoListDrawer = false
 
-    @observable demoPageSrc = 'http://localhost:3008/main/components/button?embedded-in-eup=true'
-    @observable demoPageWidth = 1160
-
-    @observable showDemoPageDrawer = false
+    @observable demoListWidth = 750
 
     triggerDemoDrawer = target => {
-        const result = typeof target === 'boolean' ? target : !this.showDemoPageDrawer
+        const result = typeof target === 'boolean' ? target : !this.showDemoListDrawer
         this.setProps({
-            showDemoPageDrawer: result
+            showDemoListDrawer: result
         })
     }
 
@@ -66,7 +60,7 @@ class IndexPageVM extends BaseModel {
 
     // ##### 中间 实际内容(默认下的全屏) #####
 
-    @observable showDemoPageDrawer = false
+    @observable showDemoListDrawer = false
 
     // ##### 右侧 属性编辑器 #####
 
@@ -85,4 +79,4 @@ class IndexPageVM extends BaseModel {
     }
 }
 
-export default IndexPageVM
+export default MainState
