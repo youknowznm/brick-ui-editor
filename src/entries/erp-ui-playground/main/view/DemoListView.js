@@ -17,6 +17,10 @@ import IconDemo from '../demos/IconDemo'
 import LinkDemo from '../demos/LinkDemo'
 import CollapseDemo from '../demos/CollapseDemo'
 import DialogDemo from '../demos/DialogDemo'
+import PopoverDemo from '../demos/PopoverDemo'
+import TabsDemo from '../demos/TabsDemo'
+import FileListDemo from '../demos/FileListDemo'
+import TableDemo from '../demos/TableDemo'
 
 import {withStyles} from '@material-ui/core/styles'
 import MUIDrawer from '@material-ui/core/Drawer'
@@ -81,7 +85,23 @@ export default class DemoListView extends React.Component {
             {
                 label: 'Dialog',
                 Demo: DialogDemo
-            }
+            },
+            {
+                label: 'Popover',
+                Demo: PopoverDemo
+            },
+            {
+                label: 'Tabs',
+                Demo: TabsDemo
+            },
+            {
+                label: 'FileList',
+                Demo: FileListDemo
+            },
+            {
+                label: 'Table',
+                Demo: TableDemo
+            },
         ]
         return <div>
             {
@@ -123,7 +143,7 @@ export default class DemoListView extends React.Component {
                     className="demo-list-content"
                     style={{
                         width:`${props.demoListWidth}px`
-                    }}    
+                    }}
                 >
                     {this.renderDemoPanels()}
                 </div>

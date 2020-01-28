@@ -33,14 +33,14 @@ export default class extends React.Component {
     local = {
         mainState: new MainState(),
     }
-    
+
     componentDidMount() {
         const {local, props} = this
         this.registerMetaKeyListener()
         this.registerBodyMouseEnterListener()
         this.registerResizeListener()
     }
-    
+
     // pushUsedCompData(data);
 
     // // id: "gcxcsy5"
@@ -99,6 +99,7 @@ export default class extends React.Component {
 
     renderControlPanelDrawerTrigger = () => {
         return <Card
+            square={true}
             className="top-actions-drawer-trigger"
             onMouseOver={() => {
                 this.local.mainState.triggerControlPanelDrawer(true)
@@ -117,6 +118,7 @@ export default class extends React.Component {
 
     renderDemoDrawerTrigger = () => {
         return <Card
+            square={true}
             className="demo-drawer-trigger"
             onMouseOver={() => {
                 this.local.mainState.triggerDemoDrawer(true)

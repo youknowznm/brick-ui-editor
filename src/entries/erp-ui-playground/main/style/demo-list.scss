@@ -54,6 +54,45 @@
                     }
                 }
             }
+            .popover-demo-block {
+                .section-basic {
+                    position: relative;
+                    padding-top: 30px;
+                    padding-bottom: 70px;
+                    height: 330px;
+                    .trigger-row {
+                      text-align: center;
+                    }
+                    .trigger-row + .trigger-row {
+                      margin-top: 10px;
+                    }
+                    .trigger-wrap {
+                      display: inline-block;
+                      + .trigger-wrap {
+                        margin-left: 10px;
+                      }
+                      &, .brick-button {
+                        width: 100px;
+                      }
+                    }
+
+                    .control-wrap {
+                      width: 200px;
+                      padding-left: 10px;
+                      padding-right: 10px;
+                    }
+
+                    .hover-hint {
+                      display: inline-block;
+                    }
+                }
+
+            }
+            .tabs-demo-block {
+                .demo-tabs + .demo-tabs {
+                   margin-top: 40px;
+                }
+            }
         }
     }
 }

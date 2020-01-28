@@ -5,7 +5,6 @@ import Divider from '@material-ui/core/Divider';
 import wrapDemoComp from '../components/wrapDemoComp'
 
 import {Link as OriginLink} from '@befe/brick'
-import {SvgEdit, SvgGear} from '@befe/brick-icon'
 
 const Link = wrapDemoComp(OriginLink)
 

@@ -1,0 +1,91 @@
+@import "~@befe/brick-style/src/base";
+
+@include exports('comp-popover') {
+  .brick-popover {
+    @include reset();
+
+    &-wrap {
+      max-width: $popover-max-width - $popper-padding-horizontal * 2;
+    }
+
+    &-headline {
+      font-size: $font-size-md;
+      font-weight: $font-weight-medium;
+      margin-bottom: $popover-padding-vertical;
+      line-height: 1;
+    }
+
+    &-content {
+      font-size: $font-size-sm;
+      line-height: $line-height-medium;
+    }
+
+    &-actions {
+      padding-top: $popover-padding-compact;
+      padding-bottom: $popover-padding - $popover-padding-compact;
+
+      &-is-all-plain {
+        text-align: left;
+      }
+
+      .brick-button-type-plain {
+        &:first-child {
+          margin-left: -$btn-plain-padding-horizontal;
+        }
+
+        &:last-child {
+          margin-right: -$btn-plain-padding-horizontal;
+        }
+      }
+
+      .brick-button-type-plain:first-child {
+        margin-left: -$btn-plain-padding-horizontal;
+      }
+
+      @each $align in (left, center, right) {
+        &-align-#{$align} &:not(&-is-all-plain) {
+          text-align: $align;
+        }
+      }
+    }
+
+    .brick-close-x {
+      @include closeXPosition($popover-padding-horizontal, $popover-padding-vertical);
+    }
+  }
+
+  .brick-popover-confirm {
+    &-content {
+      position: relative;
+    }
+
+    &-icon {
+      @include icon-size($popover-confirm-icon-size);
+      position: absolute;
+      top: 0;
+      left: 0;
+      line-height: $popover-confirm-font-size * $line-height-medium;
+    }
+
+    @each $type in $alert-type-list {
+      &-type-#{$type} {
+        background-color: map_get($alert-bg-color, $type);
+        border-color: map_get($alert-border-color, $type);
+
+        .brick-popover-confirm-icon .brick-icon {
+          color: map_get($alert-icon-color, $type);
+        }
+      }
+    }
+
+    &-content-inner {
+      p {
+        margin-bottom: 0;
+      }
+    }
+
+    &-icon + &-content-inner {
+      padding-left: $popover-confirm-icon-size + $popover-confirm-icon-margin;
+    }
+  }
+}
