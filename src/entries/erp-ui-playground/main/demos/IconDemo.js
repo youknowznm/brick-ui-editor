@@ -8,7 +8,10 @@ import {ICON_GROUP_MAP_MAIN} from '@befe/brick-icon/src/main/group-map'
 
 import {Icon} from '@befe/brick'
 // import {Icon as OriginIcon} from '@befe/brick'
-import {SvgHi, SvgCalendar, SvgLoading, SvgEdit, SvgSignExclamation, SvgSignTick, SvgSignInfo, SvgSignCross} from '@befe/brick-icon'
+import {SvgHi, SvgCalendar,
+    SvgLoading, SvgEdit, SvgSignExclamation,
+    SvgSignTick, SvgSignInfo, SvgSignCross
+} from '@befe/brick-icon'
 
 // const Icon = wrapDemoComp(OriginIcon)
 

@@ -1,0 +1,407 @@
+@import "~@befe/brick-style/src/base";
+
+
+@mixin datePickerContentBlock() {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@mixin datePickerItemDisabled($bg, $text) {
+  cursor: not-allowed;
+  background-color: $bg;
+  color: $text;
+}
+
+@mixin datePickerContentLayout(// 类型: date | year-month | month | year | quarter
+  $type,
+
+  // 每一个内容项的宽高
+  $width, $height,
+
+  // 水平 / 垂直间距
+  $width-gap, $height-gap: $width-gap / 2
+) {
+
+  [data-content-type="#{$type}"] {
+    // 内容布局 (日期)
+    .brick-date-picker-content-row,
+    .brick-date-picker-content-title {
+      white-space: nowrap;
+
+      + .brick-date-picker-content-row {
+        margin-top: $height-gap;
+      }
+
+      .item-cell {
+        @include datePickerContentBlock();
+
+        text-align: center;
+        width: $width;
+        line-height: $height;
+        height: $height;
+      }
+
+      .item-gap {
+        @include datePickerContentBlock();
+
+        width: $width-gap;
+        height: $height;
+      }
+    }
+
+    .brick-date-picker-content-title {
+      height: 18px;
+
+      .item-cell, .item-gap {
+        $height-title: 18px;
+
+        height: $height-title;
+        line-height: $height-title;
+      }
+    }
+
+    .brick-date-picker-content-title
+    + .brick-date-picker-content-row {
+      margin-top: $height-gap*3;
+    }
+  }
+}
+
+@include exports('comp-date-picker') {
+  $height-normal-line: 28px;
+  $width: 28px;
+  $normal-gap: 8px;
+
+  $color-border-light: #eee;
+  $color-border-panel: $color-border-intensive;
+
+  $width-panel-content: $width*7 + $normal-gap*6;
+  $width-panel: $width-panel-content + $normal-gap*4;
+
+  $shadow-panel: rgba(0, 0, 0, 0.15) 0 1px 4px 0;
+  $border-radius-panel: $border-radius-large;
+
+  $color-highlight-text-normal: #4C84FF;
+
+  $color-bg-highlight-normal: #F2F5FF;
+  $color-bg-highlight-medium: #DBE4FF;
+
+  $border-inner: 1px $color-border-light solid;
+
+  // 内部内容样式
+  $color-text-item-outside: #999;
+  $color-text-item-disabled: #CCC;
+  $color-text-item-selected: #FFF;
+  $color-text-item-inside-range: #4C84FF;
+
+  $color-bg-item-disabled: #FAFAFA;
+  $color-bg-item-selected: #4C84FF;
+  $color-bg-item-selected-hover: #709BFF;
+  $color-bg-item-selected-active: #366CD9;
+  $color-bg-item-inside-range: #DBE4FF;
+
+  // 今日标识
+  $color-today-normal: #4C84FF;
+  $color-today-disabled: #999;
+
+  .brick-date-picker {
+    @include reset();
+  }
+
+  // 整体 panel 布局 (单一面板)
+  .brick-date-picker-panel-wrapper {
+    position: relative;
+    width: $width-panel;
+    user-select: none;
+
+    background-color: #fff;
+
+    //border: 1px solid $color-border-panel;
+    box-shadow: $shadow-panel;
+    border-radius: $border-radius-panel;
+    display: inline-block;
+  }
+
+  // 整体 panel 布局 (range 面板)
+  .brick-date-picker-range-wrapper {
+    display: inline-block;
+    box-shadow: $shadow-panel;
+    border-radius: $border-radius-panel;
+    white-space: nowrap;
+
+    .brick-date-picker-panel-wrapper {
+      box-shadow: none;
+      border-radius: unset;
+    }
+
+    .brick-date-picker-panel-wrapper + .brick-date-picker-panel-wrapper {
+      margin-left: 0;
+    }
+  }
+
+  // 选择器内容区域
+  .brick-date-picker-item-layout-wrapper {
+    font-family: $font-family;
+    color: $color-text-primary;
+    font-size: 12px;
+  }
+
+  // panel 标题区域
+  .brick-date-picker-title {
+    text-align: center;
+    line-height: 34px;
+    border-bottom: $border-inner;
+
+
+    // 标题 / 左右导航图标
+    .brick-nav-back, .brick-nav-forward {
+      position: absolute;
+    }
+
+    .brick-nav-back {
+      left: $normal-gap;
+    }
+
+    .brick-nav-forward {
+      right: $normal-gap;
+    }
+
+    .brick-icon svg {
+      width: 10px;
+      cursor: pointer;
+    }
+
+    .brick-nav-icon + .brick-nav-icon {
+      margin-left: 12px;
+    }
+
+    // 标题 / 中部标题
+    .brick-panel-title {
+      display: inline-block;
+
+      .brick-title-text {
+        font-weight: $font-weight-medium;
+      }
+
+      .brick-zooming {
+        margin-left: $normal-gap;
+      }
+    }
+  }
+
+  // 内容项的布局
+  @include datePickerContentLayout('date', $width: 28px, $height: $height-normal-line, $width-gap: 8px);
+  @include datePickerContentLayout('month', $width: 44px, $height: $height-normal-line, $width-gap: 20px, $height-gap: 20px);
+
+  // @todo:legacy 这个是原来的 月份面板布局 (暂留一下)
+  //@include datePickerContentLayout('month', $width: 44px, $height: $height-normal-line, $width-gap: 48px, $height-gap: 20px);
+
+  @include datePickerContentLayout('year', $width: 44px, $height: $height-normal-line, $width-gap: 48px, $height-gap: 20px);
+  @include datePickerContentLayout('quarter', $width: 44px, $height: $height-normal-line, $width-gap: 48px, $height-gap: 20px);
+
+  // 选择器内部内容的布局 (日期)
+  [data-content-type="date"] .brick-date-picker-content-wrapper {
+    padding: $normal-gap $normal-gap*2 $normal-gap*2;
+  }
+
+  // 选择器内部内容的布局 (日期的快捷月份选择以及月份)
+  [data-content-type="month"], [data-content-type="quarter"] {
+    .brick-date-picker-content-wrapper {
+      padding: 0;
+      white-space: nowrap;
+
+      .brick-date-picker-aside, .brick-date-picker-item-layout-wrapper {
+        display: inline-block;
+        vertical-align: top;
+      }
+
+      .brick-date-picker-aside {
+        padding: $normal-gap/2 0;
+        border-right: $border-inner;
+      }
+
+      .brick-date-picker-item-layout-wrapper {
+        padding: 24px $normal-gap/2*3 42px;
+      }
+    }
+
+    .brick-title-text {
+      margin-left: 10px;
+      margin-right: 6px;
+    }
+  }
+
+  // @todo:legacy 原来第一版设计, 选择器内部内容的布局 (月份)
+  //[data-content-type="month"], [data-content-type="year"]  {
+  //   .brick-date-picker-content-wrapper {
+  //     .brick-date-picker-item-layout-wrapper {
+  //       padding: 32px $normal-gap/2*6 38px;
+  //     }
+  //   }
+  // }
+
+  [data-content-type="quarter"] {
+    .brick-date-picker-content-wrapper {
+      .brick-date-picker-item-layout-wrapper {
+        padding: 24px 76px 42px;
+      }
+    }
+  }
+
+  // 侧边快捷选择列表
+  .brick-date-picker-aside {
+    $width-aside: 80px;
+
+    width: $width-aside;
+    height: 242px;
+    overflow: hidden;
+
+    &[data-hover-status="hover"] {
+      overflow: auto;
+    }
+
+    .brick-aside-item {
+      height: $height-normal-line;
+      line-height: $height-normal-line;
+
+      text-align: center;
+    }
+
+    [data-state="selected"] {
+      color: $color-highlight-text-normal;
+      background-color: $color-bg-highlight-normal;
+    }
+  }
+
+  // 范围内的间隔样式
+  .inside-range {
+    background-color: $color-bg-item-inside-range;
+  }
+
+  // 单一内容项样式
+  .brick-content-item {
+
+    border-radius: $border-radius-large;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &[data-action-status="hover"] {
+      background-color: $color-bg-highlight-normal;
+    }
+
+    &[data-action-status="active"] {
+      background-color: $color-bg-highlight-medium;
+    }
+
+    &[data-range-type="start"], &[data-range-type="end"], &[data-selected="true"] {
+      background-color: $color-bg-item-selected;
+      color: $color-text-item-selected;
+
+      &[data-action-status="hover"] {
+        background-color: $color-bg-item-selected-hover;
+      }
+
+      &[data-action-status="active"] {
+        background-color: $color-bg-item-selected-active;
+      }
+
+      &[data-disabled="true"] {
+        @include datePickerItemDisabled($color-bg-item-disabled, $color-text-item-disabled)
+      }
+
+      &[data-today="true"] {
+        &:after {
+          display: none;
+        }
+      }
+    }
+
+    &[data-disabled="true"] {
+      @include datePickerItemDisabled($color-bg-item-disabled, $color-text-item-disabled);
+
+      &[data-today="true"] {
+        position: relative;
+
+        &:after {
+          background-color: $color-today-disabled;
+        }
+      }
+
+      &[data-selected="true"] {
+        &[data-today="true"] {
+          &:after {
+            display: block;
+          }
+        }
+      }
+    }
+
+    &[data-outside="true"] {
+      background-color: transparent;
+      color: $color-text-item-outside;
+    }
+
+    &[data-range-type="start"] {
+      border-radius: $border-radius-large 0 0 $border-radius-large;
+    }
+
+    &[data-range-type="end"] {
+      border-radius: 0 $border-radius-large $border-radius-large 0;
+    }
+
+    &[data-range-type="inside"] {
+      background-color: $color-bg-item-inside-range;
+      border-radius: 0;
+
+      &[data-action-status="hover"] {
+        //position: relative;
+
+        // @todo:pending
+        //&:before {
+        //  content: ' ';
+        //  display: block;
+        //  position: absolute;
+        //
+        //  background-color: $color-bg-item-inside-range;
+        //
+        //  top: 0;
+        //  left: 0;
+        //  width: 100%;
+        //  height: 100%;
+        //}
+
+        //.brick-item-text {
+        //  display: block;
+        color: $color-bg-item-selected;
+        //background-color: $color-bg-highlight-normal;
+        //border-radius: $border-radius-large;
+        //}
+      }
+    }
+
+    // 今天的小点点
+    &[data-today="true"] {
+      position: relative;
+
+      &:after {
+        display: block;
+        text-align: center;
+
+        position: absolute;
+
+        content: ' ';
+        border-radius: 100%;
+        background-color: $color-today-normal;
+
+        width: 4px;
+        height: 4px;
+
+        left: calc(50% - 2px);
+        margin-top: -6px;
+      }
+    }
+  }
+}
+

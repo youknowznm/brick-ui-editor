@@ -122,8 +122,7 @@ export class Popover extends React.Component<PopoverProps> {
     get popperProps(): PopperProps {
         return {
             className: this.className,
-            // @zhangenming 200127 为了适配 eup, 将 portalContainer prop 传递给 Popper
-            ...pick(this.props, ['placement', 'withArrow', 'portalContainer'])
+            ...pick(this.props, ['placement', 'withArrow'])
         }
     }
 
@@ -180,10 +179,14 @@ export class Popover extends React.Component<PopoverProps> {
     }
 
     render() {
+
+        // @zhangenming 200127 为了适配 eup, 写死 popper 的 portalContainer
+        const portalContainer = document.querySelector('.popover-demo-block')
+
         return (
             <PopperTrigger {...this.triggerProps}>
                 {this.props.children}
-                <Popper {...this.popperProps}>
+                <Popper portalContainer={portalContainer} {...this.popperProps}>
                     <div className={'brick-popover-wrap'}>
                         {this.renderCloseX()}
                         {this.renderHeadline()}

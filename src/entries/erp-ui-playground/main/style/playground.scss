@@ -2,15 +2,15 @@
 // @import "utils/column.less";
 
 .playground-wrap {
-    position: absolute;
-    left: 24px;
-    top: 24px;
-    right: 0;
-    bottom: 0;
-    overflow: auto;
-    .playground-content {
-        position: relative;
-        width: 100%;
-        height: 100%;
-    }
+  position: absolute;
+  left: 24px;
+  top: 24px;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  .playground-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
 }

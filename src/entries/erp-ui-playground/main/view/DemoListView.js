@@ -21,6 +21,9 @@ import PopoverDemo from '../demos/PopoverDemo'
 import TabsDemo from '../demos/TabsDemo'
 import FileListDemo from '../demos/FileListDemo'
 import TableDemo from '../demos/TableDemo'
+import CheckboxDemo from '../demos/CheckboxDemo'
+import DatePickerDemo from '../demos/DatePickerDemo'
+import InputDemo from '../demos/InputDemo'
 
 import {withStyles} from '@material-ui/core/styles'
 import MUIDrawer from '@material-ui/core/Drawer'
@@ -102,6 +105,18 @@ export default class DemoListView extends React.Component {
                 label: 'Table',
                 Demo: TableDemo
             },
+            {
+                label: 'Checkbox',
+                Demo: CheckboxDemo
+            },
+            {
+                label: 'DatePicker',
+                Demo: DatePickerDemo
+            },
+            {
+                label: 'Input',
+                Demo: InputDemo
+            }
         ]
         return <div>
             {
