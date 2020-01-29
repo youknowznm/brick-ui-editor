@@ -2,17 +2,17 @@ import * as React from 'react'
 
 import Divider from '@material-ui/core/Divider';
 
-import wrapDemoComp from '../components/wrapDemoComp'
+import wrapDemoComp from '../utils/wrapDemoComp'
 
 import {Popover as OriginPopover, PopoverConfirm} from '../localBrickComps'
 // import {Popover as OriginPopover} from '@befe/brick'
 import {Button} from '@befe/brick'
 
+import {PortalContainerProvider} from '../utils/PortalContainerContext'
+
 const Popover = wrapDemoComp(OriginPopover)
 
 const PopoverDemo = () => {
-
-    const wrap = document.querySelector('.popover-demo-block')
 
     const placements = [
         ['top-start', 'top', 'top-end'],
@@ -29,7 +29,6 @@ const PopoverDemo = () => {
                     <Popover
                         placement={placement}
                         content="内容"
-                        portalContainer={wrap}
                     >
                         <Button>{placement}</Button>
                     </Popover>
@@ -46,7 +45,7 @@ const PopoverDemo = () => {
 
     const types = ['info', 'success', 'warning', 'error']
     const renderTypePopover = (type) => (
-        <PopoverConfirm key={type} message={content} type={type} portalContainer={wrap}>
+        <PopoverConfirm key={type} message={content} type={type} >
             <Button type={'intensive'} color={btnType[type] || type}>{type}</Button>
         </PopoverConfirm>
     )
@@ -64,14 +63,12 @@ const PopoverDemo = () => {
         {/* ===== 1 confirm ===== */}
         <div className="">
             <PopoverConfirm
-                portalContainer={wrap}
                 message={'这是一段确认信息'}
             >
                 <Button>简单</Button>
             </PopoverConfirm>
             <PopoverConfirm
                 type={null}
-                portalContainer={wrap}
                 headline={headline}
                 message={'这是一段确认信息'}
             >

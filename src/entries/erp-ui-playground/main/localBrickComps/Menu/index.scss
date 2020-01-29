@@ -1,4 +1,5 @@
 @import "./style";
 // 依赖组件的样式写在下方，因为需要被 ./style 中的 base 覆盖 theme variable
-@import "~@befe/brick-comp-close-x/src/index";
+@import "~@befe/brick-comp-popper/src/index";
+@import "~@befe/brick-comp-checkbox/src/index";
 @import "~@befe/brick-comp-icon/src/index";

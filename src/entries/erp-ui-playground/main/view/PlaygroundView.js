@@ -11,7 +11,7 @@ import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
 
-import PlaygroundCompWrap from '../components/PlaygroundCompWrap'
+import PlaygroundCompWrap from '../utils/PlaygroundCompWrap'
 
 import Card from '@material-ui/core/Card'
 

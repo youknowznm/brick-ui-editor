@@ -41,7 +41,7 @@ import MUIButton from '@material-ui/core/Button'
 
 import DemoListState from '../states/DemoListState'
 
-import {PortalContainerProvider, PortalContainerConsumer} from '../components/PortalContainerContext'
+import {PortalContainerProvider} from '../utils/PortalContainerContext'
 // import {PortalContainerConsumer} from '../../PortalContainerContext'
 
 import '../style/demo-list.scss'
@@ -93,7 +93,7 @@ export default class DemoListView extends React.Component {
             SwitchDemo,
             TextareaDemo,
             AlertDemo,
-            ToastDemo,
+            // ToastDemo, // Toast 与 Alert UI 一致.
             BreadcrumbDemo,
             HeadNavDemo,
             MenuDemo,

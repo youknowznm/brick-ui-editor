@@ -6,7 +6,7 @@ import * as React from 'react'
 import {default as c} from 'classnames'
 import {toJS, computed, observable, action} from 'mobx'
 import {observer} from 'mobx-react'
-import BaseModel from './components/BaseModel'
+import BaseModel from './utils/BaseModel'
 
 class MainState extends BaseModel {
 

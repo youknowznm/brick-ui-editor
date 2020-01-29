@@ -11,6 +11,8 @@ import {getDateRows} from '../utils/date-utils';
 import {TypeActionLink, TypeDatePickerMode, TypeDateValue, TypePickerSize, TypePickerStatus} from './prop-types';
 import {DEFAULT_ITEM_FORMAT, DEFAULT_TITLE_FORMAT} from './const-default-format';
 
+import {PortalContainerConsumer} from '../../../utils/PortalContainerContext'
+
 export interface IDatePickerProps {
     /**
      * 用户可自定义 class
@@ -478,19 +480,26 @@ export class InnerDatePicker extends React.Component<IDatePickerProps, IDatePick
         const shouldShowPanel = this.state.isUserInput || this.state.open;
 
         return (
-            <div className={this.className}
-                 ref={this.refInputWrapper}>
-                {this.userInput.renderInput()}
-                <Popper
-                    className={this.props.popupClassName}
-                    visible={shouldShowPanel}
-                    placement={'bottom-start'}
-                    target={this.userInput.inputElem}
-                    ref={this.refPanelWrapper}
-                >
-                    {this.renderPanel()}
-                </Popper>
-            </div>
+            <PortalContainerConsumer>
+                {
+                    ctx => (
+                        <div className={this.className}
+                             ref={this.refInputWrapper}>
+                            {this.userInput.renderInput()}
+                            <Popper
+                                className={this.props.popupClassName}
+                                visible={shouldShowPanel}
+                                placement={'bottom-start'}
+                                target={this.userInput.inputElem}
+                                ref={this.refPanelWrapper}
+                                portalContainer={() => document.querySelector(ctx)}
+                            >
+                                {this.renderPanel()}
+                            </Popper>
+                        </div>
+                    )
+                }
+            </PortalContainerConsumer>
         );
     }
 }

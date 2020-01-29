@@ -11,7 +11,7 @@ import {
     ConfigContext,
     getValueFromContextTheme,
 } from '@befe/brick-comp-config-provider'
-import {MenuItemProps, Menu, Submenu, MenuPopper, MenuItemId, MenuItem, MenuProps} from '@befe/brick-comp-menu'
+import {MenuItemProps, Menu, Submenu, MenuPopper, MenuItemId, MenuItem, MenuProps} from '../Menu'
 import {Icon} from '@befe/brick-comp-icon'
 import {SvgTriangleDown} from '@befe/brick-icon'
 import {isUndefined} from 'lodash-es'

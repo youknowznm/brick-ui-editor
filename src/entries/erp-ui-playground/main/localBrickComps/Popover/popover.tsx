@@ -14,6 +14,8 @@ import {isUndefined} from 'lodash-es'
 import {Button} from '@befe/brick-comp-button'
 import {ConfigContext, getDefaultValueUsingContextTheme} from '@befe/brick-comp-config-provider'
 
+import {PortalContainerConsumer} from '../../utils/PortalContainerContext'
+
 type PropsFromPopper = Pick<PopperProps, 'placement' | 'withArrow'>
 
 export interface PopoverProps extends PopperTriggerProps, PropsFromPopper {
@@ -180,17 +182,26 @@ export class Popover extends React.Component<PopoverProps> {
 
     render() {
         return (
-            <PopperTrigger {...this.triggerProps}>
-                {this.props.children}
-                <Popper {...this.popperProps}>
-                    <div className={'brick-popover-wrap'}>
-                        {this.renderCloseX()}
-                        {this.renderHeadline()}
-                        {this.renderContent()}
-                        {this.renderActions()}
-                    </div>
-                </Popper>
-            </PopperTrigger>
+            <PortalContainerConsumer>
+                {
+                    ctx => {
+                        return <PopperTrigger {...this.triggerProps}>
+                            {this.props.children}
+                            <Popper
+                                {...this.popperProps}
+                                portalContainer={() => document.querySelector(ctx)}
+                            >
+                                <div className={'brick-popover-wrap'}>
+                                    {this.renderCloseX()}
+                                    {this.renderHeadline()}
+                                    {this.renderContent()}
+                                    {this.renderActions()}
+                                </div>
+                            </Popper>
+                        </PopperTrigger>
+                    }
+                }
+            </PortalContainerConsumer>
         )
     }
 }

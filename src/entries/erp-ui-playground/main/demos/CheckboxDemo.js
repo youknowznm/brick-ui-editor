@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import Divider from '@material-ui/core/Divider';
 
-import wrapDemoComp from '../components/wrapDemoComp'
+import wrapDemoComp from '../utils/wrapDemoComp'
 
 import {Checkbox, GenericCheckboxGroup} from '@befe/brick'
 

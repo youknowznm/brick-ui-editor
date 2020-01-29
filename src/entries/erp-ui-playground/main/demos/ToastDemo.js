@@ -2,9 +2,9 @@ import * as React from 'react'
 
 import Divider from '@material-ui/core/Divider';
 
-import wrapDemoComp from '../components/wrapDemoComp'
+import wrapDemoComp from '../utils/wrapDemoComp'
 
-import {toast, Toast} from '../localBrickComps'
+import {toast, Toast} from '@befe/brick'
 import {Button} from '@befe/brick'
 
 // import {Toast as OriginToast} from '@befe/brick'

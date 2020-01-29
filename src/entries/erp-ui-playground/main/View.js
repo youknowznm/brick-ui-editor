@@ -21,7 +21,7 @@ import Card from '@material-ui/core/Card'
 
 import Draggable from 'react-draggable'
 
-import PlaygroundCompWrap from './components/PlaygroundCompWrap'
+import PlaygroundCompWrap from './utils/PlaygroundCompWrap'
 
 import './style.scss'
 
@@ -142,7 +142,8 @@ export default class extends React.Component {
             <div className="index-page">
                 <DemoListView
                     demoListWidth={mainState.demoListWidth}
-                    showDemoListDrawer={true}
+                    showDemoListDrawer={mainState.showDemoListDrawer}
+
                     metaKeyPressing={mainState.metaKeyPressing}
                     triggerDemoDrawer={mainState.triggerDemoDrawer}
                 />
