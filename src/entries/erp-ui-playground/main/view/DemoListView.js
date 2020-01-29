@@ -24,6 +24,11 @@ import TableDemo from '../demos/TableDemo'
 import CheckboxDemo from '../demos/CheckboxDemo'
 import DatePickerDemo from '../demos/DatePickerDemo'
 import InputDemo from '../demos/InputDemo'
+import RadioDemo from '../demos/RadioDemo'
+import SelectDemo from '../demos/SelectDemo'
+import SuggestDemo from '../demos/SuggestDemo'
+import SwitchDemo from '../demos/SwitchDemo'
+import TextareaDemo from '../demos/TextareaDemo'
 
 import {withStyles} from '@material-ui/core/styles'
 import MUIDrawer from '@material-ui/core/Drawer'
@@ -49,16 +54,9 @@ export default class DemoListView extends React.Component {
         const {local} = this
     }
 
-    componentDidMount() {
-    }
+    componentDidMount() {}
 
     componentDidUpdate() {}
-
-    componentWillReceiveProps() {}
-
-    handleChange() {
-
-    }
 
     renderDemoPanels = () => {
         const {local, props} = this
@@ -68,60 +66,33 @@ export default class DemoListView extends React.Component {
             expandedDemoPanelKey,
             setExpandedDemoPanelKey
         } = demoListState
-        const demoTypes = [
-            {
-                label: 'Button',
-                Demo: ButtonDemo
-            },
-            {
-                label: 'Icon',
-                Demo: IconDemo
-            },
-            {
-                label: 'Link',
-                Demo: LinkDemo
-            },
-            {
-                label: 'Collapse',
-                Demo: CollapseDemo
-            },
-            {
-                label: 'Dialog',
-                Demo: DialogDemo
-            },
-            {
-                label: 'Popover',
-                Demo: PopoverDemo
-            },
-            {
-                label: 'Tabs',
-                Demo: TabsDemo
-            },
-            {
-                label: 'FileList',
-                Demo: FileListDemo
-            },
-            {
-                label: 'Table',
-                Demo: TableDemo
-            },
-            {
-                label: 'Checkbox',
-                Demo: CheckboxDemo
-            },
-            {
-                label: 'DatePicker',
-                Demo: DatePickerDemo
-            },
-            {
-                label: 'Input',
-                Demo: InputDemo
-            }
+        const Demos = [
+            ButtonDemo,
+            IconDemo,
+            LinkDemo,
+            CollapseDemo,
+            DialogDemo,
+            PopoverDemo,
+            TabsDemo,
+            FileListDemo,
+            TableDemo,
+            CheckboxDemo,
+            DatePickerDemo,
+            InputDemo,
+            RadioDemo,
+            SelectDemo,
+            SuggestDemo,
+            SwitchDemo,
+            TextareaDemo
         ]
         return <div>
             {
-                demoTypes.map(item => {
-                    const {label, Demo} = item
+                Demos.map(Demo => {
+                    let label = ''
+                    const regArr = /^(.+)Demo$/.exec(Demo.name)
+                    if (regArr) {
+                        label = regArr[1]
+                    }
                     const key = `demo-panel-${label}`
                     const expanded = expandedDemoPanelKey === key
                     return <ExpansionPanel

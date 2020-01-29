@@ -14,14 +14,14 @@ const DatePickerDemo = () => {
 
     return <div className="demo-block date-picker-demo-block">
         {/* ===== 0 basic ===== */}
-        <div className="picker-wrap">
+        <div className="inline-block-demo">
             <DatePicker
                 defaultValue={new Date(2019, 7)}
             />
         </div>
         <Divider className="demo-block-separator" />
         {/* ===== 1 disabled & error ===== */}
-        <div className="picker-wrap">
+        <div className="inline-block-demo">
             <DatePicker
                 status="error"
                 defaultValue={new Date(2020, 1)}
@@ -30,7 +30,7 @@ const DatePickerDemo = () => {
         </div>
         <Divider className="demo-block-separator" />
         {/* ===== 2 month ===== */}
-        <div className="picker-wrap">
+        <div className="inline-block-demo">
             <DatePicker
                 mode={'month'}
                 defaultValue={new Date(2019, 7)}
@@ -38,7 +38,7 @@ const DatePickerDemo = () => {
         </div>
         <Divider className="demo-block-separator" />
         {/* ===== 3 quater ===== */}
-        <div className="picker-wrap">
+        <div className="inline-block-demo">
             <DatePicker
                 mode={'quarter'}
                 disabled={true}

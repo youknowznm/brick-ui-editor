@@ -92,18 +92,17 @@
         }
       }
       .date-picker-demo-block {
-        .picker-wrap {
-          position: relative;
-          display: inline-block;
-          width: 300px;
-          margin-right: 30px;
-        }
+
       }
-      .input-demo-block {
-        .input-demo {
-          width: 250px;
-          display: inline-block;
-          margin: 0 10px 10px 0;
+      .inline-block-demo {
+        position: relative;
+        width: 250px;
+        display: inline-block;
+        margin: 0 10px 10px 0;
+      }
+      .switch-demo-block {
+        .brick-switch {
+          margin-right: 10px;
         }
       }
     }

@@ -21,7 +21,7 @@ const InputDemo = () => {
     const getInputWithFix = ({prefix = null, suffix = null} = {}) => {
         return <div className="control-wrap">
             <Input
-                className="input-demo"
+                className="inline-block-demo"
                 prefix={prefix}
                 suffix={suffix}
             />
@@ -31,9 +31,9 @@ const InputDemo = () => {
     return <div className="demo-block input-demo-block">
         {/* ===== 0 basic ===== */}
         <div>
-            <Input className="input-demo" value={'内容'} placeholder={'占位符'} />
-            <Input className="input-demo" value={'内容'} placeholder={'占位符'} status="error" />
-            <Input className="input-demo" value={'内容'} placeholder={'占位符'} disabled />
+            <Input className="inline-block-demo" value={'内容'} placeholder={'占位符'} />
+            <Input className="inline-block-demo" value={'内容'} placeholder={'占位符'} status="error" />
+            <Input className="inline-block-demo" value={'内容'} placeholder={'占位符'} disabled />
         </div>
         <Divider className="demo-block-separator" />
         {/* ===== 1 size ??? 似乎未生效 ===== */}
