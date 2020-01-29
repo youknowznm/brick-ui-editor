@@ -320,7 +320,7 @@ export class InnerDatePicker extends React.Component<IDatePickerProps, IDatePick
             onSelected: onItemSelected
         });
 
-        // console.log('#dp construct', this.state.displayedDate);
+        // // console.log('#dp construct', this.state.displayedDate);
     }
 
     static getDerivedStateFromProps(nextProps: IDatePickerProps, nextState: IDatePickerState) {
@@ -470,10 +470,10 @@ export class InnerDatePicker extends React.Component<IDatePickerProps, IDatePick
 
     render() {
         const value = dayjs(this.state.value as Dayjs);
-        console.log('#dp, ', getDateRows(
-            value.year(),
-            7
-        ), dayjs(null || undefined));
+        // console.log('#dp, ', getDateRows(
+        //     value.year(),
+        //     7
+        // ), dayjs(null || undefined));
 
         const shouldShowPanel = this.state.isUserInput || this.state.open;
 

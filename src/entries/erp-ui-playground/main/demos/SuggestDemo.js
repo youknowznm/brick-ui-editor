@@ -49,7 +49,7 @@ const SuggestDemo = () => {
             <Suggest
                 className="inline-block-demo"
                 onSearch={handleFetch}
-                value="option_2"
+                value={null}
                 // onChange={setValue}
                 placeholder={'7个字无结果'}
             />
@@ -59,7 +59,7 @@ const SuggestDemo = () => {
             <Suggest
                 className="inline-block-demo"
                 onSearch={handleFetch}
-                value="option_2"
+                value={null}
                 // onChange={setValue}
                 disabled={true}
                 placeholder={'7个字无结果'}

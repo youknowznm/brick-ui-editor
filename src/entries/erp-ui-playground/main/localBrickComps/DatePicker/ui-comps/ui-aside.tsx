@@ -82,7 +82,7 @@ export class UiAside extends React.Component<TypeUIAsideProps, TypeUIAsideState>
     render() {
         const props = this.props;
 
-        console.log('padding', this.state.paddingLeft);
+        // console.log('padding', this.state.paddingLeft);
 
         return <div className={cls('aside')}
                     data-hover-status={this.state.isHovering ? 'hover' : null}

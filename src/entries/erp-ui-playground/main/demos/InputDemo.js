@@ -4,7 +4,7 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../components/wrapDemoComp'
 
-import {Input} from '@befe/brick'
+import {GenericCheckboxGroup, Input} from '@befe/brick'
 import {Icon} from '@befe/brick'
 
 import {
@@ -31,9 +31,26 @@ const InputDemo = () => {
     return <div className="demo-block input-demo-block">
         {/* ===== 0 basic ===== */}
         <div>
-            <Input className="inline-block-demo" value={'内容'} placeholder={'占位符'} />
-            <Input className="inline-block-demo" value={'内容'} placeholder={'占位符'} status="error" />
-            <Input className="inline-block-demo" value={'内容'} placeholder={'占位符'} disabled />
+            <Input
+                onChange={() => {}}
+                className="inline-block-demo"
+                value={'内容'}
+                placeholder={'占位符'}
+            />
+            <Input
+                onChange={() => {}}
+                className="inline-block-demo"
+                value={'内容'}
+                placeholder={'占位符'}
+                status="error"
+            />
+            <Input
+                onChange={() => {}}
+                className="inline-block-demo"
+                value={'内容'}
+                placeholder={'占位符'}
+                disabled={true}
+            />
         </div>
         <Divider className="demo-block-separator" />
         {/* ===== 1 size ??? 似乎未生效 ===== */}

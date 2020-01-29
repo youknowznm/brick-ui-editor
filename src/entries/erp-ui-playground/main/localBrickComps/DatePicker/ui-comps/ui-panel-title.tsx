@@ -67,7 +67,7 @@ export const UiPanelTitle = (props: {
         </div>
         : null;
 
-    console.log({navBackElem, navForwardElem}, props);
+    // console.log({navBackElem, navForwardElem}, props);
 
     const zoomingIconElem = props.hasZooming
         ? <Icon className={brk('zooming')}

@@ -40,8 +40,9 @@ const CheckboxDemo = () => {
         <div>
             <GenericCheckboxGroup
                 type={'intensive'}
-                value={value}
+                defaultValue={[value]}
                 options={options}
+                onChange={() => {}}
             />
         </div>
 

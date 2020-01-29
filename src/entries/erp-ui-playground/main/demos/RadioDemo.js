@@ -18,7 +18,7 @@ const RadioDemo = () => {
         {value: 'item_2', label: 'item-2'},
         {value: 'item_3', label: 'item-3'},
     ]
-    const value = 'item_1'
+    const value = ['item_1']
 
 
     return <div className="demo-block radio-demo-block">

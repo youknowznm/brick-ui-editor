@@ -36,7 +36,7 @@ export class UILayoutItem extends React.Component<TypeItemProps, TypeItemState> 
 
     handleMouseUp = () => {
         this.setState({isActive: false});
-        console.log('item: mouse up');
+        // console.log('item: mouse up');
     };
 
     handleClick = () => {
@@ -46,7 +46,7 @@ export class UILayoutItem extends React.Component<TypeItemProps, TypeItemState> 
         } else if (!props.disabled) {
             props.onClick && props.onClick(props.value);
         }
-        console.log('item: click');
+        // console.log('item: click');
     };
 
     get actionStatus() {
