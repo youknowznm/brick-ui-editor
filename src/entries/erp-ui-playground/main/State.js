@@ -27,14 +27,14 @@ class MainState extends BaseModel {
 
     // ##### 左侧 demo 容器 #####
 
-    @observable showDemoListDrawer = false
+    @observable showDemoDrawer = false
 
     @observable demoListWidth = 800
 
     triggerDemoDrawer = target => {
-        const result = typeof target === 'boolean' ? target : !this.showDemoListDrawer
+        const result = typeof target === 'boolean' ? target : !this.showDemoDrawer
         this.setProps({
-            showDemoListDrawer: result
+            showDemoDrawer: result
         })
     }
 
@@ -50,22 +50,21 @@ class MainState extends BaseModel {
 
     // ##### 中间 实际内容(默认下的全屏) #####
 
-    @observable showDemoListDrawer = false
+    @observable showDemoDrawer = false
 
     // ##### 右侧 属性编辑器 #####
 
     @observable componentInEditId = ''
 
-    setEditingComponentId = id => {
+    setComponentInEditId = id => {
         console.log({id})
         this.setProps({
             componentInEditId: id
         })
     }
 
-    @computed get componentInEdit() {
+    @computed get componentInEditData() {
         return this.usedCompsDataArray.find(item => {
-            console.log(1, item, this.componentInEditId)
             return item.id === this.componentInEditId
         }) || null
     }

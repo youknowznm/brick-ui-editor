@@ -47,7 +47,7 @@ const wrapDemoComp = OriginComponent => {
                         }
                     }
                 }
-                delete ownProps.app;
+                delete ownProps.root;
                 this.setState({
                     ownState: reactElem.state,
                     ownProps,

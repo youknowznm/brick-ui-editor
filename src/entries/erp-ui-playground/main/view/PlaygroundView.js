@@ -23,12 +23,30 @@ import '../style/playground.scss'
 export default class PlaygroundView extends React.Component {
 
     static propTypes = {
-        // triggerDemoDrawer
-    }
 
-    static defaultProps = {
-        triggerDemoDrawer: () => {},
-        setEditingComponentId: () => {},
+        // demo 列表抽屉宽度
+        demoListWidth: PropTypes.number.isRequired,
+
+        // 已使用的组件数据数组
+        usedCompsDataArray: MobxPropTypes.arrayOrObservableArray.isRequired,
+
+        // 是否按下了 meta key
+        metaKeyPressing: PropTypes.bool.isRequired,
+
+        // 是否打开 demo 列表抽屉
+        showDemoDrawer: PropTypes.bool.isRequired,
+
+        // 开关 demo 列表抽屉
+        triggerDemoDrawer: PropTypes.func.isRequired,
+
+        // 开关控制面板抽屉
+        triggerControlPanelDrawer: PropTypes.func.isRequired,
+
+        // 编辑状态的组件 id
+        componentInEditId: PropTypes.string.isRequired,
+
+        // 设置/清空编辑状态的组件 id
+        setComponentInEditId: PropTypes.func.isRequired,
     }
 
     local = {
@@ -40,74 +58,83 @@ export default class PlaygroundView extends React.Component {
         const {local} = this
     }
 
-    componentDidMount() {
-    }
-
-    componentDidUpdate() {}
-
-    componentWillReceiveProps() {
-    }
-
     renderPlaygroundContent = () => {
         const {local, props} = this
         const {
+            usedCompsDataArray,
             metaKeyPressing,
             componentInEditId,
-            setEditingComponentId,
+            setComponentInEditId,
             triggerDemoDrawer,
             triggerControlPanelDrawer
         } = props
         return <div className="playground-content"
             onMouseOver={evt => {
+                // 滑过区域空白处时, 关闭 demo 列表抽屉
                 const {className} = evt.target
                 if (className && className.indexOf('playground-content') > -1) {
                     props.triggerDemoDrawer(false)
                 }
             }}
             onClick={evt => {
+                // 点击区域空白处时, 取消组件编辑
                 const {className} = evt.target
                 if (className && className.indexOf('playground-content') > -1) {
-                    props.setEditingComponentId('')
+                    props.setComponentInEditId('')
                 }
             }}
         >
-            {props.usedCompsDataArray.map(item => {
-                {/* console.log('componentsUsedData', item); */}
-                {/* console.log('children', item.originCompProps.children); */}
+            {usedCompsDataArray.map(item => {
+                // console.log('usedCompsData:', toJS(item))
+                // id: "18bv1q9"
+                // originDisplayName: "Button"
+                // originCompProps: {
+                //     type: "intensive"
+                //     children: "加强"
+                //     root: {
+                //         metaKeyPressing: true,
+                //             showControlPanelDrawer: false,
+                //             triggerControlPanelDrawer: ƒ,
+                //             triggerDemoDrawer: ƒ,
+                //             setComponentInEditId: ƒ
+                //     }
+                //     className: ""
+                //     color: "normal"
+                //     disabled: false
+                //     loadingDelayInMS: 300
+                // }
+                // originCompState: {
+                //     asyncLoading: false
+                //     showLoading: false
+                // }
                 return <PlaygroundCompWrap
                     key={item.id}
                     id={item.id}
-                    metaKeyPressing={metaKeyPressing}
-                    componentInEditId={componentInEditId}
-                    setEditingComponentId={setEditingComponentId}
-                    triggerDemoDrawer={triggerDemoDrawer}
-                    triggerControlPanelDrawer={triggerControlPanelDrawer}
                     originCompProps={item.originCompProps}
                     originCompState={item.originCompState}
-
-                    // id: "gcxcsy5"
-                    // originDisplayName: "Button"
-                    // originCompProps: {type: "important", children: "important", className: "", color: "normal", disabled: false, …}
-                    // originCompState: {asyncLoading: false, showLoading: false}
-                    // playgroundTop: 0
-                    // playgroundLeft: 0
+                    metaKeyPressing={metaKeyPressing}
+                    componentInEditId={componentInEditId}
+                    setComponentInEditId={setComponentInEditId}
+                    triggerDemoDrawer={triggerDemoDrawer}
+                    triggerControlPanelDrawer={triggerControlPanelDrawer}
                 />;
             })}
         </div>
     }
 
     render() {
-        const {local, props, triggerDemoDrawer} = this
+        const {local, props} = this
         const {demoListState} = local
         const {
             demoListWidth,
-            showDemoListDrawer
+            showDemoDrawer
         } = props
+        // 减去 trigger 宽度
         const offSet = demoListWidth - 20
         return <div className="playground-wrap"
             style={{
-                marginLeft: `${showDemoListDrawer ? offSet : 0}px`,
-                right: `${showDemoListDrawer ? -offSet : 0}px`,
+                marginLeft: `${showDemoDrawer ? offSet : 0}px`,
+                right: `${showDemoDrawer ? -offSet : 0}px`,
             }}
             >
             {this.renderPlaygroundContent()}

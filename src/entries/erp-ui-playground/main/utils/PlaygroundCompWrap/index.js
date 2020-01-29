@@ -79,17 +79,14 @@ export default class PlaygroundCompWrap extends React.Component {
             onStart={() => {}}
             onStop={(e, ui) => {
                 const {x, y} = ui
-                console.log(1, prevX, x)
-                console.log(2, prevY, y)
-                props.setEditingComponentId(prevX === x && prevY === y ? id : '')
-                this.prevX = x
-                this.prevY = y
+                props.setComponentInEditId((prevX === x && prevY === y) ? id : '')
                 this.setState({
                     isAbsolutePosition: true,
                     // wrapDOMTop: ui.y,
                     // wrapDOMLeft: ui.x,
                 })
-                console.log('drag stop',  ui)
+                this.prevX = x
+                this.prevY = y
             }}
         >
             <div
@@ -105,7 +102,6 @@ export default class PlaygroundCompWrap extends React.Component {
                 }}
                 ref={createWrapDOMRef}
             >
-
                 <div>
                     <BrickButton
                         ref={this.createContentDOMRef}
@@ -114,7 +110,6 @@ export default class PlaygroundCompWrap extends React.Component {
                     <div
                         className="action-layer"
                         onClick={() => {
-                            props.setEditingComponentId(id)
                             props.triggerDemoDrawer(false)
                             props.triggerControlPanelDrawer(false)
                         }}

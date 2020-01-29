@@ -23,7 +23,32 @@ import '../style/attr-editor.scss'
 export default class AttrEditorView extends React.Component {
 
     static propTypes = {
-        // componentInEdit
+
+        // 编辑状态的组件数据
+        //
+        // id: "18bv1q9"
+        // originDisplayName: "Button"
+        // originCompProps: {
+        //     type: "intensive"
+        //     children: "加强"
+        //     root: {
+        //         metaKeyPressing: true,
+        //             showControlPanelDrawer: false,
+        //             triggerControlPanelDrawer: ƒ,
+        //             triggerDemoDrawer: ƒ,
+        //             setComponentInEditId: ƒ
+        //     }
+        //     className: ""
+        //     color: "normal"
+        //     disabled: false
+        //     loadingDelayInMS: 300
+        // }
+        // originCompState: {
+        //     asyncLoading: false
+        //     showLoading: false
+        // }
+        //
+        componentInEditData: PropTypes.object
     }
 
     local = {
@@ -42,13 +67,11 @@ export default class AttrEditorView extends React.Component {
 
     renderAttrEditorContent = () => {
         const {local, props} = this
-        const {componentInEdit} = props
-        if (componentInEdit === null) {
+        const {componentInEditData} = props
+        if (componentInEditData === null) {
             return null
         }
-        const originCompData = componentInEdit.props
-        // console.log('componentInEdit: ', componentInEdit)
-        // console.table('originCompData: ', originCompData)
+        console.log('componentInEditData: ', toJS(componentInEditData))
         const {
             id,
             originDisplayName,
@@ -56,7 +79,7 @@ export default class AttrEditorView extends React.Component {
             originCompState,
             playgroundTop,
             playgroundLeft,
-        } = originCompData
+        } = componentInEditData
 
         const propInputs = []
         for (let key in originCompProps) {
@@ -80,6 +103,16 @@ export default class AttrEditorView extends React.Component {
             ></TextField>)
         }
 
+        const inputAdornmentPx = {
+            endAdornment: <InputAdornment position="end">px</InputAdornment>
+        }
+
+        const styleInputOtherProps = {
+            InputProps: inputAdornmentPx,
+            size: 'small',
+            margin: 'dense'
+        }
+
         return <div className="attr-editor-content">
             <h3 className="title">
                 <span className="code">Button</span>
@@ -88,84 +121,40 @@ export default class AttrEditorView extends React.Component {
             <Divider />
             <ul className="type-style">
                 <TextField
+                    className="type-style-input top"
                     key="style-top"
                     value=""
                     label="上边距 top"
-                    size="small"
-                    style={{
-                        width: 150,
-                        marginRight: 20,
-                    }}
-                    InputProps={{
-                        endAdornment: <InputAdornment
-                            position="end"
-                        >
-                            px
-                        </InputAdornment>
-                    }}
-                    margin="dense"
+                    {...styleInputOtherProps}
                 ></TextField>
                 <TextField
+                    className="type-style-input left"
                     key="style-left"
                     value=""
                     label="左边距 left"
-                    size="small"
-                    style={{
-                        width: 150,
-                        marginRight: 20,
-                    }}
-                    InputProps={{
-                        endAdornment: <InputAdornment
-                            position="end"
-                        >
-                            px
-                        </InputAdornment>
-                    }}
-                    margin="dense"
+                    {...styleInputOtherProps}
                 ></TextField>
                 <TextField
+                    className="type-style-input width"
                     key="style-width"
                     value=""
                     label="宽度 width"
-                    size="small"
-                    style={{
-                        width: 150,
-                        marginRight: 20,
-                    }}
-                    InputProps={{
-                        endAdornment: <InputAdornment
-                            position="end"
-                        >
-                            px
-                        </InputAdornment>
-                    }}
-                    margin="dense"
+                    {...styleInputOtherProps}
                 ></TextField>
                 <TextField
+                    className="type-style-input height"
                     key="style-height"
                     value=""
                     label="高度 height"
-                    size="small"
-                    style={{
-                        width: 150,
-                        marginRight: 20,
-                    }}
-                    InputProps={{
-                        endAdornment: <InputAdornment
-                            position="end"
-                        >
-                            px
-                        </InputAdornment>
-                    }}
-                    margin="dense"
+                    {...styleInputOtherProps}
                 ></TextField>
             </ul>
             <Divider />
             <ul className="type-data">
-                ...propInputs
-            </ul>
-            <ul className="type-data">
-                ...stateInputs
+                {propInputs}
+            {/*</ul>*/}
+            {/*<ul className="type-data">*/}
+                {stateInputs}
             </ul>
         </div>
     }
@@ -178,7 +167,7 @@ export default class AttrEditorView extends React.Component {
                 className="attr-editor-drawer"
                 anchor="right"
                 variant="persistent"
-                open={props.componentInEdit !== null}
+                open={props.componentInEditData !== null}
             >
                 {this.renderAttrEditorContent()}
             </Drawer>

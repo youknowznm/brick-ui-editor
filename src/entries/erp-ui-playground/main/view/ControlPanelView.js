@@ -10,7 +10,7 @@ import {withStyles} from '@material-ui/core/styles'
 import Drawer from '@material-ui/core/Drawer'
 import Button from '@material-ui/core/Button'
 
-import DemoListState from '../states/DemoListState'
+import ControlPanelState from '../states/ControlPanelState'
 
 import '../style/control-panel.scss'
 
@@ -18,11 +18,16 @@ import '../style/control-panel.scss'
 export default class ControlPanelView extends React.Component {
 
     static propTypes = {
-        // showControlPanelDrawer
+
+        // 是否打开控制面板抽屉
+        showControlPanelDrawer: PropTypes.bool.isRequired,
+
+        // 开关控制面板抽屉
+        triggerControlPanelDrawer: PropTypes.func.isRequired,
     }
 
     local = {
-        demoListState: new DemoListState()
+        ControlPanelState: new ControlPanelState()
     }
 
     constructor(props) {
@@ -30,20 +35,13 @@ export default class ControlPanelView extends React.Component {
         const {local} = this
     }
 
-    componentDidMount() {
-    }
-
-    componentDidUpdate() {}
-
-    componentWillReceiveProps() {}
-
     renderControlPanelContent = () => {
         return <div className="control-panel-content"></div>
     }
 
     render() {
         const {local, props} = this
-        const {demoListState} = local
+        const {ControlPanelState} = local
         return <div className="control-panel">
             <Drawer
                 className="control-panel-drawer"

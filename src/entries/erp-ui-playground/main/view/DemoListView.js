@@ -2,15 +2,14 @@ import * as React from 'react'
 import {default as c} from 'classnames'
 import {toJS, computed, observable, action} from 'mobx'
 import {inject, observer} from 'mobx-react'
+import PropTypes from 'prop-types'
+import {PropTypes as MobxPropTypes} from 'mobx-react'
 
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Typography from '@material-ui/core/Typography';
-
-import PropTypes from 'prop-types'
-import {PropTypes as MobxPropTypes} from 'mobx-react'
 
 import ButtonDemo from '../demos/ButtonDemo'
 import IconDemo from '../demos/IconDemo'
@@ -35,13 +34,12 @@ import HeadNavDemo from '../demos/HeadNavDemo'
 import MenuDemo from '../demos/MenuDemo'
 import PaginationDemo from '../demos/PaginationDemo'
 
-import MUIDrawer from '@material-ui/core/Drawer'
+import Drawer from '@material-ui/core/Drawer'
 import MUIButton from '@material-ui/core/Button'
 
 import DemoListState from '../states/DemoListState'
 
 import {PortalContainerProvider} from '../utils/PortalContainerContext'
-// import {PortalContainerConsumer} from '../../PortalContainerContext'
 
 import '../style/demo-list.scss'
 
@@ -49,7 +47,15 @@ import '../style/demo-list.scss'
 export default class DemoListView extends React.Component {
 
     static propTypes = {
-        // showDemoListDrawer
+
+        // demo 列表抽屉宽度
+        demoListWidth: PropTypes.number.isRequired,
+
+        // 是否打开 demo 列表抽屉
+        showDemoDrawer: PropTypes.bool.isRequired,
+
+        // 是否按下了 meta key
+        metaKeyPressing: PropTypes.bool.isRequired,
     }
 
     local = {
@@ -61,18 +67,15 @@ export default class DemoListView extends React.Component {
         const {local} = this
     }
 
-    componentDidMount() {}
-
-    componentDidUpdate() {}
-
     renderDemoPanels = () => {
         const {local, props} = this
         const {demoListState} = local
         const {metaKeyPressing} = props
         const {
             expandedDemoPanelLabel,
-            setExpandedDemoPanelKey
+            setExpandedDemoPanelLabel
         } = demoListState
+
         const Demos = [
             ButtonDemo,
             IconDemo,
@@ -116,7 +119,7 @@ export default class DemoListView extends React.Component {
                             square={true}
                             expanded={isExpanded}
                             onChange={(evt, value) => {
-                                setExpandedDemoPanelKey(value ? label : '')
+                                setExpandedDemoPanelLabel(value ? label : '')
                             }}>
                             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                                 <Typography>{label}</Typography>
@@ -136,11 +139,11 @@ export default class DemoListView extends React.Component {
         const {demoListState} = local
         const {metaKeyPressing} = props
         return <div className="demo-list">
-            <MUIDrawer
+            <Drawer
                 className="demo-list-drawer"
                 anchor="left"
                 variant="persistent"
-                open={props.showDemoListDrawer}
+                open={props.showDemoDrawer}
             >
                 <div
                     className="demo-list-content"
@@ -150,7 +153,7 @@ export default class DemoListView extends React.Component {
                 >
                     {this.renderDemoPanels()}
                 </div>
-            </MUIDrawer>
+            </Drawer>
         </div>
     }
 }

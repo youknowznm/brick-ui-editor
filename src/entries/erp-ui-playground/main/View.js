@@ -41,13 +41,6 @@ export default class extends React.Component {
         this.registerResizeListener()
     }
 
-    // pushUsedCompData(data);
-
-    // // id: "gcxcsy5"
-    // // originDisplayName: "Button"
-    // // originCompProps: {type: "important", children: "important", className: "", color: "normal", disabled: false, …}
-    // // originCompState: {asyncLoading: false, showLoading: false}
-
     registerMetaKeyListener = () => {
         const {local} = this
         const triggerMetaKeyPressed = (evt, target) => {
@@ -142,24 +135,22 @@ export default class extends React.Component {
             <div className="index-page">
                 <DemoListView
                     demoListWidth={mainState.demoListWidth}
-                    showDemoListDrawer={mainState.showDemoListDrawer}
+                    showDemoDrawer={mainState.showDemoDrawer}
                     metaKeyPressing={mainState.metaKeyPressing}
-                    triggerDemoDrawer={mainState.triggerDemoDrawer}
                 />
                 {this.renderDemoDrawerTrigger()}
                 <PlaygroundView
                     demoListWidth={mainState.demoListWidth}
-                    playgroundWidth={mainState.playgroundWidth}
-                    playgroundHeight={mainState.playgroundHeight}
-                    metaKeyPressing={mainState.metaKeyPressing}
                     usedCompsDataArray={mainState.usedCompsDataArray}
-                    showDemoListDrawer={mainState.showDemoListDrawer}
+                    metaKeyPressing={mainState.metaKeyPressing}
+                    showDemoDrawer={mainState.showDemoDrawer}
                     triggerDemoDrawer={mainState.triggerDemoDrawer}
                     triggerControlPanelDrawer={mainState.triggerControlPanelDrawer}
-                    setEditingComponentId={mainState.setEditingComponentId}
+                    componentInEditId={mainState.componentInEditId}
+                    setComponentInEditId={mainState.setComponentInEditId}
                 ></PlaygroundView>
                 <AttrEditorView
-                    componentInEdit={mainState.componentInEdit}
+                    componentInEditData={mainState.componentInEditData}
                 />
                 <ControlPanelView
                     showControlPanelDrawer={mainState.showControlPanelDrawer}
@@ -171,4 +162,4 @@ export default class extends React.Component {
     }
 }
 
-// showDemoListDrawer={mainState.showDemoListDrawer}
+// showDemoDrawer={mainState.showDemoDrawer}
