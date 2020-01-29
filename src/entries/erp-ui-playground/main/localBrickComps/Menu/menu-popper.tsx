@@ -142,7 +142,7 @@ export class MenuPopper extends React.Component<MenuPopperProps> {
     render() {
         return <PortalContainerConsumer>
             {
-                ctx =>   (
+                ctx => (
                     <PopperTrigger {...this.triggerProps}>
                         {this.props.targetContent}
                         <Popper

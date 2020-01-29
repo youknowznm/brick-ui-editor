@@ -143,7 +143,6 @@ export default class extends React.Component {
                 <DemoListView
                     demoListWidth={mainState.demoListWidth}
                     showDemoListDrawer={mainState.showDemoListDrawer}
-
                     metaKeyPressing={mainState.metaKeyPressing}
                     triggerDemoDrawer={mainState.triggerDemoDrawer}
                 />
@@ -157,7 +156,7 @@ export default class extends React.Component {
                     showDemoListDrawer={mainState.showDemoListDrawer}
                     triggerDemoDrawer={mainState.triggerDemoDrawer}
                     triggerControlPanelDrawer={mainState.triggerControlPanelDrawer}
-                    setEditingComponentId={local.setEditingComponentId}
+                    setEditingComponentId={mainState.setEditingComponentId}
                 ></PlaygroundView>
                 <AttrEditorView
                     componentInEdit={mainState.componentInEdit}

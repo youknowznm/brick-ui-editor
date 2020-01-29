@@ -67,7 +67,7 @@ const wrapDemoComp = OriginComponent => {
             })
         }
 
-     
+
         render() {
             const {state, props} = this;
             const {
@@ -78,10 +78,10 @@ const wrapDemoComp = OriginComponent => {
             const extProps = Object.assign({}, toJS(this.props), {
                 ref: this.createRef
             });
-    
+
             return <div
                 className={c(
-                    'extend-ui-comp-wrap', 
+                    'extend-ui-comp-wrap',
                     props.root.metaKeyPressing && 'meta-key-pressed'
                 )}
                 style={{
@@ -97,7 +97,7 @@ const wrapDemoComp = OriginComponent => {
                             this.dispatchCompToUse();
                         }}
                     >
-                    </div>  
+                    </div>
             </div>;
         }
     }

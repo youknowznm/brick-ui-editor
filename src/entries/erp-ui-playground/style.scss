@@ -15,3 +15,14 @@ ul,
 li {
   list-style: none;
 }
+
+.brick-modal-wrap {
+  position: relative !important;
+  .brick-modal-mask {
+    display: none !important;
+  }
+  .brick-dialog-wrap {
+    margin: 0 auto !important
+    //margin: 30px auto 45px !important
+  }
+}

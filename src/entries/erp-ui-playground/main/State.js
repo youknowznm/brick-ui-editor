@@ -57,6 +57,7 @@ class MainState extends BaseModel {
     @observable componentInEditId = ''
 
     setEditingComponentId = id => {
+        console.log({id})
         this.setProps({
             componentInEditId: id
         })
@@ -64,6 +65,7 @@ class MainState extends BaseModel {
 
     @computed get componentInEdit() {
         return this.usedCompsDataArray.find(item => {
+            console.log(1, item, this.componentInEditId)
             return item.id === this.componentInEditId
         }) || null
     }

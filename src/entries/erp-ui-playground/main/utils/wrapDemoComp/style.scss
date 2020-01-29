@@ -1,78 +1,77 @@
 .extend-ui-comp-wrap {
 
-    $stripe-color: #999;
-    $stripe-color-hovered: #298ef2;
-    $stripe-width: 15px;
+  $stripe-color: #999;
+  $stripe-color-hovered: #298ef2;
+  $stripe-width: 15px;
 
-    position: relative;
-    display: inline-block;
-    white-space: nowrap;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    // * {
-    //     margin: 0;
-    //     padding: 0;
-    // }
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  // * {
+  //     margin: 0;
+  //     padding: 0;
+  // }
+  .button-use {
+    position: absolute;
+    right: 0;
+    bottom: -32px;
+    display: none;
+    opacity: 1;
+    z-index: 99999;
+  }
+  &:hover {
     .button-use {
-        position: absolute;
-        right: 0;
-        bottom: -32px;
-        display: none;
-        opacity: 1;
-        z-index: 99999;
+      display: block;
     }
-    &:hover {
-        .button-use {
-            display: block;
-        }
-    }
+  }
 
+  .action-layer {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid $stripe-color;
+    background: #fff linear-gradient(
+        45deg,
+        $stripe-color 0, $stripe-color 25%, transparent 25%, transparent 50%,
+        $stripe-color 50%, $stripe-color 75%, transparent 75%, transparent
+    );
+    background-size: $stripe-width $stripe-width;
+    cursor: pointer;
+    &:hover {
+      // background: stripe-color;
+      background: #fff linear-gradient(
+          45deg,
+          $stripe-color-hovered 0, $stripe-color-hovered 25%, transparent 25%, transparent 50%,
+          $stripe-color-hovered 50%, $stripe-color-hovered 75%, transparent 75%, transparent
+      );
+      border-color: $stripe-color-hovered;
+      background-size: $stripe-width $stripe-width;
+      .text {
+        color: $stripe-color-hovered;
+      }
+    }
+  }
+  &.meta-key-pressed {
     .action-layer {
-        display: none;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        border: 1px solid $stripe-color;
-        background: #fff linear-gradient(
-            45deg, 
-            $stripe-color 0, $stripe-color 25%, transparent 25%, transparent 50%, 
-            $stripe-color 50%, $stripe-color 75%, transparent 75%, transparent
-        );
-        background-size: $stripe-width $stripe-width;
-        cursor: pointer;
-        transition: all .4s;
-        &:hover {
-            // background: stripe-color;
-            background: #fff linear-gradient(
-                45deg, 
-                $stripe-color-hovered 0, $stripe-color-hovered 25%, transparent 25%, transparent 50%, 
-                $stripe-color-hovered 50%, $stripe-color-hovered 75%, transparent 75%, transparent
-            );
-            border-color: $stripe-color-hovered;
-            background-size: $stripe-width $stripe-width;
-            .text {
-                color: $stripe-color-hovered;
-            }
-        }
+      display: block;
     }
-    &.meta-key-pressed {
-        .action-layer {
-            display: block;
-        }
-        .text {
-            display: block;
-            position: absolute;
-            // transition: all .4s;
-            overflow: hidden;
-            background-color: #fff;
-            text-overflow: ellipsis;
-            color: #000;
-            white-space: nowrap;
-            top: 50%;
-            left: 50%;
-            transform: translateX(-50%) translateY(-50%);
-        }
+    .text {
+      display: block;
+      position: absolute;
+      // transition: all .4s;
+      overflow: hidden;
+      background-color: #fff;
+      text-overflow: ellipsis;
+      color: #000;
+      white-space: nowrap;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
     }
+  }
 }

@@ -12,11 +12,11 @@ export default class State extends BaseModel {
     // 请求中标识
     @observable loadingFlag = false
 
-    @observable expandedDemoPanelKey = ''
+    @observable expandedDemoPanelLabel = 'Button'
 
-    setExpandedDemoPanelKey = key => {
+    setExpandedDemoPanelLabel = key => {
         this.setProps({
-            expandedDemoPanelKey: key
+            expandedDemoPanelLabel: key
         })
     }
 

@@ -30,7 +30,6 @@ import SuggestDemo from '../demos/SuggestDemo'
 import SwitchDemo from '../demos/SwitchDemo'
 import TextareaDemo from '../demos/TextareaDemo'
 import AlertDemo from '../demos/AlertDemo'
-import ToastDemo from '../demos/ToastDemo'
 import BreadcrumbDemo from '../demos/BreadcrumbDemo'
 import HeadNavDemo from '../demos/HeadNavDemo'
 import MenuDemo from '../demos/MenuDemo'
@@ -71,7 +70,7 @@ export default class DemoListView extends React.Component {
         const {demoListState} = local
         const {metaKeyPressing} = props
         const {
-            expandedDemoPanelKey,
+            expandedDemoPanelLabel,
             setExpandedDemoPanelKey
         } = demoListState
         const Demos = [
@@ -109,20 +108,21 @@ export default class DemoListView extends React.Component {
                         if (regArr) {
                             label = regArr[1]
                         }
-                        const key = `demo-panel-${label}`
-                        const expanded = expandedDemoPanelKey === key
+                        const isExpanded = expandedDemoPanelLabel === label
+                        // Dialog 必须从初始保持渲染状态
+                        const shouldRenderDemo = isExpanded || label === 'Dialog'
                         return <ExpansionPanel
-                            key={key}
+                            key={label}
                             square={true}
-                            expanded={expanded}
+                            expanded={isExpanded}
                             onChange={(evt, value) => {
-                                setExpandedDemoPanelKey(value ? key : '')
+                                setExpandedDemoPanelKey(value ? label : '')
                             }}>
                             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                                 <Typography>{label}</Typography>
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>
-                                <Demo metaKeyPressing={metaKeyPressing} />
+                                {shouldRenderDemo && <Demo metaKeyPressing={metaKeyPressing} />}
                             </ExpansionPanelDetails>
                         </ExpansionPanel>
                     })

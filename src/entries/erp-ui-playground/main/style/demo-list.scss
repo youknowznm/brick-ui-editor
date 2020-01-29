@@ -11,13 +11,15 @@
       width: 100%;
       height: 100%;
       // padding: 15px;
-      background-color: #eeeeee;
       .demo-block-separator {
         margin: 15px 0;
       }
       .demo-block {
         position: relative;
+        color: auto;
         width: 100%;
+        padding: 10px;
+        background-color: #fff;
       }
       .icon-demo-block {
         .icon-type-desc {
@@ -44,15 +46,7 @@
         .extend-ui-comp-wrap {
           width: 100% !important;
         }
-        .brick-modal-wrap {
-          position: relative !important;
-          .brick-modal-mask {
-            display: none !important;
-          }
-          .brick-dialog-wrap {
-            margin: 30px auto 45px !important
-          }
-        }
+
       }
       .popover-demo-block {
         .section-basic {
@@ -108,3 +102,4 @@
     }
   }
 }
+

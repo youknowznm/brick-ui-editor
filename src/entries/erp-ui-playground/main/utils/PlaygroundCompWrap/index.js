@@ -8,36 +8,42 @@ import Button from '@material-ui/core/Button'
 
 import Draggable from 'react-draggable'
 
+import getPlaygroundWrapDOMOffset from '../getOffset'
+
 import './style.scss'
 
-import {Button as BrickButton} from '@befe/brick' 
-// import {Button as BrickButton} from '../../../../../../../node_modules/@befe/brick' 
+import {Button as BrickButton} from '@befe/brick'
+// import {Button as BrickButton} from '../../../../../../../node_modules/@befe/brick'
 
 @observer
 export default class PlaygroundCompWrap extends React.Component {
 
     // static displayName = `${OriginComponent.displayName}PlaygroundWrap`
 
-    ref = null
+    contentDOM = null
+    wrapDOM = null
+
+    prevX = 0
+    prevY = 0
 
     state = {
-        // ownState: null,
-        // ownProps: null,
-        width: '0px',
-        height: '0px',
-        // display: '0px'
+        width: 0,
+        height: 0,
+        isAbsolutePosition: false,
     }
 
     static propTypes = {
-        // metaKeyPressing:
-        // originCompDisplayName:
-        // originCompProps:
-        // id:
     }
 
-    createRef = reactElem => {
-        this.ref = reactElem
-        const wrapDOM = findDOMNode(this.ref)
+    componentDidMount() {}
+
+    createWrapDOMRef = wrapDOM => {
+        this.wrapDOM = wrapDOM
+    }
+
+    createContentDOMRef = reactElem => {
+        this.contentRef = reactElem
+        const wrapDOM = findDOMNode(this.contentRef)
         if (wrapDOM) {
             const computedStyle = document.defaultView.getComputedStyle(wrapDOM)
             this.setState({
@@ -47,37 +53,62 @@ export default class PlaygroundCompWrap extends React.Component {
         }
     }
 
-    componentDidMount() {
-    }
-
     render() {
-        const {props, state} = this
+        const {
+            props,
+            state,
+            createWrapDOMRef,
+            prevX,
+            prevY
+        } = this
         const selected = props.componentInEditId === props.id
+        const {
+            isAbsolutePosition
+        } = state
         const {
             originCompProps,
             id
-        } = props;
-        return <div
-            className={c(
-                'playground-comp-wrap',
-                props.metaKeyPressing && 'meta-key-pressed',
-                selected && 'selected'
-            )}
-            style={{
-                width: state.width,
-                height: state.height
+        } = props
+        return <Draggable
+            defaultPosition={{
+                x: 0,
+                y: 0
+            }}
+            bounds=".playground-content"
+            handle=".action-layer"
+            onStart={() => {}}
+            onStop={(e, ui) => {
+                const {x, y} = ui
+                console.log(1, prevX, x)
+                console.log(2, prevY, y)
+                props.setEditingComponentId(prevX === x && prevY === y ? id : '')
+                this.prevX = x
+                this.prevY = y
+                this.setState({
+                    isAbsolutePosition: true,
+                    // wrapDOMTop: ui.y,
+                    // wrapDOMLeft: ui.x,
+                })
+                console.log('drag stop',  ui)
             }}
         >
-            <Draggable
-                handle=".action-layer"
-                onStop={() => {
-                    console.log('drag stop')
-                    props.setEditingComponentId('')
+            <div
+                className={c(
+                    'playground-comp-wrap',
+                    props.metaKeyPressing && 'meta-key-pressed',
+                    selected && 'selected',
+                    isAbsolutePosition && 'is-absolute-positon'
+                )}
+                style={{
+                    width: state.width,
+                    height: state.height
                 }}
+                ref={createWrapDOMRef}
             >
+
                 <div>
                     <BrickButton
-                        ref={this.createRef}
+                        ref={this.createContentDOMRef}
                         {...originCompProps}
                     />
                     <div
@@ -99,7 +130,7 @@ export default class PlaygroundCompWrap extends React.Component {
                         <span className="spot bl"></span>
                     </div>
                 </div>
-            </Draggable>
-        </div>
+            </div>
+        </Draggable>
     }
 }

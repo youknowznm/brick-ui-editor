@@ -76,6 +76,7 @@ export default class PlaygroundView extends React.Component {
                 {/* console.log('children', item.originCompProps.children); */}
                 return <PlaygroundCompWrap
                     key={item.id}
+                    id={item.id}
                     metaKeyPressing={metaKeyPressing}
                     componentInEditId={componentInEditId}
                     setEditingComponentId={setEditingComponentId}
