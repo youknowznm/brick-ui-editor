@@ -4,7 +4,8 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../components/wrapDemoComp'
 
-import {Suggest} from '@befe/brick'
+import {Suggest} from '../localBrickComps'
+
 
 // import {Suggest as OriginSuggest} from '@befe/brick'
 //

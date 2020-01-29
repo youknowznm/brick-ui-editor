@@ -29,12 +29,20 @@ import SelectDemo from '../demos/SelectDemo'
 import SuggestDemo from '../demos/SuggestDemo'
 import SwitchDemo from '../demos/SwitchDemo'
 import TextareaDemo from '../demos/TextareaDemo'
+import AlertDemo from '../demos/AlertDemo'
+import ToastDemo from '../demos/ToastDemo'
+import BreadcrumbDemo from '../demos/BreadcrumbDemo'
+import HeadNavDemo from '../demos/HeadNavDemo'
+import MenuDemo from '../demos/MenuDemo'
+import PaginationDemo from '../demos/PaginationDemo'
 
-import {withStyles} from '@material-ui/core/styles'
 import MUIDrawer from '@material-ui/core/Drawer'
 import MUIButton from '@material-ui/core/Button'
 
 import DemoListState from '../states/DemoListState'
+
+import {PortalContainerProvider, PortalContainerConsumer} from '../components/PortalContainerContext'
+// import {PortalContainerConsumer} from '../../PortalContainerContext'
 
 import '../style/demo-list.scss'
 
@@ -83,35 +91,44 @@ export default class DemoListView extends React.Component {
             SelectDemo,
             SuggestDemo,
             SwitchDemo,
-            TextareaDemo
+            TextareaDemo,
+            AlertDemo,
+            ToastDemo,
+            BreadcrumbDemo,
+            HeadNavDemo,
+            MenuDemo,
+            PaginationDemo
         ]
-        return <div>
-            {
-                Demos.map(Demo => {
-                    let label = ''
-                    const regArr = /^(.+)Demo$/.exec(Demo.name)
-                    if (regArr) {
-                        label = regArr[1]
-                    }
-                    const key = `demo-panel-${label}`
-                    const expanded = expandedDemoPanelKey === key
-                    return <ExpansionPanel
-                        key={key}
-                        square={true}
-                        expanded={expanded}
-                        onChange={(evt, value) => {
-                            setExpandedDemoPanelKey(value ? key : '')
-                        }}>
-                        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                            <Typography>{label}</Typography>
-                        </ExpansionPanelSummary>
-                        <ExpansionPanelDetails>
-                            <Demo metaKeyPressing={metaKeyPressing} />
-                        </ExpansionPanelDetails>
-                    </ExpansionPanel>
-                })
-            }
-        </div>;
+
+        return <PortalContainerProvider value=".demo-list-content">
+            <div>
+                {
+                    Demos.map(Demo => {
+                        let label = ''
+                        const regArr = /^(.+)Demo$/.exec(Demo.name)
+                        if (regArr) {
+                            label = regArr[1]
+                        }
+                        const key = `demo-panel-${label}`
+                        const expanded = expandedDemoPanelKey === key
+                        return <ExpansionPanel
+                            key={key}
+                            square={true}
+                            expanded={expanded}
+                            onChange={(evt, value) => {
+                                setExpandedDemoPanelKey(value ? key : '')
+                            }}>
+                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                                <Typography>{label}</Typography>
+                            </ExpansionPanelSummary>
+                            <ExpansionPanelDetails>
+                                <Demo metaKeyPressing={metaKeyPressing} />
+                            </ExpansionPanelDetails>
+                        </ExpansionPanel>
+                    })
+                }
+            </div>
+        </PortalContainerProvider>;
     }
 
     render() {

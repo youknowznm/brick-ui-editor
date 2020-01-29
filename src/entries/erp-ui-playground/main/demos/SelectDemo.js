@@ -4,7 +4,7 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../components/wrapDemoComp'
 
-import {Option, OptionGroup, Select} from '../components/_localSelectSrc'
+import {Option, OptionGroup, Select} from '../localBrickComps'
 
 // import {Select as OriginSelect} from '@befe/brick'
 //

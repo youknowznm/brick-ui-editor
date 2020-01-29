@@ -4,7 +4,7 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../components/wrapDemoComp'
 
-import {Dialog as OriginDialog} from '@befe/brick'
+import {Dialog as OriginDialog} from '../localBrickComps'
 import {SvgEdit, SvgGear} from '@befe/brick-icon'
 
 const Dialog = wrapDemoComp(OriginDialog)

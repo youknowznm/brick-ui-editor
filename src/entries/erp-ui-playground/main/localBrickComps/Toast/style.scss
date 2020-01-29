@@ -1,0 +1,107 @@
+@import "~@befe/brick-style/src/base";
+@import "~@befe/brick-style/src/motion/fade";
+
+@include exports('comp-toast') {
+  .brick-toast {
+    @include reset();
+
+    position: relative;
+    display: inline-block;
+    padding: $toast-padding-vertical $toast-padding-horizontal;
+    align-self: center;
+    background: $toast-bg-color;
+    box-shadow: $box-shadow-base;
+    border-radius: $toast-border-radius;
+
+    max-width: $layout-fluid-max-width * .5;
+
+    @include fadeInAnimation();
+
+    &-icon {
+      @include size($toast-icon-size);
+      position: absolute;
+      top: $toast-padding-vertical;
+      left: $toast-padding-horizontal;
+      font-size: $toast-icon-size;
+      line-height: $toast-headline-fontsize * $line-height-normal;
+    }
+
+    &-headline,
+    &-content {
+      padding-left: $toast-icon-size + $toast-icon-margin;
+    }
+
+    &-headline {
+      font-weight: $font-weight-medium;
+      font-size: $toast-headline-fontsize;
+    }
+
+    &-content {
+      font-size: $toast-content-fontsize;
+    }
+
+    &-headline + &-content {
+      margin-top: padding(1);
+    }
+
+    @each $type in $toast-type-list {
+      &-type-#{$type} {
+        .brick-toast-icon .brick-icon {
+          color: map_get($toast-icon-color, $type);
+        }
+      }
+    }
+
+    .brick-close-x {
+      @include closeXPosition($toast-padding-horizontal, $toast-padding-vertical);
+    }
+
+    &-with-close-x {
+      .brick-toast-headline {
+        padding-right: $close-x-size + $toast-close-x-margin;
+      }
+    }
+
+    &-compact {
+      padding: $toast-padding-compact-top $toast-padding-horizontal $toast-padding-compact-bottom;
+      .brick-toast-icon {
+        @include size($toast-icon-size-compact);
+        top: $toast-padding-vertical-compact;
+        font-size: $toast-icon-size-compact;
+      }
+      .brick-toast-headline,
+      .brick-toast-content {
+        padding-left: $toast-icon-size-compact + $toast-icon-margin;
+      }
+      .brick-close-x {
+        $close-x-top-compact: ($toast-compact-single-line-height - $close-x-size) / 2;
+        @include closeXPosition($toast-padding-horizontal, $close-x-top-compact);
+      }
+      &.brick-toast-with-close-x {
+        .brick-toast-content {
+          padding-right: $close-x-size + $toast-close-x-margin;
+        }
+      }
+    }
+
+    & + & {
+      margin-top: padding(2);
+    }
+  }
+
+
+  .brick-toaster {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .brick-toaster-container {
+    position: fixed;
+    width: 100%;
+    top: $toast-container-margin-top;
+    z-index: $zindex-toast;
+  }
+}

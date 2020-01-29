@@ -4,7 +4,7 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../components/wrapDemoComp'
 
-import {Popover as OriginPopover, PopoverConfirm} from '../components/_localPopoverSrc'
+import {Popover as OriginPopover, PopoverConfirm} from '../localBrickComps'
 // import {Popover as OriginPopover} from '@befe/brick'
 import {Button} from '@befe/brick'
 

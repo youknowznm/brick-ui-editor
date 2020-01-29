@@ -4,7 +4,7 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../components/wrapDemoComp'
 
-import {DatePicker, GenericDatePickerGroup} from '../components/_localDatePickerSrc'
+import {DatePicker, GenericDatePickerGroup} from '../localBrickComps'
 
 // import {DatePicker as OriginDatePicker} from '@befe/brick'
 //
