@@ -8,7 +8,9 @@
   .top-actions-drawer-trigger {
     position: fixed;
     width: 100%;
-    height: 20px;
+    height: 21px;
+    border-bottom: 1px solid rgba(0, 0, 0, .12);
+    background: #fff;
     top: 0;
     left: 0;
     .trigger-icon {
@@ -21,7 +23,9 @@
   }
   .demo-drawer-trigger {
     position: fixed;
-    width: 20px;
+    width: 21px;
+    border-right: 1px solid rgba(0, 0, 0, .12);
+    background: #fff;
     height: 100%;
     top: 0;
     left: 0;

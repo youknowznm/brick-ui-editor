@@ -84,6 +84,7 @@ $aligner-color: #419bf9;
     bottom: 0;
     border: 1px solid $stripe-color-selected;
     .spot {
+      //display: none;
       position: absolute;
       width: 6px;
       height: 6px;
@@ -132,10 +133,10 @@ $aligner-color: #419bf9;
     width: 0;
     height: 0;
     &.hor {
-      border-top: 1px solid $aligner-color;
+      border-top: 1px dashed $aligner-color;
     }
     &.ver {
-      border-left: 1px solid $aligner-color;
+      border-left: 1px dashed $aligner-color;
     }
     &.tl {
       top: 0;

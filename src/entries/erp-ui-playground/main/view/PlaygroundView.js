@@ -24,6 +24,10 @@ export default class PlaygroundView extends React.Component {
 
     static propTypes = {
 
+        // playground 内容宽高
+        playgroundWidth: PropTypes.number.isRequired,
+        playgroundHeight: PropTypes.number.isRequired,
+
         // demo 列表抽屉宽度
         demoListWidth: PropTypes.number.isRequired,
 
@@ -61,6 +65,8 @@ export default class PlaygroundView extends React.Component {
     renderPlaygroundContent = () => {
         const {local, props} = this
         const {
+            playgroundWidth,
+            playgroundHeight,
             usedCompsDataArray,
             metaKeyPressing,
             componentInEditId,
@@ -69,6 +75,10 @@ export default class PlaygroundView extends React.Component {
             triggerControlPanelDrawer
         } = props
         return <div className="playground-content"
+            style={{
+                width: playgroundWidth,
+                height: playgroundHeight
+            }}
             onMouseOver={evt => {
                 // 滑过区域空白处时, 关闭 demo 列表抽屉
                 const {className} = evt.target
@@ -117,6 +127,8 @@ export default class PlaygroundView extends React.Component {
                     setComponentInEditId={setComponentInEditId}
                     triggerDemoDrawer={triggerDemoDrawer}
                     triggerControlPanelDrawer={triggerControlPanelDrawer}
+                    playgroundWidth={playgroundWidth}
+                    playgroundHeight={playgroundHeight}
                 />;
             })}
         </div>

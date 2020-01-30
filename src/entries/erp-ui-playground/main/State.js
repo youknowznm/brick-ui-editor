@@ -45,8 +45,9 @@ class MainState extends BaseModel {
     }
 
     @observable usedCompsDataArrayPosition = null
-    @observable playgroundWidth = 0
-    @observable playgroundHeight = 0
+
+    @observable playgroundWidth = 500
+    @observable playgroundHeight = 400
 
     // ##### 中间 实际内容(默认下的全屏) #####
 
