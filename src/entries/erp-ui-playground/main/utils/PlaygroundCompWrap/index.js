@@ -8,8 +8,6 @@ import Button from '@material-ui/core/Button'
 
 import Draggable from 'react-draggable'
 
-import getPlaygroundWrapDOMOffset from '../getOffset'
-
 import './style.scss'
 
 import {Button as BrickButton} from '@befe/brick'
@@ -24,12 +22,16 @@ export default class PlaygroundCompWrap extends React.Component {
     contentDOM = null
     wrapDOM = null
 
+
     state = {
         wrapWidth: 0,
         wrapHeight: 0,
         isAbsolutePosition: false,
         prevX: 0,
         prevY: 0,
+        localOriginComps: null,
+        setContentState: null,
+        setContentProps: null,
     }
 
     static propTypes = {
@@ -38,7 +40,37 @@ export default class PlaygroundCompWrap extends React.Component {
         // playgroundHeight: PropTypes.number.isRequired,
     }
 
-    componentDidMount() {}
+    get isSelected() {
+        return this.props.componentInEditId === this.props.id
+    }
+
+    componentDidMount() {
+        this.setState({
+            localOriginComps: toJS(this.props.originCompProps)
+        })
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        const {state, props} = this
+        const {
+            setContentState,
+            localOriginComps
+        } = state
+        const justDidSelect = prevProps.componentInEditId !== prevProps.id && this.isSelected
+        const justDidDeselect = prevProps.componentInEditId === prevProps.id && !this.isSelected
+        if (justDidSelect) {
+            const sb = params => {
+                console.log('sb', setContentState)
+                setContentState(params)
+            }
+            props.setTargetStateChangeHandler(sb)
+            return
+        }
+        if (justDidDeselect) {
+            // props.setTargetStateChangeHandler(null)
+            return
+        }
+    }
 
     createWrapDOMRef = wrapDOM => {
         this.wrapDOM = wrapDOM
@@ -51,7 +83,11 @@ export default class PlaygroundCompWrap extends React.Component {
             const computedStyle = document.defaultView.getComputedStyle(wrapDOM)
             this.setState({
                 wrapWidth: parseInt(computedStyle.width, 10),
-                wrapHeight: parseInt(computedStyle.height, 10)
+                wrapHeight: parseInt(computedStyle.height, 10),
+                setContentState: partialState => {
+                    console.log('set partial state:', partialState)
+                    reactElem.setState(partialState)
+                }
             })
         }
     }
@@ -98,7 +134,7 @@ export default class PlaygroundCompWrap extends React.Component {
         }
     }
 
-    wrapInControllers = children => {
+    wrapCompInControllers = children => {
         const {
             props,
             state
@@ -171,8 +207,8 @@ export default class PlaygroundCompWrap extends React.Component {
         const {
             props,
             state,
+            isSelected
         } = this
-        const selected = props.componentInEditId === props.id
         const {
             isAbsolutePosition,
             prevX,
@@ -190,7 +226,7 @@ export default class PlaygroundCompWrap extends React.Component {
                 className={c(
                     'playground-comp-wrap',
                     props.metaKeyPressing && 'meta-key-pressed',
-                    selected && 'selected',
+                    isSelected && 'selected',
                     isAbsolutePosition && 'is-absolute-positon'
                 )}
                 style={{
@@ -200,7 +236,7 @@ export default class PlaygroundCompWrap extends React.Component {
                 ref={this.createWrapDOMRef}
             >
                 {
-                    this.wrapInControllers(
+                    this.wrapCompInControllers(
                         <BrickButton
                             ref={this.createContentDOMRef}
                             {...originCompProps}

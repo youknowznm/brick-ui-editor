@@ -51,6 +51,8 @@ export default class PlaygroundView extends React.Component {
 
         // 设置/清空编辑状态的组件 id
         setComponentInEditId: PropTypes.func.isRequired,
+
+        setTargetStateChangeHandler: PropTypes.func.isRequired,
     }
 
     local = {
@@ -72,6 +74,7 @@ export default class PlaygroundView extends React.Component {
             componentInEditId,
             setComponentInEditId,
             triggerDemoDrawer,
+            setTargetStateChangeHandler,
             triggerControlPanelDrawer
         } = props
         return <div className="playground-content"
@@ -129,6 +132,7 @@ export default class PlaygroundView extends React.Component {
                     triggerControlPanelDrawer={triggerControlPanelDrawer}
                     playgroundWidth={playgroundWidth}
                     playgroundHeight={playgroundHeight}
+                    setTargetStateChangeHandler={setTargetStateChangeHandler}
                 />;
             })}
         </div>

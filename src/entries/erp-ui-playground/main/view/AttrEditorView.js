@@ -48,7 +48,11 @@ export default class AttrEditorView extends React.Component {
         //     showLoading: false
         // }
         //
-        componentInEditData: PropTypes.object
+        componentInEditData: PropTypes.object,
+
+        // 编辑 state 和 props
+        targetStateChangeHandler: PropTypes.func,
+        targetPropsChangeHandler: PropTypes.func,
     }
 
     local = {
@@ -67,7 +71,11 @@ export default class AttrEditorView extends React.Component {
 
     renderAttrEditorContent = () => {
         const {local, props} = this
-        const {componentInEditData} = props
+        const {
+            componentInEditData,
+            targetPropsChangeHandler,
+            targetStateChangeHandler
+        } = props
         if (componentInEditData === null) {
             return null
         }
@@ -86,6 +94,12 @@ export default class AttrEditorView extends React.Component {
             propInputs.push(<TextField
                 key={key}
                 value={originCompProps[key]}
+                onChange={(evt) => {
+                    console.log(123, key, originCompProps[key], evt.target.value)
+                    targetPropsChangeHandler({
+                        [key]: evt.target.value
+                    })
+                }}
                 label={key}
                 fullWidth={true}
                 margin="dense"
@@ -97,6 +111,11 @@ export default class AttrEditorView extends React.Component {
             stateInputs.push(<TextField
                 key={key}
                 value={originCompState[key]}
+                onChange={(evt) => {
+                    targetStateChangeHandler({
+                        [key]: evt.target.value
+                    })
+                }}
                 label={key}
                 fullWidth={true}
                 margin="dense"

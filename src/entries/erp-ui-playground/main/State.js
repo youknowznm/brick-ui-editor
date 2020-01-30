@@ -57,6 +57,30 @@ class MainState extends BaseModel {
 
     @observable componentInEditId = ''
 
+    @action targetStateChangeHandler = data => {
+        for (let key in data) {
+            if (data.hasOwnProperty((key))) {
+                this.componentInEditData.originCompState[key] = data[key]
+                console.log('target state changed', key, this.componentInEditData.originCompState[key])
+            }
+        }
+    }
+
+    @action targetPropsChangeHandler = data => {
+        for (let key in data) {
+            if (data.hasOwnProperty((key))) {
+                this.componentInEditData.originCompProps[key] = data[key]
+                console.log('target props changed', key, this.componentInEditData.originCompProps[key])
+            }
+        }
+    }
+
+    setTargetStateChangeHandler = func => {
+        this.setProps({
+            targetStateChangeHandler: func
+        })
+    }
+
     setComponentInEditId = id => {
         console.log({id})
         this.setProps({

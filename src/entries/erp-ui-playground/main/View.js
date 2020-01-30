@@ -148,9 +148,12 @@ export default class extends React.Component {
                     triggerControlPanelDrawer={mainState.triggerControlPanelDrawer}
                     componentInEditId={mainState.componentInEditId}
                     setComponentInEditId={mainState.setComponentInEditId}
+                    setTargetStateChangeHandler={mainState.setTargetStateChangeHandler}
                 ></PlaygroundView>
                 <AttrEditorView
                     componentInEditData={mainState.componentInEditData}
+                    targetStateChangeHandler={mainState.targetStateChangeHandler}
+                    targetPropsChangeHandler={mainState.targetPropsChangeHandler}
                 />
                 <ControlPanelView
                     showControlPanelDrawer={mainState.showControlPanelDrawer}

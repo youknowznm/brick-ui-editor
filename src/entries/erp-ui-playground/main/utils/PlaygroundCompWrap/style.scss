@@ -3,6 +3,7 @@ $stripe-color: #999;
 $stripe-color-active: #4c84ff;
 $stripe-color-selected: #EE6723;
 
+$aligner-color-selected: #EE6723;
 $aligner-color: #419bf9;
 
 @mixin stripe-bg {
@@ -74,6 +75,7 @@ $aligner-color: #419bf9;
     display: none;
     @include pos-abs-full-size;
     border: 1px solid $stripe-color-selected;
+    z-index: 11;
     .spot {
       //display: none;
       position: absolute;
@@ -122,11 +124,15 @@ $aligner-color: #419bf9;
     position: absolute;
     width: 0;
     height: 0;
+    z-index: 10;
+    border-color: $aligner-color;
     &.hor {
-      border-top: 1px dashed $aligner-color;
+      border-top-width: 1px;
+      border-top-style: dashed;
     }
     &.ver {
-      border-left: 1px dashed $aligner-color;
+      border-left-width: 1px;
+      border-left-style: dashed;
     }
     &.tl {
       top: 0;
@@ -145,13 +151,18 @@ $aligner-color: #419bf9;
       left: 0;
     }
   }
-  &:hover,
-  &.selected {
+  &:hover {
     .aligner {
       display: block;
     }
   }
-  .aligner-border {
+  &.selected {
+    .aligner {
+      display: block;
+      border-color: $aligner-color-selected;
+    }
+  }
+    .aligner-border {
     @include pos-abs-full-size;
     width: 0;
     height: 0;
