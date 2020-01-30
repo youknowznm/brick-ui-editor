@@ -75,7 +75,7 @@ export default class PlaygroundCompWrap extends React.Component {
                 y: prevY
             },
             bounds:'.playground-content',
-            handle: ".action-layer",
+            handle: ".has-drag-cursor",
             onStart: () => {},
             onDrag: (e, ui) => {
                 const {x, y} = ui
@@ -116,7 +116,6 @@ export default class PlaygroundCompWrap extends React.Component {
             playgroundWidth,
             playgroundHeight
         } = props
-        console.log('?', playgroundHeight ,prevY , wrapHeight)
         return <div className="controllers">
             {children}
             <div
@@ -127,38 +126,38 @@ export default class PlaygroundCompWrap extends React.Component {
                 }}
             >
             </div>
-            <div className="aligner tl hor" style={{
+            <i className="aligner tl hor" style={{
                 width: prevX,
                 left: -prevX
-            }}></div>
-            <div className="aligner tl ver" style={{
+            }} />
+            <i className="aligner tl ver" style={{
                 height: prevY,
                 top: -prevY
-            }}></div>
-            <div className="aligner tr hor" style={{
+            }} />
+            <i className="aligner tr hor" style={{
                 width: playgroundWidth - prevX - wrapWidth,
                 right: -(playgroundWidth - prevX - wrapWidth)
-            }}></div>
-            <div className="aligner tr ver" style={{
+            }} />
+            <i className="aligner tr ver" style={{
                 height: prevY,
                 top: -prevY
-            }}></div>
-            <div className="aligner br hor" style={{
+            }} />
+            <i className="aligner br hor" style={{
                 width: playgroundWidth - prevX - wrapWidth,
                 right: -(playgroundWidth - prevX - wrapWidth)
-            }}></div>
-            <div className="aligner br ver" style={{
+            }} />
+            <i className="aligner br ver" style={{
                 height: playgroundHeight - prevY - wrapHeight,
                 bottom: -(playgroundHeight - prevY - wrapHeight)
-            }}></div>
-            <div className="aligner bl hor" style={{
+            }} />
+            <i className="aligner bl hor" style={{
                 width: prevX,
                 left: -prevX
-            }}></div>
-            <div className="aligner bl ver" style={{
+            }} />
+            <i className="aligner bl ver" style={{
                 height: playgroundHeight - prevY - wrapHeight,
                 bottom: -(playgroundHeight - prevY - wrapHeight)
-            }}></div>
+            }} />
             <div className="selected-layer has-drag-cursor">
                 <span className="spot tl" />
                 <span className="spot tr" />

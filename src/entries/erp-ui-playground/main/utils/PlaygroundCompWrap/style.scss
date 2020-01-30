@@ -23,13 +23,12 @@ $aligner-color: #419bf9;
   background-size: $stripe-width $stripe-width;
 }
 
-@mixin stripe-bg-selected {
-  background: #fff linear-gradient(
-      45deg,
-      $stripe-color-selected 0, $stripe-color-selected 25%, transparent 25%, transparent 50%,
-      $stripe-color-selected 50%, $stripe-color-selected 75%, transparent 75%, transparent
-  );
-  background-size: $stripe-width $stripe-width;
+@mixin pos-abs-full-size {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }
 
 .playground-comp-wrap {
@@ -44,11 +43,7 @@ $aligner-color: #419bf9;
   }
   .action-layer {
     display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    @include pos-abs-full-size;
     // opacity: .5;
     border: 1px solid $stripe-color;
     background: #fff linear-gradient(
@@ -77,11 +72,7 @@ $aligner-color: #419bf9;
   }
   .selected-layer {
     display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    @include pos-abs-full-size;
     border: 1px solid $stripe-color-selected;
     .spot {
       //display: none;
@@ -126,9 +117,8 @@ $aligner-color: #419bf9;
     }
   }
 
-  $aligner-offset: 2px;
   .aligner {
-    display: block;
+    display: none;
     position: absolute;
     width: 0;
     height: 0;
@@ -155,7 +145,23 @@ $aligner-color: #419bf9;
       left: 0;
     }
   }
-
-  //
-
+  &:hover,
+  &.selected {
+    .aligner {
+      display: block;
+    }
+  }
+  .aligner-border {
+    @include pos-abs-full-size;
+    width: 0;
+    height: 0;
+    &.top,
+    &.bottom {
+      border-top: 1px solid $aligner-color;
+    }
+    &.left,
+    &.right {
+      border-left: 1px solid $aligner-color;
+    }
+  }
 }
