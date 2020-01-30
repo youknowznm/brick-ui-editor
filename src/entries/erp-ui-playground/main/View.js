@@ -104,7 +104,7 @@ export default class extends React.Component {
             <MoreHorizIcon
                 className="trigger-icon"
                 fontSize="small"
-            ></MoreHorizIcon>
+            />
         </div>
     }
 
@@ -122,7 +122,7 @@ export default class extends React.Component {
             <MoreVertIcon
                 className="trigger-icon"
                 fontSize="small"
-            ></MoreVertIcon>
+            />
         </div>
     }
 
@@ -147,9 +147,18 @@ export default class extends React.Component {
                     triggerDemoDrawer={mainState.triggerDemoDrawer}
                     triggerControlPanelDrawer={mainState.triggerControlPanelDrawer}
                     componentInEditId={mainState.componentInEditId}
-                    setComponentInEditId={mainState.setComponentInEditId}
-                    setTargetStateChangeHandler={mainState.setTargetStateChangeHandler}
-                ></PlaygroundView>
+                    setComponentInEditId={id => {
+                        console.log({id})
+                        mainState.setProps({
+                            componentInEditId: id
+                        })
+                    }}
+                    setSetComponentInEditState={func => {
+                        mainState.setProps({
+                            setComponentInEditState: func
+                        })
+                    }}
+                />
                 <AttrEditorView
                     componentInEditData={mainState.componentInEditData}
                     targetStateChangeHandler={mainState.targetStateChangeHandler}

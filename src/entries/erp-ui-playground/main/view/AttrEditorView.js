@@ -95,7 +95,6 @@ export default class AttrEditorView extends React.Component {
                 key={key}
                 value={originCompProps[key]}
                 onChange={(evt) => {
-                    console.log(123, key, originCompProps[key], evt.target.value)
                     targetPropsChangeHandler({
                         [key]: evt.target.value
                     })
@@ -103,7 +102,7 @@ export default class AttrEditorView extends React.Component {
                 label={key}
                 fullWidth={true}
                 margin="dense"
-            ></TextField>)
+            />)
         }
 
         const stateInputs = []
@@ -119,7 +118,7 @@ export default class AttrEditorView extends React.Component {
                 label={key}
                 fullWidth={true}
                 margin="dense"
-            ></TextField>)
+            />)
         }
 
         const inputAdornmentPx = {
@@ -145,28 +144,28 @@ export default class AttrEditorView extends React.Component {
                     value=""
                     label="上边距 top"
                     {...styleInputOtherProps}
-                ></TextField>
+                />
                 <TextField
                     className="type-style-input left"
                     key="style-left"
                     value=""
                     label="左边距 left"
                     {...styleInputOtherProps}
-                ></TextField>
+                />
                 <TextField
                     className="type-style-input width"
                     key="style-width"
                     value=""
                     label="宽度 width"
                     {...styleInputOtherProps}
-                ></TextField>
+                />
                 <TextField
                     className="type-style-input height"
                     key="style-height"
                     value=""
                     label="高度 height"
                     {...styleInputOtherProps}
-                ></TextField>
+                />
             </ul>
             <Divider />
             <ul className="type-data">

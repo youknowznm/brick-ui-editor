@@ -2,8 +2,11 @@ import * as React from 'react'
 import {default as c} from 'classnames'
 import {toJS, computed, observable, action} from 'mobx'
 import {inject, observer} from 'mobx-react'
-
 import {findDOMNode} from 'react-dom'
+
+import PropTypes from 'prop-types'
+import {PropTypes as MobxPropTypes} from 'mobx-react'
+
 import Button from '@material-ui/core/Button'
 
 import Draggable from 'react-draggable'
@@ -11,8 +14,6 @@ import Draggable from 'react-draggable'
 import './style.scss'
 
 import {Button as BrickButton} from '@befe/brick'
-import PropTypes from "prop-types";
-// import {Button as BrickButton} from '../../../../../../../node_modules/@befe/brick'
 
 @observer
 export default class PlaygroundCompWrap extends React.Component {
@@ -29,9 +30,7 @@ export default class PlaygroundCompWrap extends React.Component {
         isAbsolutePosition: false,
         prevX: 0,
         prevY: 0,
-        localOriginComps: null,
-        setContentState: null,
-        setContentProps: null,
+        setContentState: null
     }
 
     static propTypes = {
@@ -44,39 +43,30 @@ export default class PlaygroundCompWrap extends React.Component {
         return this.props.componentInEditId === this.props.id
     }
 
-    componentDidMount() {
-        this.setState({
-            localOriginComps: toJS(this.props.originCompProps)
-        })
-    }
-
     componentDidUpdate(prevProps, prevState, snapshot) {
         const {state, props} = this
         const {
             setContentState,
-            localOriginComps
         } = state
         const justDidSelect = prevProps.componentInEditId !== prevProps.id && this.isSelected
         const justDidDeselect = prevProps.componentInEditId === prevProps.id && !this.isSelected
         if (justDidSelect) {
-            const sb = params => {
-                console.log('sb', setContentState)
-                setContentState(params)
-            }
-            props.setTargetStateChangeHandler(sb)
+            props.setSetComponentInEditState(partialState => {
+                setContentState(partialState)
+            })
             return
         }
         if (justDidDeselect) {
-            // props.setTargetStateChangeHandler(null)
+            props.setSetComponentInEditState(null)
             return
         }
     }
 
-    createWrapDOMRef = wrapDOM => {
+    processWrapDOMRef = wrapDOM => {
         this.wrapDOM = wrapDOM
     }
 
-    createContentDOMRef = reactElem => {
+    processContentDOMRef = reactElem => {
         this.contentRef = reactElem
         const wrapDOM = findDOMNode(this.contentRef)
         if (wrapDOM) {
@@ -85,7 +75,7 @@ export default class PlaygroundCompWrap extends React.Component {
                 wrapWidth: parseInt(computedStyle.width, 10),
                 wrapHeight: parseInt(computedStyle.height, 10),
                 setContentState: partialState => {
-                    console.log('set partial state:', partialState)
+                    // console.log('set partial state:', partialState)
                     reactElem.setState(partialState)
                 }
             })
@@ -127,8 +117,6 @@ export default class PlaygroundCompWrap extends React.Component {
                     isAbsolutePosition: true,
                     prevX: x,
                     prevY: y,
-                    // wrapDOMTop: ui.y,
-                    // wrapDOMLeft: ui.x,
                 })
             }
         }
@@ -212,7 +200,6 @@ export default class PlaygroundCompWrap extends React.Component {
         const {
             isAbsolutePosition,
             prevX,
-
             prevY,
             wrapWidth,
             wrapHeight
@@ -233,12 +220,12 @@ export default class PlaygroundCompWrap extends React.Component {
                     width: state.wrapWidth,
                     height: state.wrapHeight
                 }}
-                ref={this.createWrapDOMRef}
+                ref={this.processWrapDOMRef}
             >
                 {
                     this.wrapCompInControllers(
                         <BrickButton
-                            ref={this.createContentDOMRef}
+                            ref={this.processContentDOMRef}
                             {...originCompProps}
                         />
                     )

@@ -57,15 +57,13 @@ class MainState extends BaseModel {
 
     @observable componentInEditId = ''
 
-    @action targetStateChangeHandler = data => {
-        for (let key in data) {
-            if (data.hasOwnProperty((key))) {
-                this.componentInEditData.originCompState[key] = data[key]
-                console.log('target state changed', key, this.componentInEditData.originCompState[key])
-            }
-        }
+    @computed get componentInEditData() {
+        return this.usedCompsDataArray.find(item => {
+            return item.id === this.componentInEditId
+        }) || null
     }
 
+    // 1. 编辑某组件 prop 时, 直接修改数组的对应项即可
     @action targetPropsChangeHandler = data => {
         for (let key in data) {
             if (data.hasOwnProperty((key))) {
@@ -75,24 +73,25 @@ class MainState extends BaseModel {
         }
     }
 
-    setTargetStateChangeHandler = func => {
-        this.setProps({
-            targetStateChangeHandler: func
-        })
+    // 2. 但 state 只能从内部更改
+    // 因此获取到其 setState 的引用, 在修改数组的对应项的同时调用
+    @observable setComponentInEditState = null
+    @action targetStateChangeHandler = data => {
+        const {
+            setComponentInEditState,
+            componentInEditData
+        } = this
+        if (typeof setComponentInEditState === 'function') {
+            setComponentInEditState(data)
+        }
+        for (let key in data) {
+            if (data.hasOwnProperty((key))) {
+                componentInEditData.originCompState[key] = data[key]
+                console.log('target state changed', key, componentInEditData.originCompState[key])
+            }
+        }
     }
 
-    setComponentInEditId = id => {
-        console.log({id})
-        this.setProps({
-            componentInEditId: id
-        })
-    }
-
-    @computed get componentInEditData() {
-        return this.usedCompsDataArray.find(item => {
-            return item.id === this.componentInEditId
-        }) || null
-    }
 }
 
 export default MainState
