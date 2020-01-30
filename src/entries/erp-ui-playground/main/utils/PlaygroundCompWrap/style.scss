@@ -3,6 +3,8 @@ $stripe-color: #999;
 $stripe-color-active: #4c84ff;
 $stripe-color-selected: #EE6723;
 
+$aligner-color: #419bf9;
+
 @mixin stripe-bg {
   background: #fff linear-gradient(
       45deg,
@@ -83,26 +85,27 @@ $stripe-color-selected: #EE6723;
     border: 1px solid $stripe-color-selected;
     .spot {
       position: absolute;
-      width: 4px;
-      height: 4px;
+      width: 6px;
+      height: 6px;
       background-color: #fff;
-      border-radius: 100%;
+      border-radius: 50%;
       border: 1px solid $stripe-color-selected;
+      $spot-offset: -3px;
       &.tl {
-        top: -3px;
-        left: -3px;
+        top: $spot-offset;
+        left: $spot-offset;
       }
       &.tr {
-        top: -3px;
-        right: -3px;
+        top: $spot-offset;
+        right: $spot-offset;
       }
       &.br {
-        bottom: -3px;
-        right: -3px;
+        bottom: $spot-offset;
+        right: $spot-offset;
       }
       &.bl {
-        bottom: -3px;
-        left: -3px;
+        bottom:$spot-offset;
+        left: $spot-offset;
       }
     }
   }
@@ -115,4 +118,43 @@ $stripe-color-selected: #EE6723;
       }
     }
   }
+  &.selected {
+    cursor: grab;
+    .selected-layer {
+      display: block;
+    }
+  }
+
+  $aligner-offset: 2px;
+  .aligner {
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    &.hor {
+      border-top: 1px solid $aligner-color;
+    }
+    &.ver {
+      border-left: 1px solid $aligner-color;
+    }
+    &.tl {
+      top: 0;
+      left: 0;
+    }
+    &.tr {
+      top: 0;
+      right: 0;
+    }
+    &.br {
+      bottom: 0;
+      right: 0;
+    }
+    &.bl {
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  //
+
 }

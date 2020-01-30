@@ -23,13 +23,14 @@ export default class PlaygroundCompWrap extends React.Component {
     contentDOM = null
     wrapDOM = null
 
-    prevX = 0
-    prevY = 0
+
 
     state = {
         width: 0,
         height: 0,
         isAbsolutePosition: false,
+        prevX: 0,
+        prevY: 0,
     }
 
     static propTypes = {
@@ -47,48 +48,115 @@ export default class PlaygroundCompWrap extends React.Component {
         if (wrapDOM) {
             const computedStyle = document.defaultView.getComputedStyle(wrapDOM)
             this.setState({
-                width: computedStyle.width,
-                height: computedStyle.height
+                width: parseInt(computedStyle.width, 10),
+                height: parseInt(computedStyle.height, 10)
             })
         }
+    }
+
+    get draggableWrapProps() {
+        const {
+            props,
+            state,
+        } = this
+        const {
+            prevX,
+            prevY,
+        } = state
+        const {
+            originCompProps,
+            id
+        } = props
+        return {
+            defaultPosition: {
+                x: 200,
+                y: 200
+            },
+            bounds:'.playground-content',
+            handle: ".action-layer",
+            onStart: () => {},
+            onDrag: (e, ui) => {
+                const {x, y} = ui
+                this.setState({
+                    prevX: x,
+                    prevY: y,
+                })
+            },
+            onStop: (e, ui) => {
+                const {x, y} = ui
+                this.props.setComponentInEditId(prevX === x && prevY === y ? id : '')
+                this.setState({
+                    isAbsolutePosition: true,
+                    prevX: x,
+                    prevY: y,
+                    // wrapDOMTop: ui.y,
+                    // wrapDOMLeft: ui.x,
+                })
+            }
+        }
+    }
+
+    wrapInControllers = children => {
+        const {
+            props,
+            state
+        } = this
+        const {
+            isAbsolutePosition,
+            prevX,
+            prevY,
+            width,
+            height
+        } = state
+        const {
+            originCompProps,
+            id
+        } = props
+        return <div className="controllers">
+            {children}
+            <div
+                className="action-layer has-drag-cursor"
+                onClick={() => {
+                    props.triggerDemoDrawer(false)
+                    props.triggerControlPanelDrawer(false)
+                }}
+            >
+            </div>
+            <div className="selected-layer has-drag-cursor">
+                <span className="spot tl" />
+                <span className="spot tr" />
+                <span className="spot br" />
+                <span className="spot bl" />
+            </div>
+            <div className="aligner tl hor" style={{width: 100}}></div>
+            <div className="aligner tl ver" style={{height: 100}}></div>
+            <div className="aligner tr hor" style={{width: 100}}></div>
+            <div className="aligner tr ver" style={{height: 100}}></div>
+            <div className="aligner br hor" style={{width: 100}}></div>
+            <div className="aligner br ver" style={{height: 100}}></div>
+            <div className="aligner bl hor" style={{width: 100}}></div>
+            <div className="aligner bl ver" style={{height: 100}}></div>
+        </div>
     }
 
     render() {
         const {
             props,
             state,
-            createWrapDOMRef,
-            prevX,
-            prevY
         } = this
         const selected = props.componentInEditId === props.id
         const {
-            isAbsolutePosition
+            isAbsolutePosition,
+            prevX,
+            prevY,
+            width,
+            height
         } = state
         const {
             originCompProps,
             id
         } = props
-        return <Draggable
-            defaultPosition={{
-                x: 0,
-                y: 0
-            }}
-            bounds=".playground-content"
-            handle=".action-layer"
-            onStart={() => {}}
-            onStop={(e, ui) => {
-                const {x, y} = ui
-                props.setComponentInEditId((prevX === x && prevY === y) ? id : '')
-                this.setState({
-                    isAbsolutePosition: true,
-                    // wrapDOMTop: ui.y,
-                    // wrapDOMLeft: ui.x,
-                })
-                this.prevX = x
-                this.prevY = y
-            }}
-        >
+        return <Draggable {...this.draggableWrapProps}>
             <div
                 className={c(
                     'playground-comp-wrap',
@@ -100,31 +168,16 @@ export default class PlaygroundCompWrap extends React.Component {
                     width: state.width,
                     height: state.height
                 }}
-                ref={createWrapDOMRef}
+                ref={this.createWrapDOMRef}
             >
-                <div>
-                    <BrickButton
-                        ref={this.createContentDOMRef}
-                        {...originCompProps}
-                    />
-                    <div
-                        className="action-layer"
-                        onClick={() => {
-                            props.triggerDemoDrawer(false)
-                            props.triggerControlPanelDrawer(false)
-                        }}
-                    >
-                    </div>
-                    <div
-                        className="selected-layer"
-                        onClick={() => {}}
-                    >
-                        <span className="spot tl"></span>
-                        <span className="spot tr"></span>
-                        <span className="spot br"></span>
-                        <span className="spot bl"></span>
-                    </div>
-                </div>
+                {
+                    this.wrapInControllers(
+                        <BrickButton
+                            ref={this.createContentDOMRef}
+                            {...originCompProps}
+                        />
+                    )
+                }
             </div>
         </Draggable>
     }
