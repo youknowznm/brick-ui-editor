@@ -7,7 +7,12 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import TextField from "@material-ui/core/TextField";
 
 import {Icon} from '@befe/brick'
 // import {
@@ -15,23 +20,39 @@ import {Icon} from '@befe/brick'
 // } from '@befe/brick-icon'
 
 import {ICON_GROUP_MAP_MAIN} from '@befe/brick-icon/src/main/group-map'
-import TextField from "@material-ui/core/TextField";
+
+import './style.scss'
 
 export default class extends React.Component {
 
     state = {
-        open: false
+        visible: false,
+        iconTypes: [],
+        selectedIconType: ''
     }
 
-    triggerVis = tar => {
+    componentDidMount() {
+        const iconTypes = []
+        for (let key in ICON_GROUP_MAP_MAIN) {
+            iconTypes.push(key)
+        }
         this.setState({
-            open: typeof tar === 'boolean' ? tar : !this.state.open
+            iconTypes,
+            selectedIconType: iconTypes[0]
+        })
+    }
+
+    triggerVisible = tar => {
+        this.setState({
+            visible: typeof tar === 'boolean' ? tar : !this.state.visible
         })
     }
 
     render() {
         const {
-            open
+            visible,
+            iconTypes,
+            selectedIconType
         } = this.state
         const {
             value,
@@ -47,19 +68,19 @@ export default class extends React.Component {
                     // })
                 }}
                 onClick={() => {
-                    this.triggerVis(true)
+                    this.triggerVisible(true)
                 }}
                 {...restProps}
             />
             <Dialog
                 onClose={() => {
-                    this.triggerVis(false)
+                    this.triggerVisible(false)
                 }}
-                open={open}
+                open={visible}
             >
                 <DialogTitle
                     onClose={() => {
-                        this.triggerVis(false)
+                        this.triggerVisible(false)
                     }}
                 >
                     <Typography gutterBottom>
@@ -67,25 +88,25 @@ export default class extends React.Component {
                     </Typography>
                 </DialogTitle>
                 <DialogContent dividers>
-                    <Typography gutterBottom>
-                        Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-                        in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-                    </Typography>
-                    <Typography gutterBottom>
-                        Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-                        lacus vel augue laoreet rutrum faucibus dolor auctor.
-                    </Typography>
-                    <Typography gutterBottom>
-                        Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-                        scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-                        auctor fringilla.
-                    </Typography>
+                    <Tabs
+                        className="icon-type-tabs"
+                        value={selectedIconType}
+                        indicatorColor="primary"
+                        textColor="primary"
+                        onChange={()=>{}}
+                    >
+                        {
+                            iconTypes.map(type => {
+                                return <Tab label={type} />
+                            })
+                        }
+                    </Tabs>
                 </DialogContent>
                 <DialogActions>
                     <Button
                         autoFocus
                         onClick={() => {
-                            this.triggerVis(false)
+                            this.triggerVisible(false)
                         }}
                         color="primary"
                     >

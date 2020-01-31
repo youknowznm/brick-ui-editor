@@ -58,7 +58,6 @@ export default class PlaygroundCompWrap extends React.Component {
                 originCompProps.loadingIcon = transferSvgStringToElement(originCompProps.loadingIcon)
             }
         }
-
         return originCompProps
     }
 

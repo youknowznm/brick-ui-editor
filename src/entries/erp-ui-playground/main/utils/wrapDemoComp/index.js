@@ -27,7 +27,6 @@ const wrapDemoComp = OriginComponent => {
         }
 
         static propTypes = {
-            // OriginComponent:
         }
 
         createRef = reactElem => {
@@ -42,8 +41,7 @@ const wrapDemoComp = OriginComponent => {
                         if (typeof propValue === 'function') {
                             const isReactElement = React.isValidElement(propValue())
                             if (isReactElement) {
-                                const reactElementPropName = propValue.name
-                                ownProps[propKey] = reactElementPropName
+                                ownProps[propKey] = propValue.name
                             } else {
                                 delete ownProps[propKey];
                             }
@@ -59,7 +57,6 @@ const wrapDemoComp = OriginComponent => {
                     height: computedStyle.height
                 });
             }
-
         }
 
         dispatchCompToUse = () => {
@@ -76,11 +73,6 @@ const wrapDemoComp = OriginComponent => {
                 width,
                 height
             } = state;
-
-            const extProps = Object.assign({}, toJS(this.props), {
-                ref: this.createRef
-            });
-
             return <div
                 className={c(
                     'extend-ui-comp-wrap',
@@ -90,7 +82,10 @@ const wrapDemoComp = OriginComponent => {
                     width,
                     height
                 }}>
-                    <OriginComponent {...extProps}>
+                    <OriginComponent
+                        {...this.props}
+                        ref={this.createRef}
+                    >
                         {props.children}
                     </OriginComponent>
                     <div

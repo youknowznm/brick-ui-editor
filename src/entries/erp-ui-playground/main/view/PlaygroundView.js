@@ -98,7 +98,6 @@ export default class PlaygroundView extends React.Component {
                     props.setComponentInEditId('')
                 }
             }}
-            raised={false}
             square={true}
         >
             {usedCompsDataArray.map(item => {
@@ -151,7 +150,6 @@ export default class PlaygroundView extends React.Component {
                 marginLeft: `${showDemoDrawer ? offSet : 0}px`,
                 right: `${showDemoDrawer ? -offSet : 0}px`,
             }}
-            // raised={false}
             // square={true}
             >
             {this.renderPlaygroundContent()}

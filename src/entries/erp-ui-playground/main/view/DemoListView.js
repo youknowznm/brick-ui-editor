@@ -158,7 +158,6 @@ export default class DemoListView extends React.Component {
                 </div>
                 <Paper
                     square={true}
-                    raised={false}
                     className="fake-trigger"
                 >
                     <MoreHorizIcon
