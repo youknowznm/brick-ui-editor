@@ -160,10 +160,27 @@ export default class PlaygroundCompWrap extends React.Component {
                 }}
             >
             </div>
+            {/* TODO: 标尺*/}
+            {/*<span className="ruler left" style={{*/}
+            {/*    left: -prevX / 2,*/}
+            {/*    bottom: '100%',*/}
+            {/*    zIndex: 3,*/}
+            {/*    transform: 'translate(-50%, 50%)'*/}
+            {/*}}>*/}
+            {/*    {prevX}px*/}
+            {/*</span>*/}
             <i className="aligner tl hor" style={{
                 width: prevX,
                 left: -prevX
             }} />
+            {/*<span className="ruler top" style={{*/}
+            {/*    top: -prevY / 2,*/}
+            {/*    right: '100%',*/}
+            {/*    zIndex: 3,*/}
+            {/*    transform: 'translate(50%, -50%)'*/}
+            {/*}}>*/}
+            {/*    {prevY}px*/}
+            {/*</span>*/}
             <i className="aligner tl ver" style={{
                 height: prevY,
                 top: -prevY
@@ -192,6 +209,14 @@ export default class PlaygroundCompWrap extends React.Component {
                 height: playgroundHeight - prevY - wrapHeight,
                 bottom: -(playgroundHeight - prevY - wrapHeight)
             }} />
+            {/*<span className="ruler width" style={{*/}
+            {/*    bottom: '-100%',*/}
+            {/*    left: '50%',*/}
+            {/*    zIndex: 3,*/}
+            {/*    transform: 'translate(50%, -50%)'*/}
+            {/*}}>*/}
+            {/*    {wrapWidth}px*/}
+            {/*</span>*/}
             <div className="selected-layer has-drag-cursor">
                 <span className="spot tl" />
                 <span className="spot tr" />

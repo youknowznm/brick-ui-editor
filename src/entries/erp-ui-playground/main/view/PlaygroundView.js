@@ -87,14 +87,14 @@ export default class PlaygroundView extends React.Component {
             onMouseOver={evt => {
                 // 滑过区域空白处时, 关闭 demo 列表抽屉
                 const {className} = evt.target
-                if (className && className.indexOf('playground-content') > -1) {
+                if (className.indexOf && className.indexOf('playground-content') > -1) {
                     props.triggerDemoDrawer(false)
                 }
             }}
             onClick={evt => {
                 // 点击区域空白处时, 取消组件编辑
                 const {className} = evt.target
-                if (className && className.indexOf('playground-content') > -1) {
+                if (className.indexOf && className.indexOf('playground-content') > -1) {
                     props.setComponentInEditId('')
                 }
             }}
