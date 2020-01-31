@@ -8,7 +8,7 @@ import {PropTypes as MobxPropTypes} from 'mobx-react'
 
 import PlaygroundCompWrap from '../utils/PlaygroundCompWrap'
 
-import Card from '@material-ui/core/Card'
+import Paper from '@material-ui/core/Paper'
 
 import PlaygroundState from '../states/PlaygroundState'
 
@@ -79,7 +79,7 @@ export default class PlaygroundView extends React.Component {
             triggerDemoDrawer,
             triggerControlPanelDrawer
         } = props
-        return <Card className="playground-content"
+        return <Paper className="playground-content"
             style={{
                 width: playgroundWidth,
                 height: playgroundHeight
@@ -134,7 +134,7 @@ export default class PlaygroundView extends React.Component {
                     playgroundHeight={playgroundHeight}
                 />;
             })}
-        </Card>
+        </Paper>
     }
 
     render() {

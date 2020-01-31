@@ -13,7 +13,7 @@ import Button from '@material-ui/core/Button'
 import ControlPanelState from '../states/ControlPanelState'
 
 import '../style/control-panel.scss'
-import Card from "@material-ui/core/Card";
+import Paper from "@material-ui/core/Paper";
 import MoreVerIcon from "@material-ui/icons/MoreHoriz";
 
 @observer
@@ -55,7 +55,7 @@ export default class ControlPanelView extends React.Component {
                 }}
             >
                 {this.renderControlPanelContent()}
-                <Card
+                <Paper
                     square={true}
                     raised={false}
                     className="fake-trigger"
@@ -64,7 +64,7 @@ export default class ControlPanelView extends React.Component {
                         className="trigger-icon"
                         fontSize="small"
                     />
-                </Card>
+                </Paper>
             </Drawer>
         </div>
     }

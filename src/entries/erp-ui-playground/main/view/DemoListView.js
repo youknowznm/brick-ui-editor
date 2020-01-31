@@ -44,7 +44,7 @@ import {PortalContainerProvider} from '../utils/PortalContainerContext'
 
 import '../style/demo-list.scss'
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
-import Card from "@material-ui/core/Card";
+import Paper from "@material-ui/core/Paper";
 
 @observer
 export default class DemoListView extends React.Component {
@@ -156,7 +156,7 @@ export default class DemoListView extends React.Component {
                 >
                     {this.renderDemoPanels()}
                 </div>
-                <Card
+                <Paper
                     square={true}
                     raised={false}
                     className="fake-trigger"
@@ -165,7 +165,7 @@ export default class DemoListView extends React.Component {
                         className="trigger-icon"
                         fontSize="small"
                     />
-                </Card>
+                </Paper>
             </Drawer>
         </div>
     }

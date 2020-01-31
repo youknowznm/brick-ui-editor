@@ -26,7 +26,7 @@ const TabsDemo = () => {
         return result
     }
 
-    const generateCardPanesData = num => {
+    const generatePaperPanesData = num => {
         const result = []
         for (let i = 0; i < num; i ++) {
             result.push(
@@ -91,10 +91,10 @@ const TabsDemo = () => {
             />
         </div>
         <Divider className="demo-block-separator" />
-        {/* ===== 1 card ===== */}
+        {/* ===== 1 Paper ===== */}
         <div>
-            <Tabs className="demo-tabs" defaultActiveId={'tab2'} type={'card'}>
-                {generateCardPanesData(6)}
+            <Tabs className="demo-tabs" defaultActiveId={'tab2'} type={'Paper'}>
+                {generatePaperPanesData(6)}
             </Tabs>
         </div>
         <Divider className="demo-block-separator" />
@@ -103,7 +103,7 @@ const TabsDemo = () => {
             <Tabs
                 className="demo-tabs"
                 // defaultActiveId={'tab2'}
-                type={'card'}
+                type={'Paper'}
                 shouldDestroyInactivePane={true}
                 addable={true}
             >
