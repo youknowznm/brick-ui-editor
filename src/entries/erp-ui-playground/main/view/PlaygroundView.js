@@ -48,8 +48,6 @@ export default class PlaygroundView extends React.Component {
 
         // 设置/清空编辑状态的组件 id
         setComponentInEditId: PropTypes.func.isRequired,
-
-        setSetComponentInEditState: PropTypes.func.isRequired,
     }
 
     local = {
@@ -79,7 +77,6 @@ export default class PlaygroundView extends React.Component {
             componentInEditId,
             setComponentInEditId,
             triggerDemoDrawer,
-            setSetComponentInEditState,
             triggerControlPanelDrawer
         } = props
         return <Card className="playground-content"
@@ -123,17 +120,11 @@ export default class PlaygroundView extends React.Component {
                 //     disabled: false
                 //     loadingDelayInMS: 300
                 // }
-                // originCompState: {
-                //     asyncLoading: false
-                //     showLoading: false
-                // }
                 return <PlaygroundCompWrap
                     key={item.id}
                     id={item.id}
                     originDisplayName={item.originDisplayName}
                     originCompProps={item.originCompProps}
-                    // originCompProps={this.processOriginCompProps(item.originCompProps)}
-                    originCompState={item.originCompState}
                     metaKeyPressing={metaKeyPressing}
                     componentInEditId={componentInEditId}
                     setComponentInEditId={setComponentInEditId}
@@ -141,7 +132,6 @@ export default class PlaygroundView extends React.Component {
                     triggerControlPanelDrawer={triggerControlPanelDrawer}
                     playgroundWidth={playgroundWidth}
                     playgroundHeight={playgroundHeight}
-                    setSetComponentInEditState={setSetComponentInEditState}
                 />;
             })}
         </Card>

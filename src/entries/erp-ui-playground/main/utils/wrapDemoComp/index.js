@@ -67,7 +67,6 @@ const wrapDemoComp = OriginComponent => {
                 id: generateId(),
                 originDisplayName: OriginComponent.displayName,
                 originCompProps: this.state.ownProps,
-                originCompState: this.state.ownState,
             })
         }
 

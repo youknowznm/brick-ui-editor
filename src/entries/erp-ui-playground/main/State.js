@@ -63,7 +63,6 @@ class MainState extends BaseModel {
         }) || null
     }
 
-    // 1. 编辑某组件 prop 时, 直接修改数组的对应项即可
     @action targetPropsChangeHandler = data => {
         for (let key in data) {
             if (data.hasOwnProperty((key))) {
@@ -72,26 +71,6 @@ class MainState extends BaseModel {
             }
         }
     }
-
-    // 2. 但 state 只能从内部更改
-    // 因此获取到其 setState 的引用, 在修改数组的对应项的同时调用
-    @observable setComponentInEditState = null
-    @action targetStateChangeHandler = data => {
-        const {
-            setComponentInEditState,
-            componentInEditData
-        } = this
-        if (typeof setComponentInEditState === 'function') {
-            setComponentInEditState(data)
-        }
-        for (let key in data) {
-            if (data.hasOwnProperty((key))) {
-                componentInEditData.originCompState[key] = data[key]
-                console.log('target state changed', key, componentInEditData.originCompState[key])
-            }
-        }
-    }
-
 }
 
 export default MainState

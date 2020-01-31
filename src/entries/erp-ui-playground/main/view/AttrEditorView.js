@@ -51,11 +51,6 @@ export default class AttrEditorView extends React.Component {
         //     disabled: false
         //     loadingDelayInMS: 300
         // }
-        // originCompState: {
-        //     asyncLoading: false
-        //     showLoading: false
-        // }
-        //
         componentInEditData: PropTypes.object,
 
         // 编辑 state 和 props
@@ -92,7 +87,6 @@ export default class AttrEditorView extends React.Component {
             id,
             originDisplayName,
             originCompProps,
-            originCompState,
             playgroundTop,
             playgroundLeft,
         } = componentInEditData

@@ -157,11 +157,6 @@ export default class extends React.Component {
                             componentInEditId: id
                         })
                     }}
-                    setSetComponentInEditState={func => {
-                        mainState.setProps({
-                            setComponentInEditState: func
-                        })
-                    }}
                 />
                 <AttrEditorView
                     componentInEditData={mainState.componentInEditData}

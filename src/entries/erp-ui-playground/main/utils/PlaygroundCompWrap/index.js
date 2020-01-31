@@ -70,14 +70,8 @@ export default class PlaygroundCompWrap extends React.Component {
         const justDidSelect = prevProps.componentInEditId !== prevProps.id && this.isSelected
         const justDidDeselect = prevProps.componentInEditId === prevProps.id && !this.isSelected
         if (justDidSelect) {
-            props.setSetComponentInEditState(partialState => {
-                setContentState(partialState)
-            })
-            return
         }
         if (justDidDeselect) {
-            props.setSetComponentInEditState(null)
-            return
         }
     }
 
