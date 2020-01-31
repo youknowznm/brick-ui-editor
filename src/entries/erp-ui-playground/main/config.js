@@ -59,6 +59,16 @@ export const COMP_TYPES = {
                 defaultValue: 'normal'
             },
             {
+                desc: '图标',
+                key: 'icon',
+                type: 'svg',
+            },
+            {
+                desc: '加载中图标',
+                key: 'loadingIcon',
+                type: 'svg',
+            },
+            {
                 desc: '禁用',
                 key: 'disabled',
                 type: 'bool',
@@ -71,8 +81,5 @@ export const COMP_TYPES = {
                 defaultValue: false
             },
         ],
-        editableState: {
-
-        },
     }
 }

@@ -19,7 +19,11 @@ import InputAdornment from '@material-ui/core/InputAdornment'
 
 import AttrEditorState from '../states/AttrEditorState'
 
+import {SvgEdit, SvgGear} from '@befe/brick-icon'
+import {Icon} from '@befe/brick'
+
 import {COMP_TYPES} from '../config'
+import SvgPropEditor from '../utils/SvgPropEditor'
 
 import '../style/attr-editor.scss'
 
@@ -101,8 +105,13 @@ export default class AttrEditorView extends React.Component {
             cnLabel,
             editableProps
         } = compTypeData
+        const propInputPropsGen = {
+            size: 'small',
+            fullWidth: true,
+            margin: 'dense'
+        }
         const propInputs = editableProps.map(item => {
-            const {
+            let {
                 key,
                 type,
                 desc,
@@ -123,6 +132,7 @@ export default class AttrEditorView extends React.Component {
             if (value === undefined) {
                 value = defaultValue
             }
+            console.log('attr editing: ', key, value)
             switch (type) {
                 case 'string':
                     return <TextField
@@ -134,14 +144,12 @@ export default class AttrEditorView extends React.Component {
                                 [key]: evt.target.value
                             })
                         }}
-                        onChange={evt => {
-                            targetPropsChangeHandler({
-                                [key]: evt.target.value.trim()
-                            })
-                        }}
-                        fullWidth={true}
-                        size="small"
-                        margin="dense"
+                        // onBlur={evt => {
+                        //     targetPropsChangeHandler({
+                        //         [key]: evt.target.value.trim()
+                        //     })
+                        // }}
+                        {...propInputPropsGen}
                     />
                 case 'bool':
                 case 'enum':
@@ -155,20 +163,49 @@ export default class AttrEditorView extends React.Component {
                                 [key]: evt.target.value
                             })
                         }}
-                        size="small"
-                        fullWidth={true}
-                        margin="dense"
+                        {...propInputPropsGen}
                     >
                         {
                             options.map(option => {
-                                return <MenuItem key={option.value} value={option.value}>
+                                return <MenuItem
+                                    key={option.value}
+                                    value={option.value}
+                                    dense={true}
+                                >
                                     {option.label}
                                 </MenuItem>
                             })
                         }
                     </TextField>
+                case 'svg':
+                    options = [
+                        {
+                            value: 'SvgEdit',
+                            label: 'SvgEdit',
+                        },
+                        {
+                            value: 'SvgGear',
+                            label: 'SvgGear',
+                        }
+                    ]
+                    return <SvgPropEditor
+                        key={key}
+                        label={desc}
+                        value={value}
+                        {...propInputPropsGen}
+                    />
                 default:
-                    return null;
+                    return <TextField
+                        key={key}
+                        label={desc}
+                        value={value}
+                        onChange={evt => {
+                            targetPropsChangeHandler({
+                                [key]: evt.target.value
+                            })
+                        }}
+                        {...propInputPropsGen}
+                    />
             }
         })
 

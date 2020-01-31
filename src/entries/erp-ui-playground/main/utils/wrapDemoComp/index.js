@@ -36,18 +36,22 @@ const wrapDemoComp = OriginComponent => {
             if (wrapDOM) {
                 const computedStyle = document.defaultView.getComputedStyle(wrapDOM);
                 const ownProps = Object.assign({}, reactElem.props);
-                for (let key in ownProps) {
-                    if (ownProps.hasOwnProperty(key)) {
-                        if (typeof ownProps[key] === 'function') {
-                            // console.log(1111, React.isValidElement(ownProps[key]()))
-                            console.log('func name', (ownProps[key].name))
-                            // console.log(2222, (ownProps[key]()))
-                            delete ownProps[key];
-                            // ownProps[key] = ownProps[key].toString();
+                for (let propKey in ownProps) {
+                    if (ownProps.hasOwnProperty(propKey)) {
+                        const propValue = ownProps[propKey]
+                        if (typeof propValue === 'function') {
+                            const isReactElement = React.isValidElement(propValue())
+                            if (isReactElement) {
+                                const reactElementPropName = propValue.name
+                                ownProps[propKey] = reactElementPropName
+                            } else {
+                                delete ownProps[propKey];
+                            }
                         }
                     }
                 }
                 delete ownProps.root;
+                delete ownProps.className;
                 this.setState({
                     ownState: reactElem.state,
                     ownProps,
@@ -66,7 +70,6 @@ const wrapDemoComp = OriginComponent => {
                 originCompState: this.state.ownState,
             })
         }
-
 
         render() {
             const {state, props} = this;

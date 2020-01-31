@@ -53,19 +53,6 @@ $aligner-color: #419bf9;
         $stripe-color 50%, $stripe-color 75%, transparent 75%, transparent
     );
     background-size: $stripe-width $stripe-width;
-    .text {
-      display: none;
-      font-size: 12px;
-      position: absolute;
-      overflow: hidden;
-      background-color: #fff;
-      text-overflow: ellipsis;
-      color: #000;
-      white-space: nowrap;
-      top: 50%;
-      left: 50%;
-      transform: translateX(-50%) translateY(-50%);
-    }
     &:hover {
       // opacity: .5;
       @include stripe-bg-active;
@@ -107,9 +94,6 @@ $aligner-color: #419bf9;
     cursor: grab;
     .action-layer {
       display: block;
-      .text {
-        display: block;
-      }
     }
   }
   &.selected {

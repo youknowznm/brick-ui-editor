@@ -14,6 +14,7 @@ import Draggable from 'react-draggable'
 import './style.scss'
 
 import {Button as BrickButton} from '@befe/brick'
+import transferSvgStringToElement from "../transferSvgStringToElement";
 
 @observer
 export default class PlaygroundCompWrap extends React.Component {
@@ -41,6 +42,24 @@ export default class PlaygroundCompWrap extends React.Component {
 
     get isSelected() {
         return this.props.componentInEditId === this.props.id
+    }
+
+    get processedOriginCompProps() {
+        let {
+            originDisplayName,
+            originCompProps
+        } = this.props
+        originCompProps = toJS(originCompProps)
+        if (originDisplayName === 'Button') {
+            if (typeof originCompProps.icon === 'string') {
+                originCompProps.icon = transferSvgStringToElement(originCompProps.icon)
+            }
+            if (typeof originCompProps.loadingIcon === 'string') {
+                originCompProps.loadingIcon = transferSvgStringToElement(originCompProps.loadingIcon)
+            }
+        }
+
+        return originCompProps
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -92,7 +111,6 @@ export default class PlaygroundCompWrap extends React.Component {
             prevY,
         } = state
         const {
-            originCompProps,
             id
         } = props
         return {
@@ -135,7 +153,6 @@ export default class PlaygroundCompWrap extends React.Component {
             wrapHeight,
         } = state
         const {
-            originCompProps,
             id,
             playgroundWidth,
             playgroundHeight
@@ -195,7 +212,6 @@ export default class PlaygroundCompWrap extends React.Component {
         const {
             props,
             state,
-            isSelected
         } = this
         const {
             isAbsolutePosition,
@@ -213,7 +229,7 @@ export default class PlaygroundCompWrap extends React.Component {
                 className={c(
                     'playground-comp-wrap',
                     props.metaKeyPressing && 'meta-key-pressed',
-                    isSelected && 'selected',
+                    this.isSelected && 'selected',
                     isAbsolutePosition && 'is-absolute-positon'
                 )}
                 style={{
@@ -226,7 +242,7 @@ export default class PlaygroundCompWrap extends React.Component {
                     this.wrapCompInControllers(
                         <BrickButton
                             ref={this.processContentDOMRef}
-                            {...originCompProps}
+                            {...this.processedOriginCompProps}
                         />
                     )
                 }

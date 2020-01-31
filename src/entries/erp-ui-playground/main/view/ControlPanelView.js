@@ -57,7 +57,7 @@ export default class ControlPanelView extends React.Component {
                 {this.renderControlPanelContent()}
                 <Card
                     square={true}
-                    raised={true}
+                    raised={false}
                     className="fake-trigger"
                 >
                     <MoreVerIcon

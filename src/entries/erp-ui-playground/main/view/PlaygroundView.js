@@ -14,6 +14,8 @@ import PlaygroundState from '../states/PlaygroundState'
 
 import '../style/playground.scss'
 
+import transferSvgStringToElement from '../utils/transferSvgStringToElement'
+
 @observer
 export default class PlaygroundView extends React.Component {
 
@@ -59,6 +61,14 @@ export default class PlaygroundView extends React.Component {
         const {local} = this
     }
 
+    processOriginCompProps = originCompProps => {
+        console.log('?', originCompProps.icon)
+        if (originCompProps.icon) {
+            originCompProps.icon = transferSvgStringToElement(originCompProps.icon)
+        }
+        return originCompProps
+    }
+
     renderPlaygroundContent = () => {
         const {local, props} = this
         const {
@@ -91,7 +101,7 @@ export default class PlaygroundView extends React.Component {
                     props.setComponentInEditId('')
                 }
             }}
-            raised={true}
+            raised={false}
             square={true}
         >
             {usedCompsDataArray.map(item => {
@@ -120,7 +130,9 @@ export default class PlaygroundView extends React.Component {
                 return <PlaygroundCompWrap
                     key={item.id}
                     id={item.id}
+                    originDisplayName={item.originDisplayName}
                     originCompProps={item.originCompProps}
+                    // originCompProps={this.processOriginCompProps(item.originCompProps)}
                     originCompState={item.originCompState}
                     metaKeyPressing={metaKeyPressing}
                     componentInEditId={componentInEditId}
@@ -144,15 +156,15 @@ export default class PlaygroundView extends React.Component {
         } = props
         // 减去 trigger 宽度
         const offSet = demoListWidth - 20
-        return <Card className="playground-wrap"
+        return <div className="playground-wrap"
             style={{
                 marginLeft: `${showDemoDrawer ? offSet : 0}px`,
                 right: `${showDemoDrawer ? -offSet : 0}px`,
             }}
-            raised={true}
-            square={true}
+            // raised={false}
+            // square={true}
             >
             {this.renderPlaygroundContent()}
-        </Card>
+        </div>
     }
 }

@@ -93,7 +93,7 @@ export default class extends React.Component {
     renderControlPanelDrawerTrigger = () => {
         return <Card
             square={true}
-            raised={true}
+            raised={false}
             className="top-actions-drawer-trigger"
             onMouseOver={() => {
                 this.local.mainState.triggerControlPanelDrawer(true)
@@ -113,7 +113,7 @@ export default class extends React.Component {
     renderDemoDrawerTrigger = () => {
         return <Card
             square={true}
-            raised={true}
+            raised={false}
             className="demo-drawer-trigger"
             onMouseOver={() => {
                 this.local.mainState.triggerDemoDrawer(true)
