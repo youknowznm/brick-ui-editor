@@ -6,8 +6,19 @@
     .control-panel-content {
       position: relative;
       width: 100%;
-      background-color: #eee;
       height: 200px;
+    }
+    .fake-trigger {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 20px;
+      .trigger-icon {
+        position: absolute;
+        left: 50%;
+        margin-left: -10px;
+      }
     }
   }
 }

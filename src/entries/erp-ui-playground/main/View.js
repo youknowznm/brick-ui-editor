@@ -91,7 +91,9 @@ export default class extends React.Component {
     }
 
     renderControlPanelDrawerTrigger = () => {
-        return <div
+        return <Card
+            square={true}
+            raised={true}
             className="top-actions-drawer-trigger"
             onMouseOver={() => {
                 this.local.mainState.triggerControlPanelDrawer(true)
@@ -105,11 +107,13 @@ export default class extends React.Component {
                 className="trigger-icon"
                 fontSize="small"
             />
-        </div>
+        </Card>
     }
 
     renderDemoDrawerTrigger = () => {
-        return <div
+        return <Card
+            square={true}
+            raised={true}
             className="demo-drawer-trigger"
             onMouseOver={() => {
                 this.local.mainState.triggerDemoDrawer(true)
@@ -123,7 +127,7 @@ export default class extends React.Component {
                 className="trigger-icon"
                 fontSize="small"
             />
-        </div>
+        </Card>
     }
 
     render() {
@@ -173,5 +177,3 @@ export default class extends React.Component {
         </Provider>
     }
 }
-
-// showDemoDrawer={mainState.showDemoDrawer}

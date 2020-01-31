@@ -29,7 +29,7 @@ class MainState extends BaseModel {
 
     @observable showDemoDrawer = false
 
-    @observable demoListWidth = 800
+    @observable demoListWidth = 820
 
     triggerDemoDrawer = target => {
         const result = typeof target === 'boolean' ? target : !this.showDemoDrawer

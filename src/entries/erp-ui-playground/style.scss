@@ -6,6 +6,7 @@ body,
   position: relative;
   width: 100%;
   height: 100%;
+  background: #424242;
 }
 * {
   margin: 0;
@@ -16,13 +17,21 @@ li {
   list-style: none;
 }
 
+// mui dark theme 下, 仍需要字体颜色正常
 .brick-modal-wrap {
   position: relative !important;
+  color: #333;
   .brick-modal-mask {
+    //color: #333;
     display: none !important;
   }
   .brick-dialog-wrap {
+    //color: #333;
     margin: 0 auto !important
     //margin: 30px auto 45px !important
   }
+}
+
+.brick-popper-wrap {
+  color: #333;
 }

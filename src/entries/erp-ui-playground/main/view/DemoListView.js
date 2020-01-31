@@ -5,6 +5,7 @@ import {inject, observer} from 'mobx-react'
 import PropTypes from 'prop-types'
 import {PropTypes as MobxPropTypes} from 'mobx-react'
 
+import {ThemeProvider} from '@material-ui/core/styles'
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
@@ -42,6 +43,9 @@ import DemoListState from '../states/DemoListState'
 import {PortalContainerProvider} from '../utils/PortalContainerContext'
 
 import '../style/demo-list.scss'
+import {lightTheme} from "../../theme";
+import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import Card from "@material-ui/core/Card";
 
 @observer
 export default class DemoListView extends React.Component {
@@ -125,7 +129,9 @@ export default class DemoListView extends React.Component {
                                 <Typography>{label}</Typography>
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>
-                                {shouldRenderDemo && <Demo metaKeyPressing={metaKeyPressing} />}
+                                <ThemeProvider theme={lightTheme}>
+                                    {shouldRenderDemo && <Demo metaKeyPressing={metaKeyPressing} />}
+                                </ThemeProvider>
                             </ExpansionPanelDetails>
                         </ExpansionPanel>
                     })
@@ -153,6 +159,16 @@ export default class DemoListView extends React.Component {
                 >
                     {this.renderDemoPanels()}
                 </div>
+                <Card
+                    square={true}
+                    raised={true}
+                    className="fake-trigger"
+                >
+                    <MoreHorizIcon
+                        className="trigger-icon"
+                        fontSize="small"
+                    />
+                </Card>
             </Drawer>
         </div>
     }

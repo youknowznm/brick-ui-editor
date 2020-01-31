@@ -13,6 +13,8 @@ import Button from '@material-ui/core/Button'
 import ControlPanelState from '../states/ControlPanelState'
 
 import '../style/control-panel.scss'
+import Card from "@material-ui/core/Card";
+import MoreVerIcon from "@material-ui/icons/MoreHoriz";
 
 @observer
 export default class ControlPanelView extends React.Component {
@@ -53,6 +55,16 @@ export default class ControlPanelView extends React.Component {
                 }}
             >
                 {this.renderControlPanelContent()}
+                <Card
+                    square={true}
+                    raised={true}
+                    className="fake-trigger"
+                >
+                    <MoreVerIcon
+                        className="trigger-icon"
+                        fontSize="small"
+                    />
+                </Card>
             </Drawer>
         </div>
     }
