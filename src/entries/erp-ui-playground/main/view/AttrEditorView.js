@@ -7,15 +7,19 @@ import PropTypes from 'prop-types'
 import {PropTypes as MobxPropTypes} from 'mobx-react'
 
 import Typography from '@material-ui/core/Typography'
+import Switch from '@material-ui/core/Switch';
 
 import {withStyles} from '@material-ui/core/styles'
 import Drawer from '@material-ui/core/Drawer'
 import Button from '@material-ui/core/Button'
 import Divider from '@material-ui/core/Divider'
 import TextField from '@material-ui/core/TextField'
+import MenuItem from '@material-ui/core/MenuItem';
 import InputAdornment from '@material-ui/core/InputAdornment'
 
 import AttrEditorState from '../states/AttrEditorState'
+
+import {COMP_TYPES} from '../config'
 
 import '../style/attr-editor.scss'
 
@@ -89,37 +93,84 @@ export default class AttrEditorView extends React.Component {
             playgroundLeft,
         } = componentInEditData
 
-        const propInputs = []
-        for (let key in originCompProps) {
-            propInputs.push(<TextField
-                key={key}
-                value={originCompProps[key]}
-                onChange={(evt) => {
-                    targetPropsChangeHandler({
-                        [key]: evt.target.value
-                    })
-                }}
-                label={key}
-                fullWidth={true}
-                margin="dense"
-            />)
+        const compTypeData = COMP_TYPES[originDisplayName]
+        if (!compTypeData) {
+            throw ReferenceError('未定义的组件类型.')
         }
-
-        const stateInputs = []
-        for (let key in originCompState) {
-            stateInputs.push(<TextField
-                key={key}
-                value={originCompState[key]}
-                onChange={(evt) => {
-                    targetStateChangeHandler({
-                        [key]: evt.target.value
-                    })
-                }}
-                label={key}
-                fullWidth={true}
-                margin="dense"
-            />)
-        }
+        const {
+            cnLabel,
+            editableProps
+        } = compTypeData
+        const propInputs = editableProps.map(item => {
+            const {
+                key,
+                type,
+                desc,
+                options = [
+                    {
+                        value: true,
+                        label: '是',
+                    },
+                    {
+                        value: false,
+                        label: '否',
+                    }
+                ],
+                defaultValue
+            } = item
+            let value = originCompProps[key]
+            // 未显式声明时, 使用 default prop value
+            if (value === undefined) {
+                value = defaultValue
+            }
+            switch (type) {
+                case 'string':
+                    return <TextField
+                        key={key}
+                        label={desc}
+                        value={value}
+                        onChange={evt => {
+                            targetPropsChangeHandler({
+                                [key]: evt.target.value
+                            })
+                        }}
+                        onChange={evt => {
+                            targetPropsChangeHandler({
+                                [key]: evt.target.value.trim()
+                            })
+                        }}
+                        fullWidth={true}
+                        size="small"
+                        margin="dense"
+                    />
+                case 'bool':
+                case 'enum':
+                    return <TextField
+                        key={key}
+                        label={desc}
+                        select
+                        value={value}
+                        onChange={evt => {
+                            targetPropsChangeHandler({
+                                [key]: evt.target.value
+                            })
+                        }}
+                        size="small"
+                        fullWidth={true}
+                        margin="dense"
+                    >
+                        {
+                            options.map(option => {
+                                return <MenuItem key={option.value} value={option.value}>
+                                    {option.label}
+                                </MenuItem>
+                            })
+                        }
+                    </TextField>
+                default:
+                    return null;
+            }
+        })
 
         const inputAdornmentPx = {
             endAdornment: <InputAdornment position="end">px</InputAdornment>
@@ -132,10 +183,14 @@ export default class AttrEditorView extends React.Component {
         }
 
         return <div className="attr-editor-content">
-            <h3 className="title">
-                <span className="code">Button</span>
-                <span className="name">按钮</span>
-            </h3>
+            <div className="label">
+                <Typography className="en" variant="h4">
+                    {originDisplayName}
+                </Typography>
+                <Typography className="cn" variant="h4">
+                    {compTypeData.cnLabel}
+                </Typography>
+            </div>
             <Divider />
             <ul className="type-style">
                 <TextField
@@ -168,11 +223,8 @@ export default class AttrEditorView extends React.Component {
                 />
             </ul>
             <Divider />
-            <ul className="type-data">
+            <ul className="type-props">
                 {propInputs}
-            {/*</ul>*/}
-            {/*<ul className="type-data">*/}
-                {stateInputs}
             </ul>
         </div>
     }

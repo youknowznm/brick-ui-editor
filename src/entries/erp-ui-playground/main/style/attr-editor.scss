@@ -7,6 +7,27 @@
       height: 100%;
       // overflow: hidden;
       padding: 60px 0 40px;
+      .label {
+        position: relative;
+        padding: 0 15px;
+        height: 60px;
+        * {
+          color: #fff;
+          font-weight: lighter;
+        }
+        .en {
+          position: absolute;
+          left: 15px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        .cn {
+          position: absolute;
+          right: 15px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
     }
   }
   .title {
@@ -32,7 +53,7 @@
     }
   }
   .type-style,
-  .type-data {
+  .type-props {
     position: relative;
     padding: 10px 15px 10px;
     .type-style-input {
@@ -43,7 +64,7 @@
       }
     }
   }
-  .type-data {
+  .type-props {
     overflow: auto;
   }
 }

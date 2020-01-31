@@ -6,11 +6,6 @@ import {inject, observer} from 'mobx-react'
 import PropTypes from 'prop-types'
 import {PropTypes as MobxPropTypes} from 'mobx-react'
 
-import Drawer from '@material-ui/core/Drawer'
-import Button from '@material-ui/core/Button'
-import IconButton from '@material-ui/core/IconButton'
-import MoreVertIcon from '@material-ui/icons/MoreVert'
-
 import PlaygroundCompWrap from '../utils/PlaygroundCompWrap'
 
 import Card from '@material-ui/core/Card'
@@ -77,7 +72,7 @@ export default class PlaygroundView extends React.Component {
             setSetComponentInEditState,
             triggerControlPanelDrawer
         } = props
-        return <div className="playground-content"
+        return <Card className="playground-content"
             style={{
                 width: playgroundWidth,
                 height: playgroundHeight
@@ -96,6 +91,8 @@ export default class PlaygroundView extends React.Component {
                     props.setComponentInEditId('')
                 }
             }}
+            raised={true}
+            square={true}
         >
             {usedCompsDataArray.map(item => {
                 // console.log('usedCompsData:', toJS(item))
@@ -135,7 +132,7 @@ export default class PlaygroundView extends React.Component {
                     setSetComponentInEditState={setSetComponentInEditState}
                 />;
             })}
-        </div>
+        </Card>
     }
 
     render() {
@@ -147,13 +144,15 @@ export default class PlaygroundView extends React.Component {
         } = props
         // 减去 trigger 宽度
         const offSet = demoListWidth - 20
-        return <div className="playground-wrap"
+        return <Card className="playground-wrap"
             style={{
                 marginLeft: `${showDemoDrawer ? offSet : 0}px`,
                 right: `${showDemoDrawer ? -offSet : 0}px`,
             }}
+            raised={true}
+            square={true}
             >
             {this.renderPlaygroundContent()}
-        </div>
+        </Card>
     }
 }
