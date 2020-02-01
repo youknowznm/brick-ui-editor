@@ -13,36 +13,71 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import TextField from "@material-ui/core/TextField";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import MenuList from "@material-ui/core/MenuList";
+
+import {findDOMNode} from "react-dom";
 
 import {Icon} from '@befe/brick'
-// import {
-//     SvgArrowDown, SvgArrowUp, SvgBoldArrowUp, SvgBoldThickDown, SvgFastLeft, SvgFastRight, SvgPlainDown, SvgPlainLeft, SvgPlainRight, SvgPlainUp, SvgTriangleDown, SvgTriangleLeft, SvgTriangleRight, SvgTriangleUp, SvgFileAdd, SvgFileCheck, SvgFileDataExport, SvgFileDataImport, SvgFileReject, SvgFileSearch, SvgFileSync, SvgTransmitDownload, SvgTransmitUpload, SvgFlowActivate, SvgFlowDistribute, SvgFlowForward, SvgFlowGoOn, SvgFlowPause, SvgFlowRefresh, SvgFlowRollback, SvgFlowUpdate, SvgFlowWithdraw, SvgGenderFemale, SvgGenderMale, SvgMedal, SvgProtectionChecked, SvgProtectionExternal, SvgProtectionInternal, SvgStarFilled, SvgStar, SvgThumbUpFilled, SvgThumbUp, SvgVisibleDisabled, SvgVisible, SvgBtnMinus, SvgBtnPlus, SvgCalendarChecked, SvgCalendarTrend, SvgCalendar, SvgCellphone, SvgChartHistogram, SvgChartOrg, SvgChartTrend, SvgChat, SvgComment, SvgCurrencyCoin, SvgCurrencyPaper, SvgDiscX, SvgInfinity, SvgLoading, SvgLocation, SvgPlus, SvgSort, SvgToTop, SvgFileEml, SvgFileExcel, SvgFileHtml, SvgFileImg, SvgFileOther, SvgFilePdf, SvgFilePpt, SvgFileTxt, SvgFileWord, SvgFileZip, SvgHi, SvgSignAt, SvgSignBan, SvgSignClock, SvgSignCny, SvgSignCross, SvgSignExclamation, SvgSignInfoBold, SvgSignInfo, SvgSignMinus, SvgSignQuestion, SvgSignTick, SvgAuthorizationKey, SvgAuthorizationLock, SvgAuthorizationSetting, SvgBell, SvgBroadcast, SvgGear, SvgHelpDu, SvgHelpService, SvgUserAdd, SvgUserAlert, SvgUserConfig, SvgUserManager, SvgUserTeam, SvgUser, SvgCalculate, SvgClip, SvgCopy, SvgEditPencil, SvgEdit, SvgFolderOpened, SvgFolder, SvgFontSize, SvgImage, SvgJoinUp, SvgLinkBreak, SvgLink, SvgMail, SvgMarkCheck, SvgMarkCross, SvgMoreEllipsis, SvgMoreList, SvgPin, SvgPrinter, SvgSave, SvgScaleDown, SvgScaleUp, SvgSearch, SvgShare, SvgSortTimeAsce, SvgSortTimeDesc, SvgTrash, SvgTrun90Acw, SvgTurn90Cw
-// } from '@befe/brick-icon'
 
 import {ICON_GROUP_MAP_MAIN} from '@befe/brick-icon/src/main/group-map'
+
+import transferSvgStringToElement from "../transferSvgStringToElement";
 
 import './style.scss'
 
 export default class extends React.Component {
 
+    static displayName = 'SvgPropEditor'
+
     state = {
         visible: false,
-        iconTypes: [],
-        selectedIconType: ''
+        iconTypesArr: [],
+        selectedIconType: '',
+        selectedTypeSvgList: [],
+    }
+
+    static propTypes = {
+        // value: ''
     }
 
     componentDidMount() {
-        const iconTypes = []
-        for (let key in ICON_GROUP_MAP_MAIN) {
-            iconTypes.push(key)
-        }
+        const iconTypesArr = Object.keys(ICON_GROUP_MAP_MAIN)
         this.setState({
-            iconTypes,
-            selectedIconType: iconTypes[0]
+            iconTypesArr,
+            selectedIconType: this.getSelectedIconType(),
         })
     }
 
+    getSelectedIconType() {
+        const {value} = this.props
+        const iconTypesArr = Object.keys(ICON_GROUP_MAP_MAIN)
+        let selectedIconType = iconTypesArr[0]
+        if (value !== '') {
+            for (let typeName of iconTypesArr) {
+                const svgNameList = Object.keys(ICON_GROUP_MAP_MAIN[typeName])
+                for (let svgName of svgNameList) {
+                    if (svgName === value) {
+                        selectedIconType = typeName
+                        break
+                    }
+                }
+            }
+        }
+        return selectedIconType
+    }
+
+    get selectedTypeSvgList() {
+        return ICON_GROUP_MAP_MAIN[this.state.selectedIconType] || []
+    }
+
     triggerVisible = tar => {
+        if (tar === true) {
+            this.setState({
+                selectedIconType: this.getSelectedIconType()
+            })
+        }
         this.setState({
             visible: typeof tar === 'boolean' ? tar : !this.state.visible
         })
@@ -51,31 +86,29 @@ export default class extends React.Component {
     render() {
         const {
             visible,
-            iconTypes,
+            iconTypesArr,
             selectedIconType
         } = this.state
         const {
             value,
             onChange,
+            dispatchSelectedIcon,
             ...restProps
         } = this.props
-        return <div>
+        return <div className="svg-prop-editor">
             <TextField
                 value={value}
-                onChange={evt => {
-                    // targetPropsChangeHandler({
-                    //     [key]: evt.target.value
-                    // })
-                }}
                 onClick={() => {
                     this.triggerVisible(true)
                 }}
                 {...restProps}
             />
             <Dialog
+                className="svg-editor-dialog"
                 onClose={() => {
                     this.triggerVisible(false)
                 }}
+                maxWidth="md"
                 open={visible}
             >
                 <DialogTitle
@@ -88,19 +121,48 @@ export default class extends React.Component {
                     </Typography>
                 </DialogTitle>
                 <DialogContent dividers>
-                    <Tabs
-                        className="icon-type-tabs"
-                        value={selectedIconType}
-                        indicatorColor="primary"
-                        textColor="primary"
-                        onChange={()=>{}}
+                    <MenuList
+                        className="icon-type-menu"
+                        open={true}
                     >
                         {
-                            iconTypes.map(type => {
-                                return <Tab label={type} />
+                            iconTypesArr.map(type => {
+                                return <MenuItem
+                                    selected={type === selectedIconType}
+                                    onClick={() => {
+                                        this.setState({
+                                            selectedIconType: type,
+                                        })
+                                    }}
+                                >
+                                    {type.toUpperCase()}
+                                </MenuItem>
                             })
                         }
-                    </Tabs>
+                    </MenuList>
+                    <ul
+                        className="icon-list"
+                    >
+                        {
+                            Object.keys(this.selectedTypeSvgList).map(item => {
+                                return <Button
+                                    className="icon-wrap"
+                                    variant={item === value ? 'contained' : 'text'}
+                                    onClick={() => {
+                                        dispatchSelectedIcon(item)
+                                        this.triggerVisible(false)
+                                    }}
+                                >
+                                    <Icon
+                                        className="icon"
+                                        svg={transferSvgStringToElement(item)} />
+                                    <p
+                                        className="icon-name"
+                                    >{item}</p>
+                                </Button>
+                            })
+                        }
+                    </ul>
                 </DialogContent>
                 <DialogActions>
                     <Button
@@ -110,7 +172,7 @@ export default class extends React.Component {
                         }}
                         color="primary"
                     >
-                        Save changes
+                        取消
                     </Button>
                 </DialogActions>
             </Dialog>

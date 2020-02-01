@@ -32,7 +32,7 @@ const IconDemo = () => {
         const renderIcon = renderIconCreator(group)
         return (
             <div className={'icon-group'} key={groupName}>
-                <h4 className="icon-type-desc">{groupName}</h4>
+                <h4 className="i                        con-type-desc">{groupName}</h4>
                 <ul className={'icon-list'} >
                     {Object.keys(group).map(renderIcon)}
                 </ul>

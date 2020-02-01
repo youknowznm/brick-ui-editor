@@ -186,6 +186,11 @@ export default class AttrEditorView extends React.Component {
                         key={key}
                         label={desc}
                         value={value}
+                        dispatchSelectedIcon={icon => {
+                            targetPropsChangeHandler({
+                                [key]: icon
+                            })
+                        }}
                         {...propInputPropsGen}
                     />
                 default:
