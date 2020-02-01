@@ -19,7 +19,6 @@ const wrapDemoComp = OriginComponent => {
         ref = null;
 
         state = {
-            ownState: null,
             ownProps: null,
             width: '0px',
             height: '0px',
@@ -51,7 +50,6 @@ const wrapDemoComp = OriginComponent => {
                 delete ownProps.root;
                 delete ownProps.className;
                 this.setState({
-                    ownState: reactElem.state,
                     ownProps,
                     width: computedStyle.width,
                     height: computedStyle.height
@@ -64,6 +62,7 @@ const wrapDemoComp = OriginComponent => {
                 id: generateId(),
                 originDisplayName: OriginComponent.displayName,
                 originCompProps: this.state.ownProps,
+                // ...this.state.ownProps
             })
         }
 

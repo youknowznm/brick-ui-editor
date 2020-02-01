@@ -16,6 +16,8 @@ import './style.scss'
 import {Button as BrickButton} from '@befe/brick'
 import transferSvgStringToElement from "../transferSvgStringToElement";
 
+import {COMP_TYPES} from '../../config'
+
 @observer
 export default class PlaygroundCompWrap extends React.Component {
 
@@ -24,14 +26,12 @@ export default class PlaygroundCompWrap extends React.Component {
     contentDOM = null
     wrapDOM = null
 
-
     state = {
         wrapWidth: 0,
         wrapHeight: 0,
         isAbsolutePosition: false,
         prevX: 0,
         prevY: 0,
-        setContentState: null
     }
 
     static propTypes = {
@@ -49,7 +49,14 @@ export default class PlaygroundCompWrap extends React.Component {
             originDisplayName,
             originCompProps
         } = this.props
+        const compTypeData = COMP_TYPES[originDisplayName]
+        if (!compTypeData) {
+            throw ReferenceError('未定义的组件类型.')
+        }
         originCompProps = toJS(originCompProps)
+        // for (let prop in compTypeData.editableProps) {
+        //
+        // }
         if (originDisplayName === 'Button') {
             if (typeof originCompProps.icon === 'string') {
                 originCompProps.icon = transferSvgStringToElement(originCompProps.icon)
@@ -64,14 +71,9 @@ export default class PlaygroundCompWrap extends React.Component {
     componentDidUpdate(prevProps, prevState, snapshot) {
         const {state, props} = this
         const {
-            setContentState,
         } = state
         const justDidSelect = prevProps.componentInEditId !== prevProps.id && this.isSelected
         const justDidDeselect = prevProps.componentInEditId === prevProps.id && !this.isSelected
-        if (justDidSelect) {
-        }
-        if (justDidDeselect) {
-        }
     }
 
     processWrapDOMRef = wrapDOM => {
@@ -85,11 +87,7 @@ export default class PlaygroundCompWrap extends React.Component {
             const computedStyle = document.defaultView.getComputedStyle(wrapDOM)
             this.setState({
                 wrapWidth: parseInt(computedStyle.width, 10),
-                wrapHeight: parseInt(computedStyle.height, 10),
-                setContentState: partialState => {
-                    // console.log('set partial state:', partialState)
-                    reactElem.setState(partialState)
-                }
+                wrapHeight: parseInt(computedStyle.height, 10)
             })
         }
     }
