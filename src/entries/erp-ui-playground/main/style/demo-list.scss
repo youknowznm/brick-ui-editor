@@ -41,9 +41,14 @@
           }
         }
       }
+      .link-demo-block {
+        .brick-link {
+          display: inline-block;
+        }
+      }
       .dialog-demo-block {
         background-color: rgba(0, 0, 0, .6) !important;
-        .extend-ui-comp-wrap {
+        .demo-list-comp-wrap {
           width: 100% !important;
         }
       }

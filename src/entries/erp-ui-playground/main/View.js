@@ -142,6 +142,7 @@ export default class extends React.Component {
             <div className="index-page">
                 <DemoListView
                     demoListWidth={mainState.demoListWidth}
+                    // showDemoDrawer={true}
                     showDemoDrawer={mainState.showDemoDrawer}
                     metaKeyPressing={mainState.metaKeyPressing}
                 />

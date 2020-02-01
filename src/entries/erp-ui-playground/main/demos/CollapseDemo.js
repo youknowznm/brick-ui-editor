@@ -4,12 +4,10 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-import {Button} from '@befe/brick-comp-button'
-
-import {Collapse, CollapsePanel} from '@befe/brick'
-// import {Collapse as OriginCollapse} from '@befe/brick'
-
-// const Collapse = wrapDemoComp(OriginCollapse)
+import {CollapsePanel} from '@befe/brick'
+// import {Collapse, CollapsePanel} from '@befe/brick'
+import {Collapse as OriginCollapse} from '@befe/brick'
+const Collapse = wrapDemoComp(OriginCollapse)
 
 const CollapseDemo = () => {
     const extra = (<div>{'222'}</div>)
@@ -48,8 +46,8 @@ const CollapseDemo = () => {
         <Divider className="demo-block-separator" />
         {/* ===== 3 extra ===== */}
         <div>
-        <Collapse>
-            <CollapsePanel headline = {'可以折叠1'} id = {1} extra = {extra1}>
+            <Collapse>
+                <CollapsePanel headline = {'可以折叠1'} id = {1} extra = {extra1}>
                     {'text'}
                 </CollapsePanel>
                 <CollapsePanel headline = {'可以折叠2'} id = {2} extra = {extra2}>

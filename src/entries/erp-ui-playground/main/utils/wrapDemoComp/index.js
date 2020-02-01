@@ -29,30 +29,34 @@ const wrapDemoComp = OriginComponent => {
 
         createRef = reactElem => {
             this.ref = reactElem;
-            const wrapDOM = findDOMNode(this.ref);
+            let wrapDOM = findDOMNode(this.ref);
+            // wrapDOM = wrapDOM.querySelector('a')
             if (wrapDOM) {
-                const computedStyle = document.defaultView.getComputedStyle(wrapDOM);
-                const ownProps = Object.assign({}, reactElem.props);
-                for (let propKey in ownProps) {
-                    if (ownProps.hasOwnProperty(propKey)) {
-                        const propValue = ownProps[propKey]
-                        if (typeof propValue === 'function') {
-                            const isReactElement = React.isValidElement(propValue())
-                            if (isReactElement) {
-                                ownProps[propKey] = propValue.name
-                            } else {
-                                delete ownProps[propKey];
+                setTimeout(() => {
+                    const computedStyle = document.defaultView.getComputedStyle(wrapDOM);
+                    const ownProps = Object.assign({}, reactElem.props);
+                    for (let propKey in ownProps) {
+                        if (ownProps.hasOwnProperty(propKey)) {
+                            const propValue = ownProps[propKey]
+                            if (typeof propValue === 'function') {
+                                const isReactElement = React.isValidElement(propValue())
+                                if (isReactElement) {
+                                    ownProps[propKey] = propValue.name
+                                } else {
+                                    delete ownProps[propKey];
+                                }
                             }
                         }
                     }
-                }
-                delete ownProps.root;
-                delete ownProps.className;
-                this.setState({
-                    ownProps,
-                    wrapWidth: parseInt(computedStyle.width, 10),
-                    wrapHeight: parseInt(computedStyle.height, 10)
-                });
+                    delete ownProps.root;
+                    delete ownProps.className;
+                    this.setState({
+                        ownProps,
+                        wrapWidth: parseInt(computedStyle.width, 10),
+                        wrapHeight: parseInt(computedStyle.height, 10)
+                    });
+                })
+
             }
         }
 
@@ -76,7 +80,7 @@ const wrapDemoComp = OriginComponent => {
             } = state;
             return <div
                 className={c(
-                    'extend-ui-comp-wrap',
+                    'demo-list-comp-wrap',
                     props.root.metaKeyPressing && 'meta-key-pressed'
                 )}
                 style={{

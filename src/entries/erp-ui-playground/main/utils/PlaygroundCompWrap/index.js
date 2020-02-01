@@ -64,10 +64,7 @@ export default class PlaygroundCompWrap extends React.Component {
                 key,
                 type,
             } = propType
-
             if (type === 'svg') {
-                console.log(123, key,
-                    type, originProps[key], transferSvgStringToElement(originProps[key]))
                 originProps[key] = transferSvgStringToElement(originProps[key])
             }
         }
@@ -255,7 +252,6 @@ export default class PlaygroundCompWrap extends React.Component {
             wrapWidth,
             wrapHeight
         } = props
-        console.log(798, this.processedOriginCompProps)
         return <Draggable {...this.draggableWrapProps}>
             <div
                 className={c(

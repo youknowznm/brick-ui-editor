@@ -117,5 +117,47 @@ export const COMP_TYPES = {
                 type: 'svg',
             },
         ],
-    }
+    },
+    Link: {
+        cnLabel: '链接',
+        Element: Link,
+        editableProps: [
+            {
+                desc: '内容',
+                key: 'children',
+                type: 'string',
+            },
+            {
+                desc: '地址',
+                key: 'href',
+                type: 'string',
+            },
+            {
+                desc: '类型',
+                key: 'type',
+                type: 'enum',
+                options: [
+                    {value: 'normal', label: '普通'},
+                    {value: 'intensive', label: '加强'},
+                ],
+                defaultValue: 'normal'
+            },
+            {
+                desc: '尺寸',
+                key: 'size',
+                type: 'enum',
+                options: [
+                    {value: 'sm', label: '小号'},
+                    {value: 'md', label: '中号'},
+                ],
+                defaultValue: 'sm'
+            },
+            {
+                desc: '禁用',
+                key: 'disabled',
+                type: 'bool',
+                defaultValue: false
+            },
+        ],
+    },
 }

@@ -12,7 +12,7 @@ export default class State extends BaseModel {
     // 请求中标识
     @observable loadingFlag = false
 
-    @observable expandedDemoPanelLabel = 'Icon'
+    @observable expandedDemoPanelLabel = 'Collapse'
 
     setExpandedDemoPanelLabel = key => {
         this.setProps({

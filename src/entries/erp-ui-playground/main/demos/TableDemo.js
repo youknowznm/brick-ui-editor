@@ -9,11 +9,10 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-import {Table} from '@befe/brick'
+// import {Table} from '@befe/brick'
 
-// import {Table as OriginTable} from '@befe/brick'
-//
-// const Table = wrapDemoComp(OriginTable)
+import {Table as OriginTable} from '@befe/brick'
+const Table = wrapDemoComp(OriginTable)
 
 const TableDemo = () => {
 
