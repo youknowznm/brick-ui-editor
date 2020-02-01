@@ -71,22 +71,22 @@ class MainState extends BaseModel {
 
     // ##### 右侧 属性编辑器 #####
 
-    @observable componentInEditId = ''
+    @observable activeComponentId = ''
 
-    @computed get componentInEditData() {
+    @computed get activeComponentData() {
         return this.usedCompsDataArray.find(item => {
-            return item.id === this.componentInEditId
+            return item.id === this.activeComponentId
         }) || null
     }
 
     @action targetPropsChangeHandler = data => {
         const {
-            componentInEditData,
+            activeComponentData,
             compResizeHandler
         } = this
         for (let key in data) {
-            componentInEditData.originProps[key] = data[key]
-            // console.log('target props changed', key, this.componentInEditData.originProps[key])
+            activeComponentData.originProps[key] = data[key]
+            // console.log('target props changed', key, this.activeComponentData.originProps[key])
         }
         if (typeof compResizeHandler === 'function') {
             // 待重绘完成, 下次事件循环时, 读 wrap 宽高并存储
@@ -95,13 +95,18 @@ class MainState extends BaseModel {
                     wrapWidth,
                     wrapHeight
                 } = compResizeHandler()
-                componentInEditData.wrapWidth = wrapWidth
-                componentInEditData.wrapHeight = wrapHeight
+                activeComponentData.wrapWidth = wrapWidth
+                activeComponentData.wrapHeight = wrapHeight
             })
         }
     }
 
     @observable compResizeHandler = null
+
+    @action compDragHandler = deltas => {
+        this.activeComponentData.deltaX = deltas.deltaX
+        this.activeComponentData.deltaY = deltas.deltaY
+    }
 }
 
 export default MainState

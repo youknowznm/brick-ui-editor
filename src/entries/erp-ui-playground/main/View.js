@@ -51,7 +51,7 @@ export default class extends React.Component {
             }
             if (event.key === 'Escape') {
                 local.mainState.setProps({
-                    componentInEditId: ''
+                    activeComponentId: ''
                 })
             }
         })
@@ -104,7 +104,7 @@ export default class extends React.Component {
                 this.local.mainState.triggerControlPanelDrawer(true)
                 this.local.mainState.triggerDemoDrawer(false)
                 this.local.mainState.setProps({
-                    componentInEditId: ''
+                    activeComponentId: ''
                 })
             }}
         >
@@ -123,7 +123,7 @@ export default class extends React.Component {
                 this.local.mainState.triggerDemoDrawer(true)
                 this.local.mainState.triggerControlPanelDrawer(false)
                 this.local.mainState.setProps({
-                    componentInEditId: ''
+                    activeComponentId: ''
                 })
             }}
         >
@@ -154,10 +154,10 @@ export default class extends React.Component {
                     showDemoDrawer={mainState.showDemoDrawer}
                     triggerDemoDrawer={mainState.triggerDemoDrawer}
                     triggerControlPanelDrawer={mainState.triggerControlPanelDrawer}
-                    componentInEditId={mainState.componentInEditId}
-                    setComponentInEditId={id => {
+                    activeComponentId={mainState.activeComponentId}
+                    setActiveComponentId={id => {
                         mainState.setProps({
-                            componentInEditId: id
+                            activeComponentId: id
                         })
                     }}
                     setCompResizeHandler={func => {
@@ -165,9 +165,10 @@ export default class extends React.Component {
                             compResizeHandler: func
                         })
                     }}
+                    compDragHandler={mainState.compDragHandler}
                 />
                 <AttrEditorView
-                    componentInEditData={mainState.componentInEditData}
+                    activeComponentData={mainState.activeComponentData}
                     targetStateChangeHandler={mainState.targetStateChangeHandler}
                     targetPropsChangeHandler={mainState.targetPropsChangeHandler}
                 />

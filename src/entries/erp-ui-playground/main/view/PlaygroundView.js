@@ -44,12 +44,14 @@ export default class PlaygroundView extends React.Component {
         triggerControlPanelDrawer: PropTypes.func.isRequired,
 
         // 编辑状态的组件 id
-        componentInEditId: PropTypes.string.isRequired,
+        activeComponentId: PropTypes.string.isRequired,
 
         // 设置/清空编辑状态的组件 id
-        setComponentInEditId: PropTypes.func.isRequired,
+        setActiveComponentId: PropTypes.func.isRequired,
 
-        setCompResizeHandler: PropTypes.func
+        setCompResizeHandler: PropTypes.func,
+
+        compDragHandler: PropTypes.func
     }
 
     local = {
@@ -68,11 +70,12 @@ export default class PlaygroundView extends React.Component {
             playgroundHeight,
             usedCompsDataArray,
             metaKeyPressing,
-            componentInEditId,
-            setComponentInEditId,
+            activeComponentId,
+            setActiveComponentId,
             triggerDemoDrawer,
             setCompResizeHandler,
-            triggerControlPanelDrawer
+            triggerControlPanelDrawer,
+            compDragHandler,
         } = props
         return <Paper className="playground-content"
             style={{
@@ -90,7 +93,7 @@ export default class PlaygroundView extends React.Component {
                 // 点击区域空白处时, 取消组件编辑
                 const {className} = evt.target
                 if (className.indexOf && className.indexOf('playground-content') > -1) {
-                    props.setComponentInEditId('')
+                    props.setActiveComponentId('')
                 }
             }}
             square={true}
@@ -107,7 +110,7 @@ export default class PlaygroundView extends React.Component {
                 //             showControlPanelDrawer: false,
                 //             triggerControlPanelDrawer: ƒ,
                 //             triggerDemoDrawer: ƒ,
-                //             setComponentInEditId: ƒ
+                //             setActiveComponentId: ƒ
                 //     }
                 //     className: ""
                 //     color: "normal"
@@ -124,13 +127,15 @@ export default class PlaygroundView extends React.Component {
                     deltaX={item.deltaX}
                     deltaY={item.deltaY}
                     metaKeyPressing={metaKeyPressing}
-                    componentInEditId={componentInEditId}
-                    setComponentInEditId={setComponentInEditId}
+                    activeComponentId={activeComponentId}
+                    setActiveComponentId={setActiveComponentId}
                     triggerDemoDrawer={triggerDemoDrawer}
                     triggerControlPanelDrawer={triggerControlPanelDrawer}
                     playgroundWidth={playgroundWidth}
                     playgroundHeight={playgroundHeight}
                     setCompResizeHandler={setCompResizeHandler}
+                    compDragHandler={compDragHandler}
+                    setActiveComponentId={setActiveComponentId}
                 />;
             })}
         </Paper>

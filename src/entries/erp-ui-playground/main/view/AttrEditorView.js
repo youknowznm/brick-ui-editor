@@ -26,6 +26,7 @@ import {COMP_TYPES} from '../config'
 import SvgPropEditor from '../utils/SvgPropEditor'
 
 import '../style/attr-editor.scss'
+import {capitalize} from "lodash-es";
 
 @observer
 export default class AttrEditorView extends React.Component {
@@ -44,14 +45,14 @@ export default class AttrEditorView extends React.Component {
         //             showControlPanelDrawer: false,
         //             triggerControlPanelDrawer: ƒ,
         //             triggerDemoDrawer: ƒ,
-        //             setComponentInEditId: ƒ
+        //             setActiveComponentId: ƒ
         //     }
         //     className: ""
         //     color: "normal"
         //     disabled: false
         //     loadingDelayInMS: 300
         // }
-        componentInEditData: PropTypes.object,
+        activeComponentData: PropTypes.object,
 
         // 编辑 state 和 props
         targetStateChangeHandler: PropTypes.func,
@@ -75,32 +76,31 @@ export default class AttrEditorView extends React.Component {
     renderAttrEditorContent = () => {
         const {local, props} = this
         const {
-            componentInEditData,
+            activeComponentData,
             targetPropsChangeHandler,
             targetStateChangeHandler
         } = props
-        if (componentInEditData === null) {
+        if (activeComponentData === null) {
             return null
         }
-        // console.log('componentInEditData: ', toJS(componentInEditData))
+        // console.log('activeComponentData: ', toJS(activeComponentData))
         const {
             id,
             originName,
             originProps,
             playgroundTop,
             playgroundLeft,
-        } = componentInEditData
+            wrapWidth,
+            wrapHeight,
+            deltaX,
+            deltaY
+        } = activeComponentData
 
         const compTypeData = COMP_TYPES[originName]
         const {
-            cnLabel,
             editableProps
         } = compTypeData
-        const propInputPropsGen = {
-            size: 'small',
-            fullWidth: true,
-            margin: 'dense'
-        }
+
         const propInputs = editableProps.map(item => {
             let {
                 key,
@@ -118,14 +118,18 @@ export default class AttrEditorView extends React.Component {
                 ],
                 defaultValue
             } = item
-            let value = originProps[key]
+            const propInputPropsGen = {
+                key: key,
+                label: `${desc} ${capitalize(key)}`,
+                value: originProps[key],
+                size: 'small',
+                fullWidth: true,
+                margin: 'dense'
+            }
             // console.log('attr editing: ', key, value)
             switch (type) {
                 case 'string':
                     return <TextField
-                        key={key}
-                        label={desc}
-                        value={value}
                         onChange={evt => {
                             targetPropsChangeHandler({
                                 [key]: evt.target.value
@@ -138,13 +142,31 @@ export default class AttrEditorView extends React.Component {
                         // }}
                         {...propInputPropsGen}
                     />
-                case 'bool':
                 case 'enum':
                     return <TextField
-                        key={key}
-                        label={desc}
                         select
-                        value={value}
+                        onChange={evt => {
+                            targetPropsChangeHandler({
+                                [key]: evt.target.value
+                            })
+                        }}
+                        {...propInputPropsGen}
+                    >
+                        {
+                            options.map(option => {
+                                return <MenuItem
+                                    key={option.value}
+                                    value={option.value}
+                                    dense={true}
+                                >
+                                    {option.label} {option.value}
+                                </MenuItem>
+                            })
+                        }
+                    </TextField>
+                case 'bool':
+                    return <TextField
+                        select
                         onChange={evt => {
                             targetPropsChangeHandler({
                                 [key]: evt.target.value
@@ -176,9 +198,6 @@ export default class AttrEditorView extends React.Component {
                         }
                     ]
                     return <SvgPropEditor
-                        key={key}
-                        label={desc}
-                        value={value}
                         dispatchSelectedIcon={icon => {
                             targetPropsChangeHandler({
                                 [key]: icon
@@ -188,9 +207,6 @@ export default class AttrEditorView extends React.Component {
                     />
                 default:
                     return <TextField
-                        key={key}
-                        label={desc}
-                        value={value}
                         onChange={evt => {
                             targetPropsChangeHandler({
                                 [key]: evt.target.value
@@ -221,36 +237,40 @@ export default class AttrEditorView extends React.Component {
                 </Typography>
             </div>
             <Divider />
-            <ul className="type-style">
-                <TextField
-                    className="type-style-input top"
-                    key="style-top"
-                    value=""
-                    label="上边距 top"
-                    {...styleInputOtherProps}
-                />
+            <div className="type-style">
                 <TextField
                     className="type-style-input left"
                     key="style-left"
-                    value=""
+                    value={deltaX}
                     label="左边距 left"
+                    disabled={true}
+                    {...styleInputOtherProps}
+                />
+                <TextField
+                    className="type-style-input top"
+                    key="style-top"
+                    value={deltaY}
+                    label="上边距 top"
+                    disabled={true}
                     {...styleInputOtherProps}
                 />
                 <TextField
                     className="type-style-input width"
                     key="style-width"
-                    value=""
+                    value={wrapWidth}
+                    disabled={true}
                     label="宽度 width"
                     {...styleInputOtherProps}
                 />
                 <TextField
                     className="type-style-input height"
                     key="style-height"
-                    value=""
+                    value={wrapHeight}
+                    disabled={true}
                     label="高度 height"
                     {...styleInputOtherProps}
                 />
-            </ul>
+            </div>
             <Divider />
             <ul className="type-props">
                 {propInputs}
@@ -266,7 +286,7 @@ export default class AttrEditorView extends React.Component {
                 className="attr-editor-drawer"
                 anchor="right"
                 variant="persistent"
-                open={props.componentInEditData !== null}
+                open={props.activeComponentData !== null}
             >
                 {this.renderAttrEditorContent()}
             </Drawer>

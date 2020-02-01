@@ -17,6 +17,8 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
 
+import {capitalize} from "lodash-es";
+
 import {findDOMNode} from "react-dom";
 
 import {Icon} from '@befe/brick'
@@ -136,7 +138,7 @@ export default class extends React.Component {
                                         })
                                     }}
                                 >
-                                    {type.toUpperCase()}
+                                    {capitalize(type)}
                                 </MenuItem>
                             })
                         }
