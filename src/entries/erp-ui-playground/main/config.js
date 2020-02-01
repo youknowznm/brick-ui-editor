@@ -1,6 +1,32 @@
+import {
+    Button,
+    Icon,
+    Link,
+    Collapse,
+    Dialog,
+    Popover,
+    Tabs,
+    FileList,
+    Table,
+    Checkbox,
+    DatePicker,
+    Input,
+    Radio,
+    Select,
+    Suggest,
+    Switch,
+    Textarea,
+    Alert,
+    Breadcrumb,
+    HeadNav,
+    Menu,
+    Pagination
+} from '@befe/brick'
+
 export const COMP_TYPES = {
     Button: {
         cnLabel: '按钮',
+        Element: Button,
         editableProps: [
             {
                 desc: '内容',

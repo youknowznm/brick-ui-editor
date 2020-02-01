@@ -7,13 +7,10 @@ import {findDOMNode} from 'react-dom'
 import PropTypes from 'prop-types'
 import {PropTypes as MobxPropTypes} from 'mobx-react'
 
-import Button from '@material-ui/core/Button'
-
 import Draggable from 'react-draggable'
 
 import './style.scss'
 
-import {Button as BrickButton} from '@befe/brick'
 import transferSvgStringToElement from "../transferSvgStringToElement";
 
 import {debounce} from 'lodash-es';
@@ -53,14 +50,16 @@ export default class PlaygroundCompWrap extends React.Component {
         return this.props.activeComponentId === this.props.id
     }
 
+    get compTypeData() {
+        return COMP_TYPES[this.props.originName]
+    }
+
     get processedOriginCompProps() {
         let {
-            originName,
             originProps
         } = this.props
-        const compTypeData = COMP_TYPES[originName]
         originProps = toJS(originProps)
-        for (let propType of compTypeData.editableProps) {
+        for (let propType of this.compTypeData.editableProps) {
             const {
                 key,
                 type,
@@ -259,6 +258,7 @@ export default class PlaygroundCompWrap extends React.Component {
                     'playground-comp-wrap',
                     props.metaKeyPressing && 'meta-key-pressed',
                     this.isSelected && 'selected',
+                    // TODO: wrap 尺寸不对, 到底是不是定位的原因
                     // isAbsolutePosition && 'is-absolute-positon'
                     'is-absolute-positon'
                 )}
@@ -270,7 +270,7 @@ export default class PlaygroundCompWrap extends React.Component {
             >
                 {
                     this.wrapCompInControllers(
-                        <BrickButton
+                        <this.compTypeData.Element
                             ref={this.processContentDOMRef}
                             {...this.processedOriginCompProps}
                         />

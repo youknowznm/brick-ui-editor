@@ -6,14 +6,11 @@ import wrapDemoComp from '../utils/wrapDemoComp'
 
 import {ICON_GROUP_MAP_MAIN} from '@befe/brick-icon/src/main/group-map'
 
-import {Icon} from '@befe/brick'
-// import {Icon as OriginIcon} from '@befe/brick'
-import {SvgHi, SvgCalendar,
-    SvgLoading, SvgEdit, SvgSignExclamation,
-    SvgSignTick, SvgSignInfo, SvgSignCross
-} from '@befe/brick-icon'
+// import {Icon} from '@befe/brick'
+import {capitalize} from "lodash-es";
 
-// const Icon = wrapDemoComp(OriginIcon)
+import {Icon as OriginIcon} from '@befe/brick'
+const Icon = wrapDemoComp(OriginIcon)
 
 const IconDemo = () => {
 
@@ -32,7 +29,7 @@ const IconDemo = () => {
         const renderIcon = renderIconCreator(group)
         return (
             <div className={'icon-group'} key={groupName}>
-                <h4 className="i                        con-type-desc">{groupName}</h4>
+                <h4 className="icon-type-desc">{capitalize(groupName)}</h4>
                 <ul className={'icon-list'} >
                     {Object.keys(group).map(renderIcon)}
                 </ul>
@@ -42,74 +39,74 @@ const IconDemo = () => {
     }
 
     return <div className="demo-block icon-demo-block">
-        {/* <Divider className="demo-block-separator" /> */}
-        {/* ===== 0 basic ===== */}
-        <div>
-            <ul className={'icon-list'}>
-                <li>
-                    <Icon svg={SvgCalendar} />
-                </li>
-                <li>
-                    <Icon svg={SvgHi} />
-                </li>
-            </ul>
-            <ul className={'icon-list'}>
-                <li>
-                    <Icon svg={SvgSignInfo} style={{color: '#4C84FF'}} />
-                    <p>#4C84FF</p>
-                </li>
-                <li>
-                    <Icon svg={SvgSignTick} style={{color: '#39BF45'}} />
-                    <p>#39BF45</p>
-                </li>
-                <li>
-                    <Icon svg={SvgSignExclamation} style={{color: '#F27C49'}} />
-                    <p>#F27C49</p>
-                </li>
-                <li>
-                    <Icon svg={SvgSignCross} style={{color: '#E64552'}} />
-                    <p>#E64552</p>
-                </li>
+        {/*/!* ===== 0 basic ===== *!/*/}
+        {/*<div>*/}
+        {/*    <ul className={'icon-list'}>*/}
+        {/*        <li>*/}
+        {/*            <Icon svg={SvgCalendar} />*/}
+        {/*        </li>*/}
+        {/*        <li>*/}
+        {/*            <Icon svg={SvgHi} />*/}
+        {/*        </li>*/}
+        {/*    </ul>*/}
+        {/*    <ul className={'icon-list'}>*/}
+        {/*        <li>*/}
+        {/*            <Icon svg={SvgSignInfo} style={{color: '#4C84FF'}} />*/}
+        {/*            <p>#4C84FF</p>*/}
+        {/*        </li>*/}
+        {/*        <li>*/}
+        {/*            <Icon svg={SvgSignTick} style={{color: '#39BF45'}} />*/}
+        {/*            <p>#39BF45</p>*/}
+        {/*        </li>*/}
+        {/*        <li>*/}
+        {/*            <Icon svg={SvgSignExclamation} style={{color: '#F27C49'}} />*/}
+        {/*            <p>#F27C49</p>*/}
+        {/*        </li>*/}
+        {/*        <li>*/}
+        {/*            <Icon svg={SvgSignCross} style={{color: '#E64552'}} />*/}
+        {/*            <p>#E64552</p>*/}
+        {/*        </li>*/}
 
-            </ul>
-            <ul className={'icon-list'}>
-                <li>
-                    <Icon svg={SvgEdit} style={{fontSize: 12}} />
-                    <p>12px</p>
-                </li>
-                <li>
-                    <Icon svg={SvgEdit} style={{fontSize: 14}} />
-                    <p>14px</p>
-                </li>
-                <li>
-                    <Icon svg={SvgEdit} style={{fontSize: 16}} />
-                    <p>16px</p>
-                </li>
-                <li>
-                    <Icon svg={SvgEdit} style={{fontSize: 20}} />
-                    <p>20px</p>
-                </li>
-            </ul>
-            <ul className={'icon-list'}>
-                <li>
-                    <Icon svg={SvgLoading} spin={true} />
-                    <p>true</p>
-                </li>
-                <li>
-                    <Icon svg={SvgLoading} spin={1.5} />
-                    <p>1.5</p>
-                </li>
-                <li>
-                    <Icon svg={SvgLoading} spin={2} />
-                    <p>2</p>
-                </li>
-                <li>
-                    <Icon svg={SvgLoading} spin={3} />
-                    <p>3</p>
-                </li>
-            </ul>
-        </div>
-        <Divider className="demo-block-separator" />
+        {/*    </ul>*/}
+        {/*    <ul className={'icon-list'}>*/}
+        {/*        <li>*/}
+        {/*            <Icon svg={SvgEdit} style={{fontSize: 12}} />*/}
+        {/*            <p>12px</p>*/}
+        {/*        </li>*/}
+        {/*        <li>*/}
+        {/*            <Icon svg={SvgEdit} style={{fontSize: 14}} />*/}
+        {/*            <p>14px</p>*/}
+        {/*        </li>*/}
+        {/*        <li>*/}
+        {/*            <Icon svg={SvgEdit} style={{fontSize: 16}} />*/}
+        {/*            <p>16px</p>*/}
+        {/*        </li>*/}
+        {/*        <li>*/}
+        {/*            <Icon svg={SvgEdit} style={{fontSize: 20}} />*/}
+        {/*            <p>20px</p>*/}
+        {/*        </li>*/}
+        {/*    </ul>*/}
+        {/*    <ul className={'icon-list'}>*/}
+        {/*        <li>*/}
+        {/*            <Icon svg={SvgLoading} spin={true} />*/}
+        {/*            <p>true</p>*/}
+        {/*        </li>*/}
+        {/*        <li>*/}
+        {/*            <Icon svg={SvgLoading} spin={1.5} />*/}
+        {/*            <p>1.5</p>*/}
+        {/*        </li>*/}
+        {/*        <li>*/}
+        {/*            <Icon svg={SvgLoading} spin={2} />*/}
+        {/*            <p>2</p>*/}
+        {/*        </li>*/}
+        {/*        <li>*/}
+        {/*            <Icon svg={SvgLoading} spin={3} />*/}
+        {/*            <p>3</p>*/}
+        {/*        </li>*/}
+        {/*    </ul>*/}
+        {/*</div>*/}
+        {/*<Divider className="demo-block-separator" />*/}
+        {/* ===== 0 basic ===== */}
         <div className="icon-group-map">
             {Object.keys(ICON_GROUP_MAP_MAIN).map(renderGroup)}
             <Icon />
