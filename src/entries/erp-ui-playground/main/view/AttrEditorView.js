@@ -122,11 +122,7 @@ export default class AttrEditorView extends React.Component {
                 defaultValue
             } = item
             let value = originCompProps[key]
-            // 未显式声明时, 使用 default prop value
-            if (value === undefined) {
-                value = defaultValue
-            }
-            console.log('attr editing: ', key, value)
+            // console.log('attr editing: ', key, value)
             switch (type) {
                 case 'string':
                     return <TextField

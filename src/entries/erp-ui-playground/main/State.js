@@ -7,6 +7,8 @@ import {default as c} from 'classnames'
 import {toJS, computed, observable, action} from 'mobx'
 import {observer} from 'mobx-react'
 import BaseModel from './utils/BaseModel'
+import {COMP_TYPES} from "./config";
+import transferSvgStringToElement from "./utils/transferSvgStringToElement";
 
 class MainState extends BaseModel {
 
@@ -41,6 +43,27 @@ class MainState extends BaseModel {
     @observable usedCompsDataArray = []
 
     @action pushUsedCompData = data => {
+        console.log('rcv used comp:',data)
+        let {
+            originDisplayName,
+            originCompProps
+        } = data
+        const compTypeData = COMP_TYPES[originDisplayName]
+        if (!compTypeData) {
+            throw ReferenceError('未定义的组件类型.')
+        }
+        for (let propType of compTypeData.editableProps) {
+            const {
+                key,
+                type,
+                defaultValue = '' // svg, children
+            } = propType
+            // 未显式声明时, 使用 default prop value
+            if (originCompProps[key] === undefined) {
+                originCompProps[key] = defaultValue
+            }
+        }
+        data.originCompProps = originCompProps
         this.usedCompsDataArray.push(data)
     }
 
@@ -65,12 +88,17 @@ class MainState extends BaseModel {
 
     @action targetPropsChangeHandler = data => {
         for (let key in data) {
-            if (data.hasOwnProperty((key))) {
-                this.componentInEditData.originCompProps[key] = data[key]
-                console.log('target props changed', key, this.componentInEditData.originCompProps[key])
-            }
+            this.componentInEditData.originCompProps[key] = data[key]
+            // console.log('target props changed', key, this.componentInEditData.originCompProps[key])
+        }
+        if (typeof this.compResizeHandler === 'function') {
+            setTimeout(() => {
+                this.compResizeHandler()
+            })
         }
     }
+
+    @observable compResizeHandler = null
 }
 
 export default MainState

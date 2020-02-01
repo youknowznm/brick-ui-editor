@@ -6,7 +6,6 @@ export const COMP_TYPES = {
                 desc: '内容',
                 key: 'children',
                 type: 'string',
-                defaultValue: ''
             },
             {
                 desc: '类型',
@@ -33,7 +32,7 @@ export const COMP_TYPES = {
                     {value: 'lg', label: '大号'},
                     {value: 'xl', label: '特大号'}
                 ],
-                defaultValue: 'md'
+                defaultValue: 'sm'
             },
             {
                 desc: '颜色',

@@ -48,6 +48,8 @@ export default class PlaygroundView extends React.Component {
 
         // 设置/清空编辑状态的组件 id
         setComponentInEditId: PropTypes.func.isRequired,
+
+        setCompResizeHandler: PropTypes.func
     }
 
     local = {
@@ -57,14 +59,6 @@ export default class PlaygroundView extends React.Component {
     constructor(props) {
         super(props)
         const {local} = this
-    }
-
-    processOriginCompProps = originCompProps => {
-        console.log('?', originCompProps.icon)
-        if (originCompProps.icon) {
-            originCompProps.icon = transferSvgStringToElement(originCompProps.icon)
-        }
-        return originCompProps
     }
 
     renderPlaygroundContent = () => {
@@ -77,6 +71,7 @@ export default class PlaygroundView extends React.Component {
             componentInEditId,
             setComponentInEditId,
             triggerDemoDrawer,
+            setCompResizeHandler,
             triggerControlPanelDrawer
         } = props
         return <Paper className="playground-content"
@@ -131,6 +126,7 @@ export default class PlaygroundView extends React.Component {
                     triggerControlPanelDrawer={triggerControlPanelDrawer}
                     playgroundWidth={playgroundWidth}
                     playgroundHeight={playgroundHeight}
+                    setCompResizeHandler={setCompResizeHandler}
                 />;
             })}
         </Paper>

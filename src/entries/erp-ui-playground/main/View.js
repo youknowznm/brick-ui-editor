@@ -155,6 +155,11 @@ export default class extends React.Component {
                             componentInEditId: id
                         })
                     }}
+                    setCompResizeHandler={func => {
+                        mainState.setProps({
+                            compResizeHandler: func
+                        })
+                    }}
                 />
                 <AttrEditorView
                     componentInEditData={mainState.componentInEditData}

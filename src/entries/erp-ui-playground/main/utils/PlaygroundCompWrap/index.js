@@ -54,26 +54,16 @@ export default class PlaygroundCompWrap extends React.Component {
             throw ReferenceError('未定义的组件类型.')
         }
         originCompProps = toJS(originCompProps)
-        // for (let prop in compTypeData.editableProps) {
-        //
-        // }
-        if (originDisplayName === 'Button') {
-            if (typeof originCompProps.icon === 'string') {
-                originCompProps.icon = transferSvgStringToElement(originCompProps.icon)
-            }
-            if (typeof originCompProps.loadingIcon === 'string') {
-                originCompProps.loadingIcon = transferSvgStringToElement(originCompProps.loadingIcon)
+        for (let propType of compTypeData.editableProps) {
+            const {
+                key,
+                type,
+            } = propType
+            if (type === 'svg') {
+                originCompProps[key] = transferSvgStringToElement(originCompProps[key])
             }
         }
         return originCompProps
-    }
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        const {state, props} = this
-        const {
-        } = state
-        const justDidSelect = prevProps.componentInEditId !== prevProps.id && this.isSelected
-        const justDidDeselect = prevProps.componentInEditId === prevProps.id && !this.isSelected
     }
 
     processWrapDOMRef = wrapDOM => {
@@ -82,6 +72,11 @@ export default class PlaygroundCompWrap extends React.Component {
 
     processContentDOMRef = reactElem => {
         this.contentRef = reactElem
+        this.compResizeHandler()
+        this.props.setCompResizeHandler(this.compResizeHandler)
+    }
+
+    compResizeHandler = () => {
         const wrapDOM = findDOMNode(this.contentRef)
         if (wrapDOM) {
             const computedStyle = document.defaultView.getComputedStyle(wrapDOM)
