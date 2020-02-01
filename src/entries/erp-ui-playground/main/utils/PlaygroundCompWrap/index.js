@@ -48,9 +48,6 @@ export default class PlaygroundCompWrap extends React.Component {
             originProps
         } = this.props
         const compTypeData = COMP_TYPES[originName]
-        if (!compTypeData) {
-            throw ReferenceError('未定义的组件类型.')
-        }
         originProps = toJS(originProps)
         for (let propType of compTypeData.editableProps) {
             const {
@@ -70,18 +67,21 @@ export default class PlaygroundCompWrap extends React.Component {
 
     processContentDOMRef = reactElem => {
         this.contentRef = reactElem
-        this.compResizeHandler()
         this.props.setCompResizeHandler(this.compResizeHandler)
     }
 
     compResizeHandler = () => {
+        let wrapWidth = 0
+        let wrapHeight = 0
         const wrapDOM = findDOMNode(this.contentRef)
         if (wrapDOM) {
             const computedStyle = document.defaultView.getComputedStyle(wrapDOM)
-            this.setState({
-                wrapWidth: parseInt(computedStyle.width, 10),
-                wrapHeight: parseInt(computedStyle.height, 10)
-            })
+            wrapWidth = parseInt(computedStyle.width, 10)
+            wrapHeight = parseInt(computedStyle.height, 10)
+        }
+        return {
+            wrapWidth,
+            wrapHeight
         }
     }
 
@@ -103,7 +103,7 @@ export default class PlaygroundCompWrap extends React.Component {
                 y: deltaY
             },
             bounds:'.playground-content',
-            handle: ".has-drag-cursor",
+            handle: '.has-drag-cursor',
             onStart: () => {},
             onDrag: (e, ui) => {
                 const {x, y} = ui

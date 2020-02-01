@@ -43,18 +43,24 @@ export default class extends React.Component {
 
     registerMetaKeyListener = () => {
         const {local} = this
-        const triggerMetaKeyPressed = (evt, target) => {
-            if (evt.key === 'Meta') {
+        window.addEventListener('keydown', event => {
+            if (event.key === 'Meta') {
                 local.mainState.setProps({
-                    metaKeyPressing: target
+                    metaKeyPressing: true
                 })
             }
-        }
-        window.addEventListener('keydown', event => {
-            triggerMetaKeyPressed(event, true)
+            if (event.key === 'Escape') {
+                local.mainState.setProps({
+                    componentInEditId: ''
+                })
+            }
         })
         window.addEventListener('keyup', event => {
-            triggerMetaKeyPressed(event, false)
+            if (event.key === 'Meta') {
+                local.mainState.setProps({
+                    metaKeyPressing: false
+                })
+            }
         })
     }
 

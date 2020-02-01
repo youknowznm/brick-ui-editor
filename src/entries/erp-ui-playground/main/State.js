@@ -49,9 +49,6 @@ class MainState extends BaseModel {
             originProps
         } = data
         const compTypeData = COMP_TYPES[originName]
-        if (!compTypeData) {
-            throw ReferenceError('未定义的组件类型.')
-        }
         for (let propType of compTypeData.editableProps) {
             const {
                 key,
@@ -72,8 +69,6 @@ class MainState extends BaseModel {
 
     // ##### 中间 实际内容(默认下的全屏) #####
 
-    @observable showDemoDrawer = false
-
     // ##### 右侧 属性编辑器 #####
 
     @observable componentInEditId = ''
@@ -85,13 +80,23 @@ class MainState extends BaseModel {
     }
 
     @action targetPropsChangeHandler = data => {
+        const {
+            componentInEditData,
+            compResizeHandler
+        } = this
         for (let key in data) {
-            this.componentInEditData.originProps[key] = data[key]
+            componentInEditData.originProps[key] = data[key]
             // console.log('target props changed', key, this.componentInEditData.originProps[key])
         }
-        if (typeof this.compResizeHandler === 'function') {
+        if (typeof compResizeHandler === 'function') {
+            // 待重绘完成, 下次事件循环时, 读 wrap 宽高并存储
             setTimeout(() => {
-                this.compResizeHandler()
+                const {
+                    wrapWidth,
+                    wrapHeight
+                } = compResizeHandler()
+                componentInEditData.wrapWidth = wrapWidth
+                componentInEditData.wrapHeight = wrapHeight
             })
         }
     }

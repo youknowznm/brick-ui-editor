@@ -92,9 +92,6 @@ export default class AttrEditorView extends React.Component {
         } = componentInEditData
 
         const compTypeData = COMP_TYPES[originName]
-        if (!compTypeData) {
-            throw ReferenceError('未定义的组件类型.')
-        }
         const {
             cnLabel,
             editableProps
