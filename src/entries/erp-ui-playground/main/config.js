@@ -106,5 +106,16 @@ export const COMP_TYPES = {
                 defaultValue: false
             },
         ],
+    },
+    Icon: {
+        cnLabel: '图标',
+        Element: Icon,
+        editableProps: [
+            {
+                desc: '图标',
+                key: 'svg',
+                type: 'svg',
+            },
+        ],
     }
 }

@@ -6,7 +6,6 @@ import wrapDemoComp from '../utils/wrapDemoComp'
 
 import {ICON_GROUP_MAP_MAIN} from '@befe/brick-icon/src/main/group-map'
 
-// import {Icon} from '@befe/brick'
 import {capitalize} from "lodash-es";
 
 import {Icon as OriginIcon} from '@befe/brick'
