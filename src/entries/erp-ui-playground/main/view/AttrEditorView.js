@@ -35,8 +35,8 @@ export default class AttrEditorView extends React.Component {
         // 编辑状态的组件数据
         //
         // id: "18bv1q9"
-        // originDisplayName: "Button"
-        // originCompProps: {
+        // originName: "Button"
+        // originProps: {
         //     type: "intensive"
         //     children: "加强"
         //     root: {
@@ -82,16 +82,16 @@ export default class AttrEditorView extends React.Component {
         if (componentInEditData === null) {
             return null
         }
-        console.log('componentInEditData: ', toJS(componentInEditData))
+        // console.log('componentInEditData: ', toJS(componentInEditData))
         const {
             id,
-            originDisplayName,
-            originCompProps,
+            originName,
+            originProps,
             playgroundTop,
             playgroundLeft,
         } = componentInEditData
 
-        const compTypeData = COMP_TYPES[originDisplayName]
+        const compTypeData = COMP_TYPES[originName]
         if (!compTypeData) {
             throw ReferenceError('未定义的组件类型.')
         }
@@ -121,7 +121,7 @@ export default class AttrEditorView extends React.Component {
                 ],
                 defaultValue
             } = item
-            let value = originCompProps[key]
+            let value = originProps[key]
             // console.log('attr editing: ', key, value)
             switch (type) {
                 case 'string':
@@ -217,7 +217,7 @@ export default class AttrEditorView extends React.Component {
         return <div className="attr-editor-content">
             <div className="label">
                 <Typography className="en" variant="h4">
-                    {originDisplayName}
+                    {originName}
                 </Typography>
                 <Typography className="cn" variant="h4">
                     {compTypeData.cnLabel}

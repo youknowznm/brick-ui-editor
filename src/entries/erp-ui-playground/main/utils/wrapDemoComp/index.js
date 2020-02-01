@@ -20,9 +20,8 @@ const wrapDemoComp = OriginComponent => {
 
         state = {
             ownProps: null,
-            width: '0px',
-            height: '0px',
-            display: '0px',
+            wrapWidth: 0,
+            wrapHeight: 0,
         }
 
         static propTypes = {
@@ -51,8 +50,8 @@ const wrapDemoComp = OriginComponent => {
                 delete ownProps.className;
                 this.setState({
                     ownProps,
-                    width: computedStyle.width,
-                    height: computedStyle.height
+                    wrapWidth: parseInt(computedStyle.width, 10),
+                    wrapHeight: parseInt(computedStyle.height, 10)
                 });
             }
         }
@@ -60,17 +59,20 @@ const wrapDemoComp = OriginComponent => {
         dispatchCompToUse = () => {
             this.props.root.pushUsedCompData({
                 id: generateId(),
-                originDisplayName: OriginComponent.displayName,
-                originCompProps: this.state.ownProps,
-                // ...this.state.ownProps
+                originName: OriginComponent.displayName,
+                originProps: this.state.ownProps,
+                wrapWidth: this.state.wrapWidth,
+                wrapHeight: this.state.wrapHeight,
+                deltaX: 0,
+                deltaY: 0,
             })
         }
 
         render() {
             const {state, props} = this;
             const {
-                width,
-                height
+                wrapWidth,
+                wrapHeight
             } = state;
             return <div
                 className={c(
@@ -78,8 +80,8 @@ const wrapDemoComp = OriginComponent => {
                     props.root.metaKeyPressing && 'meta-key-pressed'
                 )}
                 style={{
-                    width,
-                    height
+                    width: wrapWidth,
+                    height: wrapHeight
                 }}>
                     <OriginComponent
                         {...this.props}

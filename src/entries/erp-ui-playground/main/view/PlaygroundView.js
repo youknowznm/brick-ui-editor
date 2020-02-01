@@ -98,8 +98,8 @@ export default class PlaygroundView extends React.Component {
             {usedCompsDataArray.map(item => {
                 // console.log('usedCompsData:', toJS(item))
                 // id: "18bv1q9"
-                // originDisplayName: "Button"
-                // originCompProps: {
+                // originName: "Button"
+                // originProps: {
                 //     type: "intensive"
                 //     children: "加强"
                 //     root: {
@@ -117,8 +117,12 @@ export default class PlaygroundView extends React.Component {
                 return <PlaygroundCompWrap
                     key={item.id}
                     id={item.id}
-                    originDisplayName={item.originDisplayName}
-                    originCompProps={item.originCompProps}
+                    originName={item.originName}
+                    originProps={item.originProps}
+                    wrapWidth={item.wrapWidth}
+                    wrapHeight={item.wrapHeight}
+                    deltaX={item.deltaX}
+                    deltaY={item.deltaY}
                     metaKeyPressing={metaKeyPressing}
                     componentInEditId={componentInEditId}
                     setComponentInEditId={setComponentInEditId}

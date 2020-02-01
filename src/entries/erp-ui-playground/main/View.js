@@ -150,7 +150,6 @@ export default class extends React.Component {
                     triggerControlPanelDrawer={mainState.triggerControlPanelDrawer}
                     componentInEditId={mainState.componentInEditId}
                     setComponentInEditId={id => {
-                        console.log({id})
                         mainState.setProps({
                             componentInEditId: id
                         })

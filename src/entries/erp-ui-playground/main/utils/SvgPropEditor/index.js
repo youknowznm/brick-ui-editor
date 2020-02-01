@@ -128,6 +128,7 @@ export default class extends React.Component {
                         {
                             iconTypesArr.map(type => {
                                 return <MenuItem
+                                    key={type}
                                     selected={type === selectedIconType}
                                     onClick={() => {
                                         this.setState({
@@ -146,6 +147,7 @@ export default class extends React.Component {
                         {
                             Object.keys(this.selectedTypeSvgList).map(item => {
                                 return <Button
+                                    key={item}
                                     className="icon-wrap"
                                     variant={item === value ? 'contained' : 'text'}
                                     onClick={() => {

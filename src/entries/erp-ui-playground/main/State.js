@@ -45,10 +45,10 @@ class MainState extends BaseModel {
     @action pushUsedCompData = data => {
         console.log('rcv used comp:',data)
         let {
-            originDisplayName,
-            originCompProps
+            originName,
+            originProps
         } = data
-        const compTypeData = COMP_TYPES[originDisplayName]
+        const compTypeData = COMP_TYPES[originName]
         if (!compTypeData) {
             throw ReferenceError('未定义的组件类型.')
         }
@@ -59,15 +59,13 @@ class MainState extends BaseModel {
                 defaultValue = '' // svg, children
             } = propType
             // 未显式声明时, 使用 default prop value
-            if (originCompProps[key] === undefined) {
-                originCompProps[key] = defaultValue
+            if (originProps[key] === undefined) {
+                originProps[key] = defaultValue
             }
         }
-        data.originCompProps = originCompProps
+        data.originProps = originProps
         this.usedCompsDataArray.push(data)
     }
-
-    @observable usedCompsDataArrayPosition = null
 
     @observable playgroundWidth = 800
     @observable playgroundHeight = 600
@@ -88,8 +86,8 @@ class MainState extends BaseModel {
 
     @action targetPropsChangeHandler = data => {
         for (let key in data) {
-            this.componentInEditData.originCompProps[key] = data[key]
-            // console.log('target props changed', key, this.componentInEditData.originCompProps[key])
+            this.componentInEditData.originProps[key] = data[key]
+            // console.log('target props changed', key, this.componentInEditData.originProps[key])
         }
         if (typeof this.compResizeHandler === 'function') {
             setTimeout(() => {

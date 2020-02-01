@@ -27,11 +27,9 @@ export default class PlaygroundCompWrap extends React.Component {
     wrapDOM = null
 
     state = {
-        wrapWidth: 0,
-        wrapHeight: 0,
         isAbsolutePosition: false,
-        prevX: 0,
-        prevY: 0,
+        deltaX: 0,
+        deltaY: 0,
     }
 
     static propTypes = {
@@ -46,24 +44,24 @@ export default class PlaygroundCompWrap extends React.Component {
 
     get processedOriginCompProps() {
         let {
-            originDisplayName,
-            originCompProps
+            originName,
+            originProps
         } = this.props
-        const compTypeData = COMP_TYPES[originDisplayName]
+        const compTypeData = COMP_TYPES[originName]
         if (!compTypeData) {
             throw ReferenceError('未定义的组件类型.')
         }
-        originCompProps = toJS(originCompProps)
+        originProps = toJS(originProps)
         for (let propType of compTypeData.editableProps) {
             const {
                 key,
                 type,
             } = propType
             if (type === 'svg') {
-                originCompProps[key] = transferSvgStringToElement(originCompProps[key])
+                originProps[key] = transferSvgStringToElement(originProps[key])
             }
         }
-        return originCompProps
+        return originProps
     }
 
     processWrapDOMRef = wrapDOM => {
@@ -93,16 +91,16 @@ export default class PlaygroundCompWrap extends React.Component {
             state,
         } = this
         const {
-            prevX,
-            prevY,
+            deltaX,
+            deltaY,
         } = state
         const {
             id
         } = props
         return {
             defaultPosition: {
-                x: prevX,
-                y: prevY
+                x: deltaX,
+                y: deltaY
             },
             bounds:'.playground-content',
             handle: ".has-drag-cursor",
@@ -110,17 +108,17 @@ export default class PlaygroundCompWrap extends React.Component {
             onDrag: (e, ui) => {
                 const {x, y} = ui
                 this.setState({
-                    prevX: x,
-                    prevY: y,
+                    deltaX: x,
+                    deltaY: y,
                 })
             },
             onStop: (e, ui) => {
                 const {x, y} = ui
-                this.props.setComponentInEditId(prevX === x && prevY === y ? id : '')
+                this.props.setComponentInEditId(deltaX === x && deltaY === y ? id : '')
                 this.setState({
                     isAbsolutePosition: true,
-                    prevX: x,
-                    prevY: y,
+                    deltaX: x,
+                    deltaY: y,
                 })
             }
         }
@@ -133,15 +131,15 @@ export default class PlaygroundCompWrap extends React.Component {
         } = this
         const {
             isAbsolutePosition,
-            prevX,
-            prevY,
-            wrapWidth,
-            wrapHeight,
+            deltaX,
+            deltaY,
         } = state
         const {
             id,
             playgroundWidth,
-            playgroundHeight
+            playgroundHeight,
+            wrapWidth,
+            wrapHeight,
         } = props
         return <div className="controllers">
             {children}
@@ -155,52 +153,52 @@ export default class PlaygroundCompWrap extends React.Component {
             </div>
             {/* TODO: 标尺*/}
             {/*<span className="ruler left" style={{*/}
-            {/*    left: -prevX / 2,*/}
+            {/*    left: -deltaX / 2,*/}
             {/*    bottom: '100%',*/}
             {/*    zIndex: 3,*/}
             {/*    transform: 'translate(-50%, 50%)'*/}
             {/*}}>*/}
-            {/*    {prevX}px*/}
+            {/*    {deltaX}px*/}
             {/*</span>*/}
             <i className="aligner tl hor" style={{
-                width: prevX,
-                left: -prevX
+                width: deltaX,
+                left: -deltaX
             }} />
             {/*<span className="ruler top" style={{*/}
-            {/*    top: -prevY / 2,*/}
+            {/*    top: -deltaY / 2,*/}
             {/*    right: '100%',*/}
             {/*    zIndex: 3,*/}
             {/*    transform: 'translate(50%, -50%)'*/}
             {/*}}>*/}
-            {/*    {prevY}px*/}
+            {/*    {deltaY}px*/}
             {/*</span>*/}
             <i className="aligner tl ver" style={{
-                height: prevY,
-                top: -prevY
+                height: deltaY,
+                top: -deltaY
             }} />
             <i className="aligner tr hor" style={{
-                width: playgroundWidth - prevX - wrapWidth,
-                right: -(playgroundWidth - prevX - wrapWidth)
+                width: playgroundWidth - deltaX - wrapWidth,
+                right: -(playgroundWidth - deltaX - wrapWidth)
             }} />
             <i className="aligner tr ver" style={{
-                height: prevY,
-                top: -prevY
+                height: deltaY,
+                top: -deltaY
             }} />
             <i className="aligner br hor" style={{
-                width: playgroundWidth - prevX - wrapWidth,
-                right: -(playgroundWidth - prevX - wrapWidth)
+                width: playgroundWidth - deltaX - wrapWidth,
+                right: -(playgroundWidth - deltaX - wrapWidth)
             }} />
             <i className="aligner br ver" style={{
-                height: playgroundHeight - prevY - wrapHeight,
-                bottom: -(playgroundHeight - prevY - wrapHeight)
+                height: playgroundHeight - deltaY - wrapHeight,
+                bottom: -(playgroundHeight - deltaY - wrapHeight)
             }} />
             <i className="aligner bl hor" style={{
-                width: prevX,
-                left: -prevX
+                width: deltaX,
+                left: -deltaX
             }} />
             <i className="aligner bl ver" style={{
-                height: playgroundHeight - prevY - wrapHeight,
-                bottom: -(playgroundHeight - prevY - wrapHeight)
+                height: playgroundHeight - deltaY - wrapHeight,
+                bottom: -(playgroundHeight - deltaY - wrapHeight)
             }} />
             {/*<span className="ruler width" style={{*/}
             {/*    bottom: '-100%',*/}
@@ -226,14 +224,14 @@ export default class PlaygroundCompWrap extends React.Component {
         } = this
         const {
             isAbsolutePosition,
-            prevX,
-            prevY,
-            wrapWidth,
-            wrapHeight
+            deltaX,
+            deltaY,
         } = state
         const {
-            originCompProps,
-            id
+            originProps,
+            id,
+            wrapWidth,
+            wrapHeight
         } = props
         return <Draggable {...this.draggableWrapProps}>
             <div
@@ -244,8 +242,8 @@ export default class PlaygroundCompWrap extends React.Component {
                     isAbsolutePosition && 'is-absolute-positon'
                 )}
                 style={{
-                    width: state.wrapWidth,
-                    height: state.wrapHeight
+                    width: wrapWidth,
+                    height: wrapHeight
                 }}
                 ref={this.processWrapDOMRef}
             >
