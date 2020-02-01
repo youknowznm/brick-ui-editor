@@ -38,7 +38,14 @@ export default class ControlPanelView extends React.Component {
     }
 
     renderControlPanelContent = () => {
-        return <div className="control-panel-content"></div>
+        return <div className="control-panel-content">
+            <Button variant="contained">
+                清除存档
+            </Button>
+            <Button variant="contained" color="primary">
+                分享
+            </Button>
+        </div>
     }
 
     render() {

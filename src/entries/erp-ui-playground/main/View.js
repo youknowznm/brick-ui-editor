@@ -39,6 +39,7 @@ export default class extends React.Component {
         this.registerMetaKeyListener()
         this.registerBodyMouseEnterListener()
         this.registerResizeListener()
+        this.local.mainState.loadUsedCompData()
     }
 
     registerMetaKeyListener = () => {

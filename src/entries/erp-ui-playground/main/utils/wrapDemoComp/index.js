@@ -63,8 +63,8 @@ const wrapDemoComp = OriginComponent => {
                 originProps: this.state.ownProps,
                 wrapWidth: this.state.wrapWidth,
                 wrapHeight: this.state.wrapHeight,
-                deltaX: 200,
-                deltaY: 200,
+                deltaX: 100,
+                deltaY: 100,
             })
         }
 

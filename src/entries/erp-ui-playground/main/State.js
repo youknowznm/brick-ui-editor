@@ -10,6 +10,8 @@ import BaseModel from './utils/BaseModel'
 import {COMP_TYPES} from "./config";
 import transferSvgStringToElement from "./utils/transferSvgStringToElement";
 
+import {load, save} from "./utils/storage";
+
 class MainState extends BaseModel {
 
     // ##### 全局 #####
@@ -43,7 +45,7 @@ class MainState extends BaseModel {
     @observable usedCompsDataArray = []
 
     @action pushUsedCompData = data => {
-        console.log('rcv used comp:',data)
+        console.log('rcv used comp:', data)
         let {
             originName,
             originProps
@@ -62,10 +64,24 @@ class MainState extends BaseModel {
         }
         data.originProps = originProps
         this.usedCompsDataArray.push(data)
+        this.saveUsedCompData()
     }
 
-    @observable playgroundWidth = 800
-    @observable playgroundHeight = 600
+    loadUsedCompData = () => {
+        const profile = load()
+        if (profile) {
+            this.setProps({
+                usedCompsDataArray: profile
+            })
+        }
+    }
+
+    saveUsedCompData = () => {
+        save(this.usedCompsDataArray)
+    }
+
+    @observable playgroundWidth = 1000
+    @observable playgroundHeight = 800
 
     // ##### 中间 实际内容(默认下的全屏) #####
 
@@ -97,6 +113,7 @@ class MainState extends BaseModel {
                 } = compResizeHandler()
                 activeComponentData.wrapWidth = wrapWidth
                 activeComponentData.wrapHeight = wrapHeight
+                this.saveUsedCompData()
             })
         }
     }
@@ -106,6 +123,7 @@ class MainState extends BaseModel {
     @action compDragHandler = deltas => {
         this.activeComponentData.deltaX = deltas.deltaX
         this.activeComponentData.deltaY = deltas.deltaY
+        this.saveUsedCompData()
     }
 }
 

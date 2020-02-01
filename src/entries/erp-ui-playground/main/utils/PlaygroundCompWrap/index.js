@@ -259,7 +259,8 @@ export default class PlaygroundCompWrap extends React.Component {
                     'playground-comp-wrap',
                     props.metaKeyPressing && 'meta-key-pressed',
                     this.isSelected && 'selected',
-                    isAbsolutePosition && 'is-absolute-positon'
+                    // isAbsolutePosition && 'is-absolute-positon'
+                    'is-absolute-positon'
                 )}
                 style={{
                     width: wrapWidth,
