@@ -172,7 +172,6 @@ export const COMP_TYPES = {
         enLabel: 'collapse',
         cnLabel: '扩展面板',
         Element: ComposedCollapse,
-        // defaultWrapWidth: 750,
         editableProps: [
             // {
             //     desc: '内容',

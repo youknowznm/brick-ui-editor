@@ -29,9 +29,9 @@ import transferSvgStringToElement from "../transferSvgStringToElement";
 
 import './style.scss'
 
-export default class extends React.Component {
+export default class SvgPropEditor extends React.Component {
 
-    static displayName = 'SvgPropEditor'
+    // static displayName = 'SvgPropEditor'
 
     state = {
         visible: false,
@@ -119,7 +119,7 @@ export default class extends React.Component {
                     }}
                 >
                     <Typography gutterBottom>
-                        选择图标
+                        图标选择
                     </Typography>
                 </DialogTitle>
                 <DialogContent dividers>

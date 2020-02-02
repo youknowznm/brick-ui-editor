@@ -27,6 +27,7 @@ import SvgPropEditor from '../utils/SvgPropEditor'
 
 import '../style/attr-editor.scss'
 import {capitalize} from "lodash-es";
+import ArrayPropEditor from "../utils/ArrayPropEditor";
 
 @observer
 export default class AttrEditorView extends React.Component {
@@ -187,20 +188,20 @@ export default class AttrEditorView extends React.Component {
                         }
                     </TextField>
                 case 'svg':
-                    options = [
-                        {
-                            value: 'SvgEdit',
-                            label: 'SvgEdit',
-                        },
-                        {
-                            value: 'SvgGear',
-                            label: 'SvgGear',
-                        }
-                    ]
                     return <SvgPropEditor
                         dispatchSelectedIcon={icon => {
                             targetPropsChangeHandler({
                                 [key]: icon
+                            })
+                        }}
+                        {...propInputPropsGen}
+                    />
+                case 'array':
+                    //
+                    return <ArrayPropEditor
+                        dispatchArray={array => {
+                            targetPropsChangeHandler({
+                                [key]: array
                             })
                         }}
                         {...propInputPropsGen}

@@ -1,0 +1,26 @@
+.array-prop-editor {
+
+}
+
+.array-editor-dialog {
+  position: relative;
+  min-width: 800px;
+  .array-table-wrap {
+    position: relative;
+    min-width: 800px;
+    .row-action-button {
+      margin: 0 5px;
+    }
+    th, td, tr {
+      text-align: center;
+    }
+    .MuiButton-root {
+      min-width: 45px;
+    }
+    .add-row {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+    }
+  }
+}
