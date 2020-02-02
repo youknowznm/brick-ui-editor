@@ -118,16 +118,22 @@ export default class DemoListView extends React.Component {
                         // Dialog 必须从初始保持渲染状态
                         const shouldRenderDemo = isExpanded || label === 'Dialog'
                         return <ExpansionPanel
+                            className="demo-exp-panel"
                             key={label}
                             square={true}
                             expanded={isExpanded}
                             onChange={(evt, value) => {
                                 setExpandedDemoPanelLabel(value ? label : '')
                             }}>
-                            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                            <ExpansionPanelSummary
+                                className="title"
+                                expandIcon={<ExpandMoreIcon />}
+                            >
                                 <Typography>{label}</Typography>
                             </ExpansionPanelSummary>
-                            <ExpansionPanelDetails>
+                            <ExpansionPanelDetails
+                                className="content"
+                            >
                                 {shouldRenderDemo && <Demo metaKeyPressing={metaKeyPressing} />}
                             </ExpansionPanelDetails>
                         </ExpansionPanel>

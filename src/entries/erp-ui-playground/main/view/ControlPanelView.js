@@ -57,9 +57,9 @@ export default class ControlPanelView extends React.Component {
                 anchor="top"
                 variant="persistent"
                 open={props.showControlPanelDrawer}
-                onMouseOut={() => {
-                    props.triggerControlPanelDrawer(false)
-                }}
+                // onMouseOut={() => {
+                //     props.triggerControlPanelDrawer(false)
+                // }}
             >
                 {this.renderControlPanelContent()}
                 <Paper

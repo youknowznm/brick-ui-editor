@@ -13,7 +13,7 @@ const CollapseDemo = () => {
     const extra = (<div>{'222'}</div>)
     const extra1 = (<div>{'自定义1'}</div>)
     const extra2 = (<div>{'自定义2'}</div>)
-    return <div className="demo-block link-demo-block">
+    return <div className="demo-block collpase-demo-block">
         {/* ===== 0 basic ===== */}
         <div>
             <Collapse defaultExpandedIds = {[1]}>

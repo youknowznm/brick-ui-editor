@@ -80,7 +80,7 @@ const wrapDemoComp = OriginComponent => {
             } = state;
             return <div
                 className={c(
-                    'demo-list-comp-wrap',
+                    'demo-comp-wrap',
                     props.root.metaKeyPressing && 'meta-key-pressed'
                 )}
                 style={{

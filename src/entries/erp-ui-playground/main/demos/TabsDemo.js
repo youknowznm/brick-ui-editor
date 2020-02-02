@@ -93,7 +93,7 @@ const TabsDemo = () => {
         <Divider className="demo-block-separator" />
         {/* ===== 1 Paper ===== */}
         <div>
-            <Tabs className="demo-tabs" defaultActiveId={'tab2'} type={'Paper'}>
+            <Tabs className="demo-tabs" defaultActiveId={'tab2'} type={'card'}>
                 {generatePaperPanesData(6)}
             </Tabs>
         </div>

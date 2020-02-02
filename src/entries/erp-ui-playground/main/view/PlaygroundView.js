@@ -83,10 +83,11 @@ export default class PlaygroundView extends React.Component {
                 height: playgroundHeight
             }}
             onMouseOver={evt => {
-                // 滑过区域空白处时, 关闭 demo 列表抽屉
+                // 滑过区域空白处时, 关闭所有抽屉
                 const {className} = evt.target
                 if (className.indexOf && className.indexOf('playground-content') > -1) {
                     props.triggerDemoDrawer(false)
+                    props.triggerControlPanelDrawer(false)
                 }
             }}
             onClick={evt => {
