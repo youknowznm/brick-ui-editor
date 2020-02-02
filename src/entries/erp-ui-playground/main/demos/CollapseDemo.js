@@ -4,59 +4,75 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-import {CollapsePanel} from '@befe/brick'
-// import {Collapse, CollapsePanel} from '@befe/brick'
-import {Collapse as OriginCollapse} from '@befe/brick'
-const Collapse = wrapDemoComp(OriginCollapse)
+// import {CollapsePanel} from '@befe/brick'
+
+// import {ComposedCollapse, CollapsePanel} from '@befe/brick'
+import OriginComposedCollapse from '../composedComps/ComposedCollapse'
+
+const ComposedCollapse = wrapDemoComp(OriginComposedCollapse)
 
 const CollapseDemo = () => {
-    const extra = (<div>{'222'}</div>)
-    const extra1 = (<div>{'自定义1'}</div>)
-    const extra2 = (<div>{'自定义2'}</div>)
+    const defaultExpandedIds = []
+    const demoData = [
+        {
+            id: 1,
+            headline: '标题1',
+            content: '内容1内容1内容1内容1内容1内容1',
+            disabled: false
+        },
+        {
+            id: 2,
+            headline: '标题2',
+            content: '内容2内容2内容2内容2内容2内容2',
+            disabled: false
+        },
+        {
+            id: 3,
+            headline: '标题3',
+            content: '内容3内容3内容3内容3内容3内容3',
+            disabled: false
+        },
+    ]
     return <div className="demo-block collpase-demo-block">
         {/* ===== 0 basic ===== */}
         <div>
-            <Collapse defaultExpandedIds = {[1]}>
-                <CollapsePanel headline = {'可以折叠1'} id = {1}>
-                    {'text content'}
-                </CollapsePanel>
-                <CollapsePanel headline = {'可以折叠2'} id = {2}>
-                    <div>{'div content'}</div>
-                </CollapsePanel>
-                <CollapsePanel headline = {'可以折叠3'} id = {3} disabled = {true}>
-                    <div>{'div content'}</div>
-                </CollapsePanel>
-            </Collapse>
+            <ComposedCollapse
+                singleExpanded={false}
+                defaultExpandedIds={defaultExpandedIds}
+                data={demoData}
+            />
         </div>
         <Divider className="demo-block-separator" />
-        {/* ===== 1 single ===== */}
+        {/* ===== 1 被禁用 ===== */}
         <div>
-            <Collapse singleExpanded = {true}>
-                <CollapsePanel headline = {'可以折叠1'} id = {1}>
-                    {'text'}
-                </CollapsePanel>
-                <CollapsePanel headline = {'可以折叠2'} id = {2} extra = {extra}>
-                    {'text'}
-                </CollapsePanel>
-                <CollapsePanel headline = {'可以折叠3'} id = {3}>
-                    <div>{'div'}</div>
-                </CollapsePanel>
-            </Collapse>
+            <ComposedCollapse
+                singleExpanded={true}
+                defaultExpandedIds={defaultExpandedIds}
+                data={demoData.map((item, index) => Object.assign({}, item, {
+                     disabled: index === 1 ? true : false
+                }))}
+            />
         </div>
         <Divider className="demo-block-separator" />
-        {/* ===== 3 extra ===== */}
+        {/* ===== 2 图标位置 ===== */}
         <div>
-            <Collapse>
-                <CollapsePanel headline = {'可以折叠1'} id = {1} extra = {extra1}>
-                    {'text'}
-                </CollapsePanel>
-                <CollapsePanel headline = {'可以折叠2'} id = {2} extra = {extra2}>
-                    {'text'}
-                </CollapsePanel>
-                <CollapsePanel headline = {'可以折叠3'} id = {3}>
-                    <div>{'div'}</div>
-                </CollapsePanel>
-            </Collapse>
+            <ComposedCollapse
+                expandIconPosition="right"
+                singleExpanded={false}
+                defaultExpandedIds={defaultExpandedIds}
+                data={demoData}
+            />
+        </div>
+        <Divider className="demo-block-separator" />
+        {/* ===== 3 自定义内容 ===== */}
+        <div>
+            <ComposedCollapse
+                singleExpanded={false}
+                defaultExpandedIds={defaultExpandedIds}
+                data={demoData.map((item, index) => Object.assign({}, item, {
+                    extra: `额外标题${index + 1}`,
+                }))}
+            />
         </div>
     </div>
 }

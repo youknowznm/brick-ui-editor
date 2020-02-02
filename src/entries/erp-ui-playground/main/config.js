@@ -2,7 +2,7 @@ import {
     Button,
     Icon,
     Link,
-    Collapse,
+    // Collapse,
     Dialog,
     Popover,
     Tabs,
@@ -23,8 +23,14 @@ import {
     Pagination
 } from '@befe/brick'
 
+import ComposedCollapse from './composedComps/ComposedCollapse'
+
+export const DEMO_LIST_WIDTH = 820
+export const DEMO_WRAP_DEFAULT_WIDTH = 760
+
 export const COMP_TYPES = {
     Button: {
+        enLabel: 'button',
         cnLabel: '按钮',
         Element: Button,
         editableProps: [
@@ -108,6 +114,7 @@ export const COMP_TYPES = {
         ],
     },
     Icon: {
+        enLabel: 'icon',
         cnLabel: '图标',
         Element: Icon,
         editableProps: [
@@ -119,6 +126,7 @@ export const COMP_TYPES = {
         ],
     },
     Link: {
+        enLabel: 'link',
         cnLabel: '链接',
         Element: Link,
         editableProps: [
@@ -160,4 +168,41 @@ export const COMP_TYPES = {
             },
         ],
     },
+    ComposedCollapse: {
+        enLabel: 'collapse',
+        cnLabel: '扩展面板',
+        Element: ComposedCollapse,
+        // defaultWrapWidth: 750,
+        editableProps: [
+            // {
+            //     desc: '内容',
+            //     key: 'singleExpanded',
+            //     type: 'bool',
+            // },
+            // {
+            //     desc: '',
+            //     key: 'defaultExpandedIds',
+            //     type: 'array',
+            // },
+            {
+                desc: '图标位置',
+                key: 'expandIconPosition',
+                type: 'enum',
+                options: [
+                    {value: 'left', label: '左'},
+                    {value: 'right', label: '右'},
+                ],
+            },
+            {
+                desc: '内容',
+                key: 'data',
+                type: 'array',
+            },
+        ]
+    },
+    // Dialog: {
+    //     cnLabel: '对话框',
+    //     Element: Dialog,
+    //     editableProps: []
+    // }
 }

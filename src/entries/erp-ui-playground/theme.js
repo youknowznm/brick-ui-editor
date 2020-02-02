@@ -13,6 +13,9 @@ const darkTheme = createMuiTheme({
 })
 
 const lightTheme = createMuiTheme({
+    // transitions: {
+    //     create: () => 'none'
+    // },
     palette: {
         type: 'light',
         primary: blue,

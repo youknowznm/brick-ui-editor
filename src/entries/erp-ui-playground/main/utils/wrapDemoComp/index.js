@@ -2,11 +2,11 @@ import * as React from 'react'
 import {default as c} from 'classnames'
 import {inject, observer} from 'mobx-react'
 import {toJS, observable, action} from 'mobx'
-import {findDOMNode} from 'react-dom';
+import {findDOMNode} from 'react-dom'
 
-import './style.scss';
+import {COMP_TYPES} from "../../config"
 
-const generateId = () => Math.random().toString(36).slice(2, 9);
+import './style.scss'
 
 const wrapDemoComp = OriginComponent => {
 
@@ -14,9 +14,9 @@ const wrapDemoComp = OriginComponent => {
     @observer
     class ExtendedUIComponent extends React.Component {
 
-        static displayName = `${OriginComponent.displayName}PlaygroundWrap`;
+        static displayName = `${OriginComponent.displayName}PlaygroundWrap`
 
-        ref = null;
+        ref = null
 
         state = {
             ownProps: null,
@@ -27,14 +27,16 @@ const wrapDemoComp = OriginComponent => {
         static propTypes = {
         }
 
+        generateId = () => Math.random().toString(36).slice(2, 9)
+
         createRef = reactElem => {
-            this.ref = reactElem;
-            let wrapDOM = findDOMNode(this.ref);
-            // wrapDOM = wrapDOM.querySelector('a')
+            this.ref = reactElem
+            const wrapDOM = findDOMNode(this.ref)
+            const $wrapDOM = $(wrapDOM)
             if (wrapDOM) {
                 setTimeout(() => {
-                    const computedStyle = document.defaultView.getComputedStyle(wrapDOM);
-                    const ownProps = Object.assign({}, reactElem.props);
+                    const computedStyle = document.defaultView.getComputedStyle(wrapDOM)
+                    const ownProps = Object.assign({}, reactElem.props)
                     for (let propKey in ownProps) {
                         if (ownProps.hasOwnProperty(propKey)) {
                             const propValue = ownProps[propKey]
@@ -43,18 +45,34 @@ const wrapDemoComp = OriginComponent => {
                                 if (isReactElement) {
                                     ownProps[propKey] = propValue.name
                                 } else {
-                                    delete ownProps[propKey];
+                                    delete ownProps[propKey]
                                 }
                             }
                         }
                     }
-                    delete ownProps.root;
-                    delete ownProps.className;
+                    delete ownProps.root
+                    delete ownProps.className
+
+                    // let wrapWidth = parseInt(computedStyle.width, 10)
+                    // let wrapHeight = parseInt(computedStyle.height, 10)
+                    let wrapWidth = $wrapDOM.outerWidth()
+                    let wrapHeight = $wrapDOM.outerHeight()
+                    const {
+                        defaultWrapWidth,
+                        defaultWrapHeight,
+                    } = COMP_TYPES[OriginComponent.displayName]
+                    if (defaultWrapWidth) {
+                        wrapWidth = defaultWrapWidth
+                    }
+                    if (defaultWrapHeight) {
+                        wrapHeight = defaultWrapHeight
+                    }
+
                     this.setState({
                         ownProps,
-                        wrapWidth: parseInt(computedStyle.width, 10),
-                        wrapHeight: parseInt(computedStyle.height, 10)
-                    });
+                        wrapWidth,
+                        wrapHeight
+                    })
                 })
 
             }
@@ -62,7 +80,7 @@ const wrapDemoComp = OriginComponent => {
 
         dispatchCompToUse = () => {
             this.props.root.pushUsedCompData({
-                id: generateId(),
+                id: this.generateId(),
                 originName: OriginComponent.displayName,
                 originProps: this.state.ownProps,
                 wrapWidth: this.state.wrapWidth,
@@ -73,11 +91,11 @@ const wrapDemoComp = OriginComponent => {
         }
 
         render() {
-            const {state, props} = this;
+            const {state, props} = this
             const {
                 wrapWidth,
                 wrapHeight
-            } = state;
+            } = state
             return <div
                 className={c(
                     'demo-comp-wrap',
@@ -96,15 +114,15 @@ const wrapDemoComp = OriginComponent => {
                     <div
                         className="action-layer"
                         onClick={() => {
-                            this.dispatchCompToUse();
+                            this.dispatchCompToUse()
                         }}
                     >
                     </div>
-            </div>;
+            </div>
         }
     }
 
-    return ExtendedUIComponent;
-};
+    return ExtendedUIComponent
+}
 
-export default wrapDemoComp;
+export default wrapDemoComp

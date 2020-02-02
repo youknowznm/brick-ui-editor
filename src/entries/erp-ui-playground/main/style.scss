@@ -1,5 +1,7 @@
 @import "src/style/main";
 
+$gen-bg-color: rgba(0, 0, 0, .03);
+
 .index-page {
   position: relative;
   width: 100%;
@@ -11,6 +13,7 @@
     height: 20px;
     //border-bottom: 1px solid rgba(0, 0, 0, .12);
     //background: #fff;
+    background-color: $gen-bg-color;
     top: 0;
     left: 0;
     .trigger-icon {
@@ -26,6 +29,7 @@
     width: 20px;
     //border-right: 1px solid rgba(0, 0, 0, .12);
     //background: #fff;
+    background-color: $gen-bg-color;
     height: 100%;
     top: 0;
     left: 0;

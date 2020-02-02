@@ -7,7 +7,10 @@ import {default as c} from 'classnames'
 import {toJS, computed, observable, action} from 'mobx'
 import {observer} from 'mobx-react'
 import BaseModel from './utils/BaseModel'
-import {COMP_TYPES} from "./config";
+import {
+    COMP_TYPES,
+    DEMO_LIST_WIDTH
+} from "./config";
 import transferSvgStringToElement from "./utils/transferSvgStringToElement";
 
 import {load, save} from "./utils/storage";
@@ -33,7 +36,7 @@ class MainState extends BaseModel {
 
     @observable showDemoDrawer = false
 
-    @observable demoListWidth = 820
+    @observable demoListWidth = DEMO_LIST_WIDTH
 
     triggerDemoDrawer = target => {
         const result = typeof target === 'boolean' ? target : !this.showDemoDrawer

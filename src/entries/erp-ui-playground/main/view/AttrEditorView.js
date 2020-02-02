@@ -120,7 +120,7 @@ export default class AttrEditorView extends React.Component {
             } = item
             const propInputPropsGen = {
                 key: key,
-                label: `${desc} ${capitalize(key)}`,
+                label: `${desc} ${key}`,
                 value: originProps[key],
                 size: 'small',
                 fullWidth: true,
@@ -230,7 +230,7 @@ export default class AttrEditorView extends React.Component {
         return <div className="attr-editor-content">
             <div className="label">
                 <Typography className="en" variant="h4">
-                    {originName}
+                    {capitalize(compTypeData.enLabel)}
                 </Typography>
                 <Typography className="cn" variant="h4">
                     {compTypeData.cnLabel}
