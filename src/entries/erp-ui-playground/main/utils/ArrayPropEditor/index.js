@@ -21,14 +21,6 @@ import MenuItem from "@material-ui/core/MenuItem"
 import MenuList from "@material-ui/core/MenuList"
 import Switch from "@material-ui/core/Switch"
 
-import { forwardRef } from 'react'
-
-import Add from '@material-ui/icons/Add'
-import Edit from '@material-ui/icons/Edit'
-import Delete from '@material-ui/icons/Delete'
-import Check from '@material-ui/icons/Check'
-import Clear from '@material-ui/icons/Clear'
-
 import MaterialTable from 'material-table'
 
 import './style.scss'
@@ -36,6 +28,16 @@ import './style.scss'
 export default class ArrayPropEditor extends React.Component {
 
     static displayName = 'ArrayPropEditor'
+
+    state = {
+        visible: false,
+        data: [],
+        rowInEditIndex: -1,
+    }
+
+    componentDidMount() {
+        this.resetLocalArray()
+    }
 
     stringEditor = key => rowData => {
         const {
@@ -55,7 +57,6 @@ export default class ArrayPropEditor extends React.Component {
         return rowData[key]
     }
 
-
     boolEditor = key => rowData => {
         const {
             rowInEditIndex
@@ -74,12 +75,6 @@ export default class ArrayPropEditor extends React.Component {
         return rowData[key] === true ? '是' : '否'
     }
 
-    state = {
-        visible: false,
-        data: [],
-        rowInEditIndex: -1,
-    }
-
     get columns() {
         const {
             state,
@@ -91,103 +86,89 @@ export default class ArrayPropEditor extends React.Component {
             data,
             rowInEditIndex
         } = state
-        return [
-            {
-                title: "ID",
-                field: 'id',
-                render: stringEditor('id')
-            },
-            {
-                title: "面板标题",
-                field: "headline",
-                render: stringEditor('headline')
-            },
-            {
-                title: "面板内容",
-                field: "content",
-                render: stringEditor('content')
-            },
-            {
-                title: "禁用",
-                field: "disabled",
-                render: boolEditor('disabled')
-            },
-            {
-                title: "操作",
-                field: "",
-                render: rowData => {
-                    const {_index} = rowData
-                    const isInEdit = rowData._index === rowInEditIndex
-                    return isInEdit
-                        ? <div>
-                            <Button
-                                size="small"
-                                color="primary"
-                                // variant="outlined"
-                                onClick={() => {
-                                    this.setState({
-                                        rowInEditIndex: -1
-                                    })
-                                    this.props.dispatchArray(data)
-                                }}
-                            >
-                                保存
-                            </Button>
-                            <Button
-                                size="small"
-                                color="primary"
-                                // variant="outlined"
-                                onClick={() => {
-                                    this.setState({
-                                        rowInEditIndex: -1
-                                    })
+        const {columns} = props
+        const editorTypeMap = {
+            string: stringEditor,
+            bool: boolEditor
+        }
+        // 用到 title, field 和 columnType
+        const result = toJS(columns).map(item => {
+            return Object.assign({}, item, {
+                render: editorTypeMap[item.columnType](item.field)
+            })
+        })
+        result.push({
+            field: "",
+            title: "操作",
+            render: rowData => {
+                const {_index} = rowData
+                const isInEdit = rowData._index === rowInEditIndex
+                return isInEdit
+                    ? <div>
+                        <Button
+                            size="small"
+                            color="primary"
+                            // variant="outlined"
+                            onClick={() => {
+                                this.setState({
+                                    rowInEditIndex: -1
+                                })
+                                this.props.dispatchArray(data)
+                            }}
+                        >
+                            保存
+                        </Button>
+                        <Button
+                            size="small"
+                            color="primary"
+                            // variant="outlined"
+                            onClick={() => {
+                                this.setState({
+                                    rowInEditIndex: -1
+                                })
+                                this.resetLocalArray()
+                            }}
+                        >
+                            取消
+                        </Button>
+                    </div>
+                    : <div>
+                        <Button
+                            size="small"
+                            color="primary"
+                            // variant="outlined"
+                            // disabled={isInEdit}
+                            onClick={() => {
+                                this.setState({
+                                    rowInEditIndex: rowData._index
+                                })
+                            }}
+                        >
+                            编辑
+                        </Button>
+                        <Button
+                            size="small"
+                            color="primary"
+                            // variant="outlined"
+                            // disabled={isInEdit}
+                            onClick={() => {
+                                let data = toJS(this.state.data)
+                                data.splice(_index, 1)
+                                this.setState({
+                                    data
+                                })
+                                this.props.dispatchArray(data)
+                                setTimeout(() => {
                                     this.resetLocalArray()
-                                }}
-                            >
-                                取消
-                            </Button>
-                        </div>
-                        : <div>
-                            <Button
-                                size="small"
-                                color="primary"
-                                // variant="outlined"
-                                // disabled={isInEdit}
-                                onClick={() => {
-                                    this.setState({
-                                        rowInEditIndex: rowData._index
-                                    })
-                                }}
-                            >
-                                编辑
-                            </Button>
-                            <Button
-                                size="small"
-                                color="primary"
-                                // variant="outlined"
-                                // disabled={isInEdit}
-                                onClick={() => {
-                                    let data = toJS(this.state.data)
-                                    data.splice(_index, 1)
-                                    this.setState({
-                                        data
-                                    })
-                                    this.props.dispatchArray(data)
-                                    setTimeout(() => {
-                                        this.resetLocalArray()
-                                    })
-                                }}
-                            >
-                                删除
-                            </Button>
-                        </div>
-                }
-            },
-        ]
-    }
-
-    componentDidMount() {
-        this.resetLocalArray()
+                                })
+                            }}
+                        >
+                            删除
+                        </Button>
+                    </div>
+            }
+        })
+        return result
     }
 
     resetLocalArray = () => {

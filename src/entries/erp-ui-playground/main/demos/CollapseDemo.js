@@ -18,19 +18,22 @@ const CollapseDemo = () => {
             id: 1,
             headline: '标题1',
             content: '内容1内容1内容1内容1内容1内容1',
-            disabled: false
+            disabled: false,
+            extra: '',
         },
         {
             id: 2,
             headline: '标题2',
             content: '内容2内容2内容2内容2内容2内容2',
-            disabled: false
+            disabled: false,
+            extra: '',
         },
         {
             id: 3,
             headline: '标题3',
             content: '内容3内容3内容3内容3内容3内容3',
-            disabled: false
+            disabled: false,
+            extra: '',
         },
     ]
     return <div className="demo-block collpase-demo-block">

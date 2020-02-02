@@ -113,6 +113,7 @@ export default class AttrEditorView extends React.Component {
                 key,
                 type,
                 desc,
+                columns,
                 options = [
                     {
                         value: true,
@@ -204,6 +205,7 @@ export default class AttrEditorView extends React.Component {
                     />
                 case 'array':
                     return <ArrayPropEditor
+                        columns={columns}
                         dispatchArray={array => {
                             targetPropsChangeHandler({
                                 [key]: array

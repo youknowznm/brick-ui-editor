@@ -173,16 +173,8 @@ export const COMP_TYPES = {
         cnLabel: '扩展面板',
         Element: ComposedCollapse,
         editableProps: [
-            // {
-            //     desc: '内容',
             //     key: 'singleExpanded',
-            //     type: 'bool',
-            // },
-            // {
-            //     desc: '',
             //     key: 'defaultExpandedIds',
-            //     type: 'array',
-            // },
             {
                 desc: '图标位置',
                 key: 'expandIconPosition',
@@ -196,6 +188,34 @@ export const COMP_TYPES = {
                 desc: '内容',
                 key: 'data',
                 type: 'array',
+                columns: [
+                    {
+                        field: 'id',
+                        title: "ID",
+                        columnType: 'string',
+                    },
+                    {
+                        field: "headline",
+                        title: "标题",
+                        columnType: 'string',
+                    },
+                    {
+                        field: "content",
+                        title: "内容",
+                        columnType: 'string',
+                    },
+                    {
+                        field: "extra",
+                        title: "额外标题",
+                        columnType: 'string',
+                    },
+                    {
+                        field: "disabled",
+                        title: "禁用",
+                        columnType: 'bool',
+                        defaultValue: false
+                    },
+                ]
             },
         ]
     },

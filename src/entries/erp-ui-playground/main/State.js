@@ -88,7 +88,7 @@ class MainState extends BaseModel {
             this.setProps({
                 usedCompsDataArray: profile
             })
-            this.toast('已读取本地存储的组件数据.')
+            this.toast('已读取本地存储。')
         }
     }
 
