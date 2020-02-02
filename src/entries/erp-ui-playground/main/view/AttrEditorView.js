@@ -16,6 +16,11 @@ import Divider from '@material-ui/core/Divider'
 import TextField from '@material-ui/core/TextField'
 import MenuItem from '@material-ui/core/MenuItem';
 import InputAdornment from '@material-ui/core/InputAdornment'
+import Dialog from '@material-ui/core/Dialog'
+import DialogTitle from '@material-ui/core/DialogTitle'
+import DialogContent from '@material-ui/core/DialogContent'
+import DialogActions from '@material-ui/core/DialogActions'
+import DialogContentText from '@material-ui/core/DialogContentText';
 
 import AttrEditorState from '../states/AttrEditorState'
 
@@ -55,8 +60,6 @@ export default class AttrEditorView extends React.Component {
         // }
         activeComponentData: PropTypes.object,
 
-        // 编辑 state 和 props
-        targetStateChangeHandler: PropTypes.func,
         targetPropsChangeHandler: PropTypes.func,
     }
 
@@ -79,8 +82,11 @@ export default class AttrEditorView extends React.Component {
         const {
             activeComponentData,
             targetPropsChangeHandler,
-            targetStateChangeHandler
         } = props
+        const {
+            showRemoveConfirmFlag,
+            triggerConfirmFlag
+        } = local.attrEditorState
         if (activeComponentData === null) {
             return null
         }
@@ -197,7 +203,6 @@ export default class AttrEditorView extends React.Component {
                         {...propInputPropsGen}
                     />
                 case 'array':
-                    //
                     return <ArrayPropEditor
                         dispatchArray={array => {
                             targetPropsChangeHandler({
@@ -276,6 +281,50 @@ export default class AttrEditorView extends React.Component {
             <ul className="type-props">
                 {propInputs}
             </ul>
+            <div className="remove-button-wrap">
+                <Button
+                    className="remove-button"
+                    variant="contained"
+                    color="secondary"
+                    onClick={() => {
+                        triggerConfirmFlag(true)
+                    }}
+                >
+                    移除
+                </Button>
+                <Dialog
+                    open={showRemoveConfirmFlag}
+                    onClose={() => {
+                        triggerConfirmFlag(false)
+                    }}
+                >
+                    <DialogTitle>要删除这个元素吗?</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText>
+                            删除的元素无法还原.
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button
+                            onClick={() => {
+                                triggerConfirmFlag(false)
+                                props.removeUsedComp()
+                            }}
+                            color="primary">
+                            确认
+                        </Button>
+                        <Button
+                            onClick={() => {
+                                triggerConfirmFlag(false)
+                            }}
+                            color="primary"
+                            autoFocus
+                        >
+                            取消
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+            </div>
         </div>
     }
 

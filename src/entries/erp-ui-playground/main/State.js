@@ -70,13 +70,41 @@ class MainState extends BaseModel {
         this.saveUsedCompData()
     }
 
+    @action removeUsedComp = () => {
+        const targetIndex = this.usedCompsDataArray.findIndex(item => {
+            return item.id === this.activeComponentId
+        })
+        this.setProps({
+            activeComponentId: ''
+        })
+        this.usedCompsDataArray.splice(targetIndex, 1)
+        this.saveUsedCompData()
+        // this.toast('已成功删除')
+    }
+
     loadUsedCompData = () => {
         const profile = load()
         if (profile) {
             this.setProps({
                 usedCompsDataArray: profile
             })
+            this.toast('已读取本地存储的组件数据.')
         }
+    }
+
+    @observable msgToToast = ''
+    @observable toastFlag = false
+    toast = (msgToToast, duration = 5000) => {
+        this.setProps({
+            msgToToast,
+            toastFlag: true
+        })
+        setTimeout(() => {
+            this.setProps({
+                msgToToast: '',
+                toastFlag: false
+            })
+        }, duration)
     }
 
     saveUsedCompData = () => {

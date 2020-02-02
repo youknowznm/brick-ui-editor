@@ -18,6 +18,7 @@ import IconButton from '@material-ui/core/IconButton'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
 import Paper from '@material-ui/core/Paper'
+import Snackbar from '@material-ui/core/Snackbar'
 
 import Draggable from 'react-draggable'
 
@@ -135,6 +136,29 @@ export default class extends React.Component {
         </Paper>
     }
 
+    renderToast = () => {
+        return <Snackbar
+            anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'center',
+            }}
+            open={this.local.mainState.toastFlag}
+            // autoHideDuration={5000}
+            // onClose={handleClose}
+            message={this.local.mainState.msgToToast}
+            // action={
+            //     <React.Fragment>
+            //         <Button color="secondary" size="small" onClick={() => {}}>
+            //             UNDO
+            //         </Button>
+            //         <IconButton size="small" aria-label="close" color="inherit" onClick={() => {}}>
+            //             <CloseIcon fontSize="small" />
+            //         </IconButton>
+            //     </React.Fragment>
+            // }
+        />
+    }
+
     render() {
         const {props, local} = this
         const {mainState} = local
@@ -171,14 +195,15 @@ export default class extends React.Component {
                 />
                 <AttrEditorView
                     activeComponentData={mainState.activeComponentData}
-                    targetStateChangeHandler={mainState.targetStateChangeHandler}
                     targetPropsChangeHandler={mainState.targetPropsChangeHandler}
+                    removeUsedComp={mainState.removeUsedComp}
                 />
                 <ControlPanelView
                     showControlPanelDrawer={mainState.showControlPanelDrawer}
                     triggerControlPanelDrawer={mainState.triggerControlPanelDrawer}
                 />
                 {this.renderControlPanelDrawerTrigger()}
+                {this.renderToast()}
             </div>
         </Provider>
     }

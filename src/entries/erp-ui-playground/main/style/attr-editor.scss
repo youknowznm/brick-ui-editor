@@ -69,5 +69,19 @@
       margin: 0 5px;
     }
   }
+  .remove-button-wrap {
+    position: relative;
+    //width: 100%;
+    //bottom: 0;
+    height: 120px;
+    text-align: center;
+    .remove-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      width: 240px;
+    }
+  }
 }
 
