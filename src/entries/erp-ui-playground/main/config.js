@@ -3,7 +3,7 @@ import {
     Icon,
     Link,
     // Collapse,
-    Dialog,
+    // Dialog,
     Popover,
     Tabs,
     FileList,
@@ -24,6 +24,7 @@ import {
 } from '@befe/brick'
 
 import ComposedCollapse from './composedComps/ComposedCollapse'
+import {Dialog} from './localBrickComps/Dialog'
 
 export const DEMO_LIST_WIDTH = 820
 export const DEMO_WRAP_DEFAULT_WIDTH = 760
@@ -223,6 +224,43 @@ export const COMP_TYPES = {
         enLabel: 'Dialog',
         cnLabel: '对话框',
         Element: Dialog,
-        editableProps: []
+        editableProps: [
+            {
+                key: 'headline',
+                desc: "标题",
+                type: 'string',
+            },
+            {
+                key: 'children',
+                desc: "内容",
+                type: 'string',
+            },
+            {
+                desc: '尺寸',
+                key: 'size',
+                type: 'enum',
+                options: [
+                    {value: 'xs', label: '超小号'},
+                    {value: 'sm', label: '小号'},
+                    {value: 'md', label: '中号'},
+                    {value: 'lg', label: '大号'},
+                    {value: 'xl', label: '特大号'}
+                ],
+                defaultValue: 'md'
+            },
+            {
+                desc: '高度',
+                key: 'height',
+                type: 'enum',
+                options: [
+                    {value: 'xs', label: '超小号'},
+                    {value: 'sm', label: '小号'},
+                    {value: 'md', label: '中号'},
+                    {value: 'lg', label: '大号'},
+                    {value: 'xl', label: '特大号'}
+                ],
+                defaultValue: 'md'
+            },
+        ]
     }
 }

@@ -42,13 +42,15 @@ $gen-bg-color: #f7f7f7;
   }
 }
 
-.brick-modal-wrap {
-  position: relative;
-  .brick-modal-mask {
-    display: none;
+.brick-dialog-wrap {
+  margin: 0;
+  border: 1px solid #ccc;
+  .brick-close-x {
+    position: absolute;
+    right: 21px;
+    top: 13px;
   }
-  .brick-dialog-wrap {
-    margin: 0;
-    border: 1px solid #ccc;
+  .brick-dialog-foot {
+    text-align: center;
   }
 }

@@ -4,10 +4,10 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-import {Dialog} from '../localBrickComps/Dialog'
+// import {Dialog} from '../localBrickComps/Dialog'
 
-// import {Dialog as OriginDialog} from '../localBrickComps/Dialog'
-// const Dialog = wrapDemoComp(OriginDialog)
+import {Dialog as OriginDialog} from '../localBrickComps/Dialog'
+const Dialog = wrapDemoComp(OriginDialog)
 
 const DialogDemo = () => {
     return <div className="demo-block dialog-demo-block">
@@ -15,12 +15,13 @@ const DialogDemo = () => {
         <Dialog
             headline="弹窗"
             type="error"
+            // size="xl"
+            height="md"
             visible={true}
             // portalContainer={() => document.querySelector('.dialog-demo-block')}
         >
-            dialog-content操你妈
+            弹窗内容 弹窗内容 弹窗内容 弹窗内容 弹窗内容 弹窗内容
         </Dialog>
-        {/* ===== 1 size ===== */}
     </div>
 }
 

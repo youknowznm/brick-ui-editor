@@ -106,7 +106,6 @@ export class Dialog extends React.Component<DialogProps> {
     get className() {
         const {className, size, headline} = this.props
         const actionsAlign = this.actionAlign
-
         return c(
             'brick-dialog',
             {
@@ -226,9 +225,22 @@ export class Dialog extends React.Component<DialogProps> {
         const body = childrenArray.find(child => child.type === DialogBody)
         const foot = childrenArray.find(child => child.type === DialogFoot)
 
+        const SIZE_MAP = {
+            xs: 320,
+            sm: 400,
+            md: 600,
+            lg: 800,
+            xl: 960
+        }
+
         return (
             // <Modal {...this.modalProps}>
-                <div className={'brick-dialog-wrap'}>
+                <div
+                    style={{
+                        width: SIZE_MAP[this.props.size]
+                    }}
+                    className={'brick-dialog-wrap'}
+                >
                     {this.renderCloseX()}
                     {head || this.renderHead()}
                     {body || this.renderBody()}
