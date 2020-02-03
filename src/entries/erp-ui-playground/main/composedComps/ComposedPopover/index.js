@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import {Button} from '@befe/brick'
-import {Popover, PopoverConfirm} from "../../localBrickComps/Popover";
+import {Popover} from "../../localBrickComps/Popover";
 
 export default class ComposedPopover extends React.Component {
 
@@ -40,10 +40,3 @@ export default class ComposedPopover extends React.Component {
         </Popover>
     }
 }
-
-
-
-// buttonContent: '按钮内容',
-//     confirmHeadline: '确认标题',
-// confirmContent: '确认内容',
-// confirmHeadline: '确认标题',

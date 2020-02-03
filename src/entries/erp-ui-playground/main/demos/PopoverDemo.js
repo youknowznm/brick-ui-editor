@@ -7,9 +7,10 @@ import wrapDemoComp from '../utils/wrapDemoComp'
 import {Button} from '@befe/brick'
 
 import OriginComposedPopover from '../composedComps/ComposedPopover'
-import {PopoverConfirm} from '../localBrickComps/Popover'
+import OriginComposedPopoverConfirm from '../composedComps/ComposedPopoverConfirm'
 
 const ComposedPopover = wrapDemoComp(OriginComposedPopover)
+const ComposedPopoverConfirm = wrapDemoComp(OriginComposedPopoverConfirm)
 
 const PopoverDemo = () => {
 
@@ -43,9 +44,14 @@ const PopoverDemo = () => {
 
     const types = ['info', 'success', 'warning', 'error']
     const renderTypePopover = (type) => (
-        <PopoverConfirm key={type} message={content} type={type} >
-            <Button type={'intensive'} color={btnType[type] || type}>{type}</Button>
-        </PopoverConfirm>
+        <ComposedPopoverConfirm
+            key={type}
+            confirmMessage={content}
+            confirmType={type}
+            btnType="intensive"
+            btnColor={btnType[type] || type}
+            btnContent={type}
+        />
     )
 
     return <div className="demo-block popover-demo-block">
@@ -60,18 +66,16 @@ const PopoverDemo = () => {
         <Divider className="demo-block-separator" />
         {/* ===== 1 confirm ===== */}
         <div className="">
-            <PopoverConfirm
-                message={'这是一段确认信息'}
-            >
-                <Button>简单</Button>
-            </PopoverConfirm>
-            <PopoverConfirm
-                type={null}
-                headline={headline}
-                message={'这是一段确认信息'}
-            >
-                <Button>带标题</Button>
-            </PopoverConfirm>
+            <ComposedPopoverConfirm
+                confirmMessage="这是一段确认信息"
+                btnContent="简单"
+            />
+            <ComposedPopoverConfirm
+                confirmMessage="这是一段确认信息"
+                confirmType={null}
+                confirmHeadline={headline}
+                btnContent="带标题"
+            />
             {types.map(renderTypePopover)}
         </div>
     </div>

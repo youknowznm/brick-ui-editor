@@ -25,6 +25,7 @@ import {
 
 import ComposedCollapse from './composedComps/ComposedCollapse'
 import ComposedPopover from './composedComps/ComposedPopover'
+import ComposedPopoverConfirm from './composedComps/ComposedPopoverConfirm'
 import {Dialog} from './localBrickComps/Dialog'
 
 export const DEMO_LIST_WIDTH = 820
@@ -298,6 +299,81 @@ export const COMP_TYPES = {
                     // ghost: '幽灵'
                 ],
                 defaultValue: 'normal'
+            },
+            {
+                desc: '颜色',
+                key: 'btnColor',
+                type: 'enum',
+                options: [
+                    {value: 'normal', label: '普通'},
+                    {value: 'primary', label: '重要'},
+                    {value: 'success', label: '成功'},
+                    {value: 'error', label: '错误'},
+                    {value: 'warning', label: '警告'},
+                ],
+                defaultValue: 'normal'
+            },
+            {
+                desc: '按钮尺寸',
+                key: 'btnSize',
+                type: 'enum',
+                options: [
+                    {value: 'xs', label: '超小号'},
+                    {value: 'sm', label: '小号'},
+                    {value: 'md', label: '中号'},
+                    {value: 'lg', label: '大号'},
+                    {value: 'xl', label: '特大号'}
+                ],
+                defaultValue: 'sm'
+            },
+        ]
+    },
+    ComposedPopoverConfirm: {
+        enLabel: 'PopoverConfirm',
+        cnLabel: '弹出确认',
+        Element: ComposedPopoverConfirm,
+        editableProps: [
+            {
+                key: 'confirmMessage',
+                desc: '提示信息',
+                type: 'string',
+            },
+            {
+                key: 'confirmHeadline',
+                desc: '标题',
+                type: 'string',
+            },
+            {
+                desc: '提示类型',
+                key: 'confirmType',
+                type: 'enum',
+                options: [
+                    {value: null, label: '普通'},
+                    {value: 'info', label: '信息'},
+                    {value: 'success', label: '成功'},
+                    {value: 'error', label: '错误'},
+                    {value: 'warning', label: '警告'},
+                ],
+                defaultValue: 'info'
+            },
+            {
+                desc: '按钮类型',
+                key: 'btnType',
+                type: 'enum',
+                options: [
+                    {value: 'normal', label: '普通'},
+                    {value: 'intensive', label: '加强'},
+                    {value: 'important', label: '重要'},
+                    {value: 'translucent', label: '半透明'},
+                    {value: 'plain', label: '纯文字'},
+                    // ghost: '幽灵'
+                ],
+                defaultValue: 'normal'
+            },
+            {
+                desc: '按钮内容',
+                key: 'btnContent',
+                type: 'string',
             },
             {
                 desc: '颜色',
