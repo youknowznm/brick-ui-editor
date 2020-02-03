@@ -13,14 +13,13 @@ const DialogDemo = () => {
     return <div className="demo-block dialog-demo-block">
         {/* ===== 0 basic ===== */}
         <Dialog
-            headline="弹窗"
+            headline="弹窗标题"
             type="error"
-            // size="xl"
             height="md"
             visible={true}
             // portalContainer={() => document.querySelector('.dialog-demo-block')}
         >
-            弹窗内容 弹窗内容 弹窗内容 弹窗内容 弹窗内容 弹窗内容
+            弹窗内容
         </Dialog>
     </div>
 }

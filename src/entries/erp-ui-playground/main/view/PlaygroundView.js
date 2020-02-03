@@ -15,6 +15,7 @@ import PlaygroundState from '../states/PlaygroundState'
 import '../style/playground.scss'
 
 import transferSvgStringToElement from '../utils/transferSvgStringToElement'
+import {PortalContainerProvider} from "../utils/PortalContainerContext";
 
 @observer
 export default class PlaygroundView extends React.Component {
@@ -77,69 +78,71 @@ export default class PlaygroundView extends React.Component {
             triggerControlPanelDrawer,
             compDragHandler,
         } = props
-        return <Paper className="playground-content"
-            style={{
-                width: playgroundWidth,
-                height: playgroundHeight
-            }}
-            onMouseOver={evt => {
-                // 滑过区域空白处时, 关闭所有抽屉
-                const {className} = evt.target
-                if (className.indexOf && className.indexOf('playground-content') > -1) {
-                    props.triggerDemoDrawer(false)
-                    props.triggerControlPanelDrawer(false)
-                }
-            }}
-            onClick={evt => {
-                // 点击区域空白处时, 取消组件编辑
-                const {className} = evt.target
-                if (className.indexOf && className.indexOf('playground-content') > -1) {
-                    props.setActiveComponentId('')
-                }
-            }}
-            square={true}
-        >
-            {usedCompsDataArray.map(item => {
-                // console.log('usedCompsData:', toJS(item))
-                // id: "18bv1q9"
-                // originName: "Button"
-                // originProps: {
-                //     type: "intensive"
-                //     children: "加强"
-                //     root: {
-                //         metaKeyPressing: true,
-                //             showControlPanelDrawer: false,
-                //             triggerControlPanelDrawer: ƒ,
-                //             triggerDemoDrawer: ƒ,
-                //             setActiveComponentId: ƒ
-                //     }
-                //     className: ""
-                //     color: "normal"
-                //     disabled: false
-                //     loadingDelayInMS: 300
-                // }
-                return <PlaygroundCompWrap
-                    key={item.id}
-                    id={item.id}
-                    originName={item.originName}
-                    originProps={item.originProps}
-                    wrapWidth={item.wrapWidth}
-                    wrapHeight={item.wrapHeight}
-                    deltaX={item.deltaX}
-                    deltaY={item.deltaY}
-                    metaKeyPressing={metaKeyPressing}
-                    activeComponentId={activeComponentId}
-                    setActiveComponentId={setActiveComponentId}
-                    triggerDemoDrawer={triggerDemoDrawer}
-                    triggerControlPanelDrawer={triggerControlPanelDrawer}
-                    playgroundWidth={playgroundWidth}
-                    playgroundHeight={playgroundHeight}
-                    setCompResizeHandler={setCompResizeHandler}
-                    compDragHandler={compDragHandler}
-                    setActiveComponentId={setActiveComponentId}
-                />;
-            })}
-        </Paper>
+        return <PortalContainerProvider value=".playground-content">
+            <Paper className="playground-content"
+                   style={{
+                       width: playgroundWidth,
+                       height: playgroundHeight
+                   }}
+                   onMouseOver={evt => {
+                       // 滑过区域空白处时, 关闭所有抽屉
+                       const {className} = evt.target
+                       if (className.indexOf && className.indexOf('playground-content') > -1) {
+                           props.triggerDemoDrawer(false)
+                           props.triggerControlPanelDrawer(false)
+                       }
+                   }}
+                   onClick={evt => {
+                       // 点击区域空白处时, 取消组件编辑
+                       const {className} = evt.target
+                       if (className.indexOf && className.indexOf('playground-content') > -1) {
+                           props.setActiveComponentId('')
+                       }
+                   }}
+                   square={true}
+            >
+                {usedCompsDataArray.map(item => {
+                    // console.log('usedCompsData:', toJS(item))
+                    // id: "18bv1q9"
+                    // originName: "Button"
+                    // originProps: {
+                    //     type: "intensive"
+                    //     children: "加强"
+                    //     root: {
+                    //         metaKeyPressing: true,
+                    //             showControlPanelDrawer: false,
+                    //             triggerControlPanelDrawer: ƒ,
+                    //             triggerDemoDrawer: ƒ,
+                    //             setActiveComponentId: ƒ
+                    //     }
+                    //     className: ""
+                    //     color: "normal"
+                    //     disabled: false
+                    //     loadingDelayInMS: 300
+                    // }
+                    return <PlaygroundCompWrap
+                        key={item.id}
+                        id={item.id}
+                        originName={item.originName}
+                        originProps={item.originProps}
+                        wrapWidth={item.wrapWidth}
+                        wrapHeight={item.wrapHeight}
+                        deltaX={item.deltaX}
+                        deltaY={item.deltaY}
+                        metaKeyPressing={metaKeyPressing}
+                        activeComponentId={activeComponentId}
+                        setActiveComponentId={setActiveComponentId}
+                        triggerDemoDrawer={triggerDemoDrawer}
+                        triggerControlPanelDrawer={triggerControlPanelDrawer}
+                        playgroundWidth={playgroundWidth}
+                        playgroundHeight={playgroundHeight}
+                        setCompResizeHandler={setCompResizeHandler}
+                        compDragHandler={compDragHandler}
+                        setActiveComponentId={setActiveComponentId}
+                    />;
+                })}
+            </Paper>
+        </PortalContainerProvider>
     }
 
     render() {

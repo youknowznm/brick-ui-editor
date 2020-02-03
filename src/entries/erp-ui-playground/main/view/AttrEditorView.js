@@ -138,6 +138,7 @@ export default class AttrEditorView extends React.Component {
             switch (type) {
                 case 'string':
                     return <TextField
+                        multiline
                         onChange={evt => {
                             targetPropsChangeHandler({
                                 [key]: evt.target.value
@@ -167,7 +168,11 @@ export default class AttrEditorView extends React.Component {
                                     value={option.value}
                                     dense={true}
                                 >
-                                    {option.label} {option.value}
+                                    {
+                                        option.label
+                                            ? `${option.label} ${option.value}`
+                                            : option.value
+                                    }
                                 </MenuItem>
                             })
                         }

@@ -48,7 +48,7 @@ class MainState extends BaseModel {
     @observable usedCompsDataArray = []
 
     @action pushUsedCompData = data => {
-        console.log('rcv used comp:', data)
+        console.log('using demo comp:', data)
         let {
             originName,
             originProps

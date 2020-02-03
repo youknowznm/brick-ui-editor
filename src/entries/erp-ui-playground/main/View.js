@@ -20,10 +20,6 @@ import MoreVertIcon from '@material-ui/icons/MoreVert'
 import Paper from '@material-ui/core/Paper'
 import Snackbar from '@material-ui/core/Snackbar'
 
-import Draggable from 'react-draggable'
-
-import PlaygroundCompWrap from './utils/PlaygroundCompWrap'
-
 import './style.scss'
 
 import MainState from './State'

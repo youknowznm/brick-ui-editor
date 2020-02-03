@@ -46,6 +46,7 @@ export default class ArrayPropEditor extends React.Component {
         if (rowData._index === rowInEditIndex) {
             return <TextField
                 fullWidth={true}
+                multiline
                 value={rowData[key]}
                 onChange={event => {
                     const data = this.state.data

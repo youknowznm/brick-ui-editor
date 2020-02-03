@@ -4,7 +4,7 @@ import {
     Link,
     // Collapse,
     // Dialog,
-    Popover,
+    // Popover,
     Tabs,
     FileList,
     Table,
@@ -24,6 +24,7 @@ import {
 } from '@befe/brick'
 
 import ComposedCollapse from './composedComps/ComposedCollapse'
+import ComposedPopover from './composedComps/ComposedPopover'
 import {Dialog} from './localBrickComps/Dialog'
 
 export const DEMO_LIST_WIDTH = 820
@@ -192,27 +193,27 @@ export const COMP_TYPES = {
                 columns: [
                     {
                         field: 'id',
-                        title: "ID",
+                        title: 'ID',
                         columnType: 'string',
                     },
                     {
-                        field: "headline",
-                        title: "标题",
+                        field: 'headline',
+                        title: '标题',
                         columnType: 'string',
                     },
                     {
-                        field: "content",
-                        title: "内容",
+                        field: 'content',
+                        title: '内容',
                         columnType: 'string',
                     },
                     {
-                        field: "extra",
-                        title: "额外标题",
+                        field: 'extra',
+                        title: '额外标题',
                         columnType: 'string',
                     },
                     {
-                        field: "disabled",
-                        title: "禁用",
+                        field: 'disabled',
+                        title: '禁用',
                         columnType: 'bool',
                         defaultValue: false
                     },
@@ -227,12 +228,12 @@ export const COMP_TYPES = {
         editableProps: [
             {
                 key: 'headline',
-                desc: "标题",
+                desc: '标题',
                 type: 'string',
             },
             {
                 key: 'children',
-                desc: "内容",
+                desc: '内容',
                 type: 'string',
             },
             {
@@ -248,9 +249,72 @@ export const COMP_TYPES = {
                 ],
                 defaultValue: 'md'
             },
+        ]
+    },
+    ComposedPopover: {
+        enLabel: 'Popover',
+        cnLabel: '弹出',
+        Element: ComposedPopover,
+        editableProps: [
             {
-                desc: '高度',
-                key: 'height',
+                key: 'placement',
+                desc: '位置',
+                type: 'enum',
+                options: [
+                    {value: 'top-start'},
+                    {value: 'top'},
+                    {value: 'top-end'},
+                    {value: 'left-start',},
+                    {value: 'right-start'},
+                    {value: 'left'},
+                    {value: 'right'},
+                    {value: 'left-end'},
+                    {value: 'right-end'},
+                    {value: 'bottom-start'},
+                    {value: 'bottom'},
+                    {value: 'bottom-end'},
+                ]
+            },
+            {
+                key: 'content',
+                desc: '内容',
+                type: 'string',
+            },
+            {
+                desc: '按钮内容',
+                key: 'btnContent',
+                type: 'string',
+            },
+            {
+                desc: '按钮类型',
+                key: 'btnType',
+                type: 'enum',
+                options: [
+                    {value: 'normal', label: '普通'},
+                    {value: 'intensive', label: '加强'},
+                    {value: 'important', label: '重要'},
+                    {value: 'translucent', label: '半透明'},
+                    {value: 'plain', label: '纯文字'},
+                    // ghost: '幽灵'
+                ],
+                defaultValue: 'normal'
+            },
+            {
+                desc: '颜色',
+                key: 'btnColor',
+                type: 'enum',
+                options: [
+                    {value: 'normal', label: '普通'},
+                    {value: 'primary', label: '重要'},
+                    {value: 'success', label: '成功'},
+                    {value: 'error', label: '错误'},
+                    {value: 'warning', label: '警告'},
+                ],
+                defaultValue: 'normal'
+            },
+            {
+                desc: '按钮尺寸',
+                key: 'btnSize',
                 type: 'enum',
                 options: [
                     {value: 'xs', label: '超小号'},
@@ -259,7 +323,7 @@ export const COMP_TYPES = {
                     {value: 'lg', label: '大号'},
                     {value: 'xl', label: '特大号'}
                 ],
-                defaultValue: 'md'
+                defaultValue: 'sm'
             },
         ]
     }

@@ -4,13 +4,12 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-import {Popover as OriginPopover, PopoverConfirm} from '../localBrickComps/Popover'
-// import {Popover as OriginPopover} from '@befe/brick'
 import {Button} from '@befe/brick'
 
-import {PortalContainerProvider} from '../utils/PortalContainerContext'
+import OriginComposedPopover from '../composedComps/ComposedPopover'
+import {PopoverConfirm} from '../localBrickComps/Popover'
 
-const Popover = wrapDemoComp(OriginPopover)
+const ComposedPopover = wrapDemoComp(OriginComposedPopover)
 
 const PopoverDemo = () => {
 
@@ -26,12 +25,11 @@ const PopoverDemo = () => {
         return (
             <div className={'trigger-wrap'} key={idx}>
                 {placement ? (
-                    <Popover
+                    <ComposedPopover
                         placement={placement}
                         content="内容"
-                    >
-                        <Button>{placement}</Button>
-                    </Popover>
+                        btnContent={placement}
+                    />
                 ) : null}
             </div>
         )
