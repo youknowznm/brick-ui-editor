@@ -5,7 +5,7 @@ import Divider from '@material-ui/core/Divider';
 import wrapDemoComp from '../utils/wrapDemoComp'
 
 import {ErpLogo} from '@befe/brick'
-import {HeadNav} from '../localBrickComps'
+import {HeadNav} from '../localBrickComps/HeadNav'
 
 import subHead from './subhead.svg'
 

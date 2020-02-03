@@ -219,9 +219,10 @@ export const COMP_TYPES = {
             },
         ]
     },
-    // Dialog: {
-    //     cnLabel: '对话框',
-    //     Element: Dialog,
-    //     editableProps: []
-    // }
+    Dialog: {
+        enLabel: 'Dialog',
+        cnLabel: '对话框',
+        Element: Dialog,
+        editableProps: []
+    }
 }

@@ -31,10 +31,12 @@ const wrapDemoComp = OriginComponent => {
 
         createRef = reactElem => {
             this.ref = reactElem
-            const wrapDOM = findDOMNode(this.ref)
-            const $wrapDOM = $(wrapDOM)
-            if (wrapDOM) {
-                setTimeout(() => {
+            setTimeout(() => {
+                let wrapDOM = findDOMNode(this.ref)
+                window.sb = wrapDOM
+                if (wrapDOM) {
+                    const $wrapDOM = $(wrapDOM)
+                    window.sb = $wrapDOM
                     const computedStyle = document.defaultView.getComputedStyle(wrapDOM)
                     const ownProps = Object.assign({}, reactElem.props)
                     for (let propKey in ownProps) {
@@ -57,25 +59,23 @@ const wrapDemoComp = OriginComponent => {
                     // let wrapHeight = parseInt(computedStyle.height, 10)
                     let wrapWidth = $wrapDOM.outerWidth()
                     let wrapHeight = $wrapDOM.outerHeight()
-                    const {
-                        defaultWrapWidth,
-                        defaultWrapHeight,
-                    } = COMP_TYPES[OriginComponent.displayName]
-                    if (defaultWrapWidth) {
-                        wrapWidth = defaultWrapWidth
-                    }
-                    if (defaultWrapHeight) {
-                        wrapHeight = defaultWrapHeight
-                    }
-
+                    // const {
+                    //     defaultWrapWidth,
+                    //     defaultWrapHeight,
+                    // } = COMP_TYPES[OriginComponent.displayName]
+                    // if (defaultWrapWidth) {
+                    //     wrapWidth = defaultWrapWidth
+                    // }
+                    // if (defaultWrapHeight) {
+                    //     wrapHeight = defaultWrapHeight
+                    // }
                     this.setState({
                         ownProps,
                         wrapWidth,
                         wrapHeight
                     })
-                })
-
-            }
+                }
+            })
         }
 
         dispatchCompToUse = () => {
@@ -85,8 +85,8 @@ const wrapDemoComp = OriginComponent => {
                 originProps: this.state.ownProps,
                 wrapWidth: this.state.wrapWidth,
                 wrapHeight: this.state.wrapHeight,
-                deltaX: 100,
-                deltaY: 100,
+                deltaX: 0,
+                deltaY: 0,
             })
         }
 
@@ -99,7 +99,8 @@ const wrapDemoComp = OriginComponent => {
             return <div
                 className={c(
                     'demo-comp-wrap',
-                    props.root.metaKeyPressing && 'meta-key-pressed'
+                    props.root.metaKeyPressing && 'meta-key-pressed',
+                    // isAbsPos && 'is-abs-pos'
                 )}
                 style={{
                     width: wrapWidth,

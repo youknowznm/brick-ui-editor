@@ -65,6 +65,7 @@ class MainState extends BaseModel {
                 originProps[key] = defaultValue
             }
         }
+        originProps.portalContainer = () => document.querySelector('.playground-content')
         data.originProps = originProps
         this.usedCompsDataArray.push(data)
         this.saveUsedCompData()

@@ -86,10 +86,17 @@
         }
       }
       .dialog-demo-block {
-        background-color: rgba(0, 0, 0, .6) !important;
-        .demo-comp-wrap {
-          width: 100% !important;
-        }
+        // 移动至最外层样式, 可能多处用到
+        //.brick-modal-wrap {
+        //  position: relative;
+        //  .brick-modal-mask {
+        //    display: none;
+        //  }
+        //  .brick-dialog-wrap {
+        //    margin: 0;
+        //    border: 1px solid #ccc;
+        //  }
+        //}
       }
       .popover-demo-block {
         .section-basic {

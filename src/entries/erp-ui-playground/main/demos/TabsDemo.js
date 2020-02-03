@@ -103,7 +103,7 @@ const TabsDemo = () => {
             <Tabs
                 className="demo-tabs"
                 // defaultActiveId={'tab2'}
-                type={'Paper'}
+                type="card"
                 shouldDestroyInactivePane={true}
                 addable={true}
             >

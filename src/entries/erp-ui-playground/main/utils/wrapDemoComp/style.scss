@@ -9,22 +9,10 @@
   white-space: nowrap;
   margin-right: 10px;
   margin-bottom: 10px;
-  // * {
-  //     margin: 0;
-  //     padding: 0;
-  // }
-  .button-use {
+
+  &.is-abs-pos {
     position: absolute;
-    right: 0;
-    bottom: -32px;
-    display: none;
-    opacity: 1;
-    z-index: 99999;
-  }
-  &:hover {
-    .button-use {
-      display: block;
-    }
+    z-index: 1001;
   }
 
   .action-layer {

@@ -3,6 +3,7 @@ import {toJS, computed, observable, action} from 'mobx'
 const LOCAL_STORAGE_KEY = 'EUP_PROFILE'
 
 export const save = data => {
+    // console.log('save', toJS(data))
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(toJS(data)))
 }
 

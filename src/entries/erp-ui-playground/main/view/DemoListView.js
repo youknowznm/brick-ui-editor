@@ -70,6 +70,13 @@ export default class DemoListView extends React.Component {
         const {local} = this
     }
 
+    componentDidMount() {
+        // TODO: 待移除
+        this.local.demoListState.setProps({
+            expandedDemoPanelLabel: 'Dialog'
+        })
+    }
+
     renderDemoPanels = () => {
         const {local, props} = this
         const {demoListState} = local
