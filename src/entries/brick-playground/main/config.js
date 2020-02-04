@@ -26,6 +26,8 @@ import {
 import ComposedCollapse from './composedComps/ComposedCollapse'
 import ComposedPopover from './composedComps/ComposedPopover'
 import ComposedPopoverConfirm from './composedComps/ComposedPopoverConfirm'
+import ComposedTabs from './composedComps/ComposedTabs'
+
 import {Dialog} from './localBrickComps/Dialog'
 
 export const DEMO_LIST_WIDTH = 820
@@ -402,5 +404,79 @@ export const COMP_TYPES = {
                 defaultValue: 'sm'
             },
         ]
-    }
+    },
+    ComposedTabs: {
+        enLabel: 'Tabs',
+        cnLabel: '标签页',
+        Element: ComposedTabs,
+        editableProps: [
+            {
+                desc: '类型',
+                key: 'type',
+                type: 'enum',
+                options: [
+                    {value: 'plain', label: '普通'},
+                    {value: 'card', label: '卡片'},
+                    {value: 'button-group', label: '按钮组'},
+                ],
+                defaultValue: 'plain'
+            },
+            {
+                desc: '可添加',
+                key: 'addable',
+                type: 'bool',
+                defaultValue: false
+            },
+            {
+                desc: '尺寸',
+                key: 'size',
+                type: 'enum',
+                options: [
+                    {value: 'sm', label: '小号'},
+                    {value: 'md', label: '中号'},
+                ],
+                defaultValue: 'sm'
+            },
+            {
+                key: 'defaultActiveId',
+                desc: '默认活动页 ID',
+                type: 'string',
+            },
+            {
+                desc: '内容',
+                key: 'data',
+                type: 'array',
+                columns: [
+                    {
+                        field: 'label',
+                        title: '标题',
+                        columnType: 'string',
+                    },
+                    // TODO: 改成 enum?
+                    {
+                        field: 'status',
+                        title: '状态',
+                        columnType: 'string',
+                    },
+                    {
+                        field: 'content',
+                        title: '内容',
+                        columnType: 'string',
+                    },
+                    {
+                        field: 'disabled',
+                        title: '禁用',
+                        columnType: 'bool',
+                        defaultValue: false
+                    },
+                    {
+                        field: 'deletable',
+                        title: '可删除',
+                        columnType: 'bool',
+                        defaultValue: false
+                    },
+                ]
+            },
+        ]
+    },
 }

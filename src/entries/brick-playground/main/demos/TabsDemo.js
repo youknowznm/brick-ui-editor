@@ -4,11 +4,12 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-import {Tabs, TabPane} from '@befe/brick'
-
+// import {Tabs, TabPane} from '@befe/brick'
 // import {Tabs as OriginTabs} from '@befe/brick'
-//
 // const Tabs = wrapDemoComp(OriginTabs)
+
+import OriginComposedTabs from "../composedComps/ComposedTabs";
+const ComposedTabs = wrapDemoComp(OriginComposedTabs)
 
 const TabsDemo = () => {
     const generatePanesData = num => {
@@ -18,8 +19,8 @@ const TabsDemo = () => {
                 {
                     id: `tab${i}`,
                     label: `tab${i}`,
-                    disabled: i === 0,
-                    content: <div>content-{i}</div>
+                    disabled: i === 1,
+                    content: `content-${i}`
                 }
             )
         }
@@ -29,16 +30,13 @@ const TabsDemo = () => {
     const generatePaperPanesData = num => {
         const result = []
         for (let i = 0; i < num; i ++) {
-            result.push(
-                <TabPane
-                    key={`tab${i}`}
-                    id={`tab${i}`}
-                    label={`tab${i}`}
-                    disabled={i === 0}
-                >
-                    content-{i}
-                </TabPane>,
-            )
+            result.push({
+                id: `tab${i}`,
+                key: `tab${i}`,
+                label: `tab${i}`,
+                disabled: i === 1,
+                content: `content-${i}`
+            })
         }
         return result
     }
@@ -46,96 +44,100 @@ const TabsDemo = () => {
     const generateAddablePanesData = (num, deleteIndex) => {
         const result = []
         for (let i = 0; i < num; i ++) {
-
-            result.push(
-                <TabPane
-                    key={`tab${i}`}
-                    id={`tab${i}`}
-                    label={`tab${i}`}
-                    disabled={i === 0}
-                    status={(i === 0 || i === 1) ? 'error' : undefined}
-                    deletable={deleteIndex.includes(i)}
-                >
-                    content-{i}
-                </TabPane>,
-            )
+            result.push({
+                id: `tab${i}`,
+                key: `tab${i}`,
+                label: `tab${i}`,
+                disabled: i === 1,
+                content: `content-${i}`,
+                status: (i === 0 || i === 1) ? 'error' : undefined,
+                deletable: deleteIndex.includes(i)
+            })
         }
         return result
     }
 
-    const generateButtonGroupTabs = num => {
-        const result = []
-        for (let i = 0; i < num; i ++) {
-
-            result.push(
-                <TabPane
-                    key={`tab${i}`}
-                    id={`tab${i}`}
-                    label={`tab${i}`}
-                    // disabled={i === 0}
-                >
-                    content-{i}
-                </TabPane>,
-            )
-        }
-        return result
-    }
+    // const generateButtonGroupTabs = num => {
+    //     const result = []
+    //     for (let i = 0; i < num; i ++) {
+    //
+    //         result.push(
+    //             <TabPane
+    //                 key={`tab${i}`}
+    //                 id={`tab${i}`}
+    //                 label={`tab${i}`}
+    //                 // disabled={i === 0}
+    //             >
+    //                 content-{i}
+    //             </TabPane>,
+    //         )
+    //     }
+    //     return result
+    // }
 
     return <div className="demo-block tabs-demo-block">
         {/* ===== 0 basic ===== */}
         <div>
-            <Tabs
+            <ComposedTabs
                 className="demo-tabs"
-                panes={generatePanesData(5)}
-                defaultActiveId={'tab2'}
+                defaultActiveId={'tab0'}
+                data={generatePanesData(5)}
             />
         </div>
         <Divider className="demo-block-separator" />
         {/* ===== 1 Paper ===== */}
         <div>
-            <Tabs className="demo-tabs" defaultActiveId={'tab2'} type={'card'}>
-                {generatePaperPanesData(6)}
-            </Tabs>
+            <ComposedTabs
+                className="demo-tabs"
+                type="card"
+                defaultActiveId={'tab0'}
+                data={generatePaperPanesData(5)}
+            />
         </div>
         <Divider className="demo-block-separator" />
         {/* ===== 2 addable ===== */}
         <div>
-            <Tabs
+            <ComposedTabs
                 className="demo-tabs"
-                // defaultActiveId={'tab2'}
                 type="card"
-                shouldDestroyInactivePane={true}
+                defaultActiveId={'tab0'}
                 addable={true}
-            >
-                {generateAddablePanesData(6, [5])}
-            </Tabs>
+                data={generateAddablePanesData(6,[5])}
+            />
         </div>
         <Divider className="demo-block-separator" />
         {/* ===== 3 button group ===== */}
         <div>
             <div className="demo-tabs">
                 <p>size: sm</p>
-                <Tabs
-                    defaultActiveId={'tab1'}
+                <ComposedTabs
+                    className="demo-tabs"
                     type={'button-group'}
-                    shouldDestroyInactivePane={true}
-                >
-                    {generateButtonGroupTabs(4)}
-                </Tabs>
+                    defaultActiveId={'tab0'}
+                    data={generatePanesData(5)}
+                />
             </div>
             <div className="demo-tabs">
                 <p>size: md</p>
-                <Tabs
-                    defaultActiveId={'tab2'}
-                    size={'md'}
+                <ComposedTabs
+                    size="md"
                     type={'button-group'}
-                    shouldDestroyInactivePane={true}
-                >
-                    {generateButtonGroupTabs(4)}
-                </Tabs>
+                    className="demo-tabs"
+                    defaultActiveId={'tab0'}
+                    data={generatePanesData(5)}
+                />
             </div>
         </div>
         <Divider className="demo-block-separator" />
+        {/* ===== 4 long ===== */}
+        <div>
+            <ComposedTabs
+                className="demo-tabs"
+                type="card"
+                defaultActiveId={'tab0'}
+                data={generatePaperPanesData(20)}
+            />
+        </div>
     </div>
 }
 

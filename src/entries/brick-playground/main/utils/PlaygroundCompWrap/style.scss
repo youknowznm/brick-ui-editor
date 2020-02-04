@@ -44,6 +44,7 @@ $aligner-color: #419bf9;
   }
   .action-layer {
     display: none;
+    z-index: 2000;
     @include pos-abs-full-size;
     // opacity: .5;
     border: 1px solid $stripe-color;
@@ -60,6 +61,7 @@ $aligner-color: #419bf9;
   }
   .selected-layer {
     display: none;
+    z-index: 2000;
     @include pos-abs-full-size;
     border: 1px solid $stripe-color-selected;
     z-index: 2;
