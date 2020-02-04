@@ -12,14 +12,7 @@ const staticList = [
         "positionId": "15444",
         "positionName": "1110T060.研发.开发.-.Band5.T6.资深研发工程师",
         "positionShortName": "资深研发工程师",
-        "uuapUserName": 0,
-        "map": {
-            "person": {
-                "name": 'Wang Helin'
-            }
-        },
     }, {
-        checked: true,
         "departmentId": "11678",
         "departmentName": "商务搜索产品部",
         "emailAddress": "lilywang@baidu.com",
@@ -34,11 +27,6 @@ const staticList = [
         "positionShortName": "高级经理",
         "uuapUserName": "",
         "phone": '13577912345',
-        "map": {
-            "person": {
-                "name": 'Wang Yuxian',
-            }
-        },
     }, {
         "departmentId": "11439",
         "departmentName": "硅谷人工智能实验室",
@@ -123,11 +111,6 @@ const staticList = [
         "positionName": "1110T040.研发.开发.-.Band4.T4.高级研发工程师",
         "positionShortName": "高级研发工程师",
         "uuapUserName": "wancheng01",
-        "map": {
-            "person": {
-                "name": '万程'
-            }
-        },
     }, {
         "departmentId": "1286",
         "departmentName": "广州培训部",

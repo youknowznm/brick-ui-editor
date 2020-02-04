@@ -536,37 +536,50 @@ export const COMP_TYPES = {
     },
     ComposedTable: {
         enLabel: 'Table',
-        cnLabel: '文件列表',
+        cnLabel: '表格',
         Element: ComposedTable,
         editableProps: [
             {
-                desc: '布局',
-                key: 'layout',
-                type: 'enum',
-                options: [
-                    {value: 'horizontal', label: '水平'},
-                    {value: 'vertical', label: '垂直'},
-                ],
-                defaultValue: 'horizontal'
-            },
-            {
-                desc: '可删除',
-                key: 'useRemove',
-                type: 'bool',
-                defaultValue: false
-            },
-            {
-                desc: '文件内容',
+                desc: '数据',
                 key: 'data',
                 type: 'array',
                 columns: [
                     {
-                        field: 'id',
-                        title: 'ID',
+                        field: 'label',
+                        title: '标题',
                         columnType: 'string',
                     },
                 ]
-            }
+            },
+            {
+                desc: '列定义',
+                key: 'columns',
+                type: 'array',
+                columns: [
+                    {
+                        field: 'key',
+                        title: '属性名称',
+                        columnType: 'string',
+                    },
+                    {
+                        field: 'fixed',
+                        title: '固定',
+                        //enum TODO:
+                        columnType: 'string',
+                    },
+                    {
+                        field: 'operationsLabelsJoined',
+                        title: '操作字符串',
+                        columnType: 'string',
+                    },
+                    {
+                        desc: '第一列为复选框',
+                        key: 'useCheckbox',
+                        type: 'bool',
+                        defaultValue: false
+                    },
+                ]
+            },
         ]
     }
 }

@@ -32,9 +32,9 @@ export default class ComposedTable extends React.Component {
         }))
         const _columns = toJS(this.props.columns)
         if (useCheckbox === true) {
-            if (!columns.some(item => item.key === 'checkbox')) {
+            if (!columns.some(item => item.key === '_checkbox')) {
                 _columns.unshift({
-                    key: 'checkbox',
+                    key: '_checkbox',
                     fixed: 'left',
                     thContent: <Checkbox />,
                     align: 'center',
@@ -63,7 +63,7 @@ export default class ComposedTable extends React.Component {
                             {
                                 operationsLabelsJoined.trim().split(/\s+/).map((label, index) => {
                                     return <Button
-                                        key={{index}}
+                                        key={index}
                                         size="xs"
                                         type="plain"
                                         color="primary"
@@ -83,7 +83,7 @@ export default class ComposedTable extends React.Component {
             background: '#fff'
         }}>
             <Table
-                rowId="employeeNumber"
+                rowId="_index"
                 data={_data}
                 columns={_columns}
                 maxBodyHeight={maxBodyHeight}

@@ -32,7 +32,7 @@ const TableDemo = () => {
             thContent: '邮箱',
             key: 'emailAddress',
             width: 200,
-            tdContent: (row, rowIdx) => row.emailAddress,
+            // tdContent: (row, rowIdx) => row.emailAddress,
         },
         {
             thContent: '员工类型',
@@ -86,7 +86,7 @@ const TableDemo = () => {
             thContent: '邮箱',
             key: 'emailAddress',
             // width: 120,
-            tdContent: (row, rowIdx) => row.emailAddress + ' ^_^ ' + rowIdx,
+            // tdContent: (row, rowIdx) => row.emailAddress + ' ^_^ ' + rowIdx,
         },
         {
             thContent: '部门名称',
@@ -150,7 +150,7 @@ const TableDemo = () => {
             columns={columns}
             useCheckbox={true}
             operationsLabelsJoined="编辑 删除"
-            maxBodyHeight={300}
+            maxBodyHeight={200}
         />
     </div>
 }
