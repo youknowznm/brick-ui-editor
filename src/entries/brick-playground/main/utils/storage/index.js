@@ -14,4 +14,3 @@ export const load = data => {
 export const getJSONString = data => {
     return localStorage.getItem(LOCAL_STORAGE_KEY)
 }
-
