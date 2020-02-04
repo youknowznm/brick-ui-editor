@@ -1,16 +1,16 @@
 import * as React from 'react'
 
-import {Tabs, TabPane} from '../../localBrickComps/Tabs'
+import {Checkbox} from '@befe/brick'
 
-export default class ComposedTabs extends React.Component {
+export default class ComposedCheckbox extends React.Component {
 
-    static displayName = 'ComposedTabs'
+    static displayName = 'ComposedCheckbox'
 
     static defaultProps = {
-        type: 'plain', // 'plain' | 'card' | 'button-group'
+        type: 'normal', // 'plain' | 'card' | 'button-group'
         addable: false,
         size: 'sm',
-        tabsClassName: '',
+        CheckboxClassName: '',
         defaultActiveId: '',
         data: [
             {
@@ -24,8 +24,8 @@ export default class ComposedTabs extends React.Component {
     }
 
     render() {
-        return <Tabs
-            className={this.props.tabsClassName}
+        return <Checkbox
+            className={this.props.CheckboxClassName}
             type={this.props.type}
             size={this.props.size}
             addable={this.props.addable}
@@ -43,6 +43,6 @@ export default class ComposedTabs extends React.Component {
                     {item.content}
                 </TabPane>)
             }
-        </Tabs>
+        </Checkbox>
     }
 }

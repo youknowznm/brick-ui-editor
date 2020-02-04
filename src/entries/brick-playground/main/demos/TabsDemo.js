@@ -8,7 +8,7 @@ import wrapDemoComp from '../utils/wrapDemoComp'
 // import {Tabs as OriginTabs} from '@befe/brick'
 // const Tabs = wrapDemoComp(OriginTabs)
 
-import OriginComposedTabs from "../composedComps/ComposedTabs";
+import OriginComposedTabs from "../composedComps/ComposedTabs.js";
 const ComposedTabs = wrapDemoComp(OriginComposedTabs)
 
 const TabsDemo = () => {

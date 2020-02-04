@@ -8,7 +8,7 @@ import wrapDemoComp from '../utils/wrapDemoComp'
 
 // import {Table} from '@befe/brick'
 
-import OriginComposedTable from '../composedComps/ComposedTable'
+import OriginComposedTable from '../composedComps/ComposedTable.js'
 const ComposedTable = wrapDemoComp(OriginComposedTable)
 
 const columns = []

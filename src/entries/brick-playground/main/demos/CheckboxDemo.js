@@ -4,46 +4,69 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-import {Checkbox} from '@befe/brick'
+import {Checkbox, GenericCheckboxGroup} from '@befe/brick'
 
-import {GenericCheckboxGroup as OriginGenericCheckboxGroup} from '@befe/brick'
-const GenericCheckboxGroup = wrapDemoComp(OriginGenericCheckboxGroup)
+import OriginComposedCheckbox from '../composedComps/ComposedCheckbox'
+const ComposedCheckbox = wrapDemoComp(OriginComposedCheckbox)
 
 const CheckboxDemo = () => {
-
-    const checked = true;
-    const options = [
-        {value: 'item_1', label: 'item-1'},
-        {value: 'item_2', label: 'item-2'},
-        {value: 'item_3', label: 'item-3'},
-    ]
-    const value = 'item_1'
-
 
     return <div className="demo-block checkbox-demo-block">
         {/* ===== 0 basic ===== */}
         <div>
-            <Checkbox checked={checked}>item-1</Checkbox>
-            <Checkbox checked={false}>item-2</Checkbox>
-            <Checkbox disabled>item-3</Checkbox>
+            <ComposedCheckbox
+                defaultValue={['item_1']}
+                options={[
+                    {value: 'item_1', label: 'item-1', checked: true},
+                    {value: 'item_2', label: 'item-2', disabled: true},
+                    {value: 'item_3', label: 'item-3'},
+                    {value: 'item_4', label: 'item-4'},
+                ]}
+            />
         </div>
         <Divider className="demo-block-separator" />
         {/* ===== 2 intermidiate ===== */}
         <div>
-            <Checkbox indeterminate={true} checked={false}>item-1</Checkbox>
-            <Checkbox checked={false}>item-2</Checkbox>
-            <Checkbox disabled>item-3</Checkbox>
+            <ComposedCheckbox
+                defaultValue={['item_1']}
+                size={'md'}
+                options={[
+                    {value: 'item_1', label: 'item-1', indeterminate: true},
+                    {value: 'item_2', label: 'item-2', disabled: true},
+                    {value: 'item_3', label: 'item-3'},
+                    {value: 'item_4', label: 'item-4'},
+                ]}
+            />
         </div>
         <Divider className="demo-block-separator" />
         {/* ===== 3 intensive ===== */}
         <div>
-            <GenericCheckboxGroup
+            <ComposedCheckbox
                 type={'intensive'}
-                defaultValue={[value]}
-                options={options}
+                defaultValue={['item_1']}
+                options={[
+                    {value: 'item_1', label: 'item-1', checked: true},
+                    {value: 'item_2', label: 'item-2', },
+                    {value: 'item_3', label: 'item-3'},
+                    {value: 'item_4', label: 'item-4'},
+                ]}
             />
         </div>
-
+        {/* ===== 4 large ===== */}
+        <Divider className="demo-block-separator" />
+        <div>
+            <ComposedCheckbox
+                type={'intensive'}
+                size={'md'}
+                defaultValue={['item_1']}
+                options={[
+                    {value: 'item_1', label: 'item-1', checked: true},
+                    {value: 'item_2', label: 'item-2', },
+                    {value: 'item_3', label: 'item-3'},
+                    {value: 'item_4', label: 'item-4'},
+                ]}
+            />
+        </div>
     </div>
 }
 

@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import {Button} from '@befe/brick'
-import {Popover} from "../../localBrickComps/Popover";
+import {Popover} from "../localBrickComps/Popover";
 
 export default class ComposedPopover extends React.Component {
 

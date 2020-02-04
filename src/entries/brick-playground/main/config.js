@@ -23,11 +23,12 @@ import {
     Pagination
 } from '@befe/brick'
 
-import ComposedCollapse from './composedComps/ComposedCollapse'
-import ComposedPopover from './composedComps/ComposedPopover'
-import ComposedPopoverConfirm from './composedComps/ComposedPopoverConfirm'
-import ComposedTabs from './composedComps/ComposedTabs'
-import ComposedTable from './composedComps/ComposedTable'
+import ComposedCollapse from './composedComps/ComposedCollapse.js'
+import ComposedPopover from './composedComps/ComposedPopover.js'
+import ComposedPopoverConfirm from './composedComps/ComposedPopoverConfirm.js'
+import ComposedTabs from './composedComps/ComposedTabs.js'
+import ComposedTable from './composedComps/ComposedTable.js'
+import ComposedCheckbox from './composedComps/ComposedCheckbox.js'
 
 import {Dialog} from './localBrickComps/Dialog'
 
@@ -35,8 +36,8 @@ export const DEMO_LIST_WIDTH = 820
 
 export const COMP_TYPES = {
     Button: {
-        enLabel: 'button',
         cnLabel: '按钮',
+        enLabel: 'button',
         Element: Button,
         editableProps: [
             {
@@ -119,8 +120,8 @@ export const COMP_TYPES = {
         ],
     },
     Icon: {
-        enLabel: 'icon',
         cnLabel: '图标',
+        enLabel: 'icon',
         Element: Icon,
         editableProps: [
             {
@@ -131,8 +132,8 @@ export const COMP_TYPES = {
         ],
     },
     Link: {
-        enLabel: 'link',
         cnLabel: '链接',
+        enLabel: 'link',
         Element: Link,
         editableProps: [
             {
@@ -174,8 +175,8 @@ export const COMP_TYPES = {
         ],
     },
     ComposedCollapse: {
-        enLabel: 'collapse',
         cnLabel: '扩展面板',
+        enLabel: 'collapse',
         Element: ComposedCollapse,
         editableProps: [
             {
@@ -193,28 +194,28 @@ export const COMP_TYPES = {
                 type: 'array',
                 columns: [
                     {
-                        field: 'id',
                         title: 'ID',
+                        field: 'id',
                         columnType: 'string',
                     },
                     {
-                        field: 'headline',
                         title: '标题',
+                        field: 'headline',
                         columnType: 'string',
                     },
                     {
-                        field: 'content',
                         title: '内容',
+                        field: 'content',
                         columnType: 'string',
                     },
                     {
-                        field: 'extra',
                         title: '额外标题',
+                        field: 'extra',
                         columnType: 'string',
                     },
                     {
-                        field: 'disabled',
                         title: '禁用',
+                        field: 'disabled',
                         columnType: 'bool',
                         defaultValue: false
                     },
@@ -228,13 +229,13 @@ export const COMP_TYPES = {
         Element: Dialog,
         editableProps: [
             {
-                key: 'headline',
                 desc: '标题',
+                key: 'headline',
                 type: 'string',
             },
             {
-                key: 'children',
                 desc: '内容',
+                key: 'children',
                 type: 'string',
             },
             {
@@ -253,13 +254,13 @@ export const COMP_TYPES = {
         ]
     },
     ComposedPopover: {
-        enLabel: 'Popover',
         cnLabel: '弹出',
+        enLabel: 'Popover',
         Element: ComposedPopover,
         editableProps: [
             {
-                key: 'placement',
                 desc: '位置',
+                key: 'placement',
                 type: 'enum',
                 options: [
                     {value: 'top-start'},
@@ -277,8 +278,8 @@ export const COMP_TYPES = {
                 ]
             },
             {
-                key: 'content',
                 desc: '内容',
+                key: 'content',
                 type: 'string',
             },
             {
@@ -334,13 +335,13 @@ export const COMP_TYPES = {
         Element: ComposedPopoverConfirm,
         editableProps: [
             {
-                key: 'confirmMessage',
                 desc: '提示信息',
+                key: 'confirmMessage',
                 type: 'string',
             },
             {
-                key: 'confirmHeadline',
                 desc: '标题',
+                key: 'confirmHeadline',
                 type: 'string',
             },
             {
@@ -404,8 +405,8 @@ export const COMP_TYPES = {
         ]
     },
     ComposedTabs: {
-        enLabel: 'Tabs',
         cnLabel: '标签页',
+        enLabel: 'Tabs',
         Element: ComposedTabs,
         editableProps: [
             {
@@ -436,8 +437,8 @@ export const COMP_TYPES = {
                 defaultValue: 'sm'
             },
             {
-                key: 'defaultActiveId',
                 desc: '默认活动页 ID',
+                key: 'defaultActiveId',
                 type: 'string',
             },
             {
@@ -446,30 +447,30 @@ export const COMP_TYPES = {
                 type: 'array',
                 columns: [
                     {
-                        field: 'label',
                         title: '标题',
+                        field: 'label',
                         columnType: 'string',
                     },
                     // TODO: 改成 enum?
                     {
-                        field: 'status',
                         title: '状态',
+                        field: 'status',
                         columnType: 'string',
                     },
                     {
-                        field: 'content',
                         title: '内容',
+                        field: 'content',
                         columnType: 'string',
                     },
                     {
-                        field: 'disabled',
                         title: '禁用',
+                        field: 'disabled',
                         columnType: 'bool',
                         defaultValue: false
                     },
                     {
-                        field: 'deletable',
                         title: '可删除',
+                        field: 'deletable',
                         columnType: 'bool',
                         defaultValue: false
                     },
@@ -504,29 +505,29 @@ export const COMP_TYPES = {
                 type: 'array',
                 columns: [
                     {
-                        field: 'id',
                         title: 'ID',
+                        field: 'id',
                         columnType: 'string',
                     },
                     {
-                        field: 'type',
                         title: '扩展名',
+                        field: 'type',
                         columnType: 'string',
                     },
                     {
-                        field: 'name',
                         title: '文件名',
+                        field: 'name',
                         columnType: 'string',
                     },
                     {
-                        field: 'progress',
                         title: '加载中',
+                        field: 'progress',
                         columnType: 'bool',
                         defaultValue: false
                     },
                     {
-                        field: 'error',
                         title: '错误信息',
+                        field: 'error',
                         columnType: 'string',
                     },
                 ]
@@ -549,23 +550,23 @@ export const COMP_TYPES = {
                     //     columnType: 'string',
                     // },
                     {
-                        field: 'thContent',
                         title: '列标题',
+                        field: 'thContent',
                         columnType: 'string',
                     },
                     {
-                        field: 'align',
                         title: '对齐方式',
+                        field: 'align',
                         columnType: 'string',
                     },
                     {
-                        field: 'fixed',
                         title: '固定',
+                        field: 'fixed',
                         columnType: 'string',
                     },
                     {
-                        field: 'width',
                         title: '宽度',
+                        field: 'width',
                         columnType: 'string',
                     },
                 ]
@@ -576,48 +577,48 @@ export const COMP_TYPES = {
                 type: 'array',
                 columns: [
                     {
-                        field: 'key1',
                         title: '第1列值',
+                        field: 'key1',
                         columnType: 'string',
                     },
                     {
-                        field: 'key2',
                         title: '第2列值',
+                        field: 'key2',
                         columnType: 'string',
                     },
                     {
-                        field: 'key3',
                         title: '第3列值',
+                        field: 'key3',
                         columnType: 'string',
                     },
                     {
-                        field: 'key4',
                         title: '第4列值',
+                        field: 'key4',
                         columnType: 'string',
                     },
                     {
-                        field: 'key5',
                         title: '第5列值',
+                        field: 'key5',
                         columnType: 'string',
                     },
                     {
-                        field: 'key6',
                         title: '第6列值',
+                        field: 'key6',
                         columnType: 'string',
                     },
                     {
-                        field: 'key7',
                         title: '第7列值',
+                        field: 'key7',
                         columnType: 'string',
                     },
                     {
-                        field: 'key8',
                         title: '第8列值',
+                        field: 'key8',
                         columnType: 'string',
                     },
                     {
-                        field: 'key9',
                         title: '第9列值',
+                        field: 'key9',
                         columnType: 'string',
                     },
                 ]
@@ -633,6 +634,68 @@ export const COMP_TYPES = {
                 key: 'operationsLabelsJoined',
                 type: 'string',
             },
+        ]
+    },
+    ComposedCheckbox: {
+        enLabel: 'Checkbox',
+        cnLabel: '复选框',
+        Element: ComposedCheckbox,
+        editableProps: [
+            {
+                desc: '类型',
+                key: 'type',
+                type: 'enum',
+                options: [
+                    {value: 'normal', label: '普通'},
+                    {value: 'intensive', label: '强调'},
+                ],
+                defaultValue: 'plain'
+            },
+            {
+                desc: '尺寸',
+                key: 'size',
+                type: 'enum',
+                options: [
+                    {value: 'sm', label: '小号'},
+                    {value: 'md', label: '中号'},
+                ],
+                defaultValue: 'sm'
+            },
+            {
+                desc: '数据',
+                key: 'options',
+                type: 'array',
+                columns: [
+                    {
+                        title: '值',
+                        field: 'value',
+                        columnType: 'string',
+                    },
+                    {
+                        title: '标签',
+                        field: 'label',
+                        columnType: 'string',
+                    },
+                    {
+                        title: '选择',
+                        field: 'checked',
+                        columnType: 'bool',
+                        defaultValue: false
+                    },
+                    {
+                        title: '禁用',
+                        field: 'disabled',
+                        columnType: 'bool',
+                        defaultValue: false
+                    },
+                    {
+                        title: '部分选择',
+                        field: 'indeterminate',
+                        columnType: 'bool',
+                        defaultValue: false
+                    },
+                ]
+            }
         ]
     }
 }

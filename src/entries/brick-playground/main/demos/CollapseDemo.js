@@ -7,7 +7,7 @@ import wrapDemoComp from '../utils/wrapDemoComp'
 // import {CollapsePanel} from '@befe/brick'
 
 // import {ComposedCollapse, CollapsePanel} from '@befe/brick'
-import OriginComposedCollapse from '../composedComps/ComposedCollapse'
+import OriginComposedCollapse from '../composedComps/ComposedCollapse.js'
 
 const ComposedCollapse = wrapDemoComp(OriginComposedCollapse)
 

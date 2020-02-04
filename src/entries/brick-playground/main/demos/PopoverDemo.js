@@ -6,8 +6,8 @@ import wrapDemoComp from '../utils/wrapDemoComp'
 
 import {Button} from '@befe/brick'
 
-import OriginComposedPopover from '../composedComps/ComposedPopover'
-import OriginComposedPopoverConfirm from '../composedComps/ComposedPopoverConfirm'
+import OriginComposedPopover from '../composedComps/ComposedPopover.js'
+import OriginComposedPopoverConfirm from '../composedComps/ComposedPopoverConfirm.js'
 
 const ComposedPopover = wrapDemoComp(OriginComposedPopover)
 const ComposedPopoverConfirm = wrapDemoComp(OriginComposedPopoverConfirm)

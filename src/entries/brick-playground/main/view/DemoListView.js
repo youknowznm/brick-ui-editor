@@ -123,7 +123,9 @@ export default class DemoListView extends React.Component {
                         }
                         const isExpanded = expandedDemoPanelLabel === label
                         // Dialog 必须从初始保持渲染状态
-                        const shouldRenderDemo = isExpanded || label === 'Dialog'
+                        const shouldRenderDemo = isExpanded
+                            || label === 'Dialog'
+                            || label === 'Table'
                         return <ExpansionPanel
                             className="demo-exp-panel"
                             key={label}
