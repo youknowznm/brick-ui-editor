@@ -57,14 +57,14 @@ const HeadNavDemo = () => {
                     selected: true,
                     label: '中文',
                     onClick: e => {
-                        console.log('zh-CN')
+                        // console.log('zh-CN')
                     }
                 },
                 {
                     id: 'en-US',
                     label: 'English',
                     onClick: e => {
-                        console.log('en-US')
+                        // console.log('en-US')
                     }
                 }
             ]
@@ -73,7 +73,7 @@ const HeadNavDemo = () => {
             id: 'logout',
             label: '退出/Logout',
             onClick: e => {
-                console.log('logout')
+                // console.log('logout')
             },
         }
     ]
@@ -83,7 +83,6 @@ const HeadNavDemo = () => {
         <div>
             <HeadNav
                 menu={menu}
-                onClickMenuItem={(item, e) => console.log(e, item)}
                 logo={erpLogo}
                 // avatar={avatar}
                 userMenu={userMenu}

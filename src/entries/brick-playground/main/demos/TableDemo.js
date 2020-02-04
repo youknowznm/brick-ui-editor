@@ -21,7 +21,7 @@ const TableDemo = () => {
             key: 'checkbox',
             thContent: <Checkbox />,
             checkbox: (row, rowIdx) => ({
-                onChange: e => console.log(e.target.checked, row, rowIdx)
+                // onChange: e => console.log(e.target.checked, row, rowIdx)
             })
         },
         {
@@ -74,7 +74,7 @@ const TableDemo = () => {
             fixed: 'left',
             thContent: <Checkbox />,
             checkbox: (row, rowIdx) => ({
-                onChange: e => console.log(e.target.checked, row, rowIdx)
+                // onChange: e => console.log(e.target.checked, row, rowIdx)
             })
         },
         {

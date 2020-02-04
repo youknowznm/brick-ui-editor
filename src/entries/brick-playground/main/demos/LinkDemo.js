@@ -18,7 +18,7 @@ const LinkDemo = () => {
             </div>
             <div>
                 <Link disabled={true} href={'https://erp.baidu.com'}>erp.baidu.com</Link>
-                <Link type={'intensive'} disabled={true} onClick={e => {console.log('it should not happen')}}>erp.baidu.com</Link>
+                <Link type={'intensive'} disabled={true}>erp.baidu.com</Link>
             </div>
         </div>
         <Divider className="demo-block-separator" />

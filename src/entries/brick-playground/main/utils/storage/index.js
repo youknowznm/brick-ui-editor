@@ -1,6 +1,6 @@
 import {toJS, computed, observable, action} from 'mobx'
 
-const LOCAL_STORAGE_KEY = 'EUP_PROFILE'
+const LOCAL_STORAGE_KEY = 'BRICK_PLAYGORUND_ARCHIVE'
 
 export const save = data => {
     // console.log('save', toJS(data))
