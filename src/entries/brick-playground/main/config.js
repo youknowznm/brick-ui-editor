@@ -178,8 +178,6 @@ export const COMP_TYPES = {
         cnLabel: '扩展面板',
         Element: ComposedCollapse,
         editableProps: [
-            //     key: 'singleExpanded',
-            //     key: 'defaultExpandedIds',
             {
                 desc: '图标位置',
                 key: 'expandIconPosition',
@@ -474,6 +472,62 @@ export const COMP_TYPES = {
                         title: '可删除',
                         columnType: 'bool',
                         defaultValue: false
+                    },
+                ]
+            },
+        ]
+    },
+    FileList: {
+        enLabel: 'FileList',
+        cnLabel: '文件列表',
+        Element: FileList,
+        editableProps: [
+            {
+                desc: '布局',
+                key: 'layout',
+                type: 'enum',
+                options: [
+                    {value: 'horizontal', label: '水平'},
+                    {value: 'vertical', label: '垂直'},
+                ],
+                defaultValue: 'horizontal'
+            },
+            {
+                desc: '可删除',
+                key: 'useRemove',
+                type: 'bool',
+                defaultValue: false
+            },
+            {
+                desc: '文件内容',
+                key: 'data',
+                type: 'array',
+                columns: [
+                    {
+                        field: 'id',
+                        title: 'ID',
+                        columnType: 'string',
+                    },
+                    {
+                        field: 'type',
+                        title: '扩展名',
+                        columnType: 'string',
+                    },
+                    {
+                        field: 'name',
+                        title: '文件名',
+                        columnType: 'string',
+                    },
+                    {
+                        field: 'progress',
+                        title: '加载中',
+                        columnType: 'bool',
+                        defaultValue: false
+                    },
+                    {
+                        field: 'error',
+                        title: '错误信息',
+                        columnType: 'string',
                     },
                 ]
             },

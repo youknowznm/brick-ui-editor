@@ -4,13 +4,10 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-import {FileList} from '@befe/brick'
+// import {FileList} from '@befe/brick'
 
-// import {FileList as OriginFileList} from '@befe/brick'
-//
-// const FileList = wrapDemoComp(OriginFileList)
-
-
+import {FileList as OriginFileList} from '@befe/brick'
+const FileList = wrapDemoComp(OriginFileList)
 
 const FileListDemo = () => {
 
@@ -63,8 +60,8 @@ const FileListDemo = () => {
         <FileList data={fileData} />
         <Divider className="demo-block-separator" />
         {/* ===== 2 actions ===== */}
-        <FileList data={fileData} useRemove={true} layout={'horizontal'} downloadMethod={'get'}/>
-        <FileList data={fileData} useRemove={true}/>
+        <FileList data={fileDataWithActions} useRemove={true} layout={'horizontal'} downloadMethod={'get'}/>
+        <FileList data={fileDataWithActions} useRemove={true}/>
     </div>
 }
 
