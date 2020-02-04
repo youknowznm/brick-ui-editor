@@ -128,6 +128,9 @@
 
       }
       .tabs-demo-block {
+        .brick-tabs {
+          min-width: 750px;
+        }
         .demo-tabs + .demo-tabs {
           margin-top: 40px;
         }
@@ -137,6 +140,16 @@
       }
       .file-list-demo-block {
         .brick-file-list {
+          min-width: 750px;
+        }
+      }
+      .collapse-demo-block {
+        .brick-collapse {
+          min-width: 750px;
+        }
+      }
+      .checkbox-demo-block {
+        .brick-checkbox-group {
           min-width: 750px;
         }
       }
@@ -157,6 +170,7 @@
         }
       }
     }
+
     .fake-trigger {
       position: absolute;
       top: 0;

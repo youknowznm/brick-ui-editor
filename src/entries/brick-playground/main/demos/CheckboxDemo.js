@@ -4,11 +4,10 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-import {Checkbox, GenericCheckboxGroup} from '@befe/brick'
+import {Checkbox} from '@befe/brick'
 
-// import {Checkbox as OriginCheckbox} from '@befe/brick'
-//
-// const Checkbox = wrapDemoComp(OriginCheckbox)
+import {GenericCheckboxGroup as OriginGenericCheckboxGroup} from '@befe/brick'
+const GenericCheckboxGroup = wrapDemoComp(OriginGenericCheckboxGroup)
 
 const CheckboxDemo = () => {
 
@@ -24,16 +23,16 @@ const CheckboxDemo = () => {
     return <div className="demo-block checkbox-demo-block">
         {/* ===== 0 basic ===== */}
         <div>
-            <Checkbox checked={checked}>Apple</Checkbox>
-            <Checkbox checked={false}>Banana</Checkbox>
-            <Checkbox disabled>Orange</Checkbox>
+            <Checkbox checked={checked}>item-1</Checkbox>
+            <Checkbox checked={false}>item-2</Checkbox>
+            <Checkbox disabled>item-3</Checkbox>
         </div>
         <Divider className="demo-block-separator" />
         {/* ===== 2 intermidiate ===== */}
         <div>
-            <Checkbox indeterminate={true} checked={false}>Apple</Checkbox>
-            <Checkbox checked={false}>Banana</Checkbox>
-            <Checkbox disabled>Orange</Checkbox>
+            <Checkbox indeterminate={true} checked={false}>item-1</Checkbox>
+            <Checkbox checked={false}>item-2</Checkbox>
+            <Checkbox disabled>item-3</Checkbox>
         </div>
         <Divider className="demo-block-separator" />
         {/* ===== 3 intensive ===== */}
@@ -42,7 +41,6 @@ const CheckboxDemo = () => {
                 type={'intensive'}
                 defaultValue={[value]}
                 options={options}
-                onChange={() => {}}
             />
         </div>
 

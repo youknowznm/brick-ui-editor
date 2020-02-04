@@ -12,19 +12,22 @@ import OriginComposedTable from '../composedComps/ComposedTable'
 const ComposedTable = wrapDemoComp(OriginComposedTable)
 
 const columns = []
-for (let i = 1; i < 11; i++) {
+for (let i = 0; i < 10; i++) {
     columns.push({
-        key: `key${i}`,
-        thContent: `标题${i}`,
+        key: `key${i + 1}`,
+        thContent: `标题${i + 1}`,
+        align: 'center',
     })
 }
 
 const data = []
 const item = {}
-for (let i = 1; i < 11; i++) {
-    item[`key${i}`] = `数据${i}`
+// 属性数
+for (let i = 0; i < 10; i++) {
+    item[`key${i + 1}`] = `数据${i + 1}`
 }
-for (let j = 1; j < 11; j++) {
+// 行数
+for (let j = 0; j < 5; j++) {
     data.push(toJS(item))
 }
 
@@ -43,8 +46,9 @@ const TableDemo = () => {
         <ComposedTable
             data={data}
             columns={columns}
-            useCheckbox={true}
-            operationsLabelsJoined="编辑 删除"
+            maxBodyHeight={120}
+            useCheckbox={false}
+            operationsLabelsJoined=""
         />
         <Divider className="demo-block-separator" />
         {/* ===== 2 ===== */}
@@ -53,7 +57,6 @@ const TableDemo = () => {
             columns={columns}
             useCheckbox={true}
             operationsLabelsJoined="编辑 删除"
-            maxBodyHeight={200}
         />
     </div>
 }

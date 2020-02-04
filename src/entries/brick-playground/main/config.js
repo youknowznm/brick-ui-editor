@@ -32,7 +32,6 @@ import ComposedTable from './composedComps/ComposedTable'
 import {Dialog} from './localBrickComps/Dialog'
 
 export const DEMO_LIST_WIDTH = 820
-export const DEMO_WRAP_DEFAULT_WIDTH = 760
 
 export const COMP_TYPES = {
     Button: {
@@ -540,45 +539,99 @@ export const COMP_TYPES = {
         Element: ComposedTable,
         editableProps: [
             {
-                desc: '数据',
-                key: 'data',
-                type: 'array',
-                columns: [
-                    {
-                        field: 'label',
-                        title: '标题',
-                        columnType: 'string',
-                    },
-                ]
-            },
-            {
                 desc: '列定义',
                 key: 'columns',
                 type: 'array',
                 columns: [
+                    // {
+                    //     field: 'key',
+                    //     title: '列名称',
+                    //     columnType: 'string',
+                    // },
                     {
-                        field: 'key',
-                        title: '属性名称',
+                        field: 'thContent',
+                        title: '列标题',
+                        columnType: 'string',
+                    },
+                    {
+                        field: 'align',
+                        title: '对齐方式',
                         columnType: 'string',
                     },
                     {
                         field: 'fixed',
                         title: '固定',
-                        //enum TODO:
                         columnType: 'string',
                     },
                     {
-                        field: 'operationsLabelsJoined',
-                        title: '操作字符串',
+                        field: 'width',
+                        title: '宽度',
                         columnType: 'string',
-                    },
-                    {
-                        desc: '第一列为复选框',
-                        key: 'useCheckbox',
-                        type: 'bool',
-                        defaultValue: false
                     },
                 ]
+            },
+            {
+                desc: '数据',
+                key: 'data',
+                type: 'array',
+                columns: [
+                    {
+                        field: 'key1',
+                        title: '第1列值',
+                        columnType: 'string',
+                    },
+                    {
+                        field: 'key2',
+                        title: '第2列值',
+                        columnType: 'string',
+                    },
+                    {
+                        field: 'key3',
+                        title: '第3列值',
+                        columnType: 'string',
+                    },
+                    {
+                        field: 'key4',
+                        title: '第4列值',
+                        columnType: 'string',
+                    },
+                    {
+                        field: 'key5',
+                        title: '第5列值',
+                        columnType: 'string',
+                    },
+                    {
+                        field: 'key6',
+                        title: '第6列值',
+                        columnType: 'string',
+                    },
+                    {
+                        field: 'key7',
+                        title: '第7列值',
+                        columnType: 'string',
+                    },
+                    {
+                        field: 'key8',
+                        title: '第8列值',
+                        columnType: 'string',
+                    },
+                    {
+                        field: 'key9',
+                        title: '第9列值',
+                        columnType: 'string',
+                    },
+                ]
+            },
+            {
+                desc: '首列复选框',
+                key: 'useCheckbox',
+                type: 'bool',
+                defaultValue: false
+            },
+            {
+                desc: '操作列按钮组',
+                key: 'operationsLabelsJoined',
+                type: 'string',
             },
         ]
     }

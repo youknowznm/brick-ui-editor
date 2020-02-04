@@ -1,7 +1,5 @@
 import * as React from 'react'
 
-import {DEMO_WRAP_DEFAULT_WIDTH} from '../../config'
-
 import {Table, Button} from '@befe/brick'
 import {observable, toJS} from "mobx";
 import {Checkbox} from "@befe/brick-comp-checkbox";
@@ -78,17 +76,12 @@ class ComposedTable extends React.Component {
             }
         }
 
-        return <div style={{
-            minWidth: DEMO_WRAP_DEFAULT_WIDTH,
-            background: '#fff'
-        }}>
-            <Table
-                rowId="_index"
-                data={_data}
-                columns={_columns}
-                maxBodyHeight={maxBodyHeight}
-            />
-        </div>
+        return <Table
+            rowId="_index"
+            data={_data}
+            columns={_columns}
+            maxBodyHeight={maxBodyHeight}
+        />
     }
 }
 

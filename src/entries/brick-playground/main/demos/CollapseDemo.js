@@ -36,7 +36,7 @@ const CollapseDemo = () => {
             extra: '',
         },
     ]
-    return <div className="demo-block collpase-demo-block">
+    return <div className="demo-block collapse-demo-block">
         {/* ===== 0 basic ===== */}
         <div>
             <ComposedCollapse
