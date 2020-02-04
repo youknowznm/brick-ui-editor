@@ -3,10 +3,12 @@ import * as React from 'react'
 import {DEMO_WRAP_DEFAULT_WIDTH} from '../../config'
 
 import {Table, Button} from '@befe/brick'
-import {toJS} from "mobx";
+import {observable, toJS} from "mobx";
 import {Checkbox} from "@befe/brick-comp-checkbox";
+import {observer} from "mobx-react";
 
-export default class ComposedTable extends React.Component {
+@observer
+class ComposedTable extends React.Component {
 
     static displayName = 'ComposedTable'
 
@@ -27,12 +29,9 @@ export default class ComposedTable extends React.Component {
             maxBodyHeight
         } = this.props
         let _data = toJS(this.props.data)
-        _data = _data.map((item, index) => Object.assign(item, {
-            _index: index
-        }))
-        const _columns = toJS(this.props.columns)
+        let _columns = toJS(this.props.columns)
         if (useCheckbox === true) {
-            if (!columns.some(item => item.key === '_checkbox')) {
+            if (!_columns.some(item => item.key === '_checkbox')) {
                 _columns.unshift({
                     key: '_checkbox',
                     fixed: 'left',
@@ -51,7 +50,7 @@ export default class ComposedTable extends React.Component {
             }
         }
         if (operationsLabelsJoined.length > 0) {
-            if (!columns.some(item => item.key === '_operations')) {
+            if (!_columns.some(item => item.key === '_operations')) {
                 _columns.push({
                     key: '_operations',
                     fixed: 'right',
@@ -78,6 +77,7 @@ export default class ComposedTable extends React.Component {
                 })
             }
         }
+
         return <div style={{
             minWidth: DEMO_WRAP_DEFAULT_WIDTH,
             background: '#fff'
@@ -91,3 +91,5 @@ export default class ComposedTable extends React.Component {
         </div>
     }
 }
+
+export default ComposedTable

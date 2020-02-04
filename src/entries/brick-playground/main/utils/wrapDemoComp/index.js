@@ -34,7 +34,6 @@ const wrapDemoComp = OriginComponent => {
                 let wrapDOM = findDOMNode(this.ref)
                 if (wrapDOM) {
                     const $wrapDOM = $(wrapDOM)
-                    const computedStyle = document.defaultView.getComputedStyle(wrapDOM)
                     const ownProps = Object.assign({}, reactElem.props)
                     for (let propKey in ownProps) {
                         if (ownProps.hasOwnProperty(propKey)) {
@@ -53,7 +52,7 @@ const wrapDemoComp = OriginComponent => {
                     delete ownProps.className
 
                     // 移除 Table 的特殊列
-                    if (ownProps.columns.length > 0) {
+                    if (ownProps.columns && ownProps.columns.length > 0) {
                         ownProps.columns = ownProps.columns.filter(item => {
                             return item.key !== '_checkbox' && item.key !== '_operations'
                         })

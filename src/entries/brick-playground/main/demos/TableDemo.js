@@ -1,9 +1,6 @@
 import * as React from 'react'
 
-import {mockBasicData} from './table-mock-data'
-
-import {Checkbox} from '@befe/brick-comp-checkbox'
-
+import {toJS} from "mobx";
 
 import Divider from '@material-ui/core/Divider';
 
@@ -14,126 +11,32 @@ import wrapDemoComp from '../utils/wrapDemoComp'
 import OriginComposedTable from '../composedComps/ComposedTable'
 const ComposedTable = wrapDemoComp(OriginComposedTable)
 
+const columns = []
+for (let i = 1; i < 11; i++) {
+    columns.push({
+        key: `key${i}`,
+        thContent: `标题${i}`,
+    })
+}
+
+const data = []
+const item = {}
+for (let i = 1; i < 11; i++) {
+    item[`key${i}`] = `数据${i}`
+}
+for (let j = 1; j < 11; j++) {
+    data.push(toJS(item))
+}
+
 const TableDemo = () => {
-
-    const columns = [
-        // {
-        //     key: 'checkbox',
-        //     thContent: <Checkbox />,
-        //     checkbox: (row, rowIdx) => ({
-        //         // onChange: e => console.log(e.target.checked, row, rowIdx)
-        //     })
-        // },
-        {
-            thContent: '工号',
-            key: 'employeeNumber'
-        },
-        {
-            thContent: '邮箱',
-            key: 'emailAddress',
-            width: 200,
-            // tdContent: (row, rowIdx) => row.emailAddress,
-        },
-        {
-            thContent: '员工类型',
-            key: 'holdJobValue',
-            width: 100,
-        },
-        {
-            thContent: '职位',
-            key: 'positionName',
-            width: 250
-        },
-        {
-            thContent: '粉丝数',
-            key: 'personId',
-            align: 'right',
-        },
-        {
-            thContent: '用户名',
-            key: 'uuapUserName'
-        },
-        // {
-        //     key: 'operations',
-        //     thContent: '操作',
-        //     width: 150,
-        //     operations: (row, rowIdx) => [
-        //         {
-        //             label: '编辑'
-        //         },
-        //         {
-        //             label: '删除'
-        //         }
-        //     ]
-        // }
-    ]
-
-    const fixedColumns = [
-        // {
-        //     key: 'checkbox',
-        //     fixed: 'left',
-        //     thContent: <Checkbox />,
-        //     checkbox: (row, rowIdx) => ({
-        //         // onChange: e => console.log(e.target.checked, row, rowIdx)
-        //     })
-        // },
-        {
-            thContent: '工号',
-            fixed: 'left',
-            key: 'employeeNumber'
-        },
-        {
-            thContent: '邮箱',
-            key: 'emailAddress',
-            // width: 120,
-            // tdContent: (row, rowIdx) => row.emailAddress + ' ^_^ ' + rowIdx,
-        },
-        {
-            thContent: '部门名称',
-            key: 'departmentName',
-        },
-        {
-            thContent: '员工类型',
-            key: 'holdJobValue',
-            width: 100,
-        },
-        {
-            thContent: '职位',
-            key: 'positionName',
-            width: 400,
-        },
-        {
-            thContent: '粉丝数',
-            key: 'personId',
-            align: 'right',
-        },
-        {
-            thContent: '用户名',
-            key: 'uuapUserName'
-        },
-        // {
-        //     key: 'operations',
-        //     fixed: 'right',
-        //     thContent: '操作',
-        //     width: 150,
-        //     operations: (row, rowIdx) => [
-        //         {
-        //             label: '编辑'
-        //         },
-        //         {
-        //             label: '删除'
-        //         }
-        //     ]
-        // }
-    ]
-
-    const data = mockBasicData()
 
     return <div className="demo-block table-demo-block">
         {/* ===== 0 ===== */}
         <ComposedTable
             data={data}
             columns={columns}
+            useCheckbox={false}
+            operationsLabelsJoined=""
         />
         <Divider className="demo-block-separator" />
         {/* ===== 1 ===== */}
