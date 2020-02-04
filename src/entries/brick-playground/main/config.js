@@ -7,7 +7,7 @@ import {
     // Popover,
     Tabs,
     FileList,
-    Table,
+    // Table,
     Checkbox,
     DatePicker,
     Input,
@@ -27,6 +27,7 @@ import ComposedCollapse from './composedComps/ComposedCollapse'
 import ComposedPopover from './composedComps/ComposedPopover'
 import ComposedPopoverConfirm from './composedComps/ComposedPopoverConfirm'
 import ComposedTabs from './composedComps/ComposedTabs'
+import ComposedTable from './composedComps/ComposedTable'
 
 import {Dialog} from './localBrickComps/Dialog'
 
@@ -533,4 +534,39 @@ export const COMP_TYPES = {
             },
         ]
     },
+    ComposedTable: {
+        enLabel: 'Table',
+        cnLabel: '文件列表',
+        Element: ComposedTable,
+        editableProps: [
+            {
+                desc: '布局',
+                key: 'layout',
+                type: 'enum',
+                options: [
+                    {value: 'horizontal', label: '水平'},
+                    {value: 'vertical', label: '垂直'},
+                ],
+                defaultValue: 'horizontal'
+            },
+            {
+                desc: '可删除',
+                key: 'useRemove',
+                type: 'bool',
+                defaultValue: false
+            },
+            {
+                desc: '文件内容',
+                key: 'data',
+                type: 'array',
+                columns: [
+                    {
+                        field: 'id',
+                        title: 'ID',
+                        columnType: 'string',
+                    },
+                ]
+            }
+        ]
+    }
 }

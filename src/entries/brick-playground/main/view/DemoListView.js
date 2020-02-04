@@ -73,7 +73,7 @@ export default class DemoListView extends React.Component {
     componentDidMount() {
         // TODO: 待移除
         this.local.demoListState.setProps({
-            expandedDemoPanelLabel: 'FileList'
+            expandedDemoPanelLabel: 'Table'
         })
     }
 
