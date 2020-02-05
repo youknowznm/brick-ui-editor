@@ -50,10 +50,6 @@ class MainState extends BaseModel {
             originName,
             originProps
         } = data
-        console.log({
-            originName,
-            originProps
-        })
         const compTypeData = COMP_TYPES[originName]
         for (let propType of compTypeData.editableProps) {
             const {

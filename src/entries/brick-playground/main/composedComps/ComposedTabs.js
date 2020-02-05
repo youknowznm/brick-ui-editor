@@ -7,7 +7,7 @@ export default class ComposedTabs extends React.Component {
     static displayName = 'ComposedTabs'
 
     static defaultProps = {
-        type: 'normal', // 'plain' | 'card' | 'button-group'
+        type: 'plain', // 'plain' | 'card' | 'button-group'
         addable: false,
         size: 'sm',
         TabsClassName: '',

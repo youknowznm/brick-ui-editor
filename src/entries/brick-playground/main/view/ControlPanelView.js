@@ -80,7 +80,7 @@ export default class ControlPanelView extends React.Component {
 
             <Button
                 className="btn-share"
-                variant="contained"
+                variant="outlined"
                 size="small"
                 color="primary"
             >

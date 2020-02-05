@@ -22,17 +22,14 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContentText from '@material-ui/core/DialogContentText';
 
-import AttrEditorState from '../states/AttrEditorState'
-
-import {SvgEdit, SvgGear} from '@befe/brick-icon'
-import {Icon} from '@befe/brick'
-
 import {COMP_TYPES} from '../config'
 import SvgPropEditor from '../utils/SvgPropEditor'
 
-import '../style/attr-editor.scss'
 import {capitalize} from "lodash-es";
 import ArrayPropEditor from "../utils/ArrayPropEditor";
+
+import AttrEditorState from '../states/AttrEditorState'
+import '../style/attr-editor.scss'
 
 @observer
 export default class AttrEditorView extends React.Component {
@@ -138,7 +135,7 @@ export default class AttrEditorView extends React.Component {
             switch (type) {
                 case 'string':
                     return <TextField
-                        multiline
+                        // multiline
                         onChange={evt => {
                             targetPropsChangeHandler({
                                 [key]: evt.target.value
@@ -243,7 +240,7 @@ export default class AttrEditorView extends React.Component {
         return <div className="attr-editor-content">
             <div className="label">
                 <Typography className="en" variant="h4">
-                    {capitalize(compTypeData.enLabel)}
+                    {compTypeData.enLabel}
                 </Typography>
                 <Typography className="cn" variant="h4">
                     {compTypeData.cnLabel}
@@ -289,10 +286,12 @@ export default class AttrEditorView extends React.Component {
                 {propInputs}
             </ul>
             <div className="remove-button-wrap">
+                <Divider />
                 <Button
                     className="remove-button"
                     variant="contained"
                     color="secondary"
+                    size="small"
                     onClick={() => {
                         triggerConfirmFlag(true)
                     }}

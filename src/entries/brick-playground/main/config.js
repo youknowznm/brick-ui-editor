@@ -40,7 +40,7 @@ import {DatePicker} from './localBrickComps/DatePicker'
 export const COMP_TYPES = {
     Button: {
         cnLabel: '按钮',
-        enLabel: 'button',
+        enLabel: 'Button',
         Element: Button,
         editableProps: [
             {
@@ -124,7 +124,7 @@ export const COMP_TYPES = {
     },
     Icon: {
         cnLabel: '图标',
-        enLabel: 'icon',
+        enLabel: 'Icon',
         Element: Icon,
         editableProps: [
             {
@@ -179,7 +179,7 @@ export const COMP_TYPES = {
     },
     ComposedCollapse: {
         cnLabel: '扩展面板',
-        enLabel: 'collapse',
+        enLabel: 'Collapse',
         Element: ComposedCollapse,
         editableProps: [
             {
@@ -197,7 +197,7 @@ export const COMP_TYPES = {
                 type: 'array',
                 columns: [
                     {
-                        title: 'ID',
+                        title: '唯一标识',
                         field: 'id',
                         columnType: 'string',
                     },
@@ -257,7 +257,7 @@ export const COMP_TYPES = {
         ]
     },
     ComposedPopover: {
-        cnLabel: '弹出',
+        cnLabel: '弹出框',
         enLabel: 'Popover',
         Element: ComposedPopover,
         editableProps: [
@@ -333,7 +333,8 @@ export const COMP_TYPES = {
         ]
     },
     ComposedPopoverConfirm: {
-        enLabel: 'PopoverConfirm',
+        enLabel: 'Popover',
+        // enLabel: 'PopoverConfirm',
         cnLabel: '弹出确认',
         Element: ComposedPopoverConfirm,
         editableProps: [
@@ -440,7 +441,7 @@ export const COMP_TYPES = {
                 defaultValue: 'sm'
             },
             {
-                desc: '默认活动页 ID',
+                desc: '默认标签唯一标识',
                 key: 'defaultActiveId',
                 type: 'string',
             },
@@ -508,7 +509,7 @@ export const COMP_TYPES = {
                 type: 'array',
                 columns: [
                     {
-                        title: 'ID',
+                        title: '唯一标识',
                         field: 'id',
                         columnType: 'string',
                     },
