@@ -9,7 +9,6 @@ import {observer} from 'mobx-react'
 import BaseModel from './utils/BaseModel'
 import {
     COMP_TYPES,
-    DEMO_LIST_WIDTH
 } from "./config";
 import getSvgByName from "./utils/getSvgByName";
 
@@ -35,8 +34,6 @@ class MainState extends BaseModel {
     // ##### 左侧 demo 容器 #####
 
     @observable showDemoDrawer = false
-
-    @observable demoListWidth = DEMO_LIST_WIDTH
 
     triggerDemoDrawer = target => {
         const result = typeof target === 'boolean' ? target : !this.showDemoDrawer
@@ -89,13 +86,21 @@ class MainState extends BaseModel {
         // this.toast('已成功删除')
     }
 
+    @action clearAll = () => {
+        this.usedCompsDataArray = []
+        this.saveUsedCompData()
+        this.toast('已清空所有元素。')
+    }
+
     loadUsedCompData = () => {
         const profile = load()
         if (profile) {
             this.setProps({
                 usedCompsDataArray: profile
             })
-            this.toast('已读取本地存储。')
+            if (profile.length > 0) {
+                this.toast('已读取本地存储。')
+            }
         }
     }
 
@@ -163,6 +168,11 @@ class MainState extends BaseModel {
         this.activeComponentData.deltaY = deltas.deltaY
         this.saveUsedCompData()
     }
+
+    // ##### 上方 控制面板 #####
+
+    @observable archiveName = ''
+
 }
 
 export default MainState

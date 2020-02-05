@@ -15,6 +15,13 @@ import ControlPanelState from '../states/ControlPanelState'
 import '../style/control-panel.scss'
 import Paper from "@material-ui/core/Paper";
 import MoreVerIcon from "@material-ui/icons/MoreHoriz";
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import TextField from "@material-ui/core/TextField";
+import Dialog from "@material-ui/core/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogActions from "@material-ui/core/DialogActions";
 
 @observer
 export default class ControlPanelView extends React.Component {
@@ -29,7 +36,7 @@ export default class ControlPanelView extends React.Component {
     }
 
     local = {
-        ControlPanelState: new ControlPanelState()
+        controlPanelState: new ControlPanelState()
     }
 
     constructor(props) {
@@ -37,40 +44,116 @@ export default class ControlPanelView extends React.Component {
         const {local} = this
     }
 
+    renderBanner = () => {
+        return <div className="banner-wrap">
+            <div className="banner">
+                <h3 className="title">
+                    <span className="title-single-word">Brick</span>
+                    <span className="title-single-word">Playground</span>
+                </h3>
+                <p className="about">
+                    <span>Made with </span>
+                    <FavoriteIcon
+                        className="sweet-sweet-heart"
+                        fontSize="inherit"
+                    />
+                    <span> by youknowznm.</span>
+                </p>
+            </div>
+
+        </div>
+    }
+
     renderControlPanelContent = () => {
+        const {
+            showClearConfirmFlag,
+            triggerConfirmFlag
+        } = this.local.controlPanelState
         return <div className="control-panel-content">
-            <Button variant="contained">
-                清除存档
+
+            <TextField
+                className="archive-name-input"
+                size="small"
+                label="存档名称"
+                value={this.props.archiveName}
+            />
+
+            <Button
+                className="btn-share"
+                variant="contained"
+                size="small"
+                color="primary"
+            >
+                复制到剪贴板
             </Button>
-            <Button variant="contained" color="primary">
-                分享
+
+            <Button
+                className="btn-clear"
+                color="secondary"
+                size="small"
+                variant="outlined"
+                onClick={() => {
+                    triggerConfirmFlag(true)
+                }}
+            >
+                清空画布
             </Button>
+            <Dialog
+                open={showClearConfirmFlag}
+                onClose={() => {
+                    triggerConfirmFlag(false)
+                }}
+            >
+                <DialogTitle>删除所有元素？</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        删除的元素无法还原。
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button
+                        onClick={() => {
+                            triggerConfirmFlag(false)
+                            this.props.clearAll()
+                        }}
+                        color="primary">
+                        确认
+                    </Button>
+                    <Button
+                        onClick={() => {
+                            triggerConfirmFlag(false)
+                        }}
+                        color="primary"
+                        autoFocus
+                    >
+                        取消
+                    </Button>
+                </DialogActions>
+            </Dialog>
+
         </div>
     }
 
     render() {
         const {local, props} = this
-        const {ControlPanelState} = local
         return <div className="control-panel">
             <Drawer
                 className="control-panel-drawer"
                 anchor="top"
                 variant="persistent"
                 open={props.showControlPanelDrawer}
-                // onMouseOut={() => {
-                //     props.triggerControlPanelDrawer(false)
-                // }}
+                // open={true}
             >
+                {this.renderBanner()}
                 {this.renderControlPanelContent()}
-                <Paper
-                    square={true}
+                <div
                     className="fake-trigger"
                 >
                     <MoreVerIcon
                         className="trigger-icon"
                         fontSize="small"
                     />
-                </Paper>
+                </div>
             </Drawer>
         </div>
     }

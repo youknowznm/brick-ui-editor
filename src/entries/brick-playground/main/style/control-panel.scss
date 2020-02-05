@@ -1,22 +1,92 @@
-// @import (reference) "/frontend/style/global.less";
-// @import "utils/column.less";
+@import "src/entries/brick-playground/main/style";
 
 .control-panel {
   position: relative;
   //width: 100%;
   //height: 100%;
+  //width: 100%;
   .control-panel-drawer {
     position: relative;
     .control-panel-content {
       position: relative;
+      background: $gen-bg-color;
       width: 100%;
-      height: 200px;
+      height: 108px;
+      padding: 0 40px;
+      .archive-name-input {
+        width: 300px;
+        position: absolute;
+        transform: translateY(-50%);
+        top: 50%;
+        left: 40px;
+      }
+      .btn-share {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 390px;
+      }
+      .btn-clear {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 40px;
+      }
+    }
+    .banner-wrap {
+      position: relative;
+      width: 100%;
+      background: $gen-bg-color;
+      padding: 0 40px;
+      .banner {
+        user-select: none;
+        position: relative;
+        width: 100%;
+        .title {
+          float: left;
+          margin: 0;
+          .title-single-word {
+            font-size: 20px;
+            line-height: 64px;
+            height: 64px;
+            display: inline-block;
+            font-weight: lighter;
+            font-family: "Roboto Mono";
+            color: rgba(0, 0, 0, .7);
+            transition: opacity .4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            &:after {
+              content: '·';
+              opacity: .4;
+            }
+            &:last-of-type:after {
+              content: '¬';
+            }
+            &.hidden {
+              opacity: 0;
+            }
+          }
+        }
+        .about {
+          margin: 0;
+          float: right;
+          text-align: right;
+          height: 64px;
+          line-height: 64px;
+          font-family: "Roboto Mono";
+          font-weight: lighter;
+          color: #ccc;
+          font-size: 12px;
+          .sweet-sweet-heart {
+            vertical-align: middle;
+              //color: #ef5350 !important;
+          }
+        }
+      }
+
     }
     .fake-trigger {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      border-top: 1px solid $border-color;
+      background: $gen-bg-color;
       height: 20px;
       .trigger-icon {
         position: absolute;
@@ -26,4 +96,3 @@
     }
   }
 }
-

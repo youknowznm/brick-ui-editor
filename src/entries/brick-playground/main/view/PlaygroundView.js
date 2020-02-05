@@ -26,9 +26,6 @@ export default class PlaygroundView extends React.Component {
         playgroundWidth: PropTypes.number.isRequired,
         playgroundHeight: PropTypes.number.isRequired,
 
-        // demo 列表抽屉宽度
-        demoListWidth: PropTypes.number.isRequired,
-
         // 已使用的组件数据数组
         usedCompsDataArray: MobxPropTypes.arrayOrObservableArray.isRequired,
 
@@ -147,13 +144,11 @@ export default class PlaygroundView extends React.Component {
 
     render() {
         const {local, props} = this
-        const {demoListState} = local
         const {
-            demoListWidth,
             showDemoDrawer
         } = props
         // 减去 trigger 宽度
-        const offSet = demoListWidth - 20
+        const offSet = 820 - 20
         return <div className="playground-wrap"
             style={{
                 marginLeft: `${showDemoDrawer ? offSet : 0}px`,

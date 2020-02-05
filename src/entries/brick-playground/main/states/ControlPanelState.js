@@ -11,4 +11,13 @@ export default class State extends BaseModel {
 
     // 请求中标识
     @observable loadingFlag = false
+
+    @observable showClearConfirmFlag = false
+
+    triggerConfirmFlag = target => {
+        const result = typeof target === 'boolean' ? target : !this.showClearConfirmFlag
+        this.setProps({
+            showClearConfirmFlag: result
+        })
+    }
 }

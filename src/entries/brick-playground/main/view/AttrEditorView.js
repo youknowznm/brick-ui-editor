@@ -337,7 +337,6 @@ export default class AttrEditorView extends React.Component {
 
     render() {
         const {local, props} = this
-        const {attrEditorState} = local
         return <div className="attr-editor">
             <Drawer
                 className="attr-editor-drawer"

@@ -95,8 +95,7 @@ export default class extends React.Component {
     }
 
     renderControlPanelDrawerTrigger = () => {
-        return <Paper
-            square={true}
+        return <div
             className="top-actions-drawer-trigger"
             onMouseOver={() => {
                 this.local.mainState.triggerControlPanelDrawer(true)
@@ -110,12 +109,11 @@ export default class extends React.Component {
                 className="trigger-icon"
                 fontSize="small"
             />
-        </Paper>
+        </div>
     }
 
     renderDemoDrawerTrigger = () => {
-        return <Paper
-            square={true}
+        return <div
             className="demo-drawer-trigger"
             onMouseOver={() => {
                 this.local.mainState.triggerDemoDrawer(true)
@@ -129,7 +127,7 @@ export default class extends React.Component {
                 className="trigger-icon"
                 fontSize="small"
             />
-        </Paper>
+        </div>
     }
 
     renderToast = () => {
@@ -139,19 +137,7 @@ export default class extends React.Component {
                 horizontal: 'center',
             }}
             open={this.local.mainState.toastFlag}
-            // autoHideDuration={5000}
-            // onClose={handleClose}
             message={this.local.mainState.msgToToast}
-            // action={
-            //     <React.Fragment>
-            //         <Button color="secondary" size="small" onClick={() => {}}>
-            //             UNDO
-            //         </Button>
-            //         <IconButton size="small" aria-label="close" color="inherit" onClick={() => {}}>
-            //             <CloseIcon fontSize="small" />
-            //         </IconButton>
-            //     </React.Fragment>
-            // }
         />
     }
 
@@ -161,7 +147,6 @@ export default class extends React.Component {
         return <Provider root={mainState}>
             <div className="index-page">
                 <DemoListView
-                    demoListWidth={mainState.demoListWidth}
                     // showDemoDrawer={true}
                     showDemoDrawer={mainState.showDemoDrawer}
                     metaKeyPressing={mainState.metaKeyPressing}
@@ -170,7 +155,6 @@ export default class extends React.Component {
                 <PlaygroundView
                     playgroundWidth={mainState.playgroundWidth}
                     playgroundHeight={mainState.playgroundHeight}
-                    demoListWidth={mainState.demoListWidth}
                     usedCompsDataArray={mainState.usedCompsDataArray}
                     metaKeyPressing={mainState.metaKeyPressing}
                     showDemoDrawer={mainState.showDemoDrawer}
@@ -197,6 +181,8 @@ export default class extends React.Component {
                 <ControlPanelView
                     showControlPanelDrawer={mainState.showControlPanelDrawer}
                     triggerControlPanelDrawer={mainState.triggerControlPanelDrawer}
+                    archiveName={mainState.archiveName}
+                    clearAll={mainState.clearAll}
                 />
                 {this.renderControlPanelDrawerTrigger()}
                 {this.renderToast()}

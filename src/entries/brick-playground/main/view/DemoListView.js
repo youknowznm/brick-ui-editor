@@ -51,9 +51,6 @@ export default class DemoListView extends React.Component {
 
     static propTypes = {
 
-        // demo 列表抽屉宽度
-        demoListWidth: PropTypes.number.isRequired,
-
         // 是否打开 demo 列表抽屉
         showDemoDrawer: PropTypes.bool.isRequired,
 
@@ -154,8 +151,6 @@ export default class DemoListView extends React.Component {
 
     render() {
         const {local, props} = this
-        const {demoListState} = local
-        const {metaKeyPressing} = props
         return <div className="demo-list">
             <Drawer
                 className="demo-list-drawer"
@@ -163,23 +158,21 @@ export default class DemoListView extends React.Component {
                 variant="persistent"
                 open={props.showDemoDrawer}
             >
-                <div
-                    className="demo-list-content"
-                    style={{
-                        width:`${props.demoListWidth}px`
-                    }}
-                >
-                    {this.renderDemoPanels()}
+                <div className="demo-list-wrap">
+                    <div
+                        className="demo-list-content"
+                    >
+                        {this.renderDemoPanels()}
+                    </div>
+                    <div
+                        className="fake-trigger"
+                    >
+                        <MoreHorizIcon
+                            className="trigger-icon"
+                            fontSize="small"
+                        />
+                    </div>
                 </div>
-                <Paper
-                    square={true}
-                    className="fake-trigger"
-                >
-                    <MoreHorizIcon
-                        className="trigger-icon"
-                        fontSize="small"
-                    />
-                </Paper>
             </Drawer>
         </div>
     }

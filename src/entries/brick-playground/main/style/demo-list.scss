@@ -2,213 +2,215 @@
 
 .demo-list {
   position: relative;
-  width: 100%;
   height: 100%;
-  overflow: hidden;
   .demo-list-drawer {
-    overflow: hidden;
-    .demo-list-content {
+    .demo-list-wrap {
       position: relative;
-      width: 100%;
+      width: 820px;
       height: 100%;
-      overflow: auto;
-      .demo-exp-panel {
-        border: 1px solid rgba(0, 0, 0, .125);
-        box-shadow: none;
-        &:first-of-type {
-          border-top: 0;
-        }
-        &:not(:last-of-type) {
-          border-bottom: 0;
-        }
-        &:last-of-type {
-          border-bottom: 0;
-        }
-        &:before {
-          display: none;
-        }
-        div.Mui-expanded {
-          margin-top: 0;
-          margin-bottom: 0;
-        }
-        &.Mui-expanded {
-          margin-top: 0;
-          margin-bottom: 0;
+      .demo-list-content {
+        position: absolute;
+        width: 800px;
+        height: 100%;
+        overflow: scroll;
+        .demo-exp-panel {
+          border: 1px solid $border-color;
+          box-shadow: none;
+          &:first-of-type {
+            border-top: 0;
+          }
+          &:not(:last-of-type) {
+            border-bottom: 0;
+          }
+          &:last-of-type {
+            border-bottom: 0;
+          }
+          &:before {
+            display: none;
+          }
+          div.Mui-expanded {
+            margin-top: 0;
+            margin-bottom: 0;
+          }
+          &.Mui-expanded {
+            margin-top: 0;
+            margin-bottom: 0;
+            .title {
+              margin: 0;
+              min-height: 50px;
+            }
+          }
           .title {
-            margin: 0;
+            background-color: $gen-bg-color;
+            border-bottom: 1px solid $border-color;
+            margin-bottom: -1px;
             min-height: 50px;
           }
-        }
-        .title {
-          background-color: $gen-bg-color;
-          border-bottom: 1px solid rgba(0, 0, 0, .125);
-          margin-bottom: -1px;
-          min-height: 50px;
-        }
-        .content {
-          padding-left: 10px;
-          padding-right: 10px;
-        }
-      }
-      .demo-block-separator {
-        margin: 15px 0;
-      }
-      .demo-block {
-        position: relative;
-        width: 100%;
-        padding: 14px;
-        background-color: #fff;
-      }
-      .icon-demo-block {
-        .icon-type-desc {
-          font-size: 14px;
-          font-style: italic;
-        }
-        .icon-list {
-          li {
-            display: inline-block;
-            // float: left;
-            // width: 150px;
-            width: 20%;
-            min-height: 70px;
-            padding-top: 10px;
-            margin: 0 15px;
-            text-align: center;
-            .brick-icon {
-              font-size: 14px;
-            }
-          }
-        }
-      }
-      .link-demo-block {
-        .brick-link {
-          display: inline-block;
-        }
-      }
-      .dialog-demo-block {
-        // 移动至最外层, 多处用到
-        //.brick-modal-wrap {
-        //  position: relative;
-        //  .brick-modal-mask {
-        //    display: none;
-        //  }
-        //  .brick-dialog-wrap {
-        //    margin: 0;
-        //    border: 1px solid #ccc;
-        //  }
-        //}
-      }
-      .popover-demo-block {
-        .section-basic {
-          position: relative;
-          padding-top: 30px;
-          padding-bottom: 70px;
-          height: 330px;
-          .trigger-row {
-            text-align: center;
-          }
-          .trigger-row + .trigger-row {
-            margin-top: 10px;
-          }
-          .trigger-wrap {
-            display: inline-block;
-            + .trigger-wrap {
-              margin-left: 10px;
-            }
-          }
-          .control-wrap {
-            width: 200px;
+          .content {
             padding-left: 10px;
             padding-right: 10px;
           }
-          .hover-hint {
+        }
+        .demo-block-separator {
+          margin: 15px 0;
+        }
+        .demo-block {
+          position: relative;
+          width: 100%;
+          padding: 14px;
+          background-color: #fff;
+        }
+        .icon-demo-block {
+          .icon-type-desc {
+            font-size: 14px;
+            font-style: italic;
+          }
+          .icon-list {
+            li {
+              display: inline-block;
+              // float: left;
+              // width: 150px;
+              width: 20%;
+              min-height: 70px;
+              padding-top: 10px;
+              margin: 0 15px;
+              text-align: center;
+              .brick-icon {
+                font-size: 14px;
+              }
+            }
+          }
+        }
+        .link-demo-block {
+          .brick-link {
             display: inline-block;
           }
         }
+        .dialog-demo-block {
+          // 移动至最外层, 多处用到
+          //.brick-modal-wrap {
+          //  position: relative;
+          //  .brick-modal-mask {
+          //    display: none;
+          //  }
+          //  .brick-dialog-wrap {
+          //    margin: 0;
+          //    border: 1px solid #ccc;
+          //  }
+          //}
+        }
+        .popover-demo-block {
+          .section-basic {
+            position: relative;
+            padding-top: 30px;
+            padding-bottom: 70px;
+            height: 330px;
+            .trigger-row {
+              text-align: center;
+            }
+            .trigger-row + .trigger-row {
+              margin-top: 10px;
+            }
+            .trigger-wrap {
+              display: inline-block;
+              + .trigger-wrap {
+                margin-left: 10px;
+              }
+            }
+            .control-wrap {
+              width: 200px;
+              padding-left: 10px;
+              padding-right: 10px;
+            }
+            .hover-hint {
+              display: inline-block;
+            }
+          }
 
-      }
-      .tabs-demo-block {
-        .brick-tabs {
-          min-width: 750px;
         }
-        .demo-tabs + .demo-tabs {
-          margin-top: 40px;
+        .tabs-demo-block {
+          .brick-tabs {
+            min-width: 750px;
+          }
+          .demo-tabs + .demo-tabs {
+            margin-top: 40px;
+          }
         }
-      }
-      .date-picker-demo-block {
-        .demo-comp-wrap,
-        .brick-date-picker {
-          width: 160px !important;
-          height: 28px !important;
+        .date-picker-demo-block {
+          .demo-comp-wrap,
+          .brick-date-picker {
+            width: 160px !important;
+            height: 28px !important;
+          }
         }
-      }
-      .file-list-demo-block {
-        .brick-file-list {
-          min-width: 750px;
+        .file-list-demo-block {
+          .brick-file-list {
+            min-width: 750px;
+          }
         }
-      }
-      .collapse-demo-block {
-        .brick-collapse {
-          min-width: 750px;
+        .collapse-demo-block {
+          .brick-collapse {
+            min-width: 750px;
+          }
         }
-      }
-      .checkbox-group-demo-block {
-        .composed-checkbox-group {
-          min-width: 750px;
+        .checkbox-group-demo-block {
+          .composed-checkbox-group {
+            min-width: 750px;
+          }
         }
-      }
-      .radio-group-demo-block {
-        .composed-radio-group {
-          min-width: 750px;
+        .radio-group-demo-block {
+          .composed-radio-group {
+            min-width: 750px;
+          }
         }
-      }
-      .input-demo-block {
-        .composed-input {
-          min-width: 180px;
+        .input-demo-block {
+          .composed-input {
+            min-width: 180px;
+          }
         }
-      }
-      .table-demo-block {
-        .brick-table {
-          min-width: 750px;
+        .table-demo-block {
+          .brick-table {
+            min-width: 750px;
+          }
         }
-      }
-      .alert-demo-block {
-        //white-space: normal;
-        .brick-alert {
-          white-space: normal;
-          min-width: 750px;
+        .alert-demo-block {
+          //white-space: normal;
+          .brick-alert {
+            white-space: normal;
+            min-width: 750px;
+          }
         }
-      }
-      .breadcrumb-demo-block {
-        .brick-breadcrumb {
-          min-width: 750px;
+        .breadcrumb-demo-block {
+          .brick-breadcrumb {
+            min-width: 750px;
+          }
         }
-      }
-      .head-nav-demo-block {
-        .brick-head-nav {
-          min-width: 750px;
+        .head-nav-demo-block {
+          .brick-head-nav {
+            min-width: 750px;
+          }
         }
-      }
-      .inline-block-demo {
-        position: relative;
-        width: 250px;
-        display: inline-block;
-        margin: 0 10px 10px 0;
-      }
-      .switch-demo-block {
-        .brick-switch {
-          margin-right: 10px;
+        .inline-block-demo {
+          position: relative;
+          width: 250px;
+          display: inline-block;
+          margin: 0 10px 10px 0;
+        }
+        .switch-demo-block {
+          .brick-switch {
+            margin-right: 10px;
+          }
         }
       }
     }
-
     .fake-trigger {
       position: absolute;
       top: 0;
       right: 0;
-      bottom: 0;
-      //background-color: $gen-bg-color;
       width: 20px;
+      height: 100%;
+      border-left: 1px solid $border-color;
+      background-color: $gen-bg-color;
       .trigger-icon {
         position: absolute;
         top: 50%;

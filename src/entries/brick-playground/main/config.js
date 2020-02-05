@@ -1,3 +1,5 @@
+import * as React from "react";
+
 import {
     Button,
     Icon,
@@ -29,13 +31,11 @@ import ComposedPopoverConfirm from './composedComps/ComposedPopoverConfirm.js'
 import ComposedTabs from './composedComps/ComposedTabs.js'
 import ComposedTable from './composedComps/ComposedTable.js'
 import ComposedCheckboxGroup from './composedComps/ComposedCheckboxGroup.js'
+import ComposedRadioGroup from './composedComps/ComposedRadioGroup.js'
 import ComposedInput from './composedComps/ComposedInput.js'
 
 import {Dialog} from './localBrickComps/Dialog'
 import {DatePicker} from './localBrickComps/DatePicker'
-import * as React from "react";
-
-export const DEMO_LIST_WIDTH = 820
 
 export const COMP_TYPES = {
     Button: {
@@ -639,7 +639,7 @@ export const COMP_TYPES = {
             },
         ]
     },
-    ComposedCheckbox: {
+    ComposedCheckboxGroup: {
         enLabel: 'Checkbox',
         cnLabel: '复选框',
         Element: ComposedCheckboxGroup,
@@ -800,5 +800,61 @@ export const COMP_TYPES = {
                 defaultValue: false
             },
         ],
+    },
+    ComposedRadioGroup: {
+        enLabel: 'Radio',
+        cnLabel: '单选框',
+        Element: ComposedRadioGroup,
+        editableProps: [
+            {
+                desc: '类型',
+                key: 'type',
+                type: 'enum',
+                options: [
+                    {value: 'normal', label: '普通'},
+                    {value: 'intensive', label: '强调'},
+                ],
+                defaultValue: 'plain'
+            },
+            {
+                desc: '尺寸',
+                key: 'size',
+                type: 'enum',
+                options: [
+                    {value: 'sm', label: '小号'},
+                    {value: 'md', label: '中号'},
+                ],
+                defaultValue: 'sm'
+            },
+            {
+                desc: '数据',
+                key: 'options',
+                type: 'array',
+                columns: [
+                    {
+                        title: '值',
+                        field: 'value',
+                        columnType: 'string',
+                    },
+                    {
+                        title: '标签',
+                        field: 'label',
+                        columnType: 'string',
+                    },
+                    {
+                        title: '选择',
+                        field: 'checked',
+                        columnType: 'bool',
+                        defaultValue: false
+                    },
+                    {
+                        title: '禁用',
+                        field: 'disabled',
+                        columnType: 'bool',
+                        defaultValue: false
+                    },
+                ]
+            }
+        ]
     },
 }

@@ -1,10 +1,4 @@
-$stripe-width: 15px;
-$stripe-color: #999;
-$stripe-color-active: #4c84ff;
-$stripe-color-selected: #EE6723;
-
-$aligner-color-selected: #EE6723;
-$aligner-color: #419bf9;
+@import "src/entries/brick-playground/main/style";
 
 @mixin stripe-bg {
   background: #fff linear-gradient(
