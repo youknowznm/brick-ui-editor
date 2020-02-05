@@ -193,7 +193,6 @@ export default class ArrayPropEditor extends React.Component {
         const {columns} = this
         const {
             value,
-            ...restProps
         } = this.props
         const {
             data
@@ -224,6 +223,7 @@ export default class ArrayPropEditor extends React.Component {
         } = this.state
         const {
             value,
+            dispatchArray,
             ...restProps
         } = this.props
         return <div className="array-prop-editor">

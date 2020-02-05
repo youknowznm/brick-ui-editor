@@ -174,16 +174,17 @@ export default class extends React.Component {
                     }}
                     compDragHandler={mainState.compDragHandler}
                 />
+                <ControlPanelView
+                    showControlPanelDrawer={mainState.showControlPanelDrawer}
+                    usedCompsDataArray={mainState.usedCompsDataArray}
+                    triggerControlPanelDrawer={mainState.triggerControlPanelDrawer}
+                    archiveName={mainState.archiveName}
+                    clearAll={mainState.clearAll}
+                />
                 <AttrEditorView
                     activeComponentData={mainState.activeComponentData}
                     targetPropsChangeHandler={mainState.targetPropsChangeHandler}
                     removeUsedComp={mainState.removeUsedComp}
-                />
-                <ControlPanelView
-                    showControlPanelDrawer={mainState.showControlPanelDrawer}
-                    triggerControlPanelDrawer={mainState.triggerControlPanelDrawer}
-                    archiveName={mainState.archiveName}
-                    clearAll={mainState.clearAll}
                 />
                 {this.renderControlPanelDrawerTrigger()}
                 {this.renderToast()}

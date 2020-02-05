@@ -74,6 +74,7 @@ export default class ControlPanelView extends React.Component {
             <TextField
                 className="archive-name-input"
                 size="small"
+                variant="outlined"
                 label="存档名称"
                 value={this.props.archiveName}
             />
@@ -92,6 +93,7 @@ export default class ControlPanelView extends React.Component {
                 color="secondary"
                 size="small"
                 variant="outlined"
+                disabled={this.props.usedCompsDataArray.length === 0}
                 onClick={() => {
                     triggerConfirmFlag(true)
                 }}

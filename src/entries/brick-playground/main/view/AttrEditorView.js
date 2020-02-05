@@ -267,7 +267,7 @@ export default class AttrEditorView extends React.Component {
                 <TextField
                     className="type-style-input width"
                     key="style-width"
-                    value={wrapWidth}
+                    value={parseInt(wrapWidth, 10)}
                     disabled={true}
                     label="宽度 width"
                     {...styleInputOtherProps}
@@ -275,7 +275,7 @@ export default class AttrEditorView extends React.Component {
                 <TextField
                     className="type-style-input height"
                     key="style-height"
-                    value={wrapHeight}
+                    value={parseInt(wrapHeight, 10)}
                     disabled={true}
                     label="高度 height"
                     {...styleInputOtherProps}
