@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Suggest renders correctly 1`] = `
+<div
+  class="brick-suggest"
+>
+  <div
+    class="brick-input brick-input-size-sm brick-input-status-normal"
+  >
+    <div
+      class="brick-input-wrap"
+    >
+      <input
+        autocomplete="off"
+        value=""
+      />
+      <div
+        class="brick-input-suffix"
+      >
+        <i
+          class="brick-icon brick-suggest-search-icon"
+        >
+          <svg
+            data-name="\\\\u56FE\\\\u5C42 1"
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 768 768"
+            width="1em"
+          >
+            <path
+              d="M726.63 681.37L572.39 527.13A302.73 302.73 0 00640 336c0-167.89-136.11-304-304-304S32 168.11 32 336s136.11 304 304 304a302.73 302.73 0 00191.13-67.61l154.24 154.24a32 32 0 0045.26 0 32 32 0 000-45.26zM336 576a239 239 0 1193.4-18.83A238.57 238.57 0 01336 576z"
+            />
+          </svg>
+        </i>
+      </div>
+    </div>
+  </div>
+</div>
+`;

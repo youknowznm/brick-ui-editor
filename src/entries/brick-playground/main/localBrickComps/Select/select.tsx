@@ -6,7 +6,6 @@
 import * as React from 'react'
 // import * as PropTypes from 'prop-types'
 import {default as c} from 'classnames'
-
 import {Menu, MenuItemId, MenuPopperProps, MenuItemSelectAll} from '@befe/brick-comp-menu'
 import {MenuPopper} from '../Menu'
 import {ConfigContext, getDefaultValueUsingContextTheme} from '@befe/brick-comp-config-provider'

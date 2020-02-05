@@ -4,10 +4,6 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-import {Option, OptionGroup, Select} from '../localBrickComps/Select'
-
-// import {Select as OriginSelect} from '@befe/brick'
-
 import OriginComposedSelect from "../composedComps/ComposedSelect";
 const ComposedSelect = wrapDemoComp(OriginComposedSelect)
 

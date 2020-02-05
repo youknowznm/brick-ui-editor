@@ -6,8 +6,8 @@
 import * as React from 'react'
 // import * as PropTypes from 'prop-types'
 import {default as c} from 'classnames'
-
-import {Menu, MenuPopper, MenuItemId, MenuPopperProps, MenuItem, Submenu} from '../Menu'
+import {Menu, MenuItemId, MenuPopperProps, MenuItem, Submenu} from '@befe/brick-comp-menu'
+import {MenuPopper} from '../Menu'
 import {InputProps} from '@befe/brick-comp-input'
 import {Input} from '@befe/brick-comp-input'
 import {createDelayHandler, pick, safeInvoke} from '@befe/brick-utils'

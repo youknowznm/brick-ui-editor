@@ -1,19 +1,18 @@
 import * as React from 'react'
 
-import {Option, OptionGroup, Select} from '../localBrickComps/Select'
+import {Suggest} from '../localBrickComps/Suggest'
 
-export default class ComposedSelect extends React.Component {
+export default class ComposedSuggest extends React.Component {
 
-    static displayName = 'ComposedSelect'
+    static displayName = 'ComposedSuggest'
 
     static defaultProps = {
-        mode: 'single', // multiple
-        size: 'sm', // 'xs' | 'sm' | 'md' | 'lg'
-        placeholder: '',
-        // maxNumber: 2,
-        // placement: 'left',
+        // mode: 'single', // multiple
+        // size: 'sm', // 'xs' | 'sm' | 'md' | 'lg'
         disabled: false,
-        options: [], // value, label
+        placeholder: '',
+        options: [], // id, label
+
         group1Label: '',
         group1Type: 'group', // popper
         group1Options: [],
@@ -27,13 +26,11 @@ export default class ComposedSelect extends React.Component {
 
     render() {
         const {
-            mode,
-            size,
+            // mode,
+            // size,
             placeholder,
             options,
             disabled,
-            // maxNumber,
-            // placement
         } = this.props
 
         let _options = options.slice()
@@ -44,7 +41,7 @@ export default class ComposedSelect extends React.Component {
             const groupOptions = this.props[`group${index}Options`]
             if (groupOptions.length > 0) {
                 _options.push({
-                    value: groupLabel,
+                    id: groupLabel,
                     label: groupLabel,
                     children: groupOptions
                 })
@@ -55,16 +52,23 @@ export default class ComposedSelect extends React.Component {
             processOptions(i + 1)
         }
 
-        return <Select
-            className="composed-select"
+        const fakeSuggest = inputVal => new Promise(
+            resolve => {
+                setTimeout(() => {
+                    resolve(inputVal && inputVal.length < 7 ? _options : [])
+                }, 1000)
+            }
+        )
+
+        return <Suggest
+            className="composed-suggest"
             placeholder={placeholder}
             disabled={disabled}
-            mode={mode}
+            onSearch={fakeSuggest}
+            loadingDelayInMS={200}
+            // mode={mode}
             // status={'error'}
-            // placement={placement}
-            // maxNumber={maxNumber}
-            size={size}
-            options={_options}
+            // size={size}
         />
     }
 }

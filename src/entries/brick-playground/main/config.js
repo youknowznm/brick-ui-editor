@@ -33,6 +33,8 @@ import ComposedTable from './composedComps/ComposedTable.js'
 import ComposedCheckboxGroup from './composedComps/ComposedCheckboxGroup.js'
 import ComposedRadioGroup from './composedComps/ComposedRadioGroup.js'
 import ComposedInput from './composedComps/ComposedInput.js'
+import ComposedSelect from './composedComps/ComposedSelect.js'
+import ComposedSuggest from './composedComps/ComposedSuggest.js'
 
 import {Dialog} from './localBrickComps/Dialog'
 import {DatePicker} from './localBrickComps/DatePicker'
@@ -857,5 +859,17 @@ export const COMP_TYPES = {
                 ]
             }
         ]
+    },
+    ComposedSelect: {
+        enLabel: 'Select',
+        cnLabel: '选项列表',
+        Element: ComposedSelect,
+        editableProps: []
+    },
+    ComposedSuggest: {
+        enLabel: 'Suggest',
+        cnLabel: '建议列表',
+        Element: ComposedSuggest,
+        editableProps: []
     },
 }
