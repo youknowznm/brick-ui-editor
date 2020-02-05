@@ -3,16 +3,20 @@
 .demo-list {
   position: relative;
   height: 100%;
+  overflow: hidden;
   .demo-list-drawer {
+    overflow: hidden;
     .demo-list-wrap {
       position: relative;
-      width: 820px;
+      width: 830px;
       height: 100%;
+      overflow: hidden;
       .demo-list-content {
         position: absolute;
-        width: 800px;
+        width: 810px;
         height: 100%;
-        overflow: scroll;
+        overflow-x: hidden;
+        overflow-y: scroll;
         .demo-exp-panel {
           border: 1px solid $border-color;
           box-shadow: none;
@@ -87,17 +91,6 @@
           }
         }
         .dialog-demo-block {
-          // 移动至最外层, 多处用到
-          //.brick-modal-wrap {
-          //  position: relative;
-          //  .brick-modal-mask {
-          //    display: none;
-          //  }
-          //  .brick-dialog-wrap {
-          //    margin: 0;
-          //    border: 1px solid #ccc;
-          //  }
-          //}
         }
         .popover-demo-block {
           .section-basic {

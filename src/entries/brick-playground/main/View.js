@@ -158,6 +158,7 @@ export default class extends React.Component {
                     usedCompsDataArray={mainState.usedCompsDataArray}
                     metaKeyPressing={mainState.metaKeyPressing}
                     showDemoDrawer={mainState.showDemoDrawer}
+                    showControlPanelDrawer={mainState.showControlPanelDrawer}
                     triggerDemoDrawer={mainState.triggerDemoDrawer}
                     triggerControlPanelDrawer={mainState.triggerControlPanelDrawer}
                     activeComponentId={mainState.activeComponentId}
