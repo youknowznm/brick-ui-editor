@@ -51,7 +51,6 @@ const InputDemo = () => {
                 value={'内容'}
                 placeholder={'占位符'}
                 disabled={true}
-                type={'number'}
             />
         </div>
         <Divider className="demo-block-separator" />

@@ -11,7 +11,7 @@ const ComposedCheckboxGroup = wrapDemoComp(OriginComposedCheckboxGroup)
 
 const CheckboxDemo = () => {
 
-    return <div className="demo-block CheckboxGroup-demo-block">
+    return <div className="demo-block checkbox-group-demo-block">
         {/* ===== 0 basic ===== */}
         <div>
             <ComposedCheckboxGroup

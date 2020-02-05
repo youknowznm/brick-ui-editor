@@ -27,7 +27,7 @@ export default class ComposedCheckboxGroup extends React.Component {
             size,
             options
         } = this.props
-        return <div className="composed-checkbox">
+        return <div className="composed-checkbox-group">
             {
                 options.map((item, index) => {
                     return <Checkbox

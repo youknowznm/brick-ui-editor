@@ -755,8 +755,11 @@ export const COMP_TYPES = {
                 key: 'type',
                 type: 'enum',
                 options: [
-                    {value: 'text', label: '正常'},
-                    {value: 'number', label: '错误'},
+                    {value: 'text', label: '文字'},
+                    {value: 'number', label: '数字'},
+                    {value: 'tel', label: '电话'},
+                    {value: 'email', label: '邮箱'},
+                    {value: 'password', label: '密码'},
                 ],
                 defaultValue: 'text'
             },

@@ -11,7 +11,7 @@ const ComposedRadioGroup = wrapDemoComp(OriginComposedRadioGroup)
 
 const RadioDemo = () => {
 
-    return <div className="demo-block RadioGroup-demo-block">
+    return <div className="demo-block radio-group-demo-block">
         {/* ===== 0 basic ===== */}
         <div>
             <ComposedRadioGroup
