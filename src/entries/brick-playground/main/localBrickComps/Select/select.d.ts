@@ -76,7 +76,7 @@ export declare class Select extends React.Component<SelectProps, SelectState> {
         disabled: boolean;
     };
     static context: React.Context<import("@befe/brick-comp-config-provider/src").ConfigContextValue>;
-    static getDerivedStateFromProps(nextProps: SelectProps): Pick<SelectProps, "disabled" | "size" | "value" | "className" | "placement" | "onChange" | "defaultValue" | "placeholder" | "mode" | "options" | "maxNumber"> | null;
+    static getDerivedStateFromProps(nextProps: SelectProps): Pick<SelectProps, "disabled" | "size" | "className" | "value" | "placement" | "onChange" | "defaultValue" | "placeholder" | "mode" | "options" | "maxNumber"> | null;
     state: SelectState;
     context: React.ContextType<typeof ConfigContext>;
     constructor(props: SelectProps);

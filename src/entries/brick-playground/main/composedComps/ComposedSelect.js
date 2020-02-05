@@ -12,66 +12,115 @@ export default class ComposedSelect extends React.Component {
         mode: 'single', // multiple
         size: 'sm', // 'xs' | 'sm' | 'md' | 'lg'
         placeholder: '',
+        disabled: false,
         options: [
             {
                 value: 'option_1',
                 label: 'option_1',
                 disabled: false,
-            }
+            },
+            {
+                value: 'option_2',
+                label: 'option_2',
+                disabled: false,
+            },
         ],
-
-
-
-
-
-        textPrefix: '',
-        textSuffix: '',
-        value: '',
-        disabled: false,
-        type: 'text',
-        status: 'normal',
+        group1Label: '',
+        group1Type: 'group', // popper
+        group1Options: [
+            {
+                value: 'option_11',
+                label: 'option_11',
+                disabled: false,
+            },
+            {
+                value: 'option_22',
+                label: 'option_22',
+                disabled: false,
+            },
+        ],
+        group2Label: '',
+        group2Type: 'group', // popper
+        group2Options: [
+            {
+                value: 'option_11',
+                label: 'option_11',
+                disabled: false,
+            },
+            {
+                value: 'option_22',
+                label: 'option_22',
+                disabled: false,
+            },
+        ],
     }
 
     render() {
         const {
-            iconPrefix,
-            iconSuffix,
-            textPrefix,
-            textSuffix,
+            mode,
+            size,
             placeholder,
-            value,
-            disabled,
-            type,
-            status,
+            options,
+            group1Label,
+            group1Type,
+            group1Options,
+            group2Label,
+            group2Type,
+            group2Options,
+            disabled
         } = this.props
 
-        // 字符串前后缀优先级大于图标; 均不提供时, 不渲染
-        let _prefix = null
-        if (iconPrefix !== '') {
-            _prefix = <Icon svg={getSvgByName(iconPrefix)} />
-        }
-        if (textPrefix !== '') {
-            _prefix = <div>{textPrefix}</div>
-        }
-
-        let _suffix = null
-        if (iconSuffix !== '') {
-            _suffix = <Icon svg={getSvgByName(iconSuffix)} />
-        }
-        if (textSuffix !== '') {
-            _suffix = <div>{textSuffix}</div>
-        }
-
         return <Select
-            className="composed-Select"
-            value={value}
-            onChange={() => {}}
+            className="composed-select"
             placeholder={placeholder}
             disabled={disabled}
-            type={type}
-            status={status}
-            prefix={_prefix}
-            suffix={_suffix}
-        />
+            mode={mode}
+            status={'error'}
+            size={size}
+        >
+            {
+                options.map(item => {
+                    return <Option
+                        value={item.value}
+                        disabled={item.disabled}
+                    >
+                        {item.label}
+                    </Option>
+                })
+            }
+            <OptionGroup
+                label={group1Label}
+                type={group1Type}
+                mode={mode}
+            >
+                {
+                    group1Options.map(item => {
+                        return <Option
+                            value={item.value}
+                            disabled={item.disabled}
+                        >
+                            {item.label}
+                        </Option>
+                    })
+                }
+            </OptionGroup>
+            <OptionGroup
+                label={group2Label}
+                type={group2Type}
+                mode={mode}
+            >
+                {
+                    group2Options.map((item, index) => {
+                        return <Option
+                            key={index}
+                            value={item.value}
+                            disabled={item.disabled}
+                        >
+                            {item.label}
+                        </Option>
+                    })
+                }
+            </OptionGroup>
+        </Select>
     }
 }

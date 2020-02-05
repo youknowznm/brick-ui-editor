@@ -10,6 +10,8 @@ import {Option, OptionGroup, Select} from '../localBrickComps/Select'
 //
 // const Select = wrapDemoComp(OriginSelect)
 
+import ComposedSelect from "../composedComps/ComposedSelect";
+
 const SelectDemo = () => {
 
     const options = [
@@ -55,6 +57,25 @@ const SelectDemo = () => {
 
     return <div className="demo-block select-demo-block">
         {/* ===== 0 basic ===== */}
+
+        <ComposedSelect
+            mode={'multiple'}
+            placeholder={'请选择'}
+            options={[
+                {value: 'option_1', label: 'option_1'}
+            ]}
+            group1Label={'分类 2'}
+            group1Options={[
+                {value: 'option_21', label: 'option_21'},
+                {value: 'option_22', label: 'option_22', disabled: true},
+            ]}
+            group2Label={'分类 3'}
+            group2Options={[
+                {value: 'option_31', label: 'option_31'},
+                {value: 'option_32', label: 'option_32'},
+            ]}
+        />
+
         <div>
             <div className={'control-wrap'}>
                 <Select className="inline-block-demo" options={options} placeholder={'请选择'} />
