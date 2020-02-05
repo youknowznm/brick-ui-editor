@@ -11,7 +11,7 @@ import {
     COMP_TYPES,
     DEMO_LIST_WIDTH
 } from "./config";
-import transferSvgStringToElement from "./utils/transferSvgStringToElement";
+import getSvgByName from "./utils/getSvgByName";
 
 import {load, save} from "./utils/storage";
 
@@ -53,6 +53,10 @@ class MainState extends BaseModel {
             originName,
             originProps
         } = data
+        console.log({
+            originName,
+            originProps
+        })
         const compTypeData = COMP_TYPES[originName]
         for (let propType of compTypeData.editableProps) {
             const {
@@ -69,7 +73,6 @@ class MainState extends BaseModel {
         data.originProps = originProps
         data.deltaX = 0
         data.deltaY = 0
-
         this.usedCompsDataArray.push(data)
         this.saveUsedCompData()
     }

@@ -25,7 +25,7 @@ import {Icon} from '@befe/brick'
 
 import {ICON_GROUP_MAP_MAIN} from '@befe/brick-icon/src/main/group-map'
 
-import transferSvgStringToElement from "../transferSvgStringToElement";
+import getSvgByName from "../getSvgByName";
 
 import './style.scss'
 
@@ -159,7 +159,7 @@ export default class SvgPropEditor extends React.Component {
                                 >
                                     <Icon
                                         className="icon"
-                                        svg={transferSvgStringToElement(item)} />
+                                        svg={getSvgByName(item)} />
                                     <p
                                         className="icon-name"
                                     >{item}</p>

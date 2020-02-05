@@ -9,7 +9,7 @@ import {
     FileList,
     // Table,
     Checkbox,
-    DatePicker,
+    // DatePicker,
     Input,
     Radio,
     Select,
@@ -28,9 +28,12 @@ import ComposedPopover from './composedComps/ComposedPopover.js'
 import ComposedPopoverConfirm from './composedComps/ComposedPopoverConfirm.js'
 import ComposedTabs from './composedComps/ComposedTabs.js'
 import ComposedTable from './composedComps/ComposedTable.js'
-import ComposedCheckbox from './composedComps/ComposedCheckbox.js'
+import ComposedCheckboxGroup from './composedComps/ComposedCheckboxGroup.js'
+import ComposedInput from './composedComps/ComposedInput.js'
 
 import {Dialog} from './localBrickComps/Dialog'
+import {DatePicker} from './localBrickComps/DatePicker'
+import * as React from "react";
 
 export const DEMO_LIST_WIDTH = 820
 
@@ -639,7 +642,7 @@ export const COMP_TYPES = {
     ComposedCheckbox: {
         enLabel: 'Checkbox',
         cnLabel: '复选框',
-        Element: ComposedCheckbox,
+        Element: ComposedCheckboxGroup,
         editableProps: [
             {
                 desc: '类型',
@@ -697,5 +700,102 @@ export const COMP_TYPES = {
                 ]
             }
         ]
-    }
+    },
+    DatePicker: {
+        enLabel: 'DatePicker',
+        cnLabel: '日期选择器',
+        Element: DatePicker,
+        editableProps: [
+            {
+                desc: '模式',
+                key: 'mode',
+                type: 'enum',
+                options: [
+                    {value: 'date', label: '常规'},
+                    {value: 'month', label: '月份'},
+                    {value: 'quarter', label: '季度'},
+                ],
+                defaultValue: 'date'
+            },
+            {
+                desc: '状态',
+                key: 'status',
+                type: 'enum',
+                options: [
+                    {value: 'normal', label: '正常'},
+                    {value: 'error', label: '错误'},
+                ],
+                defaultValue: 'normal'
+            },
+            {
+                desc: '禁用',
+                key: 'disabled',
+                type: 'bool',
+                defaultValue: false
+            },
+        ],
+    },
+    ComposedInput: {
+        enLabel: 'Input',
+        cnLabel: '输入框',
+        Element: ComposedInput,
+        editableProps: [
+            {
+                desc: '内容',
+                key: 'value',
+                type: 'string',
+            },
+            {
+                desc: '占位符',
+                key: 'placeholder',
+                type: 'string',
+            },
+            {
+                desc: '类型',
+                key: 'type',
+                type: 'enum',
+                options: [
+                    {value: 'text', label: '正常'},
+                    {value: 'number', label: '错误'},
+                ],
+                defaultValue: 'text'
+            },
+            {
+                desc: '状态',
+                key: 'status',
+                type: 'enum',
+                options: [
+                    {value: 'normal', label: '正常'},
+                    {value: 'error', label: '错误'},
+                ],
+                defaultValue: 'normal'
+            },
+            {
+                desc: '文本前缀',
+                key: 'textPrefix',
+                type: 'string',
+            },
+            {
+                desc: '文本后缀',
+                key: 'textSuffix',
+                type: 'string',
+            },
+            {
+                desc: '图标前缀',
+                key: 'iconPrefix',
+                type: 'svg',
+            },
+            {
+                desc: '图标后缀',
+                key: 'iconSuffix',
+                type: 'svg',
+            },
+            {
+                desc: '禁用',
+                key: 'disabled',
+                type: 'bool',
+                defaultValue: false
+            },
+        ],
+    },
 }

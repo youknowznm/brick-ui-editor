@@ -4,11 +4,10 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-import {Textarea} from '@befe/brick'
+// import {Textarea} from '@befe/brick'
 
-// import {Textarea as OriginTextarea} from '@befe/brick'
-//
-// const Textarea = wrapDemoComp(OriginTextarea)
+import {Textarea as OriginTextarea} from '@befe/brick'
+const Textarea = wrapDemoComp(OriginTextarea)
 
 const TextareaDemo = () => {
 

@@ -14,7 +14,7 @@ import PlaygroundState from '../states/PlaygroundState'
 
 import '../style/playground.scss'
 
-import transferSvgStringToElement from '../utils/transferSvgStringToElement'
+import getSvgByName from '../utils/getSvgByName'
 import {PortalContainerProvider} from "../utils/PortalContainerContext";
 
 @observer

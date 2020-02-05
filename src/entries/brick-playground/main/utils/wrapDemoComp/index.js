@@ -39,8 +39,15 @@ const wrapDemoComp = OriginComponent => {
                         if (ownProps.hasOwnProperty(propKey)) {
                             const propValue = ownProps[propKey]
                             if (typeof propValue === 'function') {
-                                const isReactElement = React.isValidElement(propValue())
-                                if (isReactElement) {
+                                // console.log(51, propKey, propValue.name, propValue.toString())
+                                // const isReactElement = React.isValidElement(propValue())
+                                // if (isReactElement) {
+                                //     ownProps[propKey] = propValue.name
+                                // } else {
+                                //     delete ownProps[propKey]
+                                // }
+                                const isIcon = ['icon', 'loadingIcon'].indexOf(propKey) > -1
+                                if (isIcon) {
                                     ownProps[propKey] = propValue.name
                                 } else {
                                     delete ownProps[propKey]

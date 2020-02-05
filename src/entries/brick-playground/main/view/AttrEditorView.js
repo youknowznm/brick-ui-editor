@@ -126,7 +126,7 @@ export default class AttrEditorView extends React.Component {
                 ],
                 defaultValue
             } = item
-            const propInputPropsGen = {
+            const generalInputProps = {
                 key: key,
                 label: `${desc} ${key}`,
                 value: originProps[key],
@@ -149,7 +149,7 @@ export default class AttrEditorView extends React.Component {
                         //         [key]: evt.target.value.trim()
                         //     })
                         // }}
-                        {...propInputPropsGen}
+                        {...generalInputProps}
                     />
                 case 'enum':
                     return <TextField
@@ -159,7 +159,7 @@ export default class AttrEditorView extends React.Component {
                                 [key]: evt.target.value
                             })
                         }}
-                        {...propInputPropsGen}
+                        {...generalInputProps}
                     >
                         {
                             options.map(option => {
@@ -185,7 +185,7 @@ export default class AttrEditorView extends React.Component {
                                 [key]: evt.target.value
                             })
                         }}
-                        {...propInputPropsGen}
+                        {...generalInputProps}
                     >
                         {
                             options.map(option => {
@@ -206,7 +206,7 @@ export default class AttrEditorView extends React.Component {
                                 [key]: icon
                             })
                         }}
-                        {...propInputPropsGen}
+                        {...generalInputProps}
                     />
                 case 'array':
                     return <ArrayPropEditor
@@ -216,7 +216,7 @@ export default class AttrEditorView extends React.Component {
                                 [key]: array
                             })
                         }}
-                        {...propInputPropsGen}
+                        {...generalInputProps}
                     />
                 default:
                     return <TextField
@@ -225,7 +225,7 @@ export default class AttrEditorView extends React.Component {
                                 [key]: evt.target.value
                             })
                         }}
-                        {...propInputPropsGen}
+                        {...generalInputProps}
                     />
             }
         })

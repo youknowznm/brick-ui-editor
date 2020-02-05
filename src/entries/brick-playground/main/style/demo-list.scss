@@ -136,7 +136,11 @@
         }
       }
       .date-picker-demo-block {
-
+        .demo-comp-wrap,
+        .brick-date-picker {
+          width: 160px !important;
+          height: 28px !important;
+        }
       }
       .file-list-demo-block {
         .brick-file-list {
@@ -153,8 +157,30 @@
           min-width: 750px;
         }
       }
+      .input-demo-block {
+        .composed-input {
+          min-width: 180px;
+        }
+      }
       .table-demo-block {
         .brick-table {
+          min-width: 750px;
+        }
+      }
+      .alert-demo-block {
+        //white-space: normal;
+        .brick-alert {
+          white-space: normal;
+          min-width: 750px;
+        }
+      }
+      .breadcrumb-demo-block {
+        .brick-breadcrumb {
+          min-width: 750px;
+        }
+      }
+      .head-nav-demo-block {
+        .brick-head-nav {
           min-width: 750px;
         }
       }

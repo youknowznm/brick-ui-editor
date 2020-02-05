@@ -2,9 +2,9 @@ import * as React from 'react'
 
 import {Checkbox} from '@befe/brick'
 
-export default class ComposedCheckbox extends React.Component {
+export default class ComposedCheckboxGroup extends React.Component {
 
-    static displayName = 'ComposedCheckbox'
+    static displayName = 'ComposedCheckboxGroup'
 
     static defaultProps = {
         type: 'normal',

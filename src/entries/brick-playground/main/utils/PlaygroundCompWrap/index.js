@@ -11,7 +11,7 @@ import Draggable from 'react-draggable'
 
 import './style.scss'
 
-import transferSvgStringToElement from "../transferSvgStringToElement";
+import getSvgByName from "../getSvgByName";
 
 import {debounce} from 'lodash-es';
 
@@ -65,7 +65,7 @@ export default class PlaygroundCompWrap extends React.Component {
                 type,
             } = propType
             if (type === 'svg') {
-                originProps[key] = transferSvgStringToElement(originProps[key])
+                originProps[key] = getSvgByName(originProps[key])
             }
         }
         return originProps

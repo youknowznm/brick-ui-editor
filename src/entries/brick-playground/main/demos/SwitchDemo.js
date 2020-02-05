@@ -4,11 +4,10 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-import {Switch} from '@befe/brick'
+// import {Switch} from '@befe/brick'
 
-// import {Switch as OriginSwitch} from '@befe/brick'
-//
-// const Switch = wrapDemoComp(OriginSwitch)
+import {Switch as OriginSwitch} from '@befe/brick'
+const Switch = wrapDemoComp(OriginSwitch)
 
 const SwitchDemo = () => {
 

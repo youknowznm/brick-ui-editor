@@ -5,13 +5,12 @@ import Divider from '@material-ui/core/Divider';
 import wrapDemoComp from '../utils/wrapDemoComp'
 
 import {ErpLogo} from '@befe/brick'
-import {HeadNav} from '../localBrickComps/HeadNav'
+import {HeadNav as OriginHeadNav} from '../localBrickComps/HeadNav'
 
 import subHead from './subhead.svg'
 
-// import {HeaderNav as OriginHeaderNav} from '@befe/brick'
-//
-// const HeaderNav = wrapDemoComp(OriginHeaderNav)
+// import {HeadNav as OriginHeadNav} from '@befe/brick'
+const HeadNav = wrapDemoComp(OriginHeadNav)
 
 const HeadNavDemo = () => {
 
@@ -78,7 +77,7 @@ const HeadNavDemo = () => {
         }
     ]
 
-    return <div className="demo-block breadcrumb-demo-block">
+    return <div className="demo-block head-nav-demo-block">
         {/* ===== 0 basic ===== */}
         <div>
             <HeadNav

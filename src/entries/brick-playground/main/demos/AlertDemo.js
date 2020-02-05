@@ -4,12 +4,11 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-import {Alert} from '@befe/brick'
+// import {Alert} from '@befe/brick'
 import {Link} from '@befe/brick'
 
-// import {Alert as OriginAlert} from '@befe/brick'
-//
-// const Alert = wrapDemoComp(OriginAlert)
+import {Alert as OriginAlert} from '@befe/brick'
+const Alert = wrapDemoComp(OriginAlert)
 
 const AlertDemo = () => {
 

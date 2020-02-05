@@ -4,17 +4,17 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-import {Checkbox, GenericCheckboxGroup} from '@befe/brick'
+import {RadioGroup, GenericRadioGroupGroup} from '@befe/brick'
 
-import OriginComposedCheckbox from '../composedComps/ComposedCheckbox'
-const ComposedCheckbox = wrapDemoComp(OriginComposedCheckbox)
+import OriginComposedRadioGroup from '../composedComps/ComposedRadioGroup'
+const ComposedRadioGroup = wrapDemoComp(OriginComposedRadioGroup)
 
-const CheckboxDemo = () => {
+const RadioDemo = () => {
 
-    return <div className="demo-block checkbox-demo-block">
+    return <div className="demo-block RadioGroup-demo-block">
         {/* ===== 0 basic ===== */}
         <div>
-            <ComposedCheckbox
+            <ComposedRadioGroup
                 defaultValue={['item_1']}
                 options={[
                     {value: 'item_1', label: 'item-1', checked: true},
@@ -27,7 +27,7 @@ const CheckboxDemo = () => {
         <Divider className="demo-block-separator" />
         {/* ===== 2 intermidiate ===== */}
         <div>
-            <ComposedCheckbox
+            <ComposedRadioGroup
                 defaultValue={['item_1']}
                 size={'md'}
                 options={[
@@ -41,7 +41,7 @@ const CheckboxDemo = () => {
         <Divider className="demo-block-separator" />
         {/* ===== 3 intensive ===== */}
         <div>
-            <ComposedCheckbox
+            <ComposedRadioGroup
                 type={'intensive'}
                 defaultValue={['item_1']}
                 options={[
@@ -55,7 +55,7 @@ const CheckboxDemo = () => {
         {/* ===== 4 large ===== */}
         <Divider className="demo-block-separator" />
         <div>
-            <ComposedCheckbox
+            <ComposedRadioGroup
                 type={'intensive'}
                 size={'md'}
                 defaultValue={['item_1']}
@@ -70,4 +70,4 @@ const CheckboxDemo = () => {
     </div>
 }
 
-export default CheckboxDemo
+export default RadioDemo

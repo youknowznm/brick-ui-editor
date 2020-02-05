@@ -4,14 +4,12 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-import { Breadcrumb } from '@befe/brick'
+// import { Breadcrumb } from '@befe/brick'
 import { Icon } from '@befe/brick-comp-icon'
 import { SvgSignInfo } from '@befe/brick-icon'
 
-
-// import {Breadcrumb as OriginBreadcrumb} from '@befe/brick'
-//
-// const Breadcrumb = wrapDemoComp(OriginBreadcrumb)
+import {Breadcrumb as OriginBreadcrumb} from '@befe/brick'
+const Breadcrumb = wrapDemoComp(OriginBreadcrumb)
 
 const BreadcrumbDemo = () => {
 

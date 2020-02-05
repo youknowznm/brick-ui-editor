@@ -21,10 +21,10 @@ import PopoverDemo from '../demos/PopoverDemo'
 import TabsDemo from '../demos/TabsDemo'
 import FileListDemo from '../demos/FileListDemo'
 import TableDemo from '../demos/TableDemo'
-import CheckboxDemo from '../demos/CheckboxDemo'
+import CheckboxGroupDemo from '../demos/CheckboxGroupDemo'
 import DatePickerDemo from '../demos/DatePickerDemo'
 import InputDemo from '../demos/InputDemo'
-import RadioDemo from '../demos/RadioDemo'
+import RadioDemo from '../demos/RadioGroupDemo'
 import SelectDemo from '../demos/SelectDemo'
 import SuggestDemo from '../demos/SuggestDemo'
 import SwitchDemo from '../demos/SwitchDemo'
@@ -73,7 +73,7 @@ export default class DemoListView extends React.Component {
     componentDidMount() {
         // TODO: 待移除
         this.local.demoListState.setProps({
-            expandedDemoPanelLabel: 'Checkbox'
+            expandedDemoPanelLabel: 'Input'
         })
     }
 
@@ -96,7 +96,7 @@ export default class DemoListView extends React.Component {
             TabsDemo,
             FileListDemo,
             TableDemo,
-            CheckboxDemo,
+            CheckboxGroupDemo,
             DatePickerDemo,
             InputDemo,
             RadioDemo,
