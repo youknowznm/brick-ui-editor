@@ -7,85 +7,86 @@ import wrapDemoComp from '../utils/wrapDemoComp'
 import {Option, OptionGroup, Select} from '../localBrickComps/Select'
 
 // import {Select as OriginSelect} from '@befe/brick'
-//
-// const Select = wrapDemoComp(OriginSelect)
 
-import ComposedSelect from "../composedComps/ComposedSelect";
+import OriginComposedSelect from "../composedComps/ComposedSelect";
+const ComposedSelect = wrapDemoComp(OriginComposedSelect)
 
 const SelectDemo = () => {
 
-    const options = [
-        {value: 'option_1', label: 'option_1'},
-        {
-            value: 'group_1',
-            label: '分类一',
-            children: [
-                {value: 'option_2', label: 'option_2'},
-                {value: 'option_3', label: 'option_3'},
-            ]
-        },
-        {value: 'option_4', label: 'option_4'},
-        {value: 'option_5', label: 'option_5', disabled: true},
-        {
-            value: 'group_2',
-            label: '分类二',
-            children: [
-                {value: 'option_7', label: 'option_7'},
-                {value: 'option_8', label: 'option_8'},
-            ]
-        },
-    ]
+    // const options = [
+    //     {value: 'option_1', label: 'option_1'},
+    //     {
+    //         value: 'group_1',
+    //         label: '分类一',
+    //         children: [
+    //             {value: 'option_2', label: 'option_2'},
+    //             {value: 'option_3', label: 'option_3'},
+    //         ]
+    //     },
+    //     {value: 'option_4', label: 'option_4'},
+    //     {value: 'option_5', label: 'option_5', disabled: true},
+    //     {
+    //         value: 'group_2',
+    //         label: '分类二',
+    //         children: [
+    //             {value: 'option_7', label: 'option_7'},
+    //             {value: 'option_8', label: 'option_8'},
+    //         ]
+    //     },
+    // ]
 
     const sizeList = ['xs', 'sm', 'md', 'lg']
 
     const renderSelectBySize = size => {
         return (
             <div key={size}>
-                <div className="control-wrap">
-                    <Select className="inline-block-demo" size={size} placeholder={'请选择'}>
-                        <Option value={'option_1'}>option-1</Option>
-                        <Option value={'option_2'}>option-2</Option>
-                        <OptionGroup label={'group-1'}>
-                            <Option value={'option_3'}>option-3</Option>
-                            <Option value={'option_4'}>option-4</Option>
-                        </OptionGroup>
-                    </Select>
-                </div>
+                <ComposedSelect
+                    placeholder={'请选择'}
+                    size={size}
+                    {...optionProps}
+                />
             </div>
         )
     }
 
+    const optionProps = {
+        options: [
+            {value: 'option_1', label: 'option_1'},
+            {value: 'option_2', label: 'option_2'},
+            {value: 'option_3', label: 'option_3'},
+        ],
+        group1Label: '分类 1',
+        group1Options: [
+            {value: 'option_11', label: 'option_11'},
+            {value: 'option_12', label: 'option_12', disabled: true},
+        ],
+        group2Label: '分类 2',
+        group2Options: [
+            {value: 'option_21', label: 'option_21'},
+            {value: 'option_22', label: 'option_22', disabled: true},
+        ],
+        group3Label: '分类 3',
+        group3Options: [
+            {value: 'option_31', label: 'option_31'},
+            {value: 'option_32', label: 'option_32', disabled: true},
+        ],
+    }
+
     return <div className="demo-block select-demo-block">
         {/* ===== 0 basic ===== */}
-
+        <ComposedSelect
+            placeholder={'请选择'}
+            {...optionProps}
+        />
+        <Divider className="demo-block-separator" />
+        {/* ===== 1 multiple ===== */}
         <ComposedSelect
             mode={'multiple'}
             placeholder={'请选择'}
-            options={[
-                {value: 'option_1', label: 'option_1'}
-            ]}
-            group1Label={'分类 2'}
-            group1Options={[
-                {value: 'option_21', label: 'option_21'},
-                {value: 'option_22', label: 'option_22', disabled: true},
-            ]}
-            group2Label={'分类 3'}
-            group2Options={[
-                {value: 'option_31', label: 'option_31'},
-                {value: 'option_32', label: 'option_32'},
-            ]}
+            {...optionProps}
         />
-
-        <div>
-            <div className={'control-wrap'}>
-                <Select className="inline-block-demo" options={options} placeholder={'请选择'} />
-            </div>
-            <div className={'control-wrap'}>
-                <Select className="inline-block-demo" options={options} mode={'multiple'} />
-            </div>
-        </div>
         <Divider className="demo-block-separator" />
-        {/* ===== 1 size ===== */}
+        {/* ===== 2 size ===== */}
         <div>
             {sizeList.map(renderSelectBySize)}
         </div>
