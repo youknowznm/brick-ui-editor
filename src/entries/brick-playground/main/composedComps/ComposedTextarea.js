@@ -25,7 +25,7 @@ export default class ComposedTextarea extends React.Component {
         } = this.props
 
         return <Textarea
-            className="composed-Textarea"
+            className="composed-textarea"
             style={{
                 width: `${width}px`
             }}

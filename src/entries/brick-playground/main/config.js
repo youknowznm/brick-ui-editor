@@ -37,6 +37,7 @@ import ComposedSelect from './composedComps/ComposedSelect.js'
 import ComposedSuggest from './composedComps/ComposedSuggest.js'
 import ComposedIconSwitch from './composedComps/ComposedIconSwitch.js'
 import ComposedTextarea from './composedComps/ComposedTextarea.js'
+import ComposedAlert from './composedComps/ComposedAlert.js'
 
 import {Dialog} from './localBrickComps/Dialog'
 import {DatePicker} from './localBrickComps/DatePicker'
@@ -1030,6 +1031,52 @@ export const COMP_TYPES = {
                 key: 'disabled',
                 type: 'bool',
                 defaultValue: false
+            },
+        ],
+    },
+    ComposedAlert: {
+        enLabel: 'Alert',
+        cnLabel: '提醒',
+        Element: ComposedAlert,
+        editableProps: [
+            {
+                desc: '类型',
+                key: 'type',
+                type: 'enum',
+                options: [
+                    {value: 'info', label: '信息'},
+                    {value: 'success', label: '成功'},
+                    {value: 'error', label: '错误'},
+                    {value: 'warning', label: '警告'},
+                ],
+                defaultValue: 'info'
+            },
+            {
+                desc: '使用图标',
+                key: 'icon',
+                type: 'bool',
+                defaultValue: false
+            },
+            {
+                desc: '允许关闭',
+                key: 'closable',
+                type: 'bool',
+                defaultValue: false
+            },
+            {
+                desc: '标题',
+                key: 'headline',
+                type: 'string',
+            },
+            {
+                desc: '内容',
+                key: 'content',
+                type: 'string',
+            },
+            {
+                desc: '宽度',
+                key: 'width',
+                type: 'number',
             },
         ],
     },
