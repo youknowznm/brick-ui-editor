@@ -36,6 +36,7 @@ import ComposedInput from './composedComps/ComposedInput.js'
 import ComposedSelect from './composedComps/ComposedSelect.js'
 import ComposedSuggest from './composedComps/ComposedSuggest.js'
 import ComposedIconSwitch from './composedComps/ComposedIconSwitch.js'
+import ComposedTextarea from './composedComps/ComposedTextarea.js'
 
 import {Dialog} from './localBrickComps/Dialog'
 import {DatePicker} from './localBrickComps/DatePicker'
@@ -750,6 +751,11 @@ export const COMP_TYPES = {
                 type: 'string',
             },
             {
+                desc: '宽度',
+                key: 'width',
+                type: 'string',
+            },
+            {
                 desc: '占位符',
                 key: 'placeholder',
                 type: 'string',
@@ -963,5 +969,68 @@ export const COMP_TYPES = {
             },
         ]
     },
-
+    ComposedTextarea: {
+        enLabel: 'Textarea',
+        cnLabel: '文本框',
+        Element: ComposedTextarea,
+        editableProps: [
+            {
+                desc: '内容',
+                key: 'value',
+                type: 'string',
+            },
+            {
+                desc: '宽度',
+                key: 'width',
+                type: 'number',
+            },
+            {
+                desc: '行数',
+                key: 'rows',
+                type: 'number',
+            },
+            {
+                desc: '占位符',
+                key: 'placeholder',
+                type: 'string',
+            },
+            {
+                desc: '最大输入长度',
+                key: 'maxLength',
+                type: 'number',
+            },
+            {
+                desc: '状态',
+                key: 'status',
+                type: 'enum',
+                options: [
+                    {value: 'normal', label: '正常'},
+                    {value: 'error', label: '错误'},
+                ],
+                defaultValue: 'normal'
+            },
+            {
+                desc: '尺寸',
+                key: 'size',
+                type: 'enum',
+                options: [
+                    {value: 'sm', label: '小号'},
+                    {value: 'md', label: '中号'},
+                ],
+                defaultValue: 'sm'
+            },
+            {
+                desc: '允许溢出输入',
+                key: 'allowOverflow',
+                type: 'bool',
+                defaultValue: false
+            },
+            {
+                desc: '禁用',
+                key: 'disabled',
+                type: 'bool',
+                defaultValue: false
+            },
+        ],
+    },
 }

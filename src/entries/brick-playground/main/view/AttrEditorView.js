@@ -133,6 +133,7 @@ export default class AttrEditorView extends React.Component {
             }
             // console.log('attr editing: ', key, value)
             switch (type) {
+                case 'number':
                 case 'string':
                     return <TextField
                         // multiline

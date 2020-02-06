@@ -6,8 +6,11 @@ import wrapDemoComp from '../utils/wrapDemoComp'
 
 // import {Textarea} from '@befe/brick'
 
-import {Textarea as OriginTextarea} from '@befe/brick'
-const Textarea = wrapDemoComp(OriginTextarea)
+// import {Textarea as OriginTextarea} from '@befe/brick'
+// const Textarea = wrapDemoComp(OriginTextarea)
+
+import OriginComposedTextarea from '../composedComps/ComposedTextarea'
+const ComposedTextarea = wrapDemoComp(OriginComposedTextarea)
 
 const TextareaDemo = () => {
 
@@ -21,7 +24,7 @@ const TextareaDemo = () => {
         {/* ===== 0 basic ===== */}
         <div>
             <div className="control-wrap">
-                <Textarea
+                <ComposedTextarea
                     className="inline-block-demo"
                     value={value}
                     onChange={handleChange}
@@ -30,28 +33,28 @@ const TextareaDemo = () => {
                 />
             </div>
             <div className="control-wrap">
-                <Textarea className="inline-block-demo" defaultValue={'overflow'} maxLength={5} />
+                <ComposedTextarea className="inline-block-demo" defaultValue={'overflow'} maxLength={5} />
             </div>
             <div className="control-wrap">
-                <Textarea className="inline-block-demo" defaultValue={'invalid'} maxLength={10} status={'error'} />
+                <ComposedTextarea className="inline-block-demo" defaultValue={'invalid'} maxLength={10} status={'error'} />
             </div>
         </div>
         <div>
             <div className="control-wrap">
-                <Textarea className="inline-block-demo" defaultValue={'这是一段描述'} disabled />
+                <ComposedTextarea className="inline-block-demo" defaultValue={'这是一段描述'} disabled />
             </div>
             <div className="control-wrap">
-                <Textarea className="inline-block-demo" placeholder={'请描述'} disabled />
+                <ComposedTextarea className="inline-block-demo" placeholder={'请描述'} disabled />
             </div>
         </div>
         <Divider className="demo-block-separator" />
         {/* ===== 1 size ===== */}
         <div>
             <div className="control-wrap">
-                <Textarea className="inline-block-demo" size={'sm'} placeholder={'sm'} rows={2} />
+                <ComposedTextarea className="inline-block-demo" size={'sm'} placeholder={'sm'} rows={2} />
             </div>
             <div className="control-wrap">
-                <Textarea className="inline-block-demo" size={'md'} placeholder={'md'} rows={2} />
+                <ComposedTextarea className="inline-block-demo" size={'md'} placeholder={'md'} rows={2} />
             </div>
         </div>
     </div>

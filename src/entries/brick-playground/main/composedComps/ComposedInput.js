@@ -17,6 +17,7 @@ export default class ComposedInput extends React.Component {
         disabled: false,
         type: 'text',
         status: 'normal',
+        width: 180
     }
 
     render() {
@@ -28,6 +29,7 @@ export default class ComposedInput extends React.Component {
             placeholder,
             value,
             disabled,
+            width,
             type,
             status,
         } = this.props
@@ -51,6 +53,9 @@ export default class ComposedInput extends React.Component {
 
         return <Input
             className="composed-input"
+            style={{
+                width: `${width}px`
+            }}
             value={value}
             onChange={() => {}}
             placeholder={placeholder}
