@@ -38,6 +38,7 @@ import ComposedSuggest from './composedComps/ComposedSuggest.js'
 import ComposedIconSwitch from './composedComps/ComposedIconSwitch.js'
 import ComposedTextarea from './composedComps/ComposedTextarea.js'
 import ComposedAlert from './composedComps/ComposedAlert.js'
+import ComposedBreadcrumb from './composedComps/ComposedBreadcrumb.js'
 
 import {Dialog} from './localBrickComps/Dialog'
 import {DatePicker} from './localBrickComps/DatePicker'
@@ -1079,5 +1080,50 @@ export const COMP_TYPES = {
                 type: 'number',
             },
         ],
+    },
+    ComposedBreadcrumb: {
+        enLabel: 'Breadcrumb',
+        cnLabel: '面包屑',
+        Element: ComposedBreadcrumb,
+        editableProps: [
+            {
+                desc: '尺寸',
+                key: 'size',
+                type: 'enum',
+                options: [
+                    {value: 'sm', label: '小号'},
+                    {value: 'md', label: '中号'},
+                ],
+                defaultValue: 'sm'
+            },
+            {
+                desc: '分隔符',
+                key: 'divider',
+                type: 'string',
+            },
+            {
+                desc: '宽度',
+                key: 'width',
+                type: 'number',
+            },
+            {
+                desc: '数据',
+                key: 'data',
+                type: 'array',
+                columns: [
+                    {
+                        title: '标签',
+                        field: 'label',
+                        columnType: 'string',
+                    },
+                    {
+                        title: '链接',
+                        field: 'href',
+                        columnType: 'string',
+                    },
+
+                ]
+            }
+        ]
     },
 }

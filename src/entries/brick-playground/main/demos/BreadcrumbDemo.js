@@ -4,19 +4,15 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-// import { Breadcrumb } from '@befe/brick'
-import { Icon } from '@befe/brick-comp-icon'
-import { SvgSignInfo } from '@befe/brick-icon'
-
-import {Breadcrumb as OriginBreadcrumb} from '@befe/brick'
-const Breadcrumb = wrapDemoComp(OriginBreadcrumb)
+import OriginComposedBreadcrumb from '../composedComps/ComposedBreadcrumb'
+const ComposedBreadcrumb = wrapDemoComp(OriginComposedBreadcrumb)
 
 const BreadcrumbDemo = () => {
 
     const dataList = [
         {
-            label: <><Icon svg={SvgSignInfo}/>首页</>,
-            href: '#',
+            // label: <><Icon svg={SvgSignInfo}/>首页</>,
+            label: '首页',
         },
         {
             label: '一级页面',
@@ -44,17 +40,17 @@ const BreadcrumbDemo = () => {
     return <div className="demo-block breadcrumb-demo-block">
         {/* ===== 0 basic ===== */}
         <div>
-            <Breadcrumb data={dataList}/>
+            <ComposedBreadcrumb data={dataList}/>
         </div>
         <Divider className="demo-block-separator" />
         {/* ===== 1 size ===== */}
-        <div>
-            {['sm', 'md'].map((size, index) => <Breadcrumb data={dataListForSize} size={size} key={index}/>)}
-        </div>
+        <ComposedBreadcrumb data={dataListForSize} size="sm" />
+        <Divider className="demo-block-separator" />
+        <ComposedBreadcrumb data={dataListForSize} size="md" />
         <Divider className="demo-block-separator" />
         {/* ===== 2 divider ===== */}
         <div>
-            <Breadcrumb data={dataListForSize} divider='/'/>
+            <ComposedBreadcrumb data={dataListForSize} divider='/'/>
         </div>
 
     </div>
