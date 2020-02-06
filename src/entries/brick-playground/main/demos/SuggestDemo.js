@@ -33,23 +33,23 @@ const SuggestDemo = () => {
     // }
 
     const optionProps = {
-        options: [
+        menuItems: [
             {id: 'option_1', label: 'option_1'},
             {id: 'option_2', label: 'option_2'},
             {id: 'option_3', label: 'option_3'},
         ],
         group1Label: '分类 1',
-        group1Options: [
+        group1MenuItems: [
             {id: 'option_11', label: 'option_11'},
             {id: 'option_12', label: 'option_12', disabled: true},
         ],
         group2Label: '分类 2',
-        group2Options: [
+        group2MenuItems: [
             {id: 'option_21', label: 'option_21'},
             {id: 'option_22', label: 'option_22', disabled: true},
         ],
         group3Label: '分类 3',
-        group3Options: [
+        group3MenuItems: [
             {id: 'option_31', label: 'option_31'},
             {id: 'option_32', label: 'option_32', disabled: true},
         ],
@@ -65,12 +65,12 @@ const SuggestDemo = () => {
     return <div className="demo-block suggset-demo-block">
         {/* ===== 0 basic ===== */}
         <ComposedSuggest
-            placeholder={'请选择'}
+            placeholder={'请输入'}
             {...optionProps}
         />
         {/* ===== 1 disabled ===== */}
         <ComposedSuggest
-            placeholder={'请选择'}
+            placeholder={'请输入'}
             disabled={true}
             {...optionProps}
         />

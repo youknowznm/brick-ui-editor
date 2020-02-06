@@ -13,16 +13,16 @@ export default class ComposedSelect extends React.Component {
         // maxNumber: 2,
         // placement: 'left',
         disabled: false,
-        options: [], // value, label
+        menuItems: [], // value, label
         group1Label: '',
         group1Type: 'group', // popper
-        group1Options: [],
+        group1MenuItems: [],
         group2Label: '',
         group2Type: 'group', // popper
-        group2Options: [],
+        group2MenuItems: [],
         group3Label: '',
         group3Type: 'group', // popper
-        group3Options: [],
+        group3MenuItems: [],
     }
 
     render() {
@@ -30,23 +30,24 @@ export default class ComposedSelect extends React.Component {
             mode,
             size,
             placeholder,
-            options,
+            menuItems,
             disabled,
             // maxNumber,
             // placement
         } = this.props
 
-        let _options = options.slice()
+        let options = menuItems.slice()
 
         const processOptions = index => {
             const groupLabel = this.props[`group${index}Label`]
             const groupType = this.props[`group${index}Type`]
-            const groupOptions = this.props[`group${index}Options`]
-            if (groupOptions.length > 0) {
-                _options.push({
+            const groupMenuItems = this.props[`group${index}MenuItems`]
+            if (groupMenuItems.length > 0) {
+                options.push({
                     value: groupLabel,
                     label: groupLabel,
-                    children: groupOptions
+                    type: groupType,
+                    children: groupMenuItems
                 })
             }
         }
@@ -64,7 +65,7 @@ export default class ComposedSelect extends React.Component {
             // placement={placement}
             // maxNumber={maxNumber}
             size={size}
-            options={_options}
+            options={options}
         />
     }
 }

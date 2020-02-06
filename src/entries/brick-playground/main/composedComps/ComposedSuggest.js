@@ -11,17 +11,16 @@ export default class ComposedSuggest extends React.Component {
         // size: 'sm', // 'xs' | 'sm' | 'md' | 'lg'
         disabled: false,
         placeholder: '',
-        options: [], // id, label
-
+        menuItems: [], // id, label
         group1Label: '',
         group1Type: 'group', // popper
-        group1Options: [],
+        group1MenuItems: [],
         group2Label: '',
         group2Type: 'group', // popper
-        group2Options: [],
+        group2MenuItems: [],
         group3Label: '',
         group3Type: 'group', // popper
-        group3Options: [],
+        group3MenuItems: [],
     }
 
     render() {
@@ -29,19 +28,20 @@ export default class ComposedSuggest extends React.Component {
             // mode,
             // size,
             placeholder,
-            options,
+            menuItems,
             disabled,
         } = this.props
 
-        let _options = options.slice()
+        let options = menuItems.slice()
 
         const processOptions = index => {
             const groupLabel = this.props[`group${index}Label`]
             const groupType = this.props[`group${index}Type`]
-            const groupOptions = this.props[`group${index}Options`]
+            const groupOptions = this.props[`group${index}MenuItems`]
             if (groupOptions.length > 0) {
-                _options.push({
+                options.push({
                     id: groupLabel,
+                    type: groupType,
                     label: groupLabel,
                     children: groupOptions
                 })
@@ -55,7 +55,7 @@ export default class ComposedSuggest extends React.Component {
         const fakeSuggest = inputVal => new Promise(
             resolve => {
                 setTimeout(() => {
-                    resolve(inputVal && inputVal.length < 7 ? _options : [])
+                    resolve(inputVal && inputVal.length < 7 ? options : [])
                 }, 1000)
             }
         )

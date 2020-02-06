@@ -44,9 +44,10 @@ import ComposedHeadNav from './composedComps/ComposedHeadNav.js'
 import {Dialog} from './localBrickComps/Dialog'
 import {DatePicker} from './localBrickComps/DatePicker'
 
-const getMenuConfigList = (
+const getMenuConfigList = ({
+    itemKey = 'id',
     showType = false
-) => {
+}) => {
     const menuConfigList = [{
         desc: '主菜单列表',
         key: 'menuItems',
@@ -54,7 +55,7 @@ const getMenuConfigList = (
         columns: [
             {
                 title: '唯一标识',
-                field: 'id',
+                field: itemKey,
                 columnType: 'string',
             },
             {
@@ -73,7 +74,7 @@ const getMenuConfigList = (
     const arrayEditorColumns = [
         {
             title: '唯一标识',
-            field: 'id',
+            field: itemKey,
             columnType: 'string',
         },
         {
@@ -942,7 +943,10 @@ export const COMP_TYPES = {
         cnLabel: '选项列表',
         Element: ComposedSelect,
         editableProps: [
-            // ...getMenuConfigList()
+            ...getMenuConfigList({
+                itemKey: 'value',
+                showType: true,
+            })
         ]
     },
     ComposedSuggest: {
@@ -950,7 +954,9 @@ export const COMP_TYPES = {
         cnLabel: '建议列表',
         Element: ComposedSuggest,
         editableProps: [
-            // ...getMenuConfigList()
+            ...getMenuConfigList({
+                showType: false,
+            })
         ]
     },
     Switch: {
@@ -1223,7 +1229,7 @@ export const COMP_TYPES = {
                 key: 'width',
                 type: 'number',
             },
-            ...getMenuConfigList()
+            ...getMenuConfigList({})
         ]
     }
 }
