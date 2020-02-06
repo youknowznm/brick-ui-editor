@@ -16,6 +16,7 @@
         height: 60px;
         * {
           font-weight: lighter;
+          user-select: none;
         }
         .en {
           position: absolute;

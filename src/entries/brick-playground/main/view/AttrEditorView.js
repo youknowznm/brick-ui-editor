@@ -25,7 +25,6 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import {COMP_TYPES} from '../config'
 import SvgPropEditor from '../utils/SvgPropEditor'
 
-import {capitalize} from "lodash-es";
 import ArrayPropEditor from "../utils/ArrayPropEditor";
 
 import AttrEditorState from '../states/AttrEditorState'

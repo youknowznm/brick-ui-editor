@@ -39,9 +39,77 @@ import ComposedIconSwitch from './composedComps/ComposedIconSwitch.js'
 import ComposedTextarea from './composedComps/ComposedTextarea.js'
 import ComposedAlert from './composedComps/ComposedAlert.js'
 import ComposedBreadcrumb from './composedComps/ComposedBreadcrumb.js'
+import ComposedHeadNav from './composedComps/ComposedHeadNav.js'
 
 import {Dialog} from './localBrickComps/Dialog'
 import {DatePicker} from './localBrickComps/DatePicker'
+
+const getMenuConfigList = (
+    showType = false
+) => {
+    const menuConfigList = [{
+        desc: '主菜单列表',
+        key: 'menuItems',
+        type: 'array',
+        columns: [
+            {
+                title: '唯一标识',
+                field: 'id',
+                columnType: 'string',
+            },
+            {
+                title: '标签',
+                field: 'label',
+                columnType: 'string',
+            },
+        ]
+    }]
+
+    const typeEmumOptions = [
+        {value: 'group', label: '列表'},
+        {value: 'popper', label: '弹层'},
+    ]
+
+    const arrayEditorColumns = [
+        {
+            title: '唯一标识',
+            field: 'id',
+            columnType: 'string',
+        },
+        {
+            title: '标签',
+            field: 'label',
+            columnType: 'string',
+        },
+    ]
+
+    let count
+    for (let i = 0; i < 3; i++) {
+        count = i + 1
+        menuConfigList.push({
+            desc: `菜单分组${count}标题`,
+            key: `group${count}Label`,
+            type: 'string',
+        })
+        if (showType) {
+            menuConfigList.push({
+                desc: `菜单分组${count}类型`,
+                key: `group${count}Type`,
+                type: 'enum',
+                options: typeEmumOptions,
+                defaultValue: 'group'
+            })
+        }
+        menuConfigList.push({
+            desc: `菜单分组${count}内容`,
+            key: `group${count}MenuItems`,
+            type: 'array',
+            columns: arrayEditorColumns
+        })
+    }
+
+    return menuConfigList
+}
 
 export const COMP_TYPES = {
     Button: {
@@ -873,13 +941,17 @@ export const COMP_TYPES = {
         enLabel: 'Select',
         cnLabel: '选项列表',
         Element: ComposedSelect,
-        editableProps: []
+        editableProps: [
+            // ...getMenuConfigList()
+        ]
     },
     ComposedSuggest: {
         enLabel: 'Suggest',
         cnLabel: '建议列表',
         Element: ComposedSuggest,
-        editableProps: []
+        editableProps: [
+            // ...getMenuConfigList()
+        ]
     },
     Switch: {
         enLabel: 'Switch',
@@ -1126,4 +1198,32 @@ export const COMP_TYPES = {
             }
         ]
     },
+    ComposedHeadNav: {
+        enLabel: 'HeadNav',
+        cnLabel: '应用栏',
+        Element: ComposedHeadNav,
+        editableProps: [
+            {
+                desc: '项目名称',
+                key: 'projectName',
+                type: 'string',
+            },
+            {
+                desc: '用户主要信息',
+                key: 'userInfoPrimary',
+                type: 'string',
+            },
+            {
+                desc: '用户次要信息',
+                key: 'userInfoSecondary',
+                type: 'string',
+            },
+            {
+                desc: '宽度',
+                key: 'width',
+                type: 'number',
+            },
+            ...getMenuConfigList()
+        ]
+    }
 }
