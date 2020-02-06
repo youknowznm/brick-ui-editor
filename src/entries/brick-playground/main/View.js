@@ -147,8 +147,8 @@ export default class extends React.Component {
         return <Provider root={mainState}>
             <div className="index-page">
                 <DemoListView
-                    showDemoDrawer={true}
-                    // showDemoDrawer={mainState.showDemoDrawer}
+                    // showDemoDrawer={true}
+                    showDemoDrawer={mainState.showDemoDrawer}
                     metaKeyPressing={mainState.metaKeyPressing}
                 />
                 {this.renderDemoDrawerTrigger()}

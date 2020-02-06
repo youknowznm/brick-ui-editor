@@ -74,7 +74,7 @@ export default class ControlPanelView extends React.Component {
             <TextField
                 className="archive-name-input"
                 size="small"
-                variant="outlined"
+                variant="filled"
                 label="存档名称"
                 value={this.props.archiveName}
             />
@@ -85,7 +85,7 @@ export default class ControlPanelView extends React.Component {
                 size="small"
                 color="primary"
             >
-                复制到剪贴板
+                分享
             </Button>
 
             <Button
@@ -106,10 +106,10 @@ export default class ControlPanelView extends React.Component {
                     triggerConfirmFlag(false)
                 }}
             >
-                <DialogTitle>删除所有元素？</DialogTitle>
+                <DialogTitle>移除所有组件？</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        删除的元素无法还原。
+                        移除的组件无法还原。
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>

@@ -35,6 +35,7 @@ import ComposedRadioGroup from './composedComps/ComposedRadioGroup.js'
 import ComposedInput from './composedComps/ComposedInput.js'
 import ComposedSelect from './composedComps/ComposedSelect.js'
 import ComposedSuggest from './composedComps/ComposedSuggest.js'
+import ComposedIconSwitch from './composedComps/ComposedIconSwitch.js'
 
 import {Dialog} from './localBrickComps/Dialog'
 import {DatePicker} from './localBrickComps/DatePicker'
@@ -138,7 +139,7 @@ export const COMP_TYPES = {
     },
     Link: {
         cnLabel: '链接',
-        enLabel: 'link',
+        enLabel: 'Link',
         Element: Link,
         editableProps: [
             {
@@ -872,4 +873,95 @@ export const COMP_TYPES = {
         Element: ComposedSuggest,
         editableProps: []
     },
+    Switch: {
+        enLabel: 'Switch',
+        cnLabel: '开关',
+        Element: Switch,
+        editableProps: [
+            {
+                desc: '状态',
+                key: 'checked',
+                type: 'bool',
+                defaultValue: false
+            },
+            {
+                desc: '尺寸',
+                key: 'size',
+                type: 'enum',
+                options: [
+                    {value: 'xs', label: '超小号'},
+                    {value: 'sm', label: '小号'},
+                    {value: 'md', label: '中号'},
+                ],
+                defaultValue: 'sm'
+            },
+            {
+                desc: '开启状态标签',
+                key: 'checkedLabel',
+                type: 'string',
+                defaultValue: ''
+            },
+            {
+                desc: '关闭状态标签',
+                key: 'uncheckedLabel',
+                type: 'string',
+                defaultValue: ''
+            },
+            {
+                desc: '禁用',
+                key: 'disabled',
+                type: 'bool',
+                defaultValue: false
+            },
+            {
+                desc: '加载中',
+                key: 'loading',
+                type: 'bool',
+                defaultValue: false
+            },
+        ]
+    },
+    ComposedIconSwitch: {
+        enLabel: 'Switch',
+        cnLabel: '开关',
+        Element: ComposedIconSwitch,
+        editableProps: [
+            {
+                desc: '状态',
+                key: 'checked',
+                type: 'bool',
+                defaultValue: false
+            },
+            {
+                desc: '尺寸',
+                key: 'size',
+                type: 'enum',
+                options: [
+                    {value: 'xs', label: '超小号'},
+                    {value: 'sm', label: '小号'},
+                    {value: 'md', label: '中号'},
+                ],
+                defaultValue: 'sm'
+            },
+            {
+                desc: '使用图标标签',
+                key: 'iconLabel',
+                type: 'bool',
+                defaultValue: false
+            },
+            {
+                desc: '禁用',
+                key: 'disabled',
+                type: 'bool',
+                defaultValue: false
+            },
+            {
+                desc: '加载中',
+                key: 'loading',
+                type: 'bool',
+                defaultValue: false
+            },
+        ]
+    },
+
 }

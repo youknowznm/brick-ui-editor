@@ -304,10 +304,10 @@ export default class AttrEditorView extends React.Component {
                         triggerConfirmFlag(false)
                     }}
                 >
-                    <DialogTitle>确认删除？</DialogTitle>
+                    <DialogTitle>确认移除？</DialogTitle>
                     <DialogContent>
                         <DialogContentText>
-                            删除的元素无法还原。
+                            移除的组件无法还原。
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>

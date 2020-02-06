@@ -79,13 +79,12 @@ class MainState extends BaseModel {
         })
         this.usedCompsDataArray.splice(targetIndex, 1)
         this.saveUsedCompData()
-        // this.toast('已成功删除')
     }
 
     @action clearAll = () => {
         this.usedCompsDataArray = []
         this.saveUsedCompData()
-        this.toast('已清空所有元素。')
+        this.toast('已移除所有组件。')
     }
 
     loadUsedCompData = () => {

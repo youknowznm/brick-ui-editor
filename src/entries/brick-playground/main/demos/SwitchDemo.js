@@ -9,6 +9,9 @@ import wrapDemoComp from '../utils/wrapDemoComp'
 import {Switch as OriginSwitch} from '@befe/brick'
 const Switch = wrapDemoComp(OriginSwitch)
 
+import OriginComposedIconSwitch from '../composedComps/ComposedIconSwitch'
+const ComposedIconSwitch = wrapDemoComp(OriginComposedIconSwitch)
+
 const SwitchDemo = () => {
 
     const [checked, setChecked] = React.useState(true)
@@ -27,10 +30,10 @@ const SwitchDemo = () => {
         {/* ===== 0 basic ===== */}
         <div>
             <Switch
-                checked={true}
+                defaultChecked={true}
             />
             <Switch
-                checked={false}
+                defaultChecked={false}
             />
             <Switch
                 checked={true}
@@ -45,8 +48,13 @@ const SwitchDemo = () => {
                 checkedLabel={'启用'}
                 uncheckedLabel={'停用'}
             />
-            <Switch
+            <ComposedIconSwitch
                 size={'md'}
+                iconLabel={true}
+            />
+            <ComposedIconSwitch
+                size={'md'}
+                disabled={true}
                 iconLabel={true}
             />
         </div>
@@ -56,7 +64,9 @@ const SwitchDemo = () => {
             <Switch
                 size="xs"
             />
-            <Switch />
+            <Switch
+                size="sm"
+            />
             <Switch
                 size={'md'}
             />
@@ -69,6 +79,7 @@ const SwitchDemo = () => {
                 loading={true}
             />
             <Switch
+                size="sm"
                 loading={true}
             />
             <Switch
