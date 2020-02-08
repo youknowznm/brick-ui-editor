@@ -19,7 +19,7 @@ export default class ComposedMenu extends React.Component {
         group3Label: '',
         group3Type: 'group', // popper
         group3MenuItems: [],
-        width: 200,
+        width: 450,
     }
 
     processOptions = index => {
@@ -48,14 +48,12 @@ export default class ComposedMenu extends React.Component {
     }
 
     render() {
-
         const {
             width,
             menuItems,
             layout,
             size,
         } = this.props
-
 
         return <div
             className="composed-menu"
@@ -82,9 +80,7 @@ export default class ComposedMenu extends React.Component {
                 {this.processOptions(2)}
                 {this.processOptions(3)}
             </Menu>
-
         </div>
-
     }
 }
 

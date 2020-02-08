@@ -79,6 +79,7 @@ export default class ComposedHeadNav extends React.Component {
         }
 
         return <div
+            className="composed-head-nav"
             style={{
                 width: `${width}px`
             }}

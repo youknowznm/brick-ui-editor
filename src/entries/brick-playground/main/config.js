@@ -1,30 +1,5 @@
 import * as React from "react";
 
-import {
-    // Button,
-    // Icon,
-    Link,
-    // Collapse,
-    // Dialog,
-    // Popover,
-    Tabs,
-    FileList,
-    // Table,
-    Checkbox,
-    // DatePicker,
-    Input,
-    Radio,
-    Select,
-    // Suggest,
-    Switch,
-    // Textarea,
-    Alert,
-    Breadcrumb,
-    HeadNav,
-    Menu,
-    Pagination
-} from '@befe/brick'
-
 import ComposedButton from './composedComps/Button.js'
 import ComposedIcon from './composedComps/Icon.js'
 import ComposedLink from './composedComps/Link.js'
@@ -51,12 +26,9 @@ import {
 import ComposedTextarea from './composedComps/Textarea.js'
 import ComposedAlert from './composedComps/Alert.js'
 import ComposedBreadcrumb from './composedComps/Breadcrumb.js'
-import ComposedHeadNav from './composedComps/ComposedHeadNav.js'
-import ComposedMenu from './composedComps/ComposedMenu.js'
-import ComposedPagination from './composedComps/ComposedPagination.js'
-
-import {Dialog} from './localBrickComps/Dialog'
-// import {DatePicker} from './localBrickComps/DatePicker'
+import ComposedHeadNav from './composedComps/HeadNav.js'
+import ComposedMenu from './composedComps/Menu.js'
+import ComposedPagination from './composedComps/Pagination.js'
 
 const getMenuConfigList = ({
                                itemKey = 'id',

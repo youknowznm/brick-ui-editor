@@ -15,13 +15,13 @@ export default class ComposedPagination extends React.Component {
         showSizeOptions: true,
         showJumper: true,
         width: 750,
-        height: 40,
+        // height: 50,
     }
 
     render() {
         const {
             width,
-            height,
+            // height,
             ...restProps
         } = this.props
 
@@ -29,7 +29,7 @@ export default class ComposedPagination extends React.Component {
             className="composed-pagination"
             style={{
                 width: `${width}px`,
-                height: `${height}px`,
+                height: `${50}px`,
             }}
         >
             <Pagination

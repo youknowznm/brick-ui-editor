@@ -58,9 +58,6 @@ const AlertDemo = () => {
             <Alert headline={longHeadline + longHeadline} content={longText} icon={true} extra={extra} />
             <Alert headline={longHeadline + longHeadline} content={longText} icon={true} closable={true} extra={extra} />
         </div>
-        <Divider className="demo-block-separator" />
-        {/* ===== 1 size ===== */}
-
     </div>
 }
 
