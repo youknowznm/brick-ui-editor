@@ -4,20 +4,14 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-// import {Dialog} from '../localBrickComps/Dialog'
-
-import {Dialog as OriginDialog} from '../localBrickComps/Dialog'
-const Dialog = wrapDemoComp(OriginDialog)
+import _Dialog from '../composedComps/Dialog'
+const Dialog = wrapDemoComp(_Dialog)
 
 const DialogDemo = () => {
     return <div className="demo-block dialog-demo-block">
         {/* ===== 0 basic ===== */}
         <Dialog
             headline="弹窗标题"
-            type="error"
-            height="md"
-            visible={true}
-            // portalContainer={() => document.querySelector('.dialog-demo-block')}
         >
             弹窗内容
         </Dialog>

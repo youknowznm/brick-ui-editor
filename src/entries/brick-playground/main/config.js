@@ -29,6 +29,7 @@ import ComposedButton from './composedComps/Button.js'
 import ComposedIcon from './composedComps/Icon.js'
 import ComposedLink from './composedComps/Link.js'
 import ComposedCollapse from './composedComps/Collapse.js'
+import ComposedDialog from './composedComps/Dialog.js'
 import ComposedPopover from './composedComps/ComposedPopover.js'
 import ComposedPopoverConfirm from './composedComps/ComposedPopoverConfirm.js'
 import ComposedTabs from './composedComps/ComposedTabs.js'
@@ -320,10 +321,10 @@ export const COMP_TYPES = {
             },
         ]
     },
-    Dialog: {
+    ComposedDialog: {
         enLabel: 'Dialog',
         cnLabel: '对话框',
-        Element: Dialog,
+        Element: ComposedDialog,
         editableProps: [
             {
                 desc: '标题',
@@ -347,6 +348,12 @@ export const COMP_TYPES = {
                     {value: 'xl', label: '特大号'}
                 ],
                 defaultValue: 'md'
+            },
+            {
+                desc: '高度',
+                key: 'height',
+                type: 'number',
+                min: 290
             },
         ]
     },

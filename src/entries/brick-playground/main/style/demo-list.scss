@@ -95,8 +95,8 @@
         //    display: inline-block;
         //  }
         //}
-        .dialog-demo-block {
-        }
+        //.dialog-demo-block {
+        //}
         .popover-demo-block {
           .section-basic {
             position: relative;
@@ -235,4 +235,16 @@
 }
 .brick-link {
   display: inline-block;
+}
+.brick-dialog-wrap {
+  margin: 0 !important;
+  border: 1px solid #ccc;
+  .brick-close-x {
+    position: absolute;
+    right: 21px;
+    top: 13px;
+  }
+  .brick-dialog-foot {
+    text-align: center;
+  }
 }

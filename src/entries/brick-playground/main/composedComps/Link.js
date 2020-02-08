@@ -12,7 +12,6 @@ export default class ComposedLink extends React.Component {
         type: 'normal',
         size: 'sm',
         disabled: false,
-        // width: 180
     }
 
     render() {
@@ -23,9 +22,6 @@ export default class ComposedLink extends React.Component {
 
         return <Link
             className="composed-link"
-            // style={{
-            //     width: `${width}px`
-            // }}
             {...restProps}
         />
     }

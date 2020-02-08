@@ -8,8 +8,6 @@ export default class ComposedButton extends React.Component {
     static displayName = 'ComposedButton'
 
     static defaultProps = {
-        width: 30,
-        height: 20,
         children: '',
         type: 'normal',
         size: 'sm',
@@ -19,6 +17,8 @@ export default class ComposedButton extends React.Component {
         loadingIconName: '',
         disabled: false,
         loading: false,
+        // width: 30,
+        // height: 20,
     }
 
     render() {
@@ -26,17 +26,15 @@ export default class ComposedButton extends React.Component {
             width,
             height,
             iconName,
+            content,
             loadingIconName,
             ...restProps
         } = this.props
         return <Button
             className="composed-button"
-            style={{
-                // width: `${width}px`
-            }}
             icon={getSvgByName(iconName)}
             loadingIcon={getSvgByName(loadingIconName)}
             {...restProps}
-        />
+       />
     }
 }

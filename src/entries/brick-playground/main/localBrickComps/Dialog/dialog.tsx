@@ -73,6 +73,11 @@ export interface DialogProps extends PropsFromModal {
      * 操作按钮的位置
      */
     actionsAlign?: 'left' | 'center' | 'right'
+
+    /**
+     * @zhangenming 从外部控制 dialog-body 的高度
+     */
+    height?: number
 }
 
 const componentLocale = createComponentLocale('dialog', {
@@ -197,7 +202,8 @@ export class Dialog extends React.Component<DialogProps> {
             )
         }
 
-        return isPlainBody ? <DialogBody>{this.props.children}</DialogBody> : null
+        // @zhangenming
+        return isPlainBody ? <DialogBody height={this.props.height}>{this.props.children}</DialogBody> : null
     }
 
     renderActions() {

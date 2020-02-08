@@ -50,18 +50,18 @@ class MainState extends BaseModel {
             originName,
             originProps
         } = data
-        const compTypeData = COMP_TYPES[originName]
-        for (let propType of compTypeData.editableProps) {
-            const {
-                key,
-                type,
-                defaultValue = '' // svg, children
-            } = propType
-            // 未显式声明时, 使用 default prop value
-            if (originProps[key] === undefined) {
-                originProps[key] = defaultValue
-            }
-        }
+        // const compTypeData = COMP_TYPES[originName]
+        // for (let propType of compTypeData.editableProps) {
+        //     const {
+        //         key,
+        //         type,
+        //         defaultValue = '' // svg, children
+        //     } = propType
+        //     // 未显式声明时, 使用 default prop value
+        //     if (originProps[key] === undefined) {
+        //         originProps[key] = defaultValue
+        //     }
+        // }
         data.originProps = originProps
         data.deltaX = 0
         data.deltaY = 0
