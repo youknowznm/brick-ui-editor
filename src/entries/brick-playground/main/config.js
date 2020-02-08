@@ -42,7 +42,7 @@ import ComposedRadioGroup from './composedComps/RadioGroup.js'
 import {
     ComposedSelectSingle,
     ComposedSelectMultiple
-} from './composedComps/ComposedSelect.js'
+} from './composedComps/Select.js'
 import ComposedSuggest from './composedComps/ComposedSuggest.js'
 import ComposedIconSwitch from './composedComps/ComposedIconSwitch.js'
 import ComposedTextarea from './composedComps/ComposedTextarea.js'
@@ -996,10 +996,15 @@ export const COMP_TYPES = {
         ]
     },
     ComposedSelectSingle: {
-        enLabel: 'Select',
+        enLabel: 'SelectSingle',
         cnLabel: '选项列表(单选)',
         Element: ComposedSelectSingle,
         editableProps: [
+            {
+                desc: '宽度',
+                key: 'width',
+                type: 'number',
+            },
             {
                 desc: '尺寸',
                 key: 'size',
@@ -1031,7 +1036,7 @@ export const COMP_TYPES = {
         ]
     },
     ComposedSelectMultiple: {
-        enLabel: 'Select',
+        enLabel: 'SelectMultiple',
         cnLabel: '选项列表(多选)',
         Element: ComposedSelectMultiple,
         editableProps: [

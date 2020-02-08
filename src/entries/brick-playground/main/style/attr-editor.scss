@@ -14,25 +14,11 @@
         position: relative;
         padding: 0 15px;
         height: 60px;
-        * {
+        .label-text {
+          line-height: 60px;
           font-weight: lighter;
           user-select: none;
-        }
-        .en {
-          position: absolute;
-          left: 15px;
-          top: 50%;
-          transform: translateY(-50%);
-          max-width: 220px;
-          overflow: hidden;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-        }
-        .cn {
-          position: absolute;
-          right: 15px;
-          top: 50%;
-          transform: translateY(-50%);
+          //border-bottom: 2px solid;
         }
       }
       .title {

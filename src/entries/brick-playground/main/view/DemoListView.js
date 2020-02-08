@@ -26,7 +26,8 @@ import CheckboxGroupDemo from '../demos/CheckboxGroupDemo'
 import DatePickerDemo from '../demos/DatePickerDemo'
 import InputDemo from '../demos/InputDemo'
 import RadioDemo from '../demos/RadioGroupDemo'
-import SelectDemo from '../demos/SelectDemo'
+import SelectSingleDemo from '../demos/SelectSingleDemo'
+import SelectMultipleDemo from '../demos/SelectMultipleDemo'
 import SuggestDemo from '../demos/SuggestDemo'
 import SwitchDemo from '../demos/SwitchDemo'
 import TextareaDemo from '../demos/TextareaDemo'
@@ -105,7 +106,8 @@ export default class DemoListView extends React.Component {
             DatePickerDemo,
             InputDemo,
             RadioDemo,
-            SelectDemo,
+            SelectSingleDemo,
+            SelectMultipleDemo,
             SuggestDemo,
             SwitchDemo,
             TextareaDemo,

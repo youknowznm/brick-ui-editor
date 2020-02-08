@@ -99,8 +99,10 @@ export default class AttrEditorView extends React.Component {
         } = activeComponentData
 
         const compTypeData = COMP_TYPES[originName]
-        const {
-            editableProps
+        let {
+            editableProps,
+            enLabel,
+            cnLabel
         } = compTypeData
 
         const propInputs = editableProps.map(item => {
@@ -239,18 +241,11 @@ export default class AttrEditorView extends React.Component {
         return <div className="attr-editor-content">
             <div className="label">
                 <Typography
-                    className="en"
-                    variant="h4"
-                    title={compTypeData.enLabel}
-                >
-                    {compTypeData.enLabel}
-                </Typography>
-                <Typography
-                    className="cn"
+                    className="label-text"
                     variant="h5"
-                    title={compTypeData.cnLabel}
+                    title={enLabel}
                 >
-                    {compTypeData.cnLabel}
+                    {enLabel} {cnLabel}
                 </Typography>
             </div>
             <Divider />
