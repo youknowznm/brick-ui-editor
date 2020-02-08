@@ -95,7 +95,9 @@ export default class ControlPanelView extends React.Component {
                 variant="outlined"
                 disabled={this.props.usedCompsDataArray.length === 0}
                 onClick={() => {
-                    triggerConfirmFlag(true)
+                    // TODO: 待移除
+                    // triggerConfirmFlag(true)
+                    this.props.clearAll()
                 }}
             >
                 清空画布

@@ -54,23 +54,6 @@ export default class PlaygroundCompWrap extends React.Component {
         return COMP_TYPES[this.props.originName]
     }
 
-    get processedOriginCompProps() {
-        let {
-            originProps
-        } = this.props
-        originProps = toJS(originProps)
-        for (let propType of this.compTypeData.editableProps) {
-            const {
-                key,
-                type,
-            } = propType
-            if (type === 'svg') {
-                // originProps[key] = getSvgByName(originProps[key])
-            }
-        }
-        return originProps
-    }
-
     processWrapDOMRef = wrapDOM => {
         this.wrapDOM = wrapDOM
     }
@@ -256,7 +239,6 @@ export default class PlaygroundCompWrap extends React.Component {
             <div
                 className={c(
                     'playground-comp-wrap',
-                    props.metaKeyPressing && 'meta-key-pressed',
                     this.isSelected && 'selected',
                     // TODO: wrap 尺寸不对, 到底是不是定位的原因
                     isAbsolutePosition && 'is-absolute-positon'
@@ -272,7 +254,7 @@ export default class PlaygroundCompWrap extends React.Component {
                     this.wrapCompInControllers(
                         <this.compTypeData.Element
                             ref={this.processContentDOMRef}
-                            {...this.processedOriginCompProps}
+                            {...originProps}
                         />
                     )
                 }

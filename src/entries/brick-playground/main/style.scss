@@ -49,6 +49,17 @@ $aligner-color: #419bf9;
       margin-top: -10px;
     }
   }
+  &.meta-key-pressed {
+    .action-layer {
+      display: block;
+    }
+    .playground-comp-wrap {
+      cursor: grab;
+      //.action-layer {
+      //  display: block;
+      //}
+    }
+  }
 }
 
 .brick-dialog-wrap {

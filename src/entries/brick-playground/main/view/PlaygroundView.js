@@ -28,9 +28,6 @@ export default class PlaygroundView extends React.Component {
         // 已使用的组件数据数组
         usedCompsDataArray: MobxPropTypes.arrayOrObservableArray.isRequired,
 
-        // 是否按下了 meta key
-        metaKeyPressing: PropTypes.bool.isRequired,
-
         // 是否打开 demo 列表抽屉
         showDemoDrawer: PropTypes.bool.isRequired,
 
@@ -66,7 +63,6 @@ export default class PlaygroundView extends React.Component {
             playgroundWidth,
             playgroundHeight,
             usedCompsDataArray,
-            metaKeyPressing,
             activeComponentId,
             setActiveComponentId,
             triggerDemoDrawer,
@@ -105,7 +101,6 @@ export default class PlaygroundView extends React.Component {
                     //     type: "intensive"
                     //     children: "加强"
                     //     root: {
-                    //         metaKeyPressing: true,
                     //             showControlPanelDrawer: false,
                     //             triggerControlPanelDrawer: ƒ,
                     //             triggerDemoDrawer: ƒ,
@@ -125,7 +120,6 @@ export default class PlaygroundView extends React.Component {
                         wrapHeight={item.wrapHeight}
                         deltaX={item.deltaX}
                         deltaY={item.deltaY}
-                        metaKeyPressing={metaKeyPressing}
                         activeComponentId={activeComponentId}
                         setActiveComponentId={setActiveComponentId}
                         triggerDemoDrawer={triggerDemoDrawer}

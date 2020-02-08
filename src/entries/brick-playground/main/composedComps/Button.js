@@ -5,7 +5,7 @@ import getSvgByName from "../utils/getSvgByName";
 
 export default class ComposedButton extends React.Component {
 
-    static displayName = 'Button'
+    static displayName = 'ComposedButton'
 
     static defaultProps = {
         width: 30,

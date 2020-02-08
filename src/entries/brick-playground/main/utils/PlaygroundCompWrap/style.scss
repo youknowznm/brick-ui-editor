@@ -86,12 +86,6 @@
       }
     }
   }
-  &.meta-key-pressed {
-    cursor: grab;
-    .action-layer {
-      display: block;
-    }
-  }
   &.selected {
     cursor: grab;
     .selected-layer {

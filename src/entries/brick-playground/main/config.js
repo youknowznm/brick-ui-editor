@@ -2,7 +2,7 @@ import * as React from "react";
 
 import {
     // Button,
-    Icon,
+    // Icon,
     Link,
     // Collapse,
     // Dialog,
@@ -25,7 +25,8 @@ import {
     Pagination
 } from '@befe/brick'
 
-import Button from './composedComps/ComposedButton.js'
+import ComposedButton from './composedComps/Button.js'
+import ComposedIcon from './composedComps/Icon.js'
 import ComposedCollapse from './composedComps/ComposedCollapse.js'
 import ComposedPopover from './composedComps/ComposedPopover.js'
 import ComposedPopoverConfirm from './composedComps/ComposedPopoverConfirm.js'
@@ -130,10 +131,10 @@ const getMenuConfigList = ({
 }
 
 export const COMP_TYPES = {
-    Button: {
+    ComposedButton: {
         cnLabel: '按钮',
         enLabel: 'Button',
-        Element: Button,
+        Element: ComposedButton,
         editableProps: [
             {
                 desc: '内容',
@@ -214,10 +215,10 @@ export const COMP_TYPES = {
             },
         ],
     },
-    Icon: {
+    ComposedIcon: {
         cnLabel: '图标',
         enLabel: 'Icon',
-        Element: Icon,
+        Element: ComposedIcon,
         editableProps: [
             {
                 desc: '图标',

@@ -145,18 +145,19 @@ export default class extends React.Component {
         const {props, local} = this
         const {mainState} = local
         return <Provider root={mainState}>
-            <div className="index-page">
+            <div className={c(
+                'index-page',
+                mainState.metaKeyPressing && 'meta-key-pressed'
+            )}>
                 <DemoListView
                     // showDemoDrawer={true}
                     showDemoDrawer={mainState.showDemoDrawer}
-                    metaKeyPressing={mainState.metaKeyPressing}
                 />
                 {this.renderDemoDrawerTrigger()}
                 <PlaygroundView
                     playgroundWidth={mainState.playgroundWidth}
                     playgroundHeight={mainState.playgroundHeight}
                     usedCompsDataArray={mainState.usedCompsDataArray}
-                    metaKeyPressing={mainState.metaKeyPressing}
                     showDemoDrawer={mainState.showDemoDrawer}
                     showControlPanelDrawer={mainState.showControlPanelDrawer}
                     triggerDemoDrawer={mainState.triggerDemoDrawer}

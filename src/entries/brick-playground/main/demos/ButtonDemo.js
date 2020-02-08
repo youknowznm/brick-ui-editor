@@ -4,10 +4,7 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-// import {Button as OriginButton} from '@befe/brick'
-import {SvgEdit, SvgGear} from '@befe/brick-icon'
-
-import _Button from '../composedComps/ComposedButton'
+import _Button from '../composedComps/Button'
 const Button = wrapDemoComp(_Button)
 
 const ButtonDemo = () => {

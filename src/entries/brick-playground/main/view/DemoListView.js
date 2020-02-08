@@ -53,9 +53,6 @@ export default class DemoListView extends React.Component {
 
         // 是否打开 demo 列表抽屉
         showDemoDrawer: PropTypes.bool.isRequired,
-
-        // 是否按下了 meta key
-        metaKeyPressing: PropTypes.bool.isRequired,
     }
 
     local = {
@@ -70,7 +67,7 @@ export default class DemoListView extends React.Component {
     componentDidMount() {
         // TODO: 待移除
         this.local.demoListState.setProps({
-            expandedDemoPanelLabel: 'Button'
+            expandedDemoPanelLabel: 'Icon'
         })
     }
 
@@ -123,6 +120,7 @@ export default class DemoListView extends React.Component {
                         const shouldRenderDemo = isExpanded
                             || label === 'Dialog'
                             || label === 'Table'
+                            || label === 'Button'
                         return <ExpansionPanel
                             className="demo-exp-panel"
                             key={label}
@@ -140,7 +138,7 @@ export default class DemoListView extends React.Component {
                             <ExpansionPanelDetails
                                 className="content"
                             >
-                                {shouldRenderDemo && <Demo metaKeyPressing={metaKeyPressing} />}
+                                {shouldRenderDemo && <Demo />}
                             </ExpansionPanelDetails>
                         </ExpansionPanel>
                     })

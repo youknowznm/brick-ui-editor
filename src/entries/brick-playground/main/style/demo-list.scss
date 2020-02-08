@@ -223,6 +223,8 @@
 }
 
 
-.brick-button-content {
-  white-space: nowrap;
+.brick-button {
+  * {
+    white-space: nowrap;
+  }
 }

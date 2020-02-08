@@ -8,8 +8,8 @@ import {ICON_GROUP_MAP_MAIN} from '@befe/brick-icon/src/main/group-map'
 
 import {capitalize} from "lodash-es";
 
-import {Icon as OriginIcon} from '@befe/brick'
-const Icon = wrapDemoComp(OriginIcon)
+import _Icon from '../composedComps/Icon'
+const Icon = wrapDemoComp(_Icon)
 
 const IconDemo = () => {
 
@@ -17,7 +17,7 @@ const IconDemo = () => {
         const svg = group[iconName]
         return (
             <li key={iconName}>
-                <Icon svg={svg} />
+                <Icon svgName={svg.name} />
                 <p>{iconName}</p>
             </li>
         )
