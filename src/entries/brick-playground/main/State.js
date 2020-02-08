@@ -62,7 +62,6 @@ class MainState extends BaseModel {
                 originProps[key] = defaultValue
             }
         }
-        originProps.portalContainer = () => document.querySelector('.playground-content')
         data.originProps = originProps
         data.deltaX = 0
         data.deltaY = 0

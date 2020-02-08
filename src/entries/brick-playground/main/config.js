@@ -27,7 +27,8 @@ import {
 
 import ComposedButton from './composedComps/Button.js'
 import ComposedIcon from './composedComps/Icon.js'
-import ComposedCollapse from './composedComps/ComposedCollapse.js'
+import ComposedLink from './composedComps/Link.js'
+import ComposedCollapse from './composedComps/Collapse.js'
 import ComposedPopover from './composedComps/ComposedPopover.js'
 import ComposedPopoverConfirm from './composedComps/ComposedPopoverConfirm.js'
 import ComposedTabs from './composedComps/ComposedTabs.js'
@@ -52,10 +53,10 @@ import {Dialog} from './localBrickComps/Dialog'
 import {DatePicker} from './localBrickComps/DatePicker'
 
 const getMenuConfigList = ({
-    itemKey = 'id',
-    showType = false,
-    canDisable = false
-}) => {
+                               itemKey = 'id',
+                               showType = false,
+                               canDisable = false
+                           }) => {
     const menuConfigList = [{
         desc: '主菜单列表',
         key: 'menuItems',
@@ -227,10 +228,10 @@ export const COMP_TYPES = {
             },
         ],
     },
-    Link: {
+    ComposedLink: {
         cnLabel: '链接',
         enLabel: 'Link',
-        Element: Link,
+        Element: ComposedLink,
         editableProps: [
             {
                 desc: '内容',

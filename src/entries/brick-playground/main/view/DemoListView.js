@@ -45,6 +45,7 @@ import {PortalContainerProvider} from '../utils/PortalContainerContext'
 import '../style/demo-list.scss'
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import Paper from "@material-ui/core/Paper";
+import {COMP_TYPES} from "../config";
 
 @observer
 export default class DemoListView extends React.Component {
@@ -67,14 +68,22 @@ export default class DemoListView extends React.Component {
     componentDidMount() {
         // TODO: 待移除
         this.local.demoListState.setProps({
-            expandedDemoPanelLabel: 'Icon'
+            expandedDemoPanelLabel: 'Collapse'
         })
     }
 
+    getCnLabel = label => {
+        for (let item in COMP_TYPES) {
+            if (COMP_TYPES[item].enLabel === label) {
+                return COMP_TYPES[item].cnLabel
+            }
+        }
+        return ''
+    }
+
     renderDemoPanels = () => {
-        const {local, props} = this
+        const {local, props, getCnLabel} = this
         const {demoListState} = local
-        const {metaKeyPressing} = props
         const {
             expandedDemoPanelLabel,
             setExpandedDemoPanelLabel
@@ -115,6 +124,7 @@ export default class DemoListView extends React.Component {
                         if (regArr) {
                             label = regArr[1]
                         }
+
                         const isExpanded = expandedDemoPanelLabel === label
                         // Dialog 必须从初始保持渲染状态
                         const shouldRenderDemo = isExpanded
@@ -133,7 +143,10 @@ export default class DemoListView extends React.Component {
                                 className="title"
                                 expandIcon={<ExpandMoreIcon />}
                             >
-                                <Typography>{label}</Typography>
+                                <Typography>
+                                    <span>{label}</span>
+                                    <span className="cn-label">{getCnLabel(label)}</span>
+                                </Typography>
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails
                                 className="content"

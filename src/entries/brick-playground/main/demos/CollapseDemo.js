@@ -4,11 +4,8 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-// import {CollapsePanel} from '@befe/brick'
-
-// import {ComposedCollapse, CollapsePanel} from '@befe/brick'
-import OriginComposedCollapse from '../composedComps/ComposedCollapse.js'
-const ComposedCollapse = wrapDemoComp(OriginComposedCollapse)
+import _Collapse from '../composedComps/Collapse.js'
+const Collapse = wrapDemoComp(_Collapse)
 
 const CollapseDemo = () => {
     const defaultExpandedIds = []
@@ -38,7 +35,7 @@ const CollapseDemo = () => {
     return <div className="demo-block collapse-demo-block">
         {/* ===== 0 basic ===== */}
         <div>
-            <ComposedCollapse
+            <Collapse
                 singleExpanded={false}
                 defaultExpandedIds={defaultExpandedIds}
                 data={demoData}
@@ -47,7 +44,7 @@ const CollapseDemo = () => {
         <Divider className="demo-block-separator" />
         {/* ===== 1 被禁用 ===== */}
         <div>
-            <ComposedCollapse
+            <Collapse
                 singleExpanded={true}
                 defaultExpandedIds={defaultExpandedIds}
                 data={demoData.map((item, index) => Object.assign({}, item, {
@@ -58,7 +55,7 @@ const CollapseDemo = () => {
         <Divider className="demo-block-separator" />
         {/* ===== 2 图标位置 ===== */}
         <div>
-            <ComposedCollapse
+            <Collapse
                 expandIconPosition="right"
                 singleExpanded={false}
                 defaultExpandedIds={defaultExpandedIds}
@@ -68,7 +65,7 @@ const CollapseDemo = () => {
         <Divider className="demo-block-separator" />
         {/* ===== 3 自定义内容 ===== */}
         <div>
-            <ComposedCollapse
+            <Collapse
                 singleExpanded={false}
                 defaultExpandedIds={defaultExpandedIds}
                 data={demoData.map((item, index) => Object.assign({}, item, {

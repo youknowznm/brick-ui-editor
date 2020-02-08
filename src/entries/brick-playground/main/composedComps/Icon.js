@@ -3,8 +3,6 @@ import * as React from 'react'
 import {Icon} from '@befe/brick'
 import getSvgByName from "../utils/getSvgByName";
 
-import {SvgGear} from '@befe/brick-icon'
-
 export default class ComposedIcon extends React.Component {
 
     static displayName = 'ComposedIcon'
@@ -25,7 +23,7 @@ export default class ComposedIcon extends React.Component {
             className="composed-icon"
             style={{
                 // width: `${14}px`,
-                // height: `${15}px`,
+                // height: `${14}px`,
             }}
             svg={svg}
             {...restProps}

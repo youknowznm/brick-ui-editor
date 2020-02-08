@@ -43,7 +43,6 @@ export default class AttrEditorView extends React.Component {
         //     type: "intensive"
         //     children: "加强"
         //     root: {
-        //         metaKeyPressing: true,
         //             showControlPanelDrawer: false,
         //             triggerControlPanelDrawer: ƒ,
         //             triggerDemoDrawer: ƒ,

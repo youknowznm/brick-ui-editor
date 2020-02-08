@@ -49,6 +49,11 @@
             border-bottom: 1px solid $border-color;
             margin-bottom: -1px;
             min-height: 50px;
+            .cn-label {
+              color: #aaa;
+              font-weight: lighter;
+              margin-left: .5em;
+            }
           }
           .content {
             padding-left: 10px;
@@ -85,11 +90,11 @@
             }
           }
         }
-        .link-demo-block {
-          .brick-link {
-            display: inline-block;
-          }
-        }
+        //.link-demo-block {
+        //  .brick-link {
+        //    display: inline-block;
+        //  }
+        //}
         .dialog-demo-block {
         }
         .popover-demo-block {
@@ -141,11 +146,11 @@
             min-width: 750px;
           }
         }
-        .collapse-demo-block {
-          .brick-collapse {
-            min-width: 750px;
-          }
-        }
+        //.collapse-demo-block {
+        //  .brick-collapse {
+        //    min-width: 750px;
+        //  }
+        //}
         .checkbox-group-demo-block {
           .composed-checkbox-group {
             min-width: 750px;
@@ -227,4 +232,7 @@
   * {
     white-space: nowrap;
   }
+}
+.brick-link {
+  display: inline-block;
 }

@@ -4,9 +4,8 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-import {Link as OriginLink} from '@befe/brick'
-
-const Link = wrapDemoComp(OriginLink)
+import _ComposedLink from '../composedComps/Link'
+const Link = wrapDemoComp(_ComposedLink)
 
 const LinkDemo = () => {
     return <div className="demo-block link-demo-block">
@@ -25,13 +24,7 @@ const LinkDemo = () => {
         {/* ===== 1 size ===== */}
         <div>
             <div>
-                <Link>erp.baidu.com</Link>
-            </div>
-            <div>
                 <Link size={'sm'}>erp.baidu.com</Link>
-            </div>
-            <div style={{fontSize: '14px'}}>
-                <Link>erp.baidu.com</Link>
             </div>
             <div>
                 <Link size={'md'}>erp.baidu.com</Link>
