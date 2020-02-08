@@ -35,7 +35,7 @@ import ComposedPopoverConfirm from './composedComps/PopoverConfirm.js'
 import ComposedTabs from './composedComps/Tabs.js'
 import ComposedFileList from './composedComps/FileList.js'
 import ComposedTable from './composedComps/ComposedTable.js'
-import ComposedCheckboxGroup from './composedComps/ComposedCheckboxGroup.js'
+import ComposedCheckboxGroup from './composedComps/CheckboxGroup.js'
 import ComposedRadioGroup from './composedComps/ComposedRadioGroup.js'
 import ComposedInput from './composedComps/ComposedInput.js'
 import {
@@ -665,6 +665,11 @@ export const COMP_TYPES = {
                     //     columnType: 'string',
                     // },
                     {
+                        desc: '宽度',
+                        key: 'width',
+                        type: 'number',
+                    },
+                    {
                         title: '列标题',
                         field: 'thContent',
                         columnType: 'string',
@@ -756,6 +761,11 @@ export const COMP_TYPES = {
         cnLabel: '复选框',
         Element: ComposedCheckboxGroup,
         editableProps: [
+            {
+                desc: '宽度',
+                key: 'width',
+                type: 'number',
+            },
             {
                 desc: '类型',
                 key: 'type',

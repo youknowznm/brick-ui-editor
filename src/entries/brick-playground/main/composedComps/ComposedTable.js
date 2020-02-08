@@ -5,7 +5,6 @@ import {observable, toJS} from "mobx";
 import {Checkbox} from "@befe/brick-comp-checkbox";
 import {observer} from "mobx-react";
 
-@observer
 class ComposedTable extends React.Component {
 
     static displayName = 'ComposedTable'
@@ -15,7 +14,9 @@ class ComposedTable extends React.Component {
         columns: [],
         maxBodyHeight: 1000,
         useCheckbox: false,
-        operationsLabelsJoined: ""
+        operationsLabelsJoined: "",
+        width: 750,
+        // height: 300,
     }
 
     render() {
@@ -24,10 +25,16 @@ class ComposedTable extends React.Component {
             columns,
             useCheckbox,
             operationsLabelsJoined,
-            maxBodyHeight
+            maxBodyHeight,
+            width,
+            height,
         } = this.props
-        let _data = toJS(this.props.data)
-        let _columns = toJS(this.props.columns)
+        let _data = toJS(data).map((item, index) => {
+            return Object.assign({}, item, {
+                _index: index + 1
+            })
+        })
+        let _columns = toJS(columns)
         if (useCheckbox === true) {
             if (!_columns.some(item => item.key === '_checkbox')) {
                 _columns.unshift({
@@ -76,12 +83,20 @@ class ComposedTable extends React.Component {
             }
         }
 
-        return <Table
-            rowId="_index"
-            data={_data}
-            columns={_columns}
-            maxBodyHeight={maxBodyHeight}
-        />
+        return <div
+            className="composed-table"
+            style={{
+                width: `${width}px`,
+                // height: `${height}px`,
+            }}
+        >
+            <Table
+                rowId="_index"
+                data={_data}
+                columns={_columns}
+                maxBodyHeight={maxBodyHeight}
+            />
+        </div>
     }
 }
 

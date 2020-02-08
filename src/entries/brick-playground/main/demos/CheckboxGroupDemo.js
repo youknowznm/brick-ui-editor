@@ -4,17 +4,16 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-import {CheckboxGroup, GenericCheckboxGroupGroup} from '@befe/brick'
 
-import OriginComposedCheckboxGroup from '../composedComps/ComposedCheckboxGroup'
-const ComposedCheckboxGroup = wrapDemoComp(OriginComposedCheckboxGroup)
+import _CheckboxGroup from '../composedComps/CheckboxGroup'
+const CheckboxGroup = wrapDemoComp(_CheckboxGroup)
 
 const CheckboxDemo = () => {
 
     return <div className="demo-block checkbox-group-demo-block">
         {/* ===== 0 basic ===== */}
         <div>
-            <ComposedCheckboxGroup
+            <CheckboxGroup
                 defaultValue={['item_1']}
                 options={[
                     {value: 'item_1', label: 'item-1', checked: true},
@@ -27,7 +26,7 @@ const CheckboxDemo = () => {
         <Divider className="demo-block-separator" />
         {/* ===== 2 intermidiate ===== */}
         <div>
-            <ComposedCheckboxGroup
+            <CheckboxGroup
                 defaultValue={['item_1']}
                 size={'md'}
                 options={[
@@ -41,7 +40,7 @@ const CheckboxDemo = () => {
         <Divider className="demo-block-separator" />
         {/* ===== 3 intensive ===== */}
         <div>
-            <ComposedCheckboxGroup
+            <CheckboxGroup
                 type={'intensive'}
                 defaultValue={['item_1']}
                 options={[
@@ -55,7 +54,7 @@ const CheckboxDemo = () => {
         {/* ===== 4 large ===== */}
         <Divider className="demo-block-separator" />
         <div>
-            <ComposedCheckboxGroup
+            <CheckboxGroup
                 type={'intensive'}
                 size={'md'}
                 defaultValue={['item_1']}

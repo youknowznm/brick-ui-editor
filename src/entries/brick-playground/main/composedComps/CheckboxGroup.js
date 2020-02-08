@@ -17,17 +17,24 @@ export default class ComposedCheckboxGroup extends React.Component {
                 disabled: false,
                 checked: false,
             }
-        ]
+        ],
+        width: 400
     }
 
     render() {
         const {
             type,
-            defaultValue,
+            // defaultValue,
             size,
-            options
+            options,
+            width
         } = this.props
-        return <div className="composed-checkbox-group">
+        return <div
+            className="composed-checkbox-group"
+            style={{
+                width: `${width}px`
+            }}
+        >
             {
                 options.map((item, index) => {
                     return <Checkbox
@@ -40,7 +47,6 @@ export default class ComposedCheckboxGroup extends React.Component {
                     >
                         {item.label}
                     </Checkbox>
-
                 })
             }
         </div>
