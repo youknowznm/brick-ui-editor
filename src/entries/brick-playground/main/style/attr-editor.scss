@@ -23,6 +23,10 @@
           left: 15px;
           top: 50%;
           transform: translateY(-50%);
+          max-width: 220px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
         }
         .cn {
           position: absolute;

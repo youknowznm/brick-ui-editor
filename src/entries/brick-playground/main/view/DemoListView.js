@@ -18,6 +18,7 @@ import LinkDemo from '../demos/LinkDemo'
 import CollapseDemo from '../demos/CollapseDemo'
 import DialogDemo from '../demos/DialogDemo'
 import PopoverDemo from '../demos/PopoverDemo'
+import PopoverConfirmDemo from '../demos/PopoverConfirmDemo'
 import TabsDemo from '../demos/TabsDemo'
 import FileListDemo from '../demos/FileListDemo'
 import TableDemo from '../demos/TableDemo'
@@ -96,6 +97,7 @@ export default class DemoListView extends React.Component {
             CollapseDemo,
             DialogDemo,
             PopoverDemo,
+            PopoverConfirmDemo,
             TabsDemo,
             FileListDemo,
             TableDemo,
@@ -124,7 +126,6 @@ export default class DemoListView extends React.Component {
                         if (regArr) {
                             label = regArr[1]
                         }
-
                         const isExpanded = expandedDemoPanelLabel === label
                         // Dialog 必须从初始保持渲染状态
                         const shouldRenderDemo = isExpanded

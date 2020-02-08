@@ -238,10 +238,18 @@ export default class AttrEditorView extends React.Component {
 
         return <div className="attr-editor-content">
             <div className="label">
-                <Typography className="en" variant="h4">
+                <Typography
+                    className="en"
+                    variant="h4"
+                    title={compTypeData.enLabel}
+                >
                     {compTypeData.enLabel}
                 </Typography>
-                <Typography className="cn" variant="h5">
+                <Typography
+                    className="cn"
+                    variant="h5"
+                    title={compTypeData.cnLabel}
+                >
                     {compTypeData.cnLabel}
                 </Typography>
             </div>

@@ -30,8 +30,8 @@ import ComposedIcon from './composedComps/Icon.js'
 import ComposedLink from './composedComps/Link.js'
 import ComposedCollapse from './composedComps/Collapse.js'
 import ComposedDialog from './composedComps/Dialog.js'
-import ComposedPopover from './composedComps/ComposedPopover.js'
-import ComposedPopoverConfirm from './composedComps/ComposedPopoverConfirm.js'
+import ComposedPopover from './composedComps/Popover.js'
+import ComposedPopoverConfirm from './composedComps/PopoverConfirm.js'
 import ComposedTabs from './composedComps/ComposedTabs.js'
 import ComposedTable from './composedComps/ComposedTable.js'
 import ComposedCheckboxGroup from './composedComps/ComposedCheckboxGroup.js'
@@ -358,7 +358,7 @@ export const COMP_TYPES = {
         ]
     },
     ComposedPopover: {
-        cnLabel: '弹出框',
+        cnLabel: '弹出提示',
         enLabel: 'Popover',
         Element: ComposedPopover,
         editableProps: [
@@ -434,8 +434,7 @@ export const COMP_TYPES = {
         ]
     },
     ComposedPopoverConfirm: {
-        enLabel: 'Popover',
-        // enLabel: 'PopoverConfirm',
+        enLabel: 'PopoverConfirm',
         cnLabel: '弹出确认',
         Element: ComposedPopoverConfirm,
         editableProps: [
