@@ -3,19 +3,19 @@ import * as React from 'react'
 import wrapDemoComp from '../utils/wrapDemoComp'
 
 import {
-    ComposedSelectSingle as _SelectSingle,
+    ComposedSingleSelect as _SingleSelect,
 } from "../composedComps/Select";
 
-const SelectSingle = wrapDemoComp(_SelectSingle)
+const SingleSelect = wrapDemoComp(_SingleSelect)
 
-const SelectSingleDemo = () => {
+const SingleSelectDemo = () => {
 
     const sizeList = ['xs', 'sm', 'md', 'lg']
 
     const renderSelectBySize = size => {
         return (
             <div key={size}>
-                <SelectSingle
+                <SingleSelect
                     placeholder={'请选择'}
                     size={size}
                     {...optionProps}
@@ -52,4 +52,4 @@ const SelectSingleDemo = () => {
     </div>
 }
 
-export default SelectSingleDemo
+export default SingleSelectDemo

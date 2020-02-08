@@ -126,13 +126,10 @@
           margin: 0 10px 10px 0;
         }
         .switch-demo-block {
-          .brick-switch {
+          .switch-demo-wrap {
+            display: inline-block;
             margin-right: 10px;
           }
-        }
-        .composed-suggest,
-        .composed-select {
-          width: 200px;
         }
       }
     }

@@ -26,10 +26,11 @@ import CheckboxGroupDemo from '../demos/CheckboxGroupDemo'
 import DatePickerDemo from '../demos/DatePickerDemo'
 import InputDemo from '../demos/InputDemo'
 import RadioDemo from '../demos/RadioGroupDemo'
-import SelectSingleDemo from '../demos/SelectSingleDemo'
-import SelectMultipleDemo from '../demos/SelectMultipleDemo'
+import SingleSelectDemo from '../demos/SingleSelectDemo'
+import MultipleSelectDemo from '../demos/MultipleSelectDemo'
 import SuggestDemo from '../demos/SuggestDemo'
-import SwitchDemo from '../demos/SwitchDemo'
+import TextSwitchDemo from '../demos/TextSwitchDemo'
+import IconSwitchDemo from '../demos/IconSwitchDemo'
 import TextareaDemo from '../demos/TextareaDemo'
 import AlertDemo from '../demos/AlertDemo'
 import BreadcrumbDemo from '../demos/BreadcrumbDemo'
@@ -106,10 +107,11 @@ export default class DemoListView extends React.Component {
             DatePickerDemo,
             InputDemo,
             RadioDemo,
-            SelectSingleDemo,
-            SelectMultipleDemo,
+            SingleSelectDemo,
+            MultipleSelectDemo,
             SuggestDemo,
-            SwitchDemo,
+            TextSwitchDemo,
+            IconSwitchDemo,
             TextareaDemo,
             AlertDemo,
             // ToastDemo, // Toast 与 Alert UI 一致.

@@ -3,18 +3,18 @@ import * as React from 'react'
 import wrapDemoComp from '../utils/wrapDemoComp'
 
 import {
-    ComposedSelectMultiple as _SelectMultiple
+    ComposedMultipleSelect as _MultipleSelect
 } from "../composedComps/Select";
-const SelectMultiple = wrapDemoComp(_SelectMultiple)
+const MultipleSelect = wrapDemoComp(_MultipleSelect)
 
-const SelectMultipleDemo = () => {
+const MultipleSelectDemo = () => {
 
     const sizeList = ['xs', 'sm', 'md', 'lg']
 
     const renderSelectBySize = size => {
         return (
             <div key={size}>
-                <SelectMultiple
+                <MultipleSelect
                     placeholder={'请选择'}
                     size={size}
                     {...optionProps}
@@ -53,4 +53,4 @@ const SelectMultipleDemo = () => {
     </div>
 }
 
-export default SelectMultipleDemo
+export default MultipleSelectDemo

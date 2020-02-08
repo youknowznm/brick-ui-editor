@@ -82,12 +82,12 @@ const wrapComposedSelect = ({mode, displayName}) => {
     return ComposedSelect
 }
 
-export const ComposedSelectSingle = wrapComposedSelect({
+export const ComposedSingleSelect = wrapComposedSelect({
     mode: 'single',
-    displayName: 'ComposedSelectSingle'
+    displayName: 'ComposedSingleSelect'
 })
 
-export const ComposedSelectMultiple = wrapComposedSelect({
+export const ComposedMultipleSelect = wrapComposedSelect({
     mode: 'multiple',
-    displayName: 'ComposedSelectMultiple'
+    displayName: 'ComposedMultipleSelect'
 })

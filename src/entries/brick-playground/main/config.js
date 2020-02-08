@@ -15,7 +15,7 @@ import {
     Input,
     Radio,
     Select,
-    Suggest,
+    // Suggest,
     Switch,
     Textarea,
     Alert,
@@ -40,11 +40,14 @@ import ComposedDatePicker from './composedComps/DatePicker.js'
 import ComposedInput from './composedComps/Input.js'
 import ComposedRadioGroup from './composedComps/RadioGroup.js'
 import {
-    ComposedSelectSingle,
-    ComposedSelectMultiple
+    ComposedSingleSelect,
+    ComposedMultipleSelect
 } from './composedComps/Select.js'
-import ComposedSuggest from './composedComps/ComposedSuggest.js'
-import ComposedIconSwitch from './composedComps/ComposedIconSwitch.js'
+import ComposedSuggest from './composedComps/Suggest.js'
+import {
+    ComposedIconSwitch,
+    ComposedTextSwitch
+} from './composedComps/Switch.js'
 import ComposedTextarea from './composedComps/ComposedTextarea.js'
 import ComposedAlert from './composedComps/ComposedAlert.js'
 import ComposedBreadcrumb from './composedComps/ComposedBreadcrumb.js'
@@ -995,10 +998,10 @@ export const COMP_TYPES = {
             }
         ]
     },
-    ComposedSelectSingle: {
-        enLabel: 'SelectSingle',
+    ComposedSingleSelect: {
+        enLabel: 'SingleSelect',
         cnLabel: '选项列表(单选)',
-        Element: ComposedSelectSingle,
+        Element: ComposedSingleSelect,
         editableProps: [
             {
                 desc: '宽度',
@@ -1035,10 +1038,10 @@ export const COMP_TYPES = {
             })
         ]
     },
-    ComposedSelectMultiple: {
-        enLabel: 'SelectMultiple',
+    ComposedMultipleSelect: {
+        enLabel: 'MultipleSelect',
         cnLabel: '选项列表(多选)',
-        Element: ComposedSelectMultiple,
+        Element: ComposedMultipleSelect,
         editableProps: [
             {
                 desc: '宽度',
@@ -1102,10 +1105,10 @@ export const COMP_TYPES = {
             })
         ]
     },
-    Switch: {
-        enLabel: 'Switch',
-        cnLabel: '开关',
-        Element: Switch,
+    ComposedTextSwitch: {
+        enLabel: 'TextSwitch',
+        cnLabel: '文字开关',
+        Element: ComposedTextSwitch,
         editableProps: [
             {
                 desc: '状态',
@@ -1151,8 +1154,8 @@ export const COMP_TYPES = {
         ]
     },
     ComposedIconSwitch: {
-        enLabel: 'Switch',
-        cnLabel: '开关',
+        enLabel: 'IconSwitch',
+        cnLabel: '图标开关',
         Element: ComposedIconSwitch,
         editableProps: [
             {
@@ -1173,10 +1176,16 @@ export const COMP_TYPES = {
                 defaultValue: 'sm'
             },
             {
-                desc: '使用图标标签',
-                key: 'iconLabel',
-                type: 'bool',
-                defaultValue: false
+                desc: '开启状态标签',
+                key: 'checkedLabel',
+                type: 'string',
+                defaultValue: ''
+            },
+            {
+                desc: '关闭状态标签',
+                key: 'uncheckedLabel',
+                type: 'string',
+                defaultValue: ''
             },
             {
                 desc: '禁用',
