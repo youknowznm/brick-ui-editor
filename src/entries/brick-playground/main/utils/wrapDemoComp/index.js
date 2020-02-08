@@ -46,12 +46,13 @@ const wrapDemoComp = OriginComponent => {
                                 // } else {
                                 //     delete ownProps[propKey]
                                 // }
-                                const isIcon = ['icon', 'loadingIcon'].indexOf(propKey) > -1
-                                if (isIcon) {
-                                    ownProps[propKey] = propValue.name
-                                } else {
+
+                                // const isIcon = ['icon', 'loadingIcon'].indexOf(propKey) > -1
+                                // if (isIcon) {
+                                //     ownProps[propKey] = propValue.name
+                                // } else {
                                     delete ownProps[propKey]
-                                }
+                                // }
                             }
                         }
                     }

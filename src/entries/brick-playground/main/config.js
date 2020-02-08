@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import {
-    Button,
+    // Button,
     Icon,
     Link,
     // Collapse,
@@ -25,6 +25,7 @@ import {
     Pagination
 } from '@befe/brick'
 
+import Button from './composedComps/ComposedButton.js'
 import ComposedCollapse from './composedComps/ComposedCollapse.js'
 import ComposedPopover from './composedComps/ComposedPopover.js'
 import ComposedPopoverConfirm from './composedComps/ComposedPopoverConfirm.js'
@@ -191,12 +192,12 @@ export const COMP_TYPES = {
             },
             {
                 desc: '图标',
-                key: 'icon',
+                key: 'iconName',
                 type: 'svg',
             },
             {
                 desc: '加载中图标',
-                key: 'loadingIcon',
+                key: 'loadingIconName',
                 type: 'svg',
             },
             {

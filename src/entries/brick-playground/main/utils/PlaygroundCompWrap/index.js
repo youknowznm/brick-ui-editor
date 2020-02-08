@@ -65,7 +65,7 @@ export default class PlaygroundCompWrap extends React.Component {
                 type,
             } = propType
             if (type === 'svg') {
-                originProps[key] = getSvgByName(originProps[key])
+                // originProps[key] = getSvgByName(originProps[key])
             }
         }
         return originProps

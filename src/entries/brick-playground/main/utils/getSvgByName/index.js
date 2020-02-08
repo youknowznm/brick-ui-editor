@@ -5,6 +5,9 @@ const getSvgByName = string => {
     if (typeof string !== 'string') {
         return string
     }
+    if (string === '') {
+        return null
+    }
     for (let groupKey in ICON_GROUP_MAP_MAIN) {
         let group = ICON_GROUP_MAP_MAIN[groupKey]
         for (let iconKey in group) {
