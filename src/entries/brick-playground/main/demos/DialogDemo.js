@@ -10,6 +10,7 @@ const DialogDemo = () => {
         {/* ===== 0 basic ===== */}
         <Dialog
             headline="弹窗标题"
+            size="md"
         >
             弹窗内容
         </Dialog>

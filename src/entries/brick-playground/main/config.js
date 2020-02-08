@@ -302,6 +302,7 @@ export const COMP_TYPES = {
         enLabel: 'Dialog',
         cnLabel: '对话框',
         Element: ComposedDialog,
+        heightEditable: true,
         editableProps: [
             {
                 desc: '标题',
@@ -325,12 +326,6 @@ export const COMP_TYPES = {
                     {value: 'xl', label: '特大号'}
                 ],
                 defaultValue: 'md'
-            },
-            {
-                desc: '高度',
-                key: 'height',
-                type: 'number',
-                min: 290
             },
         ]
     },
@@ -489,6 +484,7 @@ export const COMP_TYPES = {
         cnLabel: '标签页',
         enLabel: 'Tabs',
         Element: ComposedTabs,
+        widthEditable: true,
         editableProps: [
             {
                 desc: '类型',
@@ -500,11 +496,6 @@ export const COMP_TYPES = {
                     {value: 'button-group', label: '按钮组'},
                 ],
                 defaultValue: 'plain'
-            },
-            {
-                desc: '宽度',
-                key: 'width',
-                type: 'number',
             },
             {
                 desc: '可添加',
@@ -568,12 +559,8 @@ export const COMP_TYPES = {
         enLabel: 'FileList',
         cnLabel: '文件列表',
         Element: ComposedFileList,
+        widthEditable: true,
         editableProps: [
-            {
-                desc: '宽度',
-                key: 'width',
-                type: 'number',
-            },
             {
                 desc: '布局方式',
                 key: 'layout',
@@ -629,12 +616,8 @@ export const COMP_TYPES = {
         enLabel: 'Table',
         cnLabel: '表格',
         Element: ComposedTable,
+        widthEditable: true,
         editableProps: [
-            {
-                desc: '宽度',
-                key: 'width',
-                type: 'number',
-            },
             {
                 desc: '列定义',
                 key: 'columns',
@@ -736,12 +719,8 @@ export const COMP_TYPES = {
         enLabel: 'Checkbox',
         cnLabel: '复选框',
         Element: ComposedCheckboxGroup,
+        widthEditable: true,
         editableProps: [
-            {
-                desc: '宽度',
-                key: 'width',
-                type: 'number',
-            },
             {
                 desc: '类型',
                 key: 'type',
@@ -803,12 +782,8 @@ export const COMP_TYPES = {
         enLabel: 'DatePicker',
         cnLabel: '日期选择器',
         Element: ComposedDatePicker,
+        widthEditable: true,
         editableProps: [
-            {
-                desc: '宽度',
-                key: 'width',
-                type: 'number',
-            },
             {
                 desc: '模式',
                 key: 'mode',
@@ -842,15 +817,11 @@ export const COMP_TYPES = {
         enLabel: 'Input',
         cnLabel: '输入框',
         Element: ComposedInput,
+        widthEditable: true,
         editableProps: [
             {
                 desc: '内容',
                 key: 'value',
-                type: 'string',
-            },
-            {
-                desc: '宽度',
-                key: 'width',
                 type: 'string',
             },
             {
@@ -913,12 +884,8 @@ export const COMP_TYPES = {
         enLabel: 'Radio',
         cnLabel: '单选框',
         Element: ComposedRadioGroup,
+        widthEditable: true,
         editableProps: [
-            {
-                desc: '宽度',
-                key: 'width',
-                type: 'string',
-            },
             {
                 desc: '类型',
                 key: 'type',
@@ -974,12 +941,8 @@ export const COMP_TYPES = {
         enLabel: 'SingleSelect',
         cnLabel: '选项列表(单选)',
         Element: ComposedSingleSelect,
+        widthEditable: true,
         editableProps: [
-            {
-                desc: '宽度',
-                key: 'width',
-                type: 'number',
-            },
             {
                 desc: '尺寸',
                 key: 'size',
@@ -1014,12 +977,8 @@ export const COMP_TYPES = {
         enLabel: 'MultipleSelect',
         cnLabel: '选项列表(多选)',
         Element: ComposedMultipleSelect,
+        widthEditable: true,
         editableProps: [
-            {
-                desc: '宽度',
-                key: 'width',
-                type: 'number',
-            },
             {
                 desc: '尺寸',
                 key: 'size',
@@ -1054,12 +1013,8 @@ export const COMP_TYPES = {
         enLabel: 'Suggest',
         cnLabel: '建议列表',
         Element: ComposedSuggest,
+        widthEditable: true,
         editableProps: [
-            {
-                desc: '宽度',
-                key: 'width',
-                type: 'number',
-            },
             {
                 desc: '占位符',
                 key: 'placeholder',
@@ -1177,16 +1132,12 @@ export const COMP_TYPES = {
         enLabel: 'Textarea',
         cnLabel: '文本框',
         Element: ComposedTextarea,
+        widthEditable: true,
         editableProps: [
             {
                 desc: '内容',
                 key: 'value',
                 type: 'string',
-            },
-            {
-                desc: '宽度',
-                key: 'width',
-                type: 'number',
             },
             {
                 desc: '行数',
@@ -1241,6 +1192,7 @@ export const COMP_TYPES = {
         enLabel: 'Alert',
         cnLabel: '提醒',
         Element: ComposedAlert,
+        widthEditable: true,
         editableProps: [
             {
                 desc: '类型',
@@ -1276,17 +1228,13 @@ export const COMP_TYPES = {
                 key: 'content',
                 type: 'string',
             },
-            {
-                desc: '宽度',
-                key: 'width',
-                type: 'number',
-            },
         ],
     },
     ComposedBreadcrumb: {
         enLabel: 'Breadcrumb',
         cnLabel: '面包屑',
         Element: ComposedBreadcrumb,
+        widthEditable: true,
         editableProps: [
             {
                 desc: '尺寸',
@@ -1302,11 +1250,6 @@ export const COMP_TYPES = {
                 desc: '分隔符',
                 key: 'divider',
                 type: 'string',
-            },
-            {
-                desc: '宽度',
-                key: 'width',
-                type: 'number',
             },
             {
                 desc: '数据',
@@ -1332,6 +1275,7 @@ export const COMP_TYPES = {
         enLabel: 'HeadNav',
         cnLabel: '应用栏',
         Element: ComposedHeadNav,
+        widthEditable: true,
         editableProps: [
             {
                 desc: '项目名称',
@@ -1348,11 +1292,6 @@ export const COMP_TYPES = {
                 key: 'userInfoSecondary',
                 type: 'string',
             },
-            {
-                desc: '宽度',
-                key: 'width',
-                type: 'number',
-            },
             ...getMenuConfigList({})
         ]
     },
@@ -1360,12 +1299,8 @@ export const COMP_TYPES = {
         enLabel: 'Menu',
         cnLabel: '菜单',
         Element: ComposedMenu,
+        widthEditable: true,
         editableProps: [
-            {
-                desc: '宽度',
-                key: 'width',
-                type: 'number',
-            },
             {
                 desc: '尺寸',
                 key: 'size',
@@ -1397,12 +1332,8 @@ export const COMP_TYPES = {
         enLabel: 'Pagination',
         cnLabel: '分页',
         Element: ComposedPagination,
+        widthEditable: true,
         editableProps: [
-            {
-                desc: '宽度',
-                key: 'width',
-                type: 'number',
-            },
             {
                 desc: '尺寸',
                 key: 'size',
