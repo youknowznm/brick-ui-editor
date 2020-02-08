@@ -8,8 +8,8 @@ import wrapDemoComp from '../utils/wrapDemoComp'
 
 // import {Table} from '@befe/brick'
 
-import OriginComposedTable from '../composedComps/ComposedTable.js'
-const ComposedTable = wrapDemoComp(OriginComposedTable)
+import _Table from '../composedComps/Table.js'
+const Table = wrapDemoComp(_Table)
 
 const columns = []
 for (let i = 0; i < 10; i++) {
@@ -35,7 +35,7 @@ const TableDemo = () => {
 
     return <div className="demo-block table-demo-block">
         {/* ===== 0 ===== */}
-        <ComposedTable
+        <Table
             data={data}
             columns={columns}
             useCheckbox={false}
@@ -43,7 +43,7 @@ const TableDemo = () => {
         />
         <Divider className="demo-block-separator" />
         {/* ===== 1 ===== */}
-        <ComposedTable
+        <Table
             data={data}
             columns={columns}
             maxBodyHeight={120}
@@ -52,7 +52,7 @@ const TableDemo = () => {
         />
         <Divider className="demo-block-separator" />
         {/* ===== 2 ===== */}
-        <ComposedTable
+        <Table
             data={data}
             columns={columns}
             useCheckbox={true}

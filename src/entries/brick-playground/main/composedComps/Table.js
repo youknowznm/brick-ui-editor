@@ -1,11 +1,10 @@
 import * as React from 'react'
 
 import {Table, Button} from '@befe/brick'
-import {observable, toJS} from "mobx";
+import {toJS} from "mobx";
 import {Checkbox} from "@befe/brick-comp-checkbox";
-import {observer} from "mobx-react";
 
-class ComposedTable extends React.Component {
+export default class ComposedTable extends React.Component {
 
     static displayName = 'ComposedTable'
 
@@ -99,5 +98,3 @@ class ComposedTable extends React.Component {
         </div>
     }
 }
-
-export default ComposedTable

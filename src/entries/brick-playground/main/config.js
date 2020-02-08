@@ -34,8 +34,9 @@ import ComposedPopover from './composedComps/Popover.js'
 import ComposedPopoverConfirm from './composedComps/PopoverConfirm.js'
 import ComposedTabs from './composedComps/Tabs.js'
 import ComposedFileList from './composedComps/FileList.js'
-import ComposedTable from './composedComps/ComposedTable.js'
+import ComposedTable from './composedComps/Table.js'
 import ComposedCheckboxGroup from './composedComps/CheckboxGroup.js'
+import ComposedDatePicker from './composedComps/DatePicker.js'
 import ComposedRadioGroup from './composedComps/ComposedRadioGroup.js'
 import ComposedInput from './composedComps/ComposedInput.js'
 import {
@@ -52,7 +53,7 @@ import ComposedMenu from './composedComps/ComposedMenu.js'
 import ComposedPagination from './composedComps/ComposedPagination.js'
 
 import {Dialog} from './localBrickComps/Dialog'
-import {DatePicker} from './localBrickComps/DatePicker'
+// import {DatePicker} from './localBrickComps/DatePicker'
 
 const getMenuConfigList = ({
                                itemKey = 'id',
@@ -655,6 +656,11 @@ export const COMP_TYPES = {
         Element: ComposedTable,
         editableProps: [
             {
+                desc: '宽度',
+                key: 'width',
+                type: 'number',
+            },
+            {
                 desc: '列定义',
                 key: 'columns',
                 type: 'array',
@@ -664,11 +670,6 @@ export const COMP_TYPES = {
                     //     title: '列名称',
                     //     columnType: 'string',
                     // },
-                    {
-                        desc: '宽度',
-                        key: 'width',
-                        type: 'number',
-                    },
                     {
                         title: '列标题',
                         field: 'thContent',
@@ -823,11 +824,16 @@ export const COMP_TYPES = {
             }
         ]
     },
-    DatePicker: {
+    ComposedDatePicker: {
         enLabel: 'DatePicker',
         cnLabel: '日期选择器',
-        Element: DatePicker,
+        Element: ComposedDatePicker,
         editableProps: [
+            {
+                desc: '宽度',
+                key: 'width',
+                type: 'number',
+            },
             {
                 desc: '模式',
                 key: 'mode',

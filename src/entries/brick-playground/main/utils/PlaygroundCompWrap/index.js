@@ -51,7 +51,7 @@ export default class PlaygroundCompWrap extends React.Component {
     }
 
     get compTypeData() {
-        return COMP_TYPES[this.props.originName]
+        return COMP_TYPES[this.props.originName] || null
     }
 
     processWrapDOMRef = wrapDOM => {
@@ -223,6 +223,7 @@ export default class PlaygroundCompWrap extends React.Component {
         const {
             props,
             state,
+            compTypeData,
         } = this
         const {
             isAbsolutePosition,
@@ -235,6 +236,9 @@ export default class PlaygroundCompWrap extends React.Component {
             wrapWidth,
             wrapHeight
         } = props
+        if (compTypeData === null) {
+            return null
+        }
         return <Draggable {...this.draggableWrapProps}>
             <div
                 className={c(
@@ -252,7 +256,7 @@ export default class PlaygroundCompWrap extends React.Component {
             >
                 {
                     this.wrapCompInControllers(
-                        <this.compTypeData.Element
+                        <compTypeData.Element
                             ref={this.processContentDOMRef}
                             {...originProps}
                         />
