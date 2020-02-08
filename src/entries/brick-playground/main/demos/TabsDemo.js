@@ -4,12 +4,8 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-// import {Tabs, TabPane} from '@befe/brick'
-// import {Tabs as OriginTabs} from '@befe/brick'
-// const Tabs = wrapDemoComp(OriginTabs)
-
-import OriginComposedTabs from "../composedComps/ComposedTabs.js";
-const ComposedTabs = wrapDemoComp(OriginComposedTabs)
+import _Tabs from "../composedComps/Tabs.js";
+const Tabs = wrapDemoComp(_Tabs)
 
 const TabsDemo = () => {
     const generatePanesData = num => {
@@ -78,7 +74,7 @@ const TabsDemo = () => {
     return <div className="demo-block tabs-demo-block">
         {/* ===== 0 basic ===== */}
         <div>
-            <ComposedTabs
+            <Tabs
                 className="demo-tabs"
                 defaultActiveId={'tab0'}
                 data={generatePanesData(5)}
@@ -87,7 +83,7 @@ const TabsDemo = () => {
         <Divider className="demo-block-separator" />
         {/* ===== 1 Paper ===== */}
         <div>
-            <ComposedTabs
+            <Tabs
                 className="demo-tabs"
                 type="card"
                 defaultActiveId={'tab0'}
@@ -97,7 +93,7 @@ const TabsDemo = () => {
         <Divider className="demo-block-separator" />
         {/* ===== 2 addable ===== */}
         <div>
-            <ComposedTabs
+            <Tabs
                 className="demo-tabs"
                 type="card"
                 defaultActiveId={'tab0'}
@@ -110,7 +106,7 @@ const TabsDemo = () => {
         <div>
             <div className="demo-tabs">
                 <p>size: sm</p>
-                <ComposedTabs
+                <Tabs
                     className="demo-tabs"
                     type={'button-group'}
                     defaultActiveId={'tab0'}
@@ -119,7 +115,7 @@ const TabsDemo = () => {
             </div>
             <div className="demo-tabs">
                 <p>size: md</p>
-                <ComposedTabs
+                <Tabs
                     size="md"
                     type={'button-group'}
                     className="demo-tabs"
@@ -131,7 +127,7 @@ const TabsDemo = () => {
         <Divider className="demo-block-separator" />
         {/* ===== 4 long ===== */}
         <div>
-            <ComposedTabs
+            <Tabs
                 className="demo-tabs"
                 type="card"
                 defaultActiveId={'tab0'}

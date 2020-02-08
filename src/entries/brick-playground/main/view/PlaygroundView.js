@@ -115,7 +115,7 @@ export default class PlaygroundView extends React.Component {
                         key={item.id}
                         id={item.id}
                         originName={item.originName}
-                        originProps={item.originProps}
+                        originProps={toJS(item.originProps)}
                         wrapWidth={item.wrapWidth}
                         wrapHeight={item.wrapHeight}
                         deltaX={item.deltaX}

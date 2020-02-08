@@ -4,10 +4,8 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-// import {FileList} from '@befe/brick'
-
-import {FileList as OriginFileList} from '@befe/brick'
-const FileList = wrapDemoComp(OriginFileList)
+import _FileList from '../composedComps/FileList'
+const FileList = wrapDemoComp(_FileList)
 
 const FileListDemo = () => {
 

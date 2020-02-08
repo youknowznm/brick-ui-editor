@@ -1,7 +1,6 @@
 import * as React from 'react'
 
 import {Collapse, CollapsePanel} from '@befe/brick'
-import {toJS} from "mobx"
 
 export default class ComposedCollapse extends React.Component {
 
@@ -32,7 +31,7 @@ export default class ComposedCollapse extends React.Component {
         >
             <Collapse
                 singleExpanded={singleExpanded}
-                defaultExpandedIds={toJS(defaultExpandedIds)}
+                defaultExpandedIds={defaultExpandedIds}
                 expandIconPosition={expandIconPosition}
             >
                 {

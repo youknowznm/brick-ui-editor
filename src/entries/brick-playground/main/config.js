@@ -32,7 +32,8 @@ import ComposedCollapse from './composedComps/Collapse.js'
 import ComposedDialog from './composedComps/Dialog.js'
 import ComposedPopover from './composedComps/Popover.js'
 import ComposedPopoverConfirm from './composedComps/PopoverConfirm.js'
-import ComposedTabs from './composedComps/ComposedTabs.js'
+import ComposedTabs from './composedComps/Tabs.js'
+import ComposedFileList from './composedComps/FileList.js'
 import ComposedTable from './composedComps/ComposedTable.js'
 import ComposedCheckboxGroup from './composedComps/ComposedCheckboxGroup.js'
 import ComposedRadioGroup from './composedComps/ComposedRadioGroup.js'
@@ -525,6 +526,11 @@ export const COMP_TYPES = {
                 defaultValue: 'plain'
             },
             {
+                desc: '宽度',
+                key: 'width',
+                type: 'number',
+            },
+            {
                 desc: '可添加',
                 key: 'addable',
                 type: 'bool',
@@ -582,11 +588,16 @@ export const COMP_TYPES = {
             },
         ]
     },
-    FileList: {
+    ComposedFileList: {
         enLabel: 'FileList',
         cnLabel: '文件列表',
-        Element: FileList,
+        Element: ComposedFileList,
         editableProps: [
+            {
+                desc: '宽度',
+                key: 'width',
+                type: 'number',
+            },
             {
                 desc: '布局方式',
                 key: 'layout',
@@ -595,7 +606,7 @@ export const COMP_TYPES = {
                     {value: 'horizontal', label: '水平'},
                     {value: 'vertical', label: '垂直'},
                 ],
-                defaultValue: 'horizontal'
+                defaultValue: 'vertical'
             },
             {
                 desc: '可删除',
