@@ -242,7 +242,7 @@ export default class AttrEditorView extends React.Component {
                 <Typography className="en" variant="h4">
                     {compTypeData.enLabel}
                 </Typography>
-                <Typography className="cn" variant="h4">
+                <Typography className="cn" variant="h5">
                     {compTypeData.cnLabel}
                 </Typography>
             </div>

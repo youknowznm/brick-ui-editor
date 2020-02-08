@@ -58,12 +58,13 @@ export default class ComposedMenu extends React.Component {
 
 
         return <div
+            className="composed-menu"
             style={{
-                width: `${width}px`
+                width: `${width}px`,
+                background: `#fff`
             }}
         >
             <Menu
-                className="composed-Menu"
                 layout={layout}
                 size={size}
             >

@@ -44,6 +44,7 @@ import ComposedAlert from './composedComps/ComposedAlert.js'
 import ComposedBreadcrumb from './composedComps/ComposedBreadcrumb.js'
 import ComposedHeadNav from './composedComps/ComposedHeadNav.js'
 import ComposedMenu from './composedComps/ComposedMenu.js'
+import ComposedPagination from './composedComps/ComposedPagination.js'
 
 import {Dialog} from './localBrickComps/Dialog'
 import {DatePicker} from './localBrickComps/DatePicker'
@@ -955,7 +956,7 @@ export const COMP_TYPES = {
     },
     ComposedSelectSingle: {
         enLabel: 'Select',
-        cnLabel: '选项列表',
+        cnLabel: '选项列表(单选)',
         Element: ComposedSelectSingle,
         editableProps: [
             {
@@ -990,7 +991,7 @@ export const COMP_TYPES = {
     },
     ComposedSelectMultiple: {
         enLabel: 'Select',
-        cnLabel: '选项列表',
+        cnLabel: '选项列表(多选)',
         Element: ComposedSelectMultiple,
         editableProps: [
             {
@@ -1033,6 +1034,22 @@ export const COMP_TYPES = {
         cnLabel: '建议列表',
         Element: ComposedSuggest,
         editableProps: [
+            {
+                desc: '宽度',
+                key: 'width',
+                type: 'number',
+            },
+            {
+                desc: '占位符',
+                key: 'placeholder',
+                type: 'string',
+            },
+            {
+                desc: '禁用',
+                key: 'disabled',
+                type: 'bool',
+                defaultValue: false
+            },
             ...getMenuConfigList({
                 showType: false,
                 canDisable: true,
@@ -1347,6 +1364,64 @@ export const COMP_TYPES = {
                 showType: true,
                 canDisable: true,
             })
+        ]
+    },
+    ComposedPagination: {
+        enLabel: 'Pagination',
+        cnLabel: '分页',
+        Element: ComposedPagination,
+        editableProps: [
+            {
+                desc: '宽度',
+                key: 'width',
+                type: 'number',
+            },
+            {
+                desc: '尺寸',
+                key: 'size',
+                type: 'enum',
+                options: [
+                    {value: 'xs', label: '超小号'},
+                    {value: 'sm', label: '小号'},
+                    {value: 'md', label: '中号'},
+                ],
+                defaultValue: 'sm'
+            },
+            {
+                desc: '数据总数',
+                key: 'total',
+                type: 'number',
+            },
+            {
+                desc: '禁用',
+                key: 'disabled',
+                type: 'bool',
+                defaultValue: false
+            },
+            {
+                desc: '使用简单分页',
+                key: 'simple',
+                type: 'bool',
+                defaultValue: false
+            },
+            {
+                desc: '显示总页数',
+                key: 'showTotal',
+                type: 'bool',
+                defaultValue: true
+            },
+            {
+                desc: '允许调整每页容量',
+                key: 'showSizeOptions',
+                type: 'bool',
+                defaultValue: true
+            },
+            {
+                desc: '允许跳页',
+                key: 'showJumper',
+                type: 'bool',
+                defaultValue: true
+            },
         ]
     }
 }

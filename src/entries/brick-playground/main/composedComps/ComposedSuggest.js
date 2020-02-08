@@ -21,6 +21,7 @@ export default class ComposedSuggest extends React.Component {
         group3Label: '',
         group3Type: 'group', // popper
         group3MenuItems: [],
+        width: 180,
     }
 
     render() {
@@ -29,6 +30,7 @@ export default class ComposedSuggest extends React.Component {
             // size,
             placeholder,
             menuItems,
+            width,
             disabled,
         } = this.props
 
@@ -60,15 +62,21 @@ export default class ComposedSuggest extends React.Component {
             }
         )
 
-        return <Suggest
+        return  <div
             className="composed-suggest"
-            placeholder={placeholder}
-            disabled={disabled}
-            onSearch={fakeSuggest}
-            loadingDelayInMS={200}
-            // mode={mode}
-            // status={'error'}
-            // size={size}
-        />
+            style={{
+                width: `${width}px`
+            }}
+        >
+            <Suggest
+                placeholder={placeholder}
+                disabled={disabled}
+                onSearch={fakeSuggest}
+                loadingDelayInMS={200}
+                // mode={mode}
+                // status={'error'}
+                // size={size}
+            />
+        </div>
     }
 }

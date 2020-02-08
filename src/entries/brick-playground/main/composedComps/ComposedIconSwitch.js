@@ -16,7 +16,7 @@ export default class ComposedIconSwitch extends React.Component {
 
     render() {
         return <Switch
-            className="composed-Switch"
+            className="composed-switch"
             {...this.props}
         />
     }

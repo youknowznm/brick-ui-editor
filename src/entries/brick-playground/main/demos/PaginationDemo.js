@@ -4,46 +4,32 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-import {Pagination, ErpLogo} from '@befe/brick'
-
-import subHead from './subhead.svg'
-
-// import {HeaderNav as OriginHeaderNav} from '@befe/brick'
-//
-// const HeaderNav = wrapDemoComp(OriginHeaderNav)
+import _ComposedPagination from '../composedComps/ComposedPagination'
+const ComposedPagination = wrapDemoComp(_ComposedPagination)
 
 const PaginationDemo = () => {
 
     const renderPaginationBySize = (size) => {
         return (
             <div key={size}>
-                <div className="pagination-wrap">
-                    <Pagination total={100} size={size} />
-                </div>
+                <ComposedPagination total={100} size={size} />
+                <Divider className="demo-block-separator" />
             </div>
         )
     }
 
-    return <div className="demo-block breadcrumb-demo-block">
+    return <div className="demo-block pagination-demo-block">
         {/* ===== 0 basic ===== */}
-        <div>
-            <div className="pagination-wrap">
-                <Pagination total={50}/>
-            </div>
-            <div className="pagination-wrap">
-                <Pagination total={100}/>
-            </div>
-        </div>
+        <ComposedPagination total={50}/>
         <Divider className="demo-block-separator" />
-        {/* ===== 1 radio-group ===== */}
-        <div>
-            {['xs', 'sm', 'md'].map(size => renderPaginationBySize(size))}
-        </div>
+        <ComposedPagination total={100}/>
         <Divider className="demo-block-separator" />
+        {/* ===== 1 size ===== */}
+        {
+            ['xs', 'sm', 'md'].map(size => renderPaginationBySize(size))
+        }
         {/* ===== 2 simple ===== */}
-        <div>
-            <Pagination total={50} simple/>
-        </div>
+        <ComposedPagination total={50} simple/>
     </div>
 }
 
