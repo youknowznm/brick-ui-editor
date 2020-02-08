@@ -37,8 +37,8 @@ import ComposedFileList from './composedComps/FileList.js'
 import ComposedTable from './composedComps/Table.js'
 import ComposedCheckboxGroup from './composedComps/CheckboxGroup.js'
 import ComposedDatePicker from './composedComps/DatePicker.js'
-import ComposedRadioGroup from './composedComps/ComposedRadioGroup.js'
-import ComposedInput from './composedComps/ComposedInput.js'
+import ComposedInput from './composedComps/Input.js'
+import ComposedRadioGroup from './composedComps/RadioGroup.js'
 import {
     ComposedSelectSingle,
     ComposedSelectMultiple
@@ -939,6 +939,11 @@ export const COMP_TYPES = {
         cnLabel: '单选框',
         Element: ComposedRadioGroup,
         editableProps: [
+            {
+                desc: '宽度',
+                key: 'width',
+                type: 'string',
+            },
             {
                 desc: '类型',
                 key: 'type',

@@ -90,13 +90,6 @@
             }
           }
         }
-        //.link-demo-block {
-        //  .brick-link {
-        //    display: inline-block;
-        //  }
-        //}
-        //.dialog-demo-block {
-        //}
         .popover-confirm-demo-block {
           padding-top: 40px;
         }
@@ -126,68 +119,6 @@
             display: inline-block;
           }
         }
-        .tabs-demo-block {
-          //.brick-tabs {
-          //  min-width: 750px;
-          //}
-          //.demo-tabs + .demo-tabs {
-          //  margin-top: 40px;
-          //}
-        }
-        .date-picker-demo-block {
-          //.demo-comp-wrap,
-          //.brick-date-picker {
-          //  width: 160px !important;
-          //  height: 28px !important;
-          //}
-        }
-        .file-list-demo-block {
-          //.brick-file-list {
-          //  min-width: 750px;
-          //}
-        }
-        //.collapse-demo-block {
-        //  .brick-collapse {
-        //    min-width: 750px;
-        //  }
-        //}
-        //.checkbox-group-demo-block {
-        //  .composed-checkbox-group {
-        //    min-width: 750px;
-        //  }
-        //}
-        .radio-group-demo-block {
-          .composed-radio-group {
-            min-width: 750px;
-          }
-        }
-        .input-demo-block {
-          .composed-input {
-            min-width: 180px;
-          }
-        }
-        //.table-demo-block {
-        //  .brick-table {
-        //    min-width: 750px;
-        //  }
-        //}
-        .alert-demo-block {
-          //white-space: normal;
-          .brick-alert {
-            //white-space: normal;
-            //min-width: 750px;
-          }
-        }
-        .breadcrumb-demo-block {
-          .brick-breadcrumb {
-            //min-width: 750px;
-          }
-        }
-        .head-nav-demo-block {
-          .brick-head-nav {
-            //min-width: 750px;
-          }
-        }
         .inline-block-demo {
           position: relative;
           width: 250px;
@@ -203,11 +134,6 @@
         .composed-select {
           width: 200px;
         }
-        //.composed-menu {
-        //  .brick-menu {
-        //    background: #fff;
-        //  }
-        //}
       }
     }
     .fake-trigger {
@@ -227,7 +153,7 @@
   }
 }
 
-
+// TODO:
 .brick-button {
   * {
     white-space: nowrap;

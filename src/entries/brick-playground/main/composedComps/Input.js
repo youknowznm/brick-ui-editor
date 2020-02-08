@@ -51,19 +51,22 @@ export default class ComposedInput extends React.Component {
             _suffix = <div>{textSuffix}</div>
         }
 
-        return <Input
+        return <div
             className="composed-input"
             style={{
                 width: `${width}px`
             }}
-            value={value}
-            onChange={() => {}}
-            placeholder={placeholder}
-            disabled={disabled}
-            type={type}
-            status={status}
-            prefix={_prefix}
-            suffix={_suffix}
-        />
+        >
+            <Input
+                value={value}
+                onChange={() => {}}
+                placeholder={placeholder}
+                disabled={disabled}
+                type={type}
+                status={status}
+                prefix={_prefix}
+                suffix={_suffix}
+            />
+        </div>
     }
 }

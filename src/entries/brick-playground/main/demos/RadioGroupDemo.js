@@ -4,17 +4,15 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-import {RadioGroup, GenericRadioGroupGroup} from '@befe/brick'
-
-import OriginComposedRadioGroup from '../composedComps/ComposedRadioGroup'
-const ComposedRadioGroup = wrapDemoComp(OriginComposedRadioGroup)
+import _RadioGroup from '../composedComps/RadioGroup'
+const RadioGroup = wrapDemoComp(_RadioGroup)
 
 const RadioDemo = () => {
 
     return <div className="demo-block radio-group-demo-block">
         {/* ===== 0 basic ===== */}
         <div>
-            <ComposedRadioGroup
+            <RadioGroup
                 defaultValue={['item_1']}
                 options={[
                     {value: 'item_1', label: 'item-1', checked: true},
@@ -27,7 +25,7 @@ const RadioDemo = () => {
         <Divider className="demo-block-separator" />
         {/* ===== 2 intermidiate ===== */}
         <div>
-            <ComposedRadioGroup
+            <RadioGroup
                 defaultValue={['item_1']}
                 size={'md'}
                 options={[
@@ -41,7 +39,7 @@ const RadioDemo = () => {
         <Divider className="demo-block-separator" />
         {/* ===== 3 intensive ===== */}
         <div>
-            <ComposedRadioGroup
+            <RadioGroup
                 type={'intensive'}
                 defaultValue={['item_1']}
                 options={[
@@ -55,7 +53,7 @@ const RadioDemo = () => {
         {/* ===== 4 large ===== */}
         <Divider className="demo-block-separator" />
         <div>
-            <ComposedRadioGroup
+            <RadioGroup
                 type={'intensive'}
                 size={'md'}
                 defaultValue={['item_1']}

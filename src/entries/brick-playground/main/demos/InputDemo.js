@@ -4,24 +4,14 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-import {Icon} from '@befe/brick'
-
-import {
-    SvgBell,
-    SvgSearch,
-} from '@befe/brick-icon';
-
-// import {Input as OriginInput} from '@befe/brick'
-// const Input = wrapDemoComp(OriginInput)
-
-import OriginComposedInput from '../composedComps/ComposedInput'
-const ComposedInput = wrapDemoComp(OriginComposedInput)
+import _Input from '../composedComps/Input'
+const Input = wrapDemoComp(_Input)
 
 const InputDemo = () => {
 
     // const getInputWithFix = ({prefix = null, suffix = null} = {}) => {
     //     return <div className="control-wrap">
-    //         <ComposedInput
+    //         <Input
     //             className="inline-block-demo"
     //             prefix={prefix}
     //             suffix={suffix}
@@ -32,20 +22,20 @@ const InputDemo = () => {
     return <div className="demo-block input-demo-block">
         {/* ===== 0 basic ===== */}
         <div>
-            <ComposedInput
+            <Input
                 // onChange={() => {}}
                 className="inline-block-demo"
                 value={'内容'}
                 placeholder={'占位符'}
             />
-            <ComposedInput
+            <Input
                 // onChange={() => {}}
                 className="inline-block-demo"
                 value={'内容'}
                 placeholder={'占位符'}
                 status="error"
             />
-            <ComposedInput
+            <Input
                 // onChange={() => {}}
                 className="inline-block-demo"
                 value={'内容'}
@@ -56,23 +46,23 @@ const InputDemo = () => {
         <Divider className="demo-block-separator" />
         {/* ===== 1 size ??? 似乎未生效 ===== */}
         {/* ===== 2 前缀和后缀 ===== */}
-        <ComposedInput
+        <Input
             className="inline-block-demo"
             textPrefix={'这是前缀'}
         />
-        <ComposedInput
+        <Input
             className="inline-block-demo"
             textSuffix={'这是后缀'}
         />
-        <ComposedInput
+        <Input
             className="inline-block-demo"
             iconPrefix={'SvgBell'}
         />
-        <ComposedInput
+        <Input
             className="inline-block-demo"
             iconSuffix={'SvgSearch'}
         />
-        <ComposedInput
+        <Input
             className="inline-block-demo"
             iconPrefix={'SvgBell'}
             iconSuffix={'SvgSearch'}

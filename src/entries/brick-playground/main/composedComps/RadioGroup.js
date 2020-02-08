@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import {Radio} from '@befe/brick'
 
-export default class ComposedRadioGroup extends React.Component {
+export default class RadioGroup extends React.Component {
 
     static displayName = 'ComposedRadioGroup'
 
@@ -17,7 +17,8 @@ export default class ComposedRadioGroup extends React.Component {
                 disabled: false,
                 checked: false,
             }
-        ]
+        ],
+        width: 400
     }
 
     render() {
@@ -25,9 +26,15 @@ export default class ComposedRadioGroup extends React.Component {
             type,
             defaultValue,
             size,
-            options
+            options,
+            width
         } = this.props
-        return <div className="composed-radio-group">
+        return <div
+            className="composed-radio-group"
+            style={{
+                width: `${width}px`
+            }}
+        >
             {
                 options.map((item, index) => {
                     return <Radio
@@ -40,7 +47,6 @@ export default class ComposedRadioGroup extends React.Component {
                     >
                         {item.label}
                     </Radio>
-
                 })
             }
         </div>
