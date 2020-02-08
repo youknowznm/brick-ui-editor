@@ -17,7 +17,7 @@ import {
     Select,
     // Suggest,
     Switch,
-    Textarea,
+    // Textarea,
     Alert,
     Breadcrumb,
     HeadNav,
@@ -48,9 +48,9 @@ import {
     ComposedIconSwitch,
     ComposedTextSwitch
 } from './composedComps/Switch.js'
-import ComposedTextarea from './composedComps/ComposedTextarea.js'
-import ComposedAlert from './composedComps/ComposedAlert.js'
-import ComposedBreadcrumb from './composedComps/ComposedBreadcrumb.js'
+import ComposedTextarea from './composedComps/Textarea.js'
+import ComposedAlert from './composedComps/Alert.js'
+import ComposedBreadcrumb from './composedComps/Breadcrumb.js'
 import ComposedHeadNav from './composedComps/ComposedHeadNav.js'
 import ComposedMenu from './composedComps/ComposedMenu.js'
 import ComposedPagination from './composedComps/ComposedPagination.js'
@@ -1251,12 +1251,12 @@ export const COMP_TYPES = {
                 ],
                 defaultValue: 'sm'
             },
-            {
-                desc: '允许溢出输入',
-                key: 'allowOverflow',
-                type: 'bool',
-                defaultValue: false
-            },
+            // {
+            //     desc: '允许溢出输入',
+            //     key: 'allowOverflow',
+            //     type: 'bool',
+            //     defaultValue: false
+            // },
             {
                 desc: '禁用',
                 key: 'disabled',

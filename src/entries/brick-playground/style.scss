@@ -12,8 +12,10 @@ body,
   padding: 0;
 }
 ul,
+ol,
 li {
   list-style: none;
+  margin: 0;
 }
 input {
   //border: 0 !important;

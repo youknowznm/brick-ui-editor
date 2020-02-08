@@ -11,21 +11,22 @@ export default class ComposedAlert extends React.Component {
         icon: true,
         headline: '',
         content: '',
-        width: 300,
+        width: 340,
+        // height: 340,
         closable: false,
     }
 
     render() {
         const {
             width,
+            height,
             ...restProps
         } = this.props
 
         return <div
             style={{
                 width: `${width}px`,
-                display: 'block',
-                whiteSpace: 'normal'
+                // height: `${height}px`,
             }}
             className="composed-alert"
         >

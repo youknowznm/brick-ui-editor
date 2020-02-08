@@ -47,7 +47,6 @@ import {PortalContainerProvider} from '../utils/PortalContainerContext'
 
 import '../style/demo-list.scss'
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
-import Paper from "@material-ui/core/Paper";
 import {COMP_TYPES} from "../config";
 
 @observer
@@ -71,7 +70,7 @@ export default class DemoListView extends React.Component {
     componentDidMount() {
         // TODO: 待移除
         this.local.demoListState.setProps({
-            expandedDemoPanelLabel: 'Input'
+            expandedDemoPanelLabel: 'HeadNav'
         })
     }
 

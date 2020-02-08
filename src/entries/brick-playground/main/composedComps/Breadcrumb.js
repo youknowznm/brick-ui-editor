@@ -15,7 +15,7 @@ export default class ComposedBreadcrumb extends React.Component {
             }
         ],
         divider: '',
-        width: 300
+        width: 240
     }
 
     render() {
@@ -25,12 +25,9 @@ export default class ComposedBreadcrumb extends React.Component {
             ...restProps
         } = this.props
 
-
         return <div
             style={{
                 width: `${width}px`,
-                display: 'block',
-                whiteSpace: 'normal'
             }}
             className="composed-breadcrumb"
         >

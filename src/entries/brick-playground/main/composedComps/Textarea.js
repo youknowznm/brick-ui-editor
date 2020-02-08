@@ -24,12 +24,16 @@ export default class ComposedTextarea extends React.Component {
             ...restProps
         } = this.props
 
-        return <Textarea
+        return <div
             className="composed-textarea"
             style={{
                 width: `${width}px`
             }}
-            {...restProps}
-        />
+        >
+            <Textarea
+                {...restProps}
+            />
+        </div>
+
     }
 }

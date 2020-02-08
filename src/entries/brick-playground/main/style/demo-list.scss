@@ -131,6 +131,11 @@
             margin-right: 10px;
           }
         }
+        .alert-demo-block {
+          .composed-alert {
+            margin-right: 15px;
+          }
+        }
       }
     }
     .fake-trigger {
@@ -169,5 +174,13 @@
   }
   .brick-dialog-foot {
     text-align: center;
+  }
+}
+.composed-breadcrumb,
+.composed-alert {
+  display: inline-block;
+  white-space: normal;
+  ol {
+    margin: 0;
   }
 }

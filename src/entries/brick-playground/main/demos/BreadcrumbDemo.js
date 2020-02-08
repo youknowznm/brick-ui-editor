@@ -4,8 +4,8 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-import OriginComposedBreadcrumb from '../composedComps/ComposedBreadcrumb'
-const ComposedBreadcrumb = wrapDemoComp(OriginComposedBreadcrumb)
+import _Breadcrumb from '../composedComps/Breadcrumb'
+const Breadcrumb = wrapDemoComp(_Breadcrumb)
 
 const BreadcrumbDemo = () => {
 
@@ -39,20 +39,15 @@ const BreadcrumbDemo = () => {
 
     return <div className="demo-block breadcrumb-demo-block">
         {/* ===== 0 basic ===== */}
-        <div>
-            <ComposedBreadcrumb data={dataList}/>
-        </div>
+        <Breadcrumb data={dataList}/>
         <Divider className="demo-block-separator" />
         {/* ===== 1 size ===== */}
-        <ComposedBreadcrumb data={dataListForSize} size="sm" />
+        <Breadcrumb data={dataListForSize} size="sm" />
         <Divider className="demo-block-separator" />
-        <ComposedBreadcrumb data={dataListForSize} size="md" />
+        <Breadcrumb data={dataListForSize} size="md" />
         <Divider className="demo-block-separator" />
         {/* ===== 2 divider ===== */}
-        <div>
-            <ComposedBreadcrumb data={dataListForSize} divider='/'/>
-        </div>
-
+        <Breadcrumb data={dataListForSize} divider='/'/>
     </div>
 }
 
