@@ -170,11 +170,25 @@ export default class SvgPropEditor extends React.Component {
                 </DialogContent>
                 <DialogActions>
                     <Button
+                        onClick={() => {
+                            dispatchSelectedIcon('')
+                            this.triggerVisible(false)
+                        }}
+                        variant="contained"
+                        // size="small"
+                        color="primary"
+                        disabled={value === ''}
+                    >
+                        不使用图标
+                    </Button>
+                    <Button
                         autoFocus
                         onClick={() => {
                             this.triggerVisible(false)
                         }}
-                        color="primary"
+                        variant="contained"
+                        // size="small"
+                        color="secondary"
                     >
                         取消
                     </Button>

@@ -198,9 +198,9 @@ export default class AttrEditorView extends React.Component {
                     </TextField>
                 case 'svg':
                     return <SvgPropEditor
-                        dispatchSelectedIcon={icon => {
+                        dispatchSelectedIcon={iconName => {
                             targetPropsChangeHandler({
-                                [key]: icon
+                                [key]: iconName
                             })
                         }}
                         {...generalInputProps}

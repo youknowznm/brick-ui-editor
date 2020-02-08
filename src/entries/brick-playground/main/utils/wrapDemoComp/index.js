@@ -44,8 +44,6 @@ const wrapDemoComp = OriginComponent => {
                         }
                     }
 
-                    delete  ownProps.svg
-
                     delete ownProps.root
                     delete ownProps.className
 

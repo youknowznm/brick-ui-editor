@@ -192,12 +192,12 @@ export const COMP_TYPES = {
                 defaultValue: 'normal'
             },
             {
-                desc: '图标',
+                desc: '图标名称',
                 key: 'iconName',
                 type: 'svg',
             },
             {
-                desc: '加载中图标',
+                desc: '加载中图标名称',
                 key: 'loadingIconName',
                 type: 'svg',
             },
@@ -221,8 +221,8 @@ export const COMP_TYPES = {
         Element: ComposedIcon,
         editableProps: [
             {
-                desc: '图标',
-                key: 'svg',
+                desc: '图标名称',
+                key: 'svgName',
                 type: 'svg',
             },
         ],
