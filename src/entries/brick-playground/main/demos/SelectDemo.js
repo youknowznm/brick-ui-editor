@@ -4,8 +4,13 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-import OriginComposedSelect from "../composedComps/ComposedSelect";
-const ComposedSelect = wrapDemoComp(OriginComposedSelect)
+import {
+    ComposedSelectSingle as _ComposedSelectSingle,
+    ComposedSelectMultiple as _ComposedSelectMultiple
+} from "../composedComps/ComposedSelect";
+
+const ComposedSelectSingle = wrapDemoComp(_ComposedSelectSingle)
+const ComposedSelectMultiple = wrapDemoComp(_ComposedSelectMultiple)
 
 const SelectDemo = () => {
 
@@ -36,7 +41,7 @@ const SelectDemo = () => {
     const renderSelectBySize = size => {
         return (
             <div key={size}>
-                <ComposedSelect
+                <ComposedSelectSingle
                     placeholder={'请选择'}
                     size={size}
                     {...optionProps}
@@ -70,14 +75,13 @@ const SelectDemo = () => {
 
     return <div className="demo-block select-demo-block">
         {/* ===== 0 basic ===== */}
-        <ComposedSelect
+        <ComposedSelectSingle
             placeholder={'请选择'}
             {...optionProps}
         />
         <Divider className="demo-block-separator" />
         {/* ===== 1 multiple ===== */}
-        <ComposedSelect
-            mode={'multiple'}
+        <ComposedSelectMultiple
             placeholder={'请选择'}
             {...optionProps}
         />

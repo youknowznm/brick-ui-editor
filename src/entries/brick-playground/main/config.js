@@ -33,20 +33,25 @@ import ComposedTable from './composedComps/ComposedTable.js'
 import ComposedCheckboxGroup from './composedComps/ComposedCheckboxGroup.js'
 import ComposedRadioGroup from './composedComps/ComposedRadioGroup.js'
 import ComposedInput from './composedComps/ComposedInput.js'
-import ComposedSelect from './composedComps/ComposedSelect.js'
+import {
+    ComposedSelectSingle,
+    ComposedSelectMultiple
+} from './composedComps/ComposedSelect.js'
 import ComposedSuggest from './composedComps/ComposedSuggest.js'
 import ComposedIconSwitch from './composedComps/ComposedIconSwitch.js'
 import ComposedTextarea from './composedComps/ComposedTextarea.js'
 import ComposedAlert from './composedComps/ComposedAlert.js'
 import ComposedBreadcrumb from './composedComps/ComposedBreadcrumb.js'
 import ComposedHeadNav from './composedComps/ComposedHeadNav.js'
+import ComposedMenu from './composedComps/ComposedMenu.js'
 
 import {Dialog} from './localBrickComps/Dialog'
 import {DatePicker} from './localBrickComps/DatePicker'
 
 const getMenuConfigList = ({
     itemKey = 'id',
-    showType = false
+    showType = false,
+    canDisable = false
 }) => {
     const menuConfigList = [{
         desc: '主菜单列表',
@@ -63,10 +68,15 @@ const getMenuConfigList = ({
                 field: 'label',
                 columnType: 'string',
             },
+            canDisable ? {
+                title: '禁用',
+                field: 'disabled',
+                columnType: 'bool',
+            } : null
         ]
     }]
 
-    const typeEmumOptions = [
+    const typeEnumOptions = [
         {value: 'group', label: '列表'},
         {value: 'popper', label: '弹层'},
     ]
@@ -82,6 +92,11 @@ const getMenuConfigList = ({
             field: 'label',
             columnType: 'string',
         },
+        canDisable ? {
+            title: '禁用',
+            field: 'disabled',
+            columnType: 'bool',
+        } : null
     ]
 
     let count
@@ -97,7 +112,7 @@ const getMenuConfigList = ({
                 desc: `菜单分组${count}类型`,
                 key: `group${count}Type`,
                 type: 'enum',
-                options: typeEmumOptions,
+                options: typeEnumOptions,
                 defaultValue: 'group'
             })
         }
@@ -563,7 +578,7 @@ export const COMP_TYPES = {
         Element: FileList,
         editableProps: [
             {
-                desc: '布局',
+                desc: '布局方式',
                 key: 'layout',
                 type: 'enum',
                 options: [
@@ -938,14 +953,78 @@ export const COMP_TYPES = {
             }
         ]
     },
-    ComposedSelect: {
+    ComposedSelectSingle: {
         enLabel: 'Select',
         cnLabel: '选项列表',
-        Element: ComposedSelect,
+        Element: ComposedSelectSingle,
         editableProps: [
+            {
+                desc: '尺寸',
+                key: 'size',
+                type: 'enum',
+                options: [
+                    {value: 'xs', label: '超小号'},
+                    {value: 'sm', label: '小号'},
+                    {value: 'md', label: '中号'},
+                    {value: 'lg', label: '大号'},
+                ],
+                defaultValue: 'sm'
+            },
+            {
+                desc: '占位符',
+                key: 'placeholder',
+                type: 'string',
+            },
+            {
+                desc: '禁用',
+                key: 'disabled',
+                type: 'bool',
+                defaultValue: false
+            },
             ...getMenuConfigList({
                 itemKey: 'value',
                 showType: true,
+                canDisable: true,
+            })
+        ]
+    },
+    ComposedSelectMultiple: {
+        enLabel: 'Select',
+        cnLabel: '选项列表',
+        Element: ComposedSelectMultiple,
+        editableProps: [
+            {
+                desc: '宽度',
+                key: 'width',
+                type: 'number',
+            },
+            {
+                desc: '尺寸',
+                key: 'size',
+                type: 'enum',
+                options: [
+                    {value: 'xs', label: '超小号'},
+                    {value: 'sm', label: '小号'},
+                    {value: 'md', label: '中号'},
+                    {value: 'lg', label: '大号'},
+                ],
+                defaultValue: 'sm'
+            },
+            {
+                desc: '占位符',
+                key: 'placeholder',
+                type: 'string',
+            },
+            {
+                desc: '禁用',
+                key: 'disabled',
+                type: 'bool',
+                defaultValue: false
+            },
+            ...getMenuConfigList({
+                itemKey: 'value',
+                showType: true,
+                canDisable: true,
             })
         ]
     },
@@ -956,6 +1035,7 @@ export const COMP_TYPES = {
         editableProps: [
             ...getMenuConfigList({
                 showType: false,
+                canDisable: true,
             })
         ]
     },
@@ -1230,6 +1310,43 @@ export const COMP_TYPES = {
                 type: 'number',
             },
             ...getMenuConfigList({})
+        ]
+    },
+    ComposedMenu: {
+        enLabel: 'Menu',
+        cnLabel: '菜单',
+        Element: ComposedMenu,
+        editableProps: [
+            {
+                desc: '宽度',
+                key: 'width',
+                type: 'number',
+            },
+            {
+                desc: '尺寸',
+                key: 'size',
+                type: 'enum',
+                options: [
+                    {value: 'sm', label: '小号'},
+                    {value: 'md', label: '中号'},
+                ],
+                defaultValue: 'sm'
+            },
+            {
+                desc: '布局方式',
+                key: 'layout',
+                type: 'enum',
+                options: [
+                    {value: 'vertical', label: '垂直'},
+                    {value: 'horizontal', label: '水平'},
+                ],
+                defaultValue: 'vertical'
+            },
+            ...getMenuConfigList({
+                itemKey: 'id',
+                showType: true,
+                canDisable: true,
+            })
         ]
     }
 }

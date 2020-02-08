@@ -37,6 +37,7 @@ export default class ComposedMenu extends React.Component {
                 groupMenuItems.map((item, index) => {
                     return <MenuItem
                         id={item.id}
+                        disabled={item.disabled}
                         key={index}
                     >
                         {item.label}
@@ -70,6 +71,7 @@ export default class ComposedMenu extends React.Component {
                     menuItems.map((item, index) => {
                         return <MenuItem
                             id={item.id}
+                            disabled={item.disabled}
                             key={index}
                         >
                             {item.label}
@@ -85,3 +87,5 @@ export default class ComposedMenu extends React.Component {
 
     }
 }
+
+

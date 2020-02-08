@@ -87,17 +87,18 @@ export default class ArrayPropEditor extends React.Component {
             data,
             rowInEditIndex
         } = state
-        const {columns} = props
         const editorTypeMap = {
             string: stringEditor,
             bool: boolEditor
         }
         // 用到 title, field 和 columnType
-        const result = toJS(columns).map(item => {
-            return Object.assign({}, item, {
-                render: editorTypeMap[item.columnType](item.field)
+        const result = props.columns
+            .filter(item => item !== null)
+            .map(item => {
+                return Object.assign({}, item, {
+                    render: editorTypeMap[item.columnType](item.field)
+                })
             })
-        })
         result.push({
             field: "",
             title: "操作",

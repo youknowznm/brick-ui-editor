@@ -2,43 +2,39 @@ import * as React from 'react'
 
 import Divider from '@material-ui/core/Divider';
 
-import wrapDemoComp from '../utils/wrapDemoComp'
+// import {Menu, MenuItem, Submenu} from '@befe/brick'
 
-import {Menu, MenuItem, Submenu} from '@befe/brick'
+import wrapDemoComp from "../utils/wrapDemoComp";
 
-// import {Menu as OriginMenu} from '@befe/brick'
-//
-// const Menu = wrapDemoComp(OriginMenu)
-
-import OriginComposedMenu from "../composedComps/ComposedMenu";
-const ComposedMenu = wrapDemoComp(OriginComposedMenu)
+import _ComposedMenu from "../composedComps/ComposedMenu";
+const ComposedMenu = wrapDemoComp(_ComposedMenu)
 
 const MenuDemo = () => {
 
     const [selectedIds, setSelectIds] = React.useState([])
     const [expandedIds, setExpandedIds] = React.useState([])
 
-    const renderSizeMenu = (size) => {
-        return (
-            <div className="menu-wrap-horizontal" key={size}>
-                <Menu layout={'horizontal'} size={size}>
-                    <MenuItem id={'item_1'}>option 1</MenuItem>
-                    <MenuItem id={'item_4'}>option 4</MenuItem>
-                    <MenuItem id={'item_5'}>option 5</MenuItem>
-                    <Submenu id={'menu_sub'} type={'popper'} itemContent={'subMenu'}>
-                        <MenuItem id={'item_6'}>option 6</MenuItem>
-                        <MenuItem id={'item_7'}>option 7</MenuItem>
-                        <MenuItem id={'item_8'}>option 8</MenuItem>
-                    </Submenu>
-                </Menu>
-            </div>
-        )
-    }
+    // const renderSizeMenu = (size) => {
+    //     return (
+    //         <div className="menu-wrap-horizontal" key={size}>
+    //             <Menu layout={'horizontal'} size={size}>
+    //                 <MenuItem id={'item_1'}>option 1</MenuItem>
+    //                 <MenuItem id={'item_4'}>option 4</MenuItem>
+    //                 <MenuItem id={'item_5'}>option 5</MenuItem>
+    //                 <Submenu id={'menu_sub'} type={'popper'} itemContent={'subMenu'}>
+    //                     <MenuItem id={'item_6'}>option 6</MenuItem>
+    //                     <MenuItem id={'item_7'}>option 7</MenuItem>
+    //                     <MenuItem id={'item_8'}>option 8</MenuItem>
+    //                 </Submenu>
+    //             </Menu>
+    //         </div>
+    //     )
+    // }
 
     const optionProps = {
         menuItems: [
             {id: 'option_1', label: 'option_1'},
-            {id: 'option_2', label: 'option_2'},
+            {id: 'option_2', label: 'option_2', disabled: true},
             {id: 'option_3', label: 'option_3'},
         ],
         group1Label: '分类 1',
