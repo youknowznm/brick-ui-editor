@@ -22,6 +22,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions";
+import {Link, Typography} from "@material-ui/core";
 
 @observer
 export default class ControlPanelView extends React.Component {
@@ -33,6 +34,10 @@ export default class ControlPanelView extends React.Component {
 
         // 开关控制面板抽屉
         triggerControlPanelDrawer: PropTypes.func.isRequired,
+
+        archiveName: PropTypes.string,
+        author: PropTypes.string,
+        lastModified: PropTypes.string,
     }
 
     local = {
@@ -44,6 +49,10 @@ export default class ControlPanelView extends React.Component {
         const {local} = this
     }
 
+    get isEmpty() {
+        return this.props.usedCompsDataArray.length === 0
+    }
+
     renderBanner = () => {
         return <div className="banner-wrap">
             <div className="banner">
@@ -51,6 +60,30 @@ export default class ControlPanelView extends React.Component {
                     <span className="title-single-word">Brick</span>
                     <span className="title-single-word">Playground</span>
                 </h3>
+                <a
+                    href="http://icode.baidu.com/repos/baidu/erp/erp-ui-previewer"
+                    target="_blank"
+                >
+                    <Button
+                        className="link repo"
+                        variant="outlined"
+                        size="small"
+                    >
+                        iCode 仓库
+                    </Button>
+                </a>
+                <a
+                    href="http://doc.eux.baidu.com/app/list/dc2565e3f8b9c733aa"
+                    target="_blank"
+                >
+                    <Button
+                        className="link guide"
+                        variant="outlined"
+                        size="small"
+                    >
+                        使用指引
+                    </Button>
+                </a>
                 <p className="about">
                     <span>Made with </span>
                     <FavoriteIcon
@@ -70,7 +103,6 @@ export default class ControlPanelView extends React.Component {
             triggerConfirmFlag
         } = this.local.controlPanelState
         return <div className="control-panel-content">
-
             <TextField
                 className="archive-name-input"
                 size="small"
@@ -78,22 +110,34 @@ export default class ControlPanelView extends React.Component {
                 label="存档名称"
                 value={this.props.archiveName}
             />
-
+            <TextField
+                className="author-input"
+                size="small"
+                variant="filled"
+                label="作者"
+                value={this.props.author}
+            />
             <Button
                 className="btn-share"
-                variant="outlined"
+                variant="contained"
                 size="small"
+                disabled={this.isEmpty}
                 color="primary"
             >
                 分享
             </Button>
-
+            <Typography
+                className="last-modified"
+                variant="section"
+            >
+                更新于 {this.props.lastModified}
+            </Typography>
             <Button
                 className="btn-clear"
                 color="secondary"
                 size="small"
                 variant="outlined"
-                disabled={this.props.usedCompsDataArray.length === 0}
+                disabled={this.isEmpty}
                 onClick={() => {
                     // TODO: 待移除
                     // triggerConfirmFlag(true)
@@ -134,7 +178,14 @@ export default class ControlPanelView extends React.Component {
                     </Button>
                 </DialogActions>
             </Dialog>
-
+            <Button
+                className="btn-load"
+                variant="outlined"
+                size="small"
+                color="secondary"
+            >
+                加载存档
+            </Button>
         </div>
     }
 
@@ -145,8 +196,8 @@ export default class ControlPanelView extends React.Component {
                 className="control-panel-drawer"
                 anchor="top"
                 variant="persistent"
-                open={props.showControlPanelDrawer}
-                // open={true}
+                // open={props.showControlPanelDrawer}
+                open={true}
             >
                 {this.renderBanner()}
                 {this.renderControlPanelContent()}

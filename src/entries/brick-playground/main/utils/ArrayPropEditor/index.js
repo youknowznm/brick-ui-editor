@@ -46,7 +46,7 @@ export default class ArrayPropEditor extends React.Component {
         if (rowData._index === rowInEditIndex) {
             return <TextField
                 fullWidth={true}
-                multiline
+                multiline={rowData.isMultiline === true}
                 value={rowData[key]}
                 onChange={event => {
                     const data = this.state.data
@@ -104,70 +104,25 @@ export default class ArrayPropEditor extends React.Component {
             title: "操作",
             render: rowData => {
                 const {_index} = rowData
-                const isInEdit = rowData._index === rowInEditIndex
-                return isInEdit
-                    ? <div>
-                        <Button
-                            size="small"
-                            color="primary"
-                            // variant="outlined"
-                            onClick={() => {
-                                this.setState({
-                                    rowInEditIndex: -1
-                                })
-                                this.props.dispatchArray(data)
-                            }}
-                        >
-                            保存
-                        </Button>
-                        <Button
-                            size="small"
-                            color="primary"
-                            // variant="outlined"
-                            onClick={() => {
-                                this.setState({
-                                    rowInEditIndex: -1
-                                })
-                                this.resetLocalArray()
-                            }}
-                        >
-                            取消
-                        </Button>
-                    </div>
-                    : <div>
-                        <Button
-                            size="small"
-                            color="primary"
-                            // variant="outlined"
-                            // disabled={isInEdit}
-                            onClick={() => {
-                                this.setState({
-                                    rowInEditIndex: rowData._index
-                                })
-                            }}
-                        >
-                            编辑
-                        </Button>
-                        <Button
-                            size="small"
-                            color="primary"
-                            // variant="outlined"
-                            // disabled={isInEdit}
-                            onClick={() => {
-                                let data = toJS(this.state.data)
-                                data.splice(_index, 1)
-                                this.setState({
-                                    data
-                                })
-                                this.props.dispatchArray(data)
-                                setTimeout(() => {
-                                    this.resetLocalArray()
-                                })
-                            }}
-                        >
-                            删除
-                        </Button>
-                    </div>
+                return <Button
+                    size="small"
+                    color="primary"
+                    // variant="outlined"
+                    // disabled={isInEdit}
+                    onClick={() => {
+                        let data = toJS(this.state.data)
+                        data.splice(_index, 1)
+                        this.setState({
+                            data
+                        })
+                        this.props.dispatchArray(data)
+                        setTimeout(() => {
+                            this.resetLocalArray()
+                        })
+                    }}
+                >
+                    删除
+                </Button>
             }
         })
         return result

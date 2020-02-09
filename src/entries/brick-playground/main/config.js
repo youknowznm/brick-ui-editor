@@ -221,6 +221,7 @@ export const COMP_TYPES = {
                 desc: '地址',
                 key: 'href',
                 type: 'string',
+                isMultiline: true,
             },
             {
                 desc: '类型',
@@ -260,6 +261,7 @@ export const COMP_TYPES = {
                 desc: '内容',
                 key: 'children',
                 type: 'string',
+                isMultiline: true,
             },
             {
                 desc: '字号',
@@ -332,11 +334,13 @@ export const COMP_TYPES = {
                         title: '内容',
                         field: 'content',
                         columnType: 'string',
+                        isMultiline: true,
                     },
                     {
                         title: '额外标题',
                         field: 'extra',
                         columnType: 'string',
+                        isMultiline: true,
                     },
                     {
                         title: '禁用',
@@ -363,6 +367,7 @@ export const COMP_TYPES = {
                 desc: '内容',
                 key: 'children',
                 type: 'string',
+                isMultiline: true,
             },
             {
                 desc: '尺寸',
@@ -406,6 +411,7 @@ export const COMP_TYPES = {
             {
                 desc: '内容',
                 key: 'content',
+                isMultiline: true,
                 type: 'string',
             },
             {
@@ -464,6 +470,7 @@ export const COMP_TYPES = {
                 desc: '提示信息',
                 key: 'confirmMessage',
                 type: 'string',
+                isMultiline: true,
             },
             {
                 desc: '标题',
@@ -588,6 +595,7 @@ export const COMP_TYPES = {
                         title: '内容',
                         field: 'content',
                         columnType: 'string',
+                        isMultiline: true,
                     },
                     {
                         title: '禁用',
@@ -762,6 +770,7 @@ export const COMP_TYPES = {
                 desc: '操作列按钮组',
                 key: 'operationsLabelsJoined',
                 type: 'string',
+                placeholder: '以空格分隔的按钮名称列表'
             },
         ]
     },
@@ -873,6 +882,7 @@ export const COMP_TYPES = {
                 desc: '内容',
                 key: 'value',
                 type: 'string',
+                isMultiline: true,
             },
             {
                 desc: '占位符',
@@ -1188,6 +1198,7 @@ export const COMP_TYPES = {
                 desc: '内容',
                 key: 'value',
                 type: 'string',
+                isMultiline: true,
             },
             {
                 desc: '行数',
@@ -1277,6 +1288,7 @@ export const COMP_TYPES = {
                 desc: '内容',
                 key: 'content',
                 type: 'string',
+                isMultiline: true,
             },
         ],
     },

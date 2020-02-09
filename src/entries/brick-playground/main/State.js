@@ -117,7 +117,7 @@ class MainState extends BaseModel {
         save(this.usedCompsDataArray)
     }
 
-    @observable playgroundWidth = 1000
+    @observable playgroundWidth = 1200
     @observable playgroundHeight = 800
 
     // ##### 中间 实际内容(默认下的全屏) #####
@@ -166,6 +166,8 @@ class MainState extends BaseModel {
     // ##### 上方 控制面板 #####
 
     @observable archiveName = ''
+    @observable author = ''
+    @observable lastModified = 'N/A'
 
 }
 

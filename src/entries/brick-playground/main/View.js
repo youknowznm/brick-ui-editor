@@ -180,6 +180,8 @@ export default class extends React.Component {
                     usedCompsDataArray={mainState.usedCompsDataArray}
                     triggerControlPanelDrawer={mainState.triggerControlPanelDrawer}
                     archiveName={mainState.archiveName}
+                    author={mainState.author}
+                    lastModified={mainState.lastModified}
                     clearAll={mainState.clearAll}
                 />
                 <AttrEditorView

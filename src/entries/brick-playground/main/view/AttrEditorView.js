@@ -123,7 +123,8 @@ export default class AttrEditorView extends React.Component {
                         label: '否',
                     }
                 ],
-                defaultValue
+                isMultiline,
+                // defaultValue
             } = item
             const generalInputProps = {
                 key: key,
@@ -133,12 +134,11 @@ export default class AttrEditorView extends React.Component {
                 fullWidth: true,
                 margin: 'dense'
             }
-            // console.log('attr editing: ', key, value)
             switch (type) {
                 case 'number':
                 case 'string':
                     return <TextField
-                        // multiline
+                        multiline={isMultiline === true}
                         onChange={evt => {
                             targetPropsChangeHandler({
                                 [key]: evt.target.value
@@ -305,7 +305,7 @@ export default class AttrEditorView extends React.Component {
                 <Divider />
                 <Button
                     className="remove-button"
-                    variant="contained"
+                    variant="outlined"
                     color="secondary"
                     size="small"
                     onClick={() => {

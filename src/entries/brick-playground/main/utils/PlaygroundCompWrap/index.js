@@ -244,9 +244,6 @@ export default class PlaygroundCompWrap extends React.Component {
                 className={c(
                     'playground-comp-wrap',
                     this.isSelected && 'selected',
-                    // TODO: wrap 尺寸不对, 到底是不是定位的原因
-                    isAbsolutePosition && 'is-absolute-positon'
-                    // 'is-absolute-positon'
                 )}
                 style={{
                     width: wrapWidth,

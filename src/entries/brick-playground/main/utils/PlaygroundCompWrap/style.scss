@@ -27,15 +27,8 @@
 }
 
 .playground-comp-wrap {
-  position: relative;
-  display: block;
-  //white-space: nowrap;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  &.is-absolute-positon {
-    position: absolute;
-    margin: 0;
-  }
+  position: absolute;
+  margin: 0;
   .action-layer {
     display: none;
     z-index: 2000;

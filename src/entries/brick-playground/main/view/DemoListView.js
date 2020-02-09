@@ -140,10 +140,11 @@ export default class DemoListView extends React.Component {
         return <PortalContainerProvider value=".demo-list-content">
             <div>
                 {
-                    Demos.map(Demo => {
+                    Demos.map((Demo, index) => {
                         if (typeof Demo.categoryName === 'string') {
                             return <h3
                                 className="demo-cate"
+                                key={index}
                             >
                                 <span className="name">
                                     {Demo.categoryName}
@@ -163,7 +164,7 @@ export default class DemoListView extends React.Component {
                             || label === 'Button'
                         return <ExpansionPanel
                             className="demo-exp-panel"
-                            key={label}
+                            key={index}
                             square={true}
                             expanded={isExpanded}
                             onChange={(evt, value) => {
