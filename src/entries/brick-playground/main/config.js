@@ -305,6 +305,7 @@ export const COMP_TYPES = {
         cnLabel: '扩展面板',
         enLabel: 'Collapse',
         Element: ComposedCollapse,
+        widthEditable: true,
         editableProps: [
             {
                 desc: '图标位置',
@@ -704,7 +705,8 @@ export const COMP_TYPES = {
                     {
                         title: '宽度',
                         field: 'width',
-                        columnType: 'string',
+                        columnType: 'number',
+                        defaultValue: 100
                     },
                 ]
             },

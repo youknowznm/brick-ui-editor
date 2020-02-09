@@ -37,6 +37,8 @@ export default class ControlPanelView extends React.Component {
 
         archiveName: PropTypes.string,
         author: PropTypes.string,
+        setAuthor: PropTypes.func,
+        setArchiveName: PropTypes.func,
         lastModified: PropTypes.string,
     }
 
@@ -109,6 +111,12 @@ export default class ControlPanelView extends React.Component {
                 variant="filled"
                 label="存档名称"
                 value={this.props.archiveName}
+                onChange={evt => {
+                    this.props.setArchiveName(evt.target.value)
+                }}
+                onBlur={evt => {
+                    this.props.setArchiveName(evt.target.value.trim())
+                }}
             />
             <TextField
                 className="author-input"
@@ -116,22 +124,19 @@ export default class ControlPanelView extends React.Component {
                 variant="filled"
                 label="作者"
                 value={this.props.author}
+                onChange={evt => {
+                    this.props.setAuthor(evt.target.value)
+                }}
+                onBlur={evt => {
+                    this.props.setAuthor(evt.target.value.trim())
+                }}
             />
-            <Button
-                className="btn-share"
-                variant="contained"
-                size="small"
-                disabled={this.isEmpty}
-                color="primary"
-            >
-                分享
-            </Button>
-            <Typography
-                className="last-modified"
-                variant="section"
-            >
-                更新于 {this.props.lastModified}
-            </Typography>
+            {/*<Typography*/}
+            {/*    className="last-modified"*/}
+            {/*    variant="caption"*/}
+            {/*>*/}
+            {/*    更新于 {this.props.lastModified}*/}
+            {/*</Typography>*/}
             <Button
                 className="btn-clear"
                 color="secondary"
@@ -182,9 +187,18 @@ export default class ControlPanelView extends React.Component {
                 className="btn-load"
                 variant="outlined"
                 size="small"
-                color="secondary"
+                color="primary"
             >
                 加载存档
+            </Button>
+            <Button
+                className="btn-share"
+                variant="outlined"
+                size="small"
+                disabled={this.isEmpty}
+                color="primary"
+            >
+                分享存档
             </Button>
         </div>
     }
@@ -196,8 +210,8 @@ export default class ControlPanelView extends React.Component {
                 className="control-panel-drawer"
                 anchor="top"
                 variant="persistent"
-                // open={props.showControlPanelDrawer}
-                open={true}
+                open={props.showControlPanelDrawer}
+                // open={true}
             >
                 {this.renderBanner()}
                 {this.renderControlPanelContent()}

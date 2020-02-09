@@ -35,18 +35,18 @@
         user-select: none;
       }
       .btn-share {
-        float: left;
+        float: right;
         margin-top: 39px;
-        margin-right: 20px;
+        margin-left: 15px;
       }
       .btn-load {
         float: right;
-        margin-top: 34px;
+        margin-top: 39px;
         margin-left: 15px;
       }
       .btn-clear {
         float: right;
-        margin-top: 34px;
+        margin-top: 39px;
         margin-left: 15px;
       }
     }
@@ -63,7 +63,7 @@
         .title {
           float: left;
           margin: 0;
-          color: #009688;
+          color: $mui-primary;
           .title-single-word {
             font-size: 20px;
             line-height: 64px;
@@ -71,7 +71,7 @@
             display: inline-block;
             font-weight: lighter;
             font-family: "Roboto Mono";
-            color: #009688;
+            color: $mui-primary;
             //color: rgba(0, 0, 0, .7);
             transition: opacity .4s cubic-bezier(0.25, 0.8, 0.25, 1);
             &:after {

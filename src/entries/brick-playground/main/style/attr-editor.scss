@@ -13,12 +13,15 @@
       .label {
         position: relative;
         padding: 0 15px;
-        height: 60px;
+        height: 50px;
         .label-text {
-          line-height: 60px;
+          line-height: 50px;
           font-weight: lighter;
           user-select: none;
           //border-bottom: 2px solid;
+          .cn {
+            float: right;
+          }
         }
       }
       .title {
@@ -56,7 +59,7 @@
       }
       .type-props {
         position: absolute;
-        top: 220px;
+        top: 210px;
         left: 15px;
         right: 15px;
         bottom: 100px;

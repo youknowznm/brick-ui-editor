@@ -62,16 +62,6 @@ export default class AttrEditorView extends React.Component {
         attrEditorState: new AttrEditorState(),
     }
 
-    constructor(props) {
-        super(props)
-        const {local} = this
-    }
-
-    componentDidMount() {
-    }
-
-    componentDidUpdate() {}
-
     renderAttrEditorContent = () => {
         const {local, props} = this
         const {
@@ -144,11 +134,11 @@ export default class AttrEditorView extends React.Component {
                                 [key]: evt.target.value
                             })
                         }}
-                        // onBlur={evt => {
-                        //     targetPropsChangeHandler({
-                        //         [key]: evt.target.value.trim()
-                        //     })
-                        // }}
+                        onBlur={evt => {
+                            targetPropsChangeHandler({
+                                [key]: evt.target.value.trim()
+                            })
+                        }}
                         {...generalInputProps}
                     />
                 case 'enum':
@@ -211,6 +201,7 @@ export default class AttrEditorView extends React.Component {
                 case 'array':
                     return <ArrayPropEditor
                         columns={columns}
+                        desc={desc}
                         dispatchArray={array => {
                             targetPropsChangeHandler({
                                 [key]: array
@@ -247,7 +238,8 @@ export default class AttrEditorView extends React.Component {
                     variant="h5"
                     title={enLabel}
                 >
-                    {enLabel} {cnLabel}
+                    {enLabel}
+                    <span className="cn">{cnLabel}</span>
                 </Typography>
             </div>
             <Divider />

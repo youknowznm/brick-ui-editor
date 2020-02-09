@@ -1,24 +1,9 @@
 import * as React from 'react'
 
-import {toJS} from "mobx"
-
-import { withStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import Dialog from '@material-ui/core/Dialog'
-import DialogTitle from '@material-ui/core/DialogTitle'
 import DialogContent from '@material-ui/core/DialogContent'
-import DialogActions from '@material-ui/core/DialogActions'
-import IconButton from '@material-ui/core/IconButton'
-import CloseIcon from '@material-ui/icons/Close'
-import AppBar from '@material-ui/core/AppBar'
-import Tabs from '@material-ui/core/Tabs'
-import Tab from '@material-ui/core/Tab'
-import Typography from '@material-ui/core/Typography'
-import Box from '@material-ui/core/Box'
 import TextField from "@material-ui/core/TextField"
-import Menu from "@material-ui/core/Menu"
-import MenuItem from "@material-ui/core/MenuItem"
-import MenuList from "@material-ui/core/MenuList"
 import Switch from "@material-ui/core/Switch"
 
 import MaterialTable from 'material-table'
@@ -31,49 +16,69 @@ export default class ArrayPropEditor extends React.Component {
 
     state = {
         visible: false,
-        data: [],
-        rowInEditIndex: -1,
+        localList: [],
     }
 
     componentDidMount() {
-        this.resetLocalArray()
+        this.setLocalListFromProp()
+    }
+
+    setLocalListFromProp = () => {
+        this.setState({
+            localList: this.props.value.map((item, index) => {
+                return Object.assign({}, item, {
+                    _index: index
+                })
+            })
+        })
+    }
+
+    resetLocalListIndex = () => {
+        this.setState({
+            localList: this.state.localList.map((item, index) => {
+                return Object.assign({}, item, {
+                    _index: index
+                })
+            })
+        })
     }
 
     stringEditor = key => rowData => {
-        const {
-            rowInEditIndex
-        } = this.state
-        if (rowData._index === rowInEditIndex) {
-            return <TextField
-                fullWidth={true}
-                multiline={rowData.isMultiline === true}
-                value={rowData[key]}
-                onChange={event => {
-                    const data = this.state.data
-                    data[rowData._index][key] = event.target.value
-                    this.setState({ data })
-                }}
-            />
-        }
-        return rowData[key]
+        return <TextField
+            fullWidth={true}
+            multiline={rowData.isMultiline === true}
+            value={rowData[key]}
+            onChange={event => {
+                const localList = this.state.localList
+                localList[rowData._index][key] = event.target.value
+                this.setState({ localList })
+            }}
+        />
     }
 
     boolEditor = key => rowData => {
-        const {
-            rowInEditIndex
-        } = this.state
-        if (rowData._index === rowInEditIndex) {
-            return <Switch
-                // color="normal"
-                checked={rowData[key] + '' === 'true'}
-                onChange={event => {
-                    const data = this.state.data
-                    data[rowData._index][key] = event.target.checked
-                    this.setState({ data })
-                }}
-            />
-        }
-        return rowData[key] === true ? '是' : '否'
+        return <Switch
+            // color="normal"
+            checked={rowData[key] + '' === 'true'}
+            onChange={event => {
+                const localList = this.state.localList
+                localList[rowData._index][key] = event.target.checked
+                this.setState({ localList })
+            }}
+        />
+    }
+
+    numberEditor = key => rowData => {
+        return <TextField
+            type="number"
+            fullWidth={true}
+            value={rowData[key]}
+            onChange={event => {
+                const localList = this.state.localList
+                localList[rowData._index][key] = event.target.value
+                this.setState({ localList })
+            }}
+        />
     }
 
     get columns() {
@@ -82,14 +87,15 @@ export default class ArrayPropEditor extends React.Component {
             props,
             stringEditor,
             boolEditor,
+            numberEditor,
         } = this
         const {
-            data,
-            rowInEditIndex
+            localList,
         } = state
         const editorTypeMap = {
             string: stringEditor,
-            bool: boolEditor
+            bool: boolEditor,
+            number: numberEditor,
         }
         // 用到 title, field 和 columnType
         const result = props.columns
@@ -106,19 +112,14 @@ export default class ArrayPropEditor extends React.Component {
                 const {_index} = rowData
                 return <Button
                     size="small"
-                    color="primary"
-                    // variant="outlined"
-                    // disabled={isInEdit}
+                    color="secondary"
                     onClick={() => {
-                        let data = toJS(this.state.data)
-                        data.splice(_index, 1)
+                        const localList = this.state.localList
+                        localList.splice(_index, 1)
                         this.setState({
-                            data
+                            localList
                         })
-                        this.props.dispatchArray(data)
-                        setTimeout(() => {
-                            this.resetLocalArray()
-                        })
+                        this.resetLocalListIndex()
                     }}
                 >
                     删除
@@ -128,43 +129,34 @@ export default class ArrayPropEditor extends React.Component {
         return result
     }
 
-    resetLocalArray = () => {
-        this.setState({
-            data: this.props.value.map((item, index) => {
-                return Object.assign({}, item, {
-                    _index: index
-                })
-            })
-        })
-    }
 
     triggerVisible = tar => {
         this.setState({
             visible: typeof tar === 'boolean' ? tar : !this.state.visible,
-            rowInEditIndex: tar === false ? -1 : this.state.rowInEditIndex,
         })
     }
 
     renderEditTable = () => {
         const {columns} = this
         const {
-            value,
+            desc,
         } = this.props
         const {
-            data
+            localList
         } = this.state
         return <MaterialTable
-            data={data}
+            data={localList}
             columns={columns}
             options={{
                 search: false,
                 draggable: false,
                 sorting: false,
                 paging: false,
+                showTitle: false,
                 padding: 'dense',
                 actionsColumnIndex: columns.length,
             }}
-            title="内容编辑"
+            // title={desc}
             localization={{
                 body: {
                     emptyDataSourceMessage: '无内容'
@@ -176,19 +168,20 @@ export default class ArrayPropEditor extends React.Component {
     render() {
         const {
             visible,
+            localList,
         } = this.state
         const {
-            value,
+            columns,
             dispatchArray,
             ...restProps
         } = this.props
         return <div className="array-prop-editor">
             <TextField
-                value="点击编辑"
                 onClick={() => {
                     this.triggerVisible(true)
                 }}
                 {...restProps}
+                value="点击编辑"
             />
             <Dialog
                 className="array-editor-dialog"
@@ -201,17 +194,72 @@ export default class ArrayPropEditor extends React.Component {
                 <DialogContent dividers>
                     <div className="array-table-wrap">
                         {this.renderEditTable()}
-                        <Button
-                            className="add-row"
-                            color="primary"
-                            size="small"
-                            variant="contained"
-                            onClick={() => {
-                                // const
-                            }}
-                        >
-                            新增一行
-                        </Button>
+                        <div className="actions-tl">
+                            <Button
+                                className="add-row"
+                                color="primary"
+                                size="small"
+                                variant="outlined"
+                                onClick={() => {
+                                    const localList = this.state.localList
+                                    const newRowObj = {
+                                        // _index: localList.length
+                                    }
+                                    columns.forEach(item => {
+                                        let defaultValue
+                                        if (item.defaultValue !== undefined) {
+                                            defaultValue = item.defaultValue
+                                        } else {
+                                            switch (item.columnType) {
+                                                case 'string':
+                                                    defaultValue = ''
+                                                    break
+                                                case 'bool':
+                                                    defaultValue = false
+                                                    break
+                                                case 'number':
+                                                    defaultValue = 0
+                                                    break
+                                            }
+                                        }
+                                        newRowObj[item.field] = defaultValue
+                                    })
+                                    localList.push(newRowObj)
+                                    this.setState({
+                                        localList
+                                    })
+                                    this.resetLocalListIndex()
+                                }}
+                            >
+                                新增一行
+                            </Button>
+                        </div>
+                        <div className="actions-tr">
+                            <Button
+                                className="btn-confirm"
+                                onClick={() => {
+                                    this.props.dispatchArray(localList)
+                                    this.triggerVisible(false)
+                                }}
+                                variant="outlined"
+                                size="small"
+                                color="normal">
+                                确定
+                            </Button>
+                            <Button
+                                onClick={() => {
+                                    this.triggerVisible(false)
+                                    setTimeout(() => {
+                                        this.setLocalListFromProp()
+                                    }, 300)
+                                }}
+                                variant="outlined"
+                                size="small"
+                                color="normal"
+                            >
+                                取消
+                            </Button>
+                        </div>
                     </div>
                 </DialogContent>
             </Dialog>

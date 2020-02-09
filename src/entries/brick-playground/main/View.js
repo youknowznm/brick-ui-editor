@@ -179,10 +179,20 @@ export default class extends React.Component {
                     showControlPanelDrawer={mainState.showControlPanelDrawer}
                     usedCompsDataArray={mainState.usedCompsDataArray}
                     triggerControlPanelDrawer={mainState.triggerControlPanelDrawer}
-                    archiveName={mainState.archiveName}
-                    author={mainState.author}
-                    lastModified={mainState.lastModified}
                     clearAll={mainState.clearAll}
+                    archiveName={mainState.archiveName}
+                    setArchiveName={name => {
+                        mainState.setProps({
+                            archiveName: name
+                        })
+                    }}
+                    author={mainState.author}
+                    setAuthor={name => {
+                        mainState.setProps({
+                            author: name
+                        })
+                    }}
+                    lastModified={mainState.lastModified}
                 />
                 <AttrEditorView
                     activeComponentData={mainState.activeComponentData}

@@ -1,12 +1,13 @@
 @import "src/entries/brick-playground/main/style";
 
-.array-prop-editor {
-
-}
+.array-prop-editor {}
 
 .array-editor-dialog {
   position: relative;
   min-width: 800px;
+  .MuiDialogContent-root {
+    padding: 0 !important;
+  }
   .array-table-wrap {
     position: relative;
     min-width: 800px;
@@ -19,10 +20,22 @@
     .MuiButton-root {
       min-width: 45px;
     }
-    .add-row {
+    .actions-tl {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      .add-row {
+
+      }
+    }
+    .actions-tr {
       position: absolute;
       right: 20px;
       top: 20px;
+      .btn-confirm {
+        margin-right: 10px;
+      }
     }
+
   }
 }
