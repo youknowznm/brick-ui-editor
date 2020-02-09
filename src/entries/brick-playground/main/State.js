@@ -1,16 +1,6 @@
-/**
- * @author zhangenming
- */
-
 import * as React from 'react'
-import {default as c} from 'classnames'
 import {toJS, computed, observable, action} from 'mobx'
-import {observer} from 'mobx-react'
 import BaseModel from './utils/BaseModel'
-import {
-    COMP_TYPES,
-} from "./config";
-import getSvgByName from "./utils/getSvgByName";
 
 import {load, save} from "./utils/storage";
 
@@ -67,6 +57,7 @@ class MainState extends BaseModel {
         data.deltaY = 0
         this.usedCompsDataArray.push(data)
         this.saveUsedCompData()
+        this.triggerDemoDrawer(false)
     }
 
     @action removeUsedComp = () => {

@@ -169,15 +169,17 @@ export default class ControlPanelView extends React.Component {
                             triggerConfirmFlag(false)
                             this.props.clearAll()
                         }}
-                        color="primary">
+                        type="outlined"
+                        color="normal"
+                    >
                         确认
                     </Button>
                     <Button
                         onClick={() => {
                             triggerConfirmFlag(false)
                         }}
-                        color="primary"
-                        autoFocus
+                        type="outlined"
+                        color="normal"
                     >
                         取消
                     </Button>

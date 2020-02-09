@@ -1,5 +1,5 @@
 import * as React from 'react'
-import c from 'classNames'
+import c from 'classnames'
 
 export default class Typography extends React.Component {
 
@@ -10,14 +10,12 @@ export default class Typography extends React.Component {
         type: 'primary', // heading primary active secondary hint disabled
         size: 'sm',
         width: 50,
-        // height: 50,
         weight: 'normal',
     }
 
     render() {
         const {
             width,
-            // height,
             size,
             type,
             weight,
@@ -33,7 +31,6 @@ export default class Typography extends React.Component {
             ) }
             style={{
                 width: `${width}px`,
-                // height: `${height}px`,
             }}
             {...restProps}
         />

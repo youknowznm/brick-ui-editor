@@ -1,10 +1,5 @@
-/**
- * @author zhangenming
- */
-
 import * as React from 'react'
 import {default as c} from 'classnames'
-import {toJS, computed, observable, action} from 'mobx'
 import {Provider, observer} from 'mobx-react'
 
 import DemoListView from './view/DemoListView'
@@ -12,12 +7,8 @@ import ControlPanelView from './view/ControlPanelView'
 import PlaygroundView from './view/PlaygroundView'
 import AttrEditorView from './view/AttrEditorView'
 
-import Drawer from '@material-ui/core/Drawer'
-import Button from '@material-ui/core/Button'
-import IconButton from '@material-ui/core/IconButton'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
-import Paper from '@material-ui/core/Paper'
 import Snackbar from '@material-ui/core/Snackbar'
 
 import './style.scss'

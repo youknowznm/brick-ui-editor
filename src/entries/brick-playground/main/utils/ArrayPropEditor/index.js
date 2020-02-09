@@ -58,7 +58,7 @@ export default class ArrayPropEditor extends React.Component {
 
     boolEditor = key => rowData => {
         return <Switch
-            // color="normal"
+            color="default"
             checked={rowData[key] + '' === 'true'}
             onChange={event => {
                 const localList = this.state.localList
@@ -128,7 +128,6 @@ export default class ArrayPropEditor extends React.Component {
         })
         return result
     }
-
 
     triggerVisible = tar => {
         this.setState({
@@ -202,9 +201,7 @@ export default class ArrayPropEditor extends React.Component {
                                 variant="outlined"
                                 onClick={() => {
                                     const localList = this.state.localList
-                                    const newRowObj = {
-                                        // _index: localList.length
-                                    }
+                                    const newRowObj = {}
                                     columns.forEach(item => {
                                         let defaultValue
                                         if (item.defaultValue !== undefined) {
@@ -243,7 +240,7 @@ export default class ArrayPropEditor extends React.Component {
                                 }}
                                 variant="outlined"
                                 size="small"
-                                color="normal">
+                                color="default">
                                 确定
                             </Button>
                             <Button
@@ -255,7 +252,7 @@ export default class ArrayPropEditor extends React.Component {
                                 }}
                                 variant="outlined"
                                 size="small"
-                                color="normal"
+                                color="default"
                             >
                                 取消
                             </Button>

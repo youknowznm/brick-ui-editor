@@ -1,6 +1,6 @@
-import {toJS, computed, observable, action} from 'mobx'
+import {toJS} from 'mobx'
 
-const LOCAL_STORAGE_KEY = 'BRICK_PLAYGORUND_ARCHIVE'
+const LOCAL_STORAGE_KEY = 'BRICK_PLAYGROUND_ARCHIVE'
 
 export const save = data => {
     // console.log('save', toJS(data))

@@ -23,7 +23,7 @@ export default class ComposedDialog extends React.Component {
 
         return <Dialog
             visible={true}
-            height={height}
+            height={+height}
             {...restProps}
         />
     }

@@ -114,6 +114,7 @@ export default class AttrEditorView extends React.Component {
                     }
                 ],
                 isMultiline,
+                placeholder,
                 // defaultValue
             } = item
             const generalInputProps = {
@@ -122,13 +123,28 @@ export default class AttrEditorView extends React.Component {
                 value: originProps[key],
                 size: 'small',
                 fullWidth: true,
-                margin: 'dense'
+                margin: 'dense',
+                placeholder
             }
             switch (type) {
-                case 'number':
                 case 'string':
                     return <TextField
                         multiline={isMultiline === true}
+                        onChange={evt => {
+                            targetPropsChangeHandler({
+                                [key]: evt.target.value
+                            })
+                        }}
+                        onBlur={evt => {
+                            targetPropsChangeHandler({
+                                [key]: evt.target.value.trim()
+                            })
+                        }}
+                        {...generalInputProps}
+                    />
+                case 'number':
+                    return <TextField
+                        type="number"
                         onChange={evt => {
                             targetPropsChangeHandler({
                                 [key]: evt.target.value
@@ -270,6 +286,7 @@ export default class AttrEditorView extends React.Component {
                         targetPropsChangeHandler({
                             width: evt.target.value
                         })
+
                     }}
                     label="宽度 width"
                     {...styleInputOtherProps}
@@ -324,7 +341,9 @@ export default class AttrEditorView extends React.Component {
                                 triggerConfirmFlag(false)
                                 props.removeUsedComp()
                             }}
-                            color="primary">
+                            type="outlined"
+                            color="primary"
+                        >
                             确认
                         </Button>
                         <Button
@@ -332,6 +351,7 @@ export default class AttrEditorView extends React.Component {
                                 triggerConfirmFlag(false)
                             }}
                             color="primary"
+                            type="outlined"
                             autoFocus
                         >
                             取消

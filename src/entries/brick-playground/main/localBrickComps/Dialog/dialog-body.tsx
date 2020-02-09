@@ -82,8 +82,9 @@ export class DialogBody extends React.Component<DialogBodyProps, DialogBodyState
     }
 
     render() {
-        // @zhangenming 总最小高度 290, body 之外高度 130
-        const bodyHeight = this.props.height > 290 ? this.props.height - 130 : 160
+        // TODO:
+        // @zhangenming 总最小高度 290, body 之外高度 129
+        const bodyHeight = this.props.height > 290 ? this.props.height - 129 : 160
         return (
             <div
                 className={this.className}

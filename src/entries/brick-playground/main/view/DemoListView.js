@@ -60,17 +60,7 @@ export default class DemoListView extends React.Component {
         demoListState: new DemoListState(),
     }
 
-    constructor(props) {
-        super(props)
-        const {local} = this
-    }
-
-    componentDidMount() {
-        // TODO: 待移除
-        this.local.demoListState.setProps({
-            expandedDemoPanelLabel: 'HeadNav'
-        })
-    }
+    componentDidMount() {}
 
     getCnLabel = label => {
         for (let item in COMP_TYPES) {

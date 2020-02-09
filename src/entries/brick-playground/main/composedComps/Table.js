@@ -14,8 +14,7 @@ export default class ComposedTable extends React.Component {
         maxBodyHeight: 1000,
         useCheckbox: false,
         operationsLabelsJoined: "",
-        width: 750,
-        // height: 300,
+        width: 600,
     }
 
     render() {
