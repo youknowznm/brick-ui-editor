@@ -22,7 +22,8 @@
           width: 100%;
           height: 50px;
           margin: 0;
-          background: #f3e5f5;
+          //background: #f3e5f5;
+          background: #e0f2f1;
           //background: #fff3e0;
           border-top: 1px solid $border-color;
           &:first-of-type {
@@ -36,7 +37,7 @@
             font-size: 18px;
             border-bottom: 2px solid;
             font-weight: lighter;
-            color: #999;
+            color: #212121;
             user-select: none;
             cursor: auto;
           }
@@ -202,15 +203,14 @@
 .brick-playground-typography {
   font-size: $font-size-md;
   color: $color-text-primary;
-  text-align: left;
   // size
-  &.font-size-sm {
+  &.size-sm {
     font-size: $font-size-sm;
   }
-  &.font-size-md {
+  &.size-md {
     font-size: $font-size-md;
   }
-  &.font-size-lg {
+  &.size-lg {
     font-size: $font-size-lg;
   }
   // color
@@ -232,14 +232,14 @@
   &.type-disabled {
     color: $color-text-disabled;
   }
-  // align
-  &.align-left {
-    text-align: left;
+  // weight
+  &.weight-normal {
+    font-weight: $font-weight-normal;
   }
-  &.align-center {
-    text-align: center;
+  &.weight-medium {
+    font-weight: $font-weight-medium;
   }
-  &.align-right {
-    text-align: right;
+  &.weight-bold {
+    font-weight: $font-weight-bold;
   }
 }

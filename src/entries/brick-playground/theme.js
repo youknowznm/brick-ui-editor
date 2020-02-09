@@ -1,22 +1,6 @@
 import {createMuiTheme} from '@material-ui/core/styles'
-import blue from '@material-ui/core/colors/blue'
-import purple from '@material-ui/core/colors/purple'
-import orange from '@material-ui/core/colors/orange'
-
-// const darkTheme = createMuiTheme({
-//     palette: {
-//         type: 'dark',
-//         primary: {
-//             main: '#1976d2'
-//         },
-//         secondary: {
-//             main: '#f57c00'
-//         },
-//     },
-//     status: {
-//         // danger: 'orange',
-//     },
-// })
+import Teal from '@material-ui/core/colors/Teal'
+import Purple from '@material-ui/core/colors/Purple'
 
 const lightTheme = createMuiTheme({
     // transitions: {
@@ -24,12 +8,8 @@ const lightTheme = createMuiTheme({
     // },
     palette: {
         type: 'light',
-        // primary: blue,
-        primary: purple,
-        secondary: orange,
-    },
-    status: {
-        // danger: 'orange',
+        primary: Teal,
+        secondary: Purple,
     },
 })
 

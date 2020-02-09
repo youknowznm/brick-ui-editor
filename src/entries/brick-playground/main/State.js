@@ -83,7 +83,7 @@ class MainState extends BaseModel {
     @action clearAll = () => {
         this.usedCompsDataArray = []
         this.saveUsedCompData()
-        this.toast('已移除所有组件。')
+        this.toast('已清空画布。')
     }
 
     loadUsedCompData = () => {

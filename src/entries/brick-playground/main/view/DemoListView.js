@@ -16,6 +16,7 @@ import Drawer from '@material-ui/core/Drawer'
 import ButtonDemo from '../demos/ButtonDemo'
 import IconDemo from '../demos/IconDemo'
 import LinkDemo from '../demos/LinkDemo'
+import TypographyDemo from '../demos/TypographyDemo'
 import CollapseDemo from '../demos/CollapseDemo'
 import DialogDemo from '../demos/DialogDemo'
 import PopoverDemo from '../demos/PopoverDemo'
@@ -95,6 +96,7 @@ export default class DemoListView extends React.Component {
             ButtonDemo,
             IconDemo,
             LinkDemo,
+            TypographyDemo,
             {
                 categoryName: '容器'
             },

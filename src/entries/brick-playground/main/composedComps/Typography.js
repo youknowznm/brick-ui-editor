@@ -1,4 +1,5 @@
 import * as React from 'react'
+import c from 'classNames'
 
 export default class Typography extends React.Component {
 
@@ -8,31 +9,31 @@ export default class Typography extends React.Component {
         children: '',
         type: 'primary', // heading primary active secondary hint disabled
         size: 'sm',
-        width: 300,
-        height: 50,
-        align: 'left'
+        width: 50,
+        // height: 50,
+        weight: 'normal',
     }
 
     render() {
         const {
             width,
-            height,
+            // height,
             size,
-            align,
             type,
+            weight,
             ...restProps
         } = this.props
 
-        return <p
+        return <span
             className={c(
                 'brick-playground-typography',
-                `font-size-${size}`,
-                `text-align-${align}`,
+                `size-${size}`,
+                `weight-${weight}`,
                 `type-${type}`,
             ) }
             style={{
                 width: `${width}px`,
-                height: `${height}px`,
+                // height: `${height}px`,
             }}
             {...restProps}
         />

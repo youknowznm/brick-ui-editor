@@ -150,8 +150,8 @@ export default class extends React.Component {
                 mainState.metaKeyPressing && 'meta-key-pressed'
             )}>
                 <DemoListView
-                    showDemoDrawer={true}
-                    // showDemoDrawer={mainState.showDemoDrawer}
+                    // showDemoDrawer={true}
+                    showDemoDrawer={mainState.showDemoDrawer}
                 />
                 {this.renderDemoDrawerTrigger()}
                 <PlaygroundView

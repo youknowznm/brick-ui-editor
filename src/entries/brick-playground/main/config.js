@@ -3,6 +3,7 @@ import * as React from "react";
 import ComposedButton from './composedComps/Button.js'
 import ComposedIcon from './composedComps/Icon.js'
 import ComposedLink from './composedComps/Link.js'
+import Typography from './composedComps/Typography.js'
 import ComposedCollapse from './composedComps/Collapse.js'
 import ComposedDialog from './composedComps/Dialog.js'
 import ComposedPopover from './composedComps/Popover.js'
@@ -248,6 +249,55 @@ export const COMP_TYPES = {
                 defaultValue: false
             },
         ],
+    },
+    Typography: {
+        cnLabel: '文字',
+        enLabel: 'Typography',
+        Element: Typography,
+        widthEditable: true,
+        editableProps: [
+            {
+                desc: '内容',
+                key: 'children',
+                type: 'string',
+            },
+            {
+                desc: '字号',
+                key: 'size',
+                type: 'enum',
+                options: [
+                    {value: 'sm', label: '小号'},
+                    {value: 'md', label: '中号'},
+                    {value: 'lg', label: '大号'},
+                ],
+                defaultValue: 'md'
+            },
+            {
+                desc: '类型',
+                key: 'type',
+                type: 'enum',
+                options: [
+                    {value: 'primary', label: '主要'},
+                    {value: 'heading', label: '标题'},
+                    {value: 'active', label: '活动'},
+                    {value: 'secondary', label: '次要'},
+                    {value: 'hint', label: '提示'},
+                    {value: 'disabled', label: '禁用'},
+                ],
+                defaultValue: 'primary'
+            },
+            {
+                desc: '字重',
+                key: 'weight',
+                type: 'enum',
+                options: [
+                    {value: 'normal', label: '常规体'},
+                    {value: 'medium', label: '中黑'},
+                    {value: 'bold', label: '粗体'},
+                ],
+                defaultValue: 'normal'
+            },
+        ]
     },
     ComposedCollapse: {
         cnLabel: '扩展面板',
