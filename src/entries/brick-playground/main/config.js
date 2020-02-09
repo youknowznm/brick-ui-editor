@@ -939,7 +939,7 @@ export const COMP_TYPES = {
     },
     ComposedSingleSelect: {
         enLabel: 'SingleSelect',
-        cnLabel: '选项列表(单选)',
+        cnLabel: '单选列表',
         Element: ComposedSingleSelect,
         widthEditable: true,
         editableProps: [
@@ -975,7 +975,7 @@ export const COMP_TYPES = {
     },
     ComposedMultipleSelect: {
         enLabel: 'MultipleSelect',
-        cnLabel: '选项列表(多选)',
+        cnLabel: '多选列表',
         Element: ComposedMultipleSelect,
         widthEditable: true,
         editableProps: [

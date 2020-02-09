@@ -5,12 +5,13 @@ import {inject, observer} from 'mobx-react'
 import PropTypes from 'prop-types'
 import {PropTypes as MobxPropTypes} from 'mobx-react'
 
-import {ThemeProvider} from '@material-ui/core/styles'
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Typography from '@material-ui/core/Typography';
+import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import Drawer from '@material-ui/core/Drawer'
 
 import ButtonDemo from '../demos/ButtonDemo'
 import IconDemo from '../demos/IconDemo'
@@ -38,16 +39,12 @@ import HeadNavDemo from '../demos/HeadNavDemo'
 import MenuDemo from '../demos/MenuDemo'
 import PaginationDemo from '../demos/PaginationDemo'
 
-import Drawer from '@material-ui/core/Drawer'
-import MUIButton from '@material-ui/core/Button'
-
 import DemoListState from '../states/DemoListState'
 
 import {PortalContainerProvider} from '../utils/PortalContainerContext'
 
-import '../style/demo-list.scss'
-import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import {COMP_TYPES} from "../config";
+import '../style/demo-list.scss'
 
 @observer
 export default class DemoListView extends React.Component {
@@ -92,16 +89,28 @@ export default class DemoListView extends React.Component {
         } = demoListState
 
         const Demos = [
+            {
+                categoryName: '基础'
+            },
             ButtonDemo,
             IconDemo,
             LinkDemo,
+            {
+                categoryName: '容器'
+            },
             CollapseDemo,
             DialogDemo,
             PopoverDemo,
             PopoverConfirmDemo,
             TabsDemo,
+            {
+                categoryName: '数据展示'
+            },
             FileListDemo,
             TableDemo,
+            {
+                categoryName: '数据输入'
+            },
             CheckboxGroupDemo,
             DatePickerDemo,
             InputDemo,
@@ -112,8 +121,14 @@ export default class DemoListView extends React.Component {
             TextSwitchDemo,
             IconSwitchDemo,
             TextareaDemo,
+            {
+                categoryName: '信息反馈'
+            },
             AlertDemo,
             // ToastDemo, // Toast 与 Alert UI 一致.
+            {
+                categoryName: '导航'
+            },
             BreadcrumbDemo,
             HeadNavDemo,
             MenuDemo,
@@ -124,6 +139,15 @@ export default class DemoListView extends React.Component {
             <div>
                 {
                     Demos.map(Demo => {
+                        if (typeof Demo.categoryName === 'string') {
+                            return <h3
+                                className="demo-cate"
+                            >
+                                <span className="name">
+                                    {Demo.categoryName}
+                                </span>
+                            </h3>
+                        }
                         let label = ''
                         const regArr = /^(.+)Demo$/.exec(Demo.name)
                         if (regArr) {
@@ -143,6 +167,9 @@ export default class DemoListView extends React.Component {
                             onChange={(evt, value) => {
                                 setExpandedDemoPanelLabel(value ? label : '')
                             }}>
+                            {/*TransitionProps={{*/}
+                            {/*    unmountOnExit: true*/}
+                            {/*}}*/}
                             <ExpansionPanelSummary
                                 className="title"
                                 expandIcon={<ExpandMoreIcon />}
