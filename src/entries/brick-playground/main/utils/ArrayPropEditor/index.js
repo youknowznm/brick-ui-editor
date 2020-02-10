@@ -58,7 +58,7 @@ export default class ArrayPropEditor extends React.Component {
 
     boolEditor = key => rowData => {
         return <Switch
-            color="default"
+            // color="default"
             checked={rowData[key] + '' === 'true'}
             onChange={event => {
                 const localList = this.state.localList
@@ -203,6 +203,7 @@ export default class ArrayPropEditor extends React.Component {
                                     const localList = this.state.localList
                                     const newRowObj = {}
                                     columns.forEach(item => {
+                                        // console.log({item})
                                         let defaultValue
                                         if (item.defaultValue !== undefined) {
                                             defaultValue = item.defaultValue

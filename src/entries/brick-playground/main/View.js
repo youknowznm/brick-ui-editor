@@ -27,7 +27,7 @@ export default class extends React.Component {
         this.registerMetaKeyListener()
         this.registerBodyMouseEnterListener()
         this.registerResizeListener()
-        this.local.mainState.loadUsedCompData()
+        this.local.mainState.loadStorage()
     }
 
     registerMetaKeyListener = () => {
@@ -172,18 +172,22 @@ export default class extends React.Component {
                     triggerControlPanelDrawer={mainState.triggerControlPanelDrawer}
                     clearAll={mainState.clearAll}
                     archiveName={mainState.archiveName}
-                    setArchiveName={name => {
+                    setArchiveName={archiveName => {
                         mainState.setProps({
-                            archiveName: name
+                            archiveName
                         })
+                        mainState.saveArchiveName()
                     }}
                     author={mainState.author}
-                    setAuthor={name => {
+                    setAuthor={author => {
                         mainState.setProps({
-                            author: name
+                            author
                         })
+                        mainState.saveAuthor()
                     }}
                     lastModified={mainState.lastModified}
+                    copyStorageToClipboard={mainState.copyStorageToClipboard}
+                    loadFromCopy={mainState.loadFromCopy}
                 />
                 <AttrEditorView
                     activeComponentData={mainState.activeComponentData}

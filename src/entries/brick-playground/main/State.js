@@ -2,7 +2,15 @@ import * as React from 'react'
 import {toJS, computed, observable, action} from 'mobx'
 import BaseModel from './utils/BaseModel'
 
-import {load, save} from "./utils/storage";
+import {
+    BP_ARCHIVE_DATA_KEY,
+    BP_AUTHOR_KEY,
+    BP_ARCHIVE_NAME_KEY,
+    BP_LAST_MODIFIED_KEY,
+    getStorage,
+    setStorage
+} from "./utils/storage";
+import copyToClipboard from "./utils/copyToClipboard";
 
 class MainState extends BaseModel {
 
@@ -56,7 +64,7 @@ class MainState extends BaseModel {
         data.deltaX = 0
         data.deltaY = 0
         this.usedCompsDataArray.push(data)
-        this.saveUsedCompData()
+        this.saveArchiveData()
         this.triggerDemoDrawer(false)
     }
 
@@ -68,25 +76,13 @@ class MainState extends BaseModel {
             activeComponentId: ''
         })
         this.usedCompsDataArray.splice(targetIndex, 1)
-        this.saveUsedCompData()
+        this.saveArchiveData()
     }
 
     @action clearAll = () => {
         this.usedCompsDataArray = []
-        this.saveUsedCompData()
+        this.saveArchiveData()
         this.toast('已清空画布。')
-    }
-
-    loadUsedCompData = () => {
-        const profile = load()
-        if (profile) {
-            this.setProps({
-                usedCompsDataArray: profile
-            })
-            if (profile.length > 0) {
-                this.toast('已读取本地存储。')
-            }
-        }
     }
 
     @observable msgToToast = ''
@@ -102,10 +98,6 @@ class MainState extends BaseModel {
                 toastFlag: false
             })
         }, duration)
-    }
-
-    saveUsedCompData = () => {
-        save(this.usedCompsDataArray)
     }
 
     @observable playgroundWidth = 1200
@@ -141,7 +133,7 @@ class MainState extends BaseModel {
                 } = compResizeHandler()
                 activeComponentData.wrapWidth = wrapWidth
                 activeComponentData.wrapHeight = wrapHeight
-                this.saveUsedCompData()
+                this.saveArchiveData()
             })
         }
     }
@@ -151,15 +143,100 @@ class MainState extends BaseModel {
     @action compDragHandler = deltas => {
         this.activeComponentData.deltaX = deltas.deltaX
         this.activeComponentData.deltaY = deltas.deltaY
-        this.saveUsedCompData()
+        this.saveArchiveData()
     }
 
     // ##### 上方 控制面板 #####
 
     @observable archiveName = ''
     @observable author = ''
-    @observable lastModified = 'N/A'
+    @observable lastModified = ''
 
+    // ##### 存储相关 #####
+
+    saveArchiveData = () => {
+        setStorage(BP_ARCHIVE_DATA_KEY, this.usedCompsDataArray)
+        // this.setProps({
+        //     lastModified: new Date().toLocaleString()
+        // })
+    }
+    saveAuthor = () => {
+        setStorage(BP_AUTHOR_KEY, this.author)
+    }
+    saveArchiveName = () => {
+        setStorage(BP_ARCHIVE_NAME_KEY, this.archiveName)
+    }
+    saveLastModified = () => {
+        setStorage(BP_LAST_MODIFIED_KEY, this.lastModified)
+    }
+    loadStorage = () => {
+        const archive = getStorage(BP_ARCHIVE_DATA_KEY)
+        if (Array.isArray(archive)) {
+            this.setProps({
+                usedCompsDataArray: archive
+            })
+            if (archive.length > 0) {
+                this.toast('已读取本地存储。')
+            }
+        } else {
+            this.saveArchiveData()
+        }
+        const author = getStorage(BP_AUTHOR_KEY)
+        if (typeof author === 'string') {
+            this.setProps({
+                author
+            })
+        } else {
+            this.saveAuthor()
+        }
+        const archiveName = getStorage(BP_ARCHIVE_NAME_KEY)
+        if (typeof author === 'string') {
+            this.setProps({
+                archiveName
+            })
+        } else {
+            this.saveArchiveName()
+        }
+        // TODO: 更新时间
+        // const lastModified = getStorage(BP_LAST_MODIFIED)
+        // if (typeof lastModified === 'string') {
+        //     this.setProps({
+        //         lastModified
+        //     })
+        // } else {
+        //     this.saveLastModified()
+        // }
+    }
+    copyStorageToClipboard = () => {
+        const copyTarget = {
+            BP_ARCHIVE_NAME: this.archiveName,
+            BP_AUTHOR: this.author,
+            BP_ARCHIVE_DATA: this.usedCompsDataArray,
+        }
+        copyToClipboard(JSON.stringify(copyTarget))
+        this.toast('已复制到剪贴板。')
+    }
+    loadFromCopy = archiveJSON => {
+        const copyTarget = JSON.parse(archiveJSON)
+        const {
+            BP_ARCHIVE_NAME,
+            BP_AUTHOR,
+            BP_ARCHIVE_DATA,
+        } = copyTarget
+        if (BP_ARCHIVE_NAME && BP_AUTHOR && BP_ARCHIVE_DATA) {
+            this.setProps({
+                usedCompsDataArray: BP_ARCHIVE_DATA,
+                author: BP_AUTHOR,
+                archiveName: BP_ARCHIVE_NAME
+            })
+            this.saveArchiveName()
+            this.saveArchiveData()
+            this.saveAuthor()
+            this.toast('读取成功。')
+        } else {
+            this.toast('请使用正确的数据。')
+        }
+    }
 }
 
 export default MainState

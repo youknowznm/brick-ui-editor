@@ -21,6 +21,7 @@ $aligner-color: #419bf9;
   min-width: 1200px;
   min-height: 600px;
   background: $gen-bg-color;
+  z-index: 2;
   .top-actions-drawer-trigger {
     position: fixed;
     width: 100%;

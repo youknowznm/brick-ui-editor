@@ -20,4 +20,16 @@ export default class State extends BaseModel {
             showClearConfirmFlag: result
         })
     }
+
+    @observable showLoadArchiveConfirmFLag = false
+
+    triggerLoadArchiveConfirmFLag = target => {
+        const result = typeof target === 'boolean' ? target : !this.showLoadArchiveConfirmFLag
+        this.setProps({
+            showLoadArchiveConfirmFLag: result,
+            archiveJSON: target === false ? '' : this.archiveJSON
+        })
+    }
+
+    @observable archiveJSON = ''
 }

@@ -286,7 +286,6 @@ export default class AttrEditorView extends React.Component {
                         targetPropsChangeHandler({
                             width: evt.target.value
                         })
-
                     }}
                     label="宽度 width"
                     {...styleInputOtherProps}

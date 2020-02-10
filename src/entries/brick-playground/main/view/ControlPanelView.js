@@ -1,19 +1,24 @@
 import * as React from 'react'
 import {inject, observer} from 'mobx-react'
 
+import {getRaw, BP_ARCHIVE_DATA_KEY} from "../utils/storage";
+
 import PropTypes from 'prop-types'
 import {PropTypes as MobxPropTypes} from 'mobx-react'
 
 import Drawer from '@material-ui/core/Drawer'
 import Button from '@material-ui/core/Button'
-import MoreVerIcon from "@material-ui/icons/MoreHoriz";
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import TextField from "@material-ui/core/TextField";
-import Dialog from "@material-ui/core/Dialog";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogActions from "@material-ui/core/DialogActions";
+import MoreVerIcon from "@material-ui/icons/MoreHoriz"
+import FavoriteIcon from '@material-ui/icons/Favorite'
+import TextField from "@material-ui/core/TextField"
+import Dialog from "@material-ui/core/Dialog"
+import DialogTitle from "@material-ui/core/DialogTitle"
+import DialogContent from "@material-ui/core/DialogContent"
+import DialogContentText from "@material-ui/core/DialogContentText"
+import DialogActions from "@material-ui/core/DialogActions"
+import Typography from "@material-ui/core/Typography"
+
+import copyToClipboard from '../utils/copyToClipboard'
 
 import ControlPanelState from '../states/ControlPanelState'
 
@@ -90,27 +95,43 @@ export default class ControlPanelView extends React.Component {
                     <span> by youknowznm.</span>
                 </p>
             </div>
-
         </div>
     }
 
     renderControlPanelContent = () => {
         const {
+            local,
+            props
+        } = this
+        const {
             showClearConfirmFlag,
-            triggerConfirmFlag
-        } = this.local.controlPanelState
+            triggerConfirmFlag,
+            showLoadArchiveConfirmFLag,
+            triggerLoadArchiveConfirmFLag,
+            archiveJSON,
+        } = local.controlPanelState
+        const {
+            archiveName,
+            setArchiveName,
+            author,
+            setAuthor,
+            lastModified,
+            clearAll,
+            copyStorageToClipboard,
+            loadFromCopy,
+        } = props
         return <div className="control-panel-content">
             <TextField
                 className="archive-name-input"
                 size="small"
                 variant="filled"
                 label="存档名称"
-                value={this.props.archiveName}
+                value={archiveName}
                 onChange={evt => {
-                    this.props.setArchiveName(evt.target.value)
+                    setArchiveName(evt.target.value)
                 }}
                 onBlur={evt => {
-                    this.props.setArchiveName(evt.target.value.trim())
+                    setArchiveName(evt.target.value.trim())
                 }}
             />
             <TextField
@@ -118,20 +139,22 @@ export default class ControlPanelView extends React.Component {
                 size="small"
                 variant="filled"
                 label="作者"
-                value={this.props.author}
+                value={author}
                 onChange={evt => {
-                    this.props.setAuthor(evt.target.value)
+                    setAuthor(evt.target.value)
                 }}
                 onBlur={evt => {
-                    this.props.setAuthor(evt.target.value.trim())
+                    setAuthor(evt.target.value.trim())
                 }}
             />
-            {/*<Typography*/}
-            {/*    className="last-modified"*/}
-            {/*    variant="caption"*/}
-            {/*>*/}
-            {/*    更新于 {this.props.lastModified}*/}
-            {/*</Typography>*/}
+            {
+                lastModified !== '' && <Typography
+                    className="last-modified"
+                    variant="caption"
+                >
+                    更新于 {lastModified}
+                </Typography>
+            }
             <Button
                 className="btn-clear"
                 color="secondary"
@@ -139,9 +162,7 @@ export default class ControlPanelView extends React.Component {
                 variant="outlined"
                 disabled={this.isEmpty}
                 onClick={() => {
-                    // TODO: 待移除
-                    // triggerConfirmFlag(true)
-                    this.props.clearAll()
+                    triggerConfirmFlag(true)
                 }}
             >
                 清空画布
@@ -162,9 +183,9 @@ export default class ControlPanelView extends React.Component {
                     <Button
                         onClick={() => {
                             triggerConfirmFlag(false)
-                            this.props.clearAll()
+                            clearAll()
                         }}
-                        type="outlined"
+                        variant="outlined"
                         color="normal"
                     >
                         确认
@@ -173,7 +194,7 @@ export default class ControlPanelView extends React.Component {
                         onClick={() => {
                             triggerConfirmFlag(false)
                         }}
-                        type="outlined"
+                        variant="outlined"
                         color="normal"
                     >
                         取消
@@ -185,17 +206,72 @@ export default class ControlPanelView extends React.Component {
                 variant="outlined"
                 size="small"
                 color="primary"
+                onClick={() => {
+                    triggerLoadArchiveConfirmFLag(true)
+                }}
             >
-                加载存档
+                读取存档
             </Button>
+            <Dialog
+                open={showLoadArchiveConfirmFLag}
+                onClose={() => {
+                    triggerLoadArchiveConfirmFLag(false)
+                }}
+            >
+                <DialogTitle>读取存档</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        请粘贴已有的存档。
+                    </DialogContentText>
+                    <TextField
+                        className="load-archive-dialog"
+                        autoFocus
+                        value={archiveJSON}
+                        onChange={evt => {
+                            local.controlPanelState.setProps({
+                                archiveJSON: evt.target.value
+                            })
+                        }}
+                        onBlur={evt => {
+                            local.controlPanelState.setProps({
+                                archiveJSON: evt.target.value.trim()
+                            })
+                        }}
+                    />
+                </DialogContent>
+                <DialogActions>
+                    <Button
+                        onClick={() => {
+                            triggerLoadArchiveConfirmFLag(false)
+                            loadFromCopy(archiveJSON)
+                        }}
+                        variant="outlined"
+                        color="secondary"
+                    >
+                        确认
+                    </Button>
+                    <Button
+                        onClick={() => {
+                            triggerLoadArchiveConfirmFLag(false)
+                        }}
+                        variant="outlined"
+                        color="secondary"
+                    >
+                        取消
+                    </Button>
+                </DialogActions>
+            </Dialog>
             <Button
                 className="btn-share"
                 variant="outlined"
                 size="small"
-                disabled={this.isEmpty}
+                disabled={this.isEmpty || archiveName === '' || author === ''}
                 color="primary"
+                onClick={() => {
+                    copyStorageToClipboard()
+                }}
             >
-                分享存档
+                复制存档
             </Button>
         </div>
     }

@@ -1,16 +1,19 @@
 import {toJS} from 'mobx'
 
-const LOCAL_STORAGE_KEY = 'BRICK_PLAYGROUND_ARCHIVE'
+export const BP_ARCHIVE_DATA_KEY = 'BP_ARCHIVE_DATA'
+export const BP_ARCHIVE_NAME_KEY = 'BP_ARCHIVE_NAME'
+export const BP_AUTHOR_KEY = 'BP_AUTHOR'
+export const BP_LAST_MODIFIED_KEY = 'BP_LAST_MODIFIED'
 
-export const save = data => {
+export const setStorage = (key, data) => {
     // console.log('save', toJS(data))
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(toJS(data)))
+    localStorage.setItem(key, JSON.stringify(toJS(data)))
 }
 
-export const load = data => {
-    return JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
+export const getStorage = key => {
+    return JSON.parse(localStorage.getItem(key))
 }
 
-export const getJSONString = data => {
-    return localStorage.getItem(LOCAL_STORAGE_KEY)
+export const getRaw = key => {
+    return localStorage.getItem(key)
 }
