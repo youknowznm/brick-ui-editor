@@ -357,7 +357,6 @@ export const COMP_TYPES = {
         enLabel: 'Dialog',
         cnLabel: '对话框',
         Element: ComposedDialog,
-        heightEditable: true,
         editableProps: [
             {
                 desc: '标题',
@@ -371,7 +370,7 @@ export const COMP_TYPES = {
                 isMultiline: true,
             },
             {
-                desc: '尺寸',
+                desc: '宽度',
                 key: 'size',
                 type: 'enum',
                 options: [
@@ -382,6 +381,17 @@ export const COMP_TYPES = {
                     {value: 'xl', label: '特大号'}
                 ],
                 defaultValue: 'md'
+            },
+            {
+                desc: '高度',
+                key: 'height',
+                type: 'enum',
+                options: [
+                    {value: 'sm', label: '小号'},
+                    {value: 'md', label: '中号'},
+                    {value: 'lg', label: '大号'},
+                ],
+                defaultValue: 'sm'
             },
         ]
     },

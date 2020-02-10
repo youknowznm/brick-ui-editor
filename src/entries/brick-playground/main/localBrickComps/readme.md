@@ -10,6 +10,6 @@
     import {MenuPopper} from '../Menu'
     ```
 5. Dialog 移除包裹的 Modal, 用 size 直接控制 .brick-dialog-wrap 的宽度
-5. Dialog 接受传入的 height prop, 用以控制 dialog body 高度
+5. Dialog 接受传入的 bodyHeight prop 来控制 dialog body 高度
 
 > 目前 brick 版本: db2f6c3b @200117

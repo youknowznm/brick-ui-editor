@@ -1,19 +1,11 @@
 import * as React from 'react'
-import {default as c} from 'classnames'
-import {toJS, computed, observable, action} from 'mobx'
 import {inject, observer} from 'mobx-react'
 
 import PropTypes from 'prop-types'
 import {PropTypes as MobxPropTypes} from 'mobx-react'
 
-import {withStyles} from '@material-ui/core/styles'
 import Drawer from '@material-ui/core/Drawer'
 import Button from '@material-ui/core/Button'
-
-import ControlPanelState from '../states/ControlPanelState'
-
-import '../style/control-panel.scss'
-import Paper from "@material-ui/core/Paper";
 import MoreVerIcon from "@material-ui/icons/MoreHoriz";
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import TextField from "@material-ui/core/TextField";
@@ -22,7 +14,10 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions";
-import {Link, Typography} from "@material-ui/core";
+
+import ControlPanelState from '../states/ControlPanelState'
+
+import '../style/control-panel.scss'
 
 @observer
 export default class ControlPanelView extends React.Component {
@@ -68,7 +63,7 @@ export default class ControlPanelView extends React.Component {
                 >
                     <Button
                         className="link repo"
-                        variant="outlined"
+                        // variant="outlined"
                         size="small"
                     >
                         iCode 仓库
@@ -80,7 +75,7 @@ export default class ControlPanelView extends React.Component {
                 >
                     <Button
                         className="link guide"
-                        variant="outlined"
+                        // variant="outlined"
                         size="small"
                     >
                         使用指引

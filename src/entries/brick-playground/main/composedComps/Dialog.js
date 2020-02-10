@@ -10,7 +10,7 @@ export default class ComposedDialog extends React.Component {
         headline: '弹窗标题',
         children: '弹窗内容',
         size: 'sm',
-        height: 350,
+        height: 'sm',
     }
 
     render() {
@@ -21,9 +21,15 @@ export default class ComposedDialog extends React.Component {
             ...restProps
         } = this.props
 
+        const bodyHeightMap = {
+            sm: 160,
+            md: 320,
+            lg: 480
+        }
+
         return <Dialog
             visible={true}
-            height={+height}
+            bodyHeight={bodyHeightMap[height]}
             {...restProps}
         />
     }

@@ -26,13 +26,11 @@ export default class PlaygroundCompWrap extends React.Component {
     wrapDOM = null
 
     state = {
-        isAbsolutePosition: false,
         prevDeltaX: 0,
         prevDeltaY: 0,
     }
 
     static propTypes = {
-        // // playground 内容宽高
         // playgroundWidth: PropTypes.number.isRequired,
         // playgroundHeight: PropTypes.number.isRequired,
         // deltaX,
@@ -44,6 +42,17 @@ export default class PlaygroundCompWrap extends React.Component {
             prevDeltaX: this.props.deltaX,
             prevDeltaY: this.props.deltaY,
         })
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        // 选中时, 设置 compResizeHandler 为当前组件的
+        if (prevProps.activeComponentId !== prevProps.id && this.isSelected) {
+            this.props.setCompResizeHandler(this.compResizeHandler)
+        }
+        // 取消选中时, 置空 compResizeHandler
+        if (prevProps.activeComponentId === prevProps.id && !this.isSelected) {
+            this.props.setCompResizeHandler(null)
+        }
     }
 
     get isSelected() {
@@ -60,7 +69,6 @@ export default class PlaygroundCompWrap extends React.Component {
 
     processContentDOMRef = reactElem => {
         this.contentRef = reactElem
-        this.props.setCompResizeHandler(this.compResizeHandler)
     }
 
     compResizeHandler = () => {
@@ -114,7 +122,6 @@ export default class PlaygroundCompWrap extends React.Component {
             onStop: (e, ui) => {
                 const {x, y} = ui
                 this.setState({
-                    isAbsolutePosition: true,
                     prevDeltaX: x,
                     prevDeltaY: y,
                 })
@@ -132,7 +139,6 @@ export default class PlaygroundCompWrap extends React.Component {
             state
         } = this
         const {
-            isAbsolutePosition,
             prevDeltaX,
             prevDeltaY,
         } = state
@@ -226,7 +232,6 @@ export default class PlaygroundCompWrap extends React.Component {
             compTypeData,
         } = this
         const {
-            isAbsolutePosition,
             prevDeltaX,
             prevDeltaY,
         } = state

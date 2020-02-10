@@ -10,7 +10,7 @@ import _Table from '../composedComps/Table.js'
 const Table = wrapDemoComp(_Table)
 
 const columns = []
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < 10; i++) {
     columns.push({
         key: `key${i + 1}`,
         thContent: `标题${i + 1}`,
@@ -21,7 +21,7 @@ for (let i = 0; i < 5; i++) {
 const data = []
 const item = {}
 // 属性数
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < 10; i++) {
     item[`key${i + 1}`] = `数据${i + 1}`
 }
 // 行数

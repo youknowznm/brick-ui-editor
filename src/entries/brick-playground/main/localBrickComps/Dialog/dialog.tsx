@@ -77,7 +77,7 @@ export interface DialogProps extends PropsFromModal {
     /**
      * @zhangenming 从外部控制 dialog-body 的高度
      */
-    height?: number
+    bodyHeight?: number
 }
 
 const componentLocale = createComponentLocale('dialog', {
@@ -203,7 +203,7 @@ export class Dialog extends React.Component<DialogProps> {
         }
 
         // @zhangenming
-        return isPlainBody ? <DialogBody height={this.props.height}>{this.props.children}</DialogBody> : null
+        return isPlainBody ? <DialogBody bodyHeight={this.props.bodyHeight}>{this.props.children}</DialogBody> : null
     }
 
     renderActions() {
@@ -231,6 +231,7 @@ export class Dialog extends React.Component<DialogProps> {
         const body = childrenArray.find(child => child.type === DialogBody)
         const foot = childrenArray.find(child => child.type === DialogFoot)
 
+        // @zhangenming
         const SIZE_MAP = {
             xs: 320,
             sm: 400,
