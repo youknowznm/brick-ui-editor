@@ -86,6 +86,7 @@
         "core-js": "^3.3.5",
         "dayjs": "^1.8.16",
         "express": "^4.17.1",
+        "html-minifier": "^4.0.0",
         "http-proxy-middleware": "^0.20.0",
         "lodash-es": "^4.17.15",
         "material-table": "^1.56.1",

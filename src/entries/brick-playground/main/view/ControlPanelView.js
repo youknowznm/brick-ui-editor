@@ -185,8 +185,6 @@ export default class ControlPanelView extends React.Component {
                             triggerConfirmFlag(false)
                             clearAll()
                         }}
-                        variant="outlined"
-                        color="normal"
                     >
                         确认
                     </Button>
@@ -194,8 +192,6 @@ export default class ControlPanelView extends React.Component {
                         onClick={() => {
                             triggerConfirmFlag(false)
                         }}
-                        variant="outlined"
-                        color="normal"
                     >
                         取消
                     </Button>
@@ -245,8 +241,6 @@ export default class ControlPanelView extends React.Component {
                             triggerLoadArchiveConfirmFLag(false)
                             loadFromCopy(archiveJSON)
                         }}
-                        variant="outlined"
-                        color="secondary"
                     >
                         确认
                     </Button>
@@ -254,8 +248,6 @@ export default class ControlPanelView extends React.Component {
                         onClick={() => {
                             triggerLoadArchiveConfirmFLag(false)
                         }}
-                        variant="outlined"
-                        color="secondary"
                     >
                         取消
                     </Button>

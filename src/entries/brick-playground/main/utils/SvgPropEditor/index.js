@@ -174,9 +174,6 @@ export default class SvgPropEditor extends React.Component {
                             dispatchSelectedIcon('')
                             this.triggerVisible(false)
                         }}
-                        variant="contained"
-                        // size="small"
-                        color="primary"
                         disabled={value === ''}
                     >
                         不使用图标
@@ -186,9 +183,6 @@ export default class SvgPropEditor extends React.Component {
                         onClick={() => {
                             this.triggerVisible(false)
                         }}
-                        variant="contained"
-                        // size="small"
-                        color="secondary"
                     >
                         取消
                     </Button>

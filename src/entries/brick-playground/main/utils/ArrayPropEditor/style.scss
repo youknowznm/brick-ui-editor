@@ -17,6 +17,11 @@
     th, td, tr {
       text-align: center;
     }
+    th, td {
+      &:last-child {
+        width: 90px;
+      }
+    }
     .MuiButton-root {
       min-width: 45px;
     }
@@ -34,6 +39,10 @@
       top: 20px;
       .btn-confirm {
         margin-right: 10px;
+        width: 64px;
+      }
+      .btn-cancel {
+        width: 64px;
       }
     }
 

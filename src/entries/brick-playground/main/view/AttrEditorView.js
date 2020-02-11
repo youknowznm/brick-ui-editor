@@ -340,8 +340,6 @@ export default class AttrEditorView extends React.Component {
                                 triggerConfirmFlag(false)
                                 props.removeUsedComp()
                             }}
-                            type="outlined"
-                            color="primary"
                         >
                             确认
                         </Button>
@@ -349,9 +347,6 @@ export default class AttrEditorView extends React.Component {
                             onClick={() => {
                                 triggerConfirmFlag(false)
                             }}
-                            color="primary"
-                            type="outlined"
-                            autoFocus
                         >
                             取消
                         </Button>

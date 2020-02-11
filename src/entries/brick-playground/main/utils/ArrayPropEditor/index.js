@@ -113,6 +113,7 @@ export default class ArrayPropEditor extends React.Component {
                 return <Button
                     size="small"
                     color="secondary"
+                    variant="outlined"
                     onClick={() => {
                         const localList = this.state.localList
                         localList.splice(_index, 1)
@@ -197,7 +198,6 @@ export default class ArrayPropEditor extends React.Component {
                             <Button
                                 className="add-row"
                                 color="primary"
-                                size="small"
                                 variant="outlined"
                                 onClick={() => {
                                     const localList = this.state.localList
@@ -239,20 +239,19 @@ export default class ArrayPropEditor extends React.Component {
                                     this.props.dispatchArray(localList)
                                     this.triggerVisible(false)
                                 }}
-                                variant="outlined"
-                                size="small"
+                                // variant="outlined"
                                 color="default">
                                 确定
                             </Button>
                             <Button
+                                className="btn-cancel"
                                 onClick={() => {
                                     this.triggerVisible(false)
                                     setTimeout(() => {
                                         this.setLocalListFromProp()
                                     }, 300)
                                 }}
-                                variant="outlined"
-                                size="small"
+                                // variant="outlined"
                                 color="default"
                             >
                                 取消

@@ -217,23 +217,27 @@ class MainState extends BaseModel {
         this.toast('已复制到剪贴板。')
     }
     loadFromCopy = archiveJSON => {
-        const copyTarget = JSON.parse(archiveJSON)
-        const {
-            BP_ARCHIVE_NAME,
-            BP_AUTHOR,
-            BP_ARCHIVE_DATA,
-        } = copyTarget
-        if (BP_ARCHIVE_NAME && BP_AUTHOR && BP_ARCHIVE_DATA) {
-            this.setProps({
-                usedCompsDataArray: BP_ARCHIVE_DATA,
-                author: BP_AUTHOR,
-                archiveName: BP_ARCHIVE_NAME
-            })
-            this.saveArchiveName()
-            this.saveArchiveData()
-            this.saveAuthor()
-            this.toast('读取成功。')
-        } else {
+        try {
+            const copyTarget = JSON.parse(archiveJSON)
+            const {
+                BP_ARCHIVE_NAME,
+                BP_AUTHOR,
+                BP_ARCHIVE_DATA,
+            } = copyTarget
+            if (BP_ARCHIVE_NAME && BP_AUTHOR && BP_ARCHIVE_DATA) {
+                this.setProps({
+                    usedCompsDataArray: BP_ARCHIVE_DATA,
+                    author: BP_AUTHOR,
+                    archiveName: BP_ARCHIVE_NAME
+                })
+                this.saveArchiveName()
+                this.saveArchiveData()
+                this.saveAuthor()
+                this.toast('读取成功。')
+            } else {
+                this.toast('请使用正确的数据。')
+            }
+        } catch (e) {
             this.toast('请使用正确的数据。')
         }
     }
