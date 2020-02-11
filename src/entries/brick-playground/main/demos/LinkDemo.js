@@ -33,4 +33,6 @@ const LinkDemo = () => {
     </div>
 }
 
+LinkDemo.wrapName = 'LinkDemo'
+
 export default LinkDemo

@@ -17,4 +17,6 @@ const DialogDemo = () => {
     </div>
 }
 
+DialogDemo.wrapName = 'DialogDemo'
+
 export default DialogDemo

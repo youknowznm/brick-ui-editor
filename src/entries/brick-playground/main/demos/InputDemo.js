@@ -60,4 +60,6 @@ const InputDemo = () => {
     </div>
 }
 
+InputDemo.wrapName = 'InputDemo'
+
 export default InputDemo

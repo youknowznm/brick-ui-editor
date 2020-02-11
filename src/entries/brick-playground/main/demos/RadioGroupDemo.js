@@ -68,4 +68,6 @@ const RadioDemo = () => {
     </div>
 }
 
+RadioDemo.wrapName = 'RadioDemo'
+
 export default RadioDemo

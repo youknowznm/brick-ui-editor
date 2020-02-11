@@ -4,7 +4,6 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-
 import _CheckboxGroup from '../composedComps/CheckboxGroup'
 const CheckboxGroup = wrapDemoComp(_CheckboxGroup)
 
@@ -68,5 +67,7 @@ const CheckboxDemo = () => {
         </div>
     </div>
 }
+
+CheckboxDemo.wrapName = 'CheckboxDemo'
 
 export default CheckboxDemo

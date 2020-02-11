@@ -76,4 +76,6 @@ const CollapseDemo = () => {
     </div>
 }
 
+CollapseDemo.wrapName = 'CollapseDemo'
+
 export default CollapseDemo

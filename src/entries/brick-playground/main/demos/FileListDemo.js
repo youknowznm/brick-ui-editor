@@ -63,4 +63,6 @@ const FileListDemo = () => {
     </div>
 }
 
+FileListDemo.wrapName = 'FileListDemo'
+
 export default FileListDemo

@@ -248,4 +248,6 @@ const ButtonDemo = () => {
     </div>
 }
 
+ButtonDemo.wrapName = 'ButtonDemo'
+
 export default ButtonDemo

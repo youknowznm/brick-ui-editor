@@ -92,4 +92,6 @@ const TypographyDemo = () => {
     </div>
 }
 
+TypographyDemo.wrapName = 'TypographyDemo'
+
 export default TypographyDemo

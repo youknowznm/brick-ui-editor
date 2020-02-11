@@ -56,4 +56,6 @@ const MenuDemo = () => {
     </div>
 }
 
+MenuDemo.wrapName = 'MenuDemo'
+
 export default MenuDemo

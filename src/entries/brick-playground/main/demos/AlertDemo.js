@@ -4,8 +4,6 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-// import {Link} from '@befe/brick'
-
 import _Alert from '../composedComps/Alert'
 const Alert = wrapDemoComp(_Alert)
 
@@ -60,5 +58,7 @@ const AlertDemo = () => {
         </div>
     </div>
 }
+
+AlertDemo.wrapName = 'AlertDemo'
 
 export default AlertDemo

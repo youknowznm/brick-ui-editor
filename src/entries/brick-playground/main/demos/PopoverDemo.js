@@ -41,4 +41,6 @@ const PopoverDemo = () => {
     </div>
 }
 
+PopoverDemo.wrapName = 'PopoverDemo'
+
 export default PopoverDemo

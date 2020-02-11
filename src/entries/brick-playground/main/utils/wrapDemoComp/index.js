@@ -83,10 +83,7 @@ const wrapDemoComp = OriginComponent => {
                 wrapHeight
             } = state
             return <div
-                className={c(
-                    'demo-comp-wrap',
-                    // isAbsPos && 'is-abs-pos'
-                )}
+                className="demo-comp-wrap"
                 style={{
                     width: wrapWidth,
                     height: wrapHeight

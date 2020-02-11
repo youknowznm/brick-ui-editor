@@ -41,4 +41,6 @@ const HeadNavDemo = () => {
     </div>
 }
 
+HeadNavDemo.wrapName = 'HeadNavDemo'
+
 export default HeadNavDemo

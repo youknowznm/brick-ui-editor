@@ -59,4 +59,6 @@ const TableDemo = () => {
     </div>
 }
 
+TableDemo.wrapName = 'TableDemo'
+
 export default TableDemo

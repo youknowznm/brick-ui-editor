@@ -37,4 +37,6 @@ const DatePickerDemo = () => {
     </div>
 }
 
+DatePickerDemo.wrapName = 'DatePickerDemo'
+
 export default DatePickerDemo

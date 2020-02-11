@@ -113,4 +113,7 @@ const IconDemo = () => {
     </div>
 }
 
+IconDemo.wrapName = 'IconDemo'
+
+
 export default IconDemo

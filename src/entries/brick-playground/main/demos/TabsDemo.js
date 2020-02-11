@@ -137,4 +137,6 @@ const TabsDemo = () => {
     </div>
 }
 
+TabsDemo.wrapName = 'TabsDemo'
+
 export default TabsDemo

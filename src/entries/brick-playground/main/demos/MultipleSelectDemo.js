@@ -53,4 +53,6 @@ const MultipleSelectDemo = () => {
     </div>
 }
 
+MultipleSelectDemo.wrapName = 'MultipleSelectDemo'
+
 export default MultipleSelectDemo

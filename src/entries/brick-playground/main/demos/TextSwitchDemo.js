@@ -7,7 +7,6 @@ import {
 } from "../composedComps/Switch";
 
 import {Divider} from '@material-ui/core';
-
 const TextSwitch = wrapDemoComp(_TextSwitch)
 
 const TextSwitchDemo = () => {
@@ -129,5 +128,7 @@ const TextSwitchDemo = () => {
         </div>
     </div>
 }
+
+TextSwitchDemo.wrapName = 'TextSwitchDemo'
 
 export default TextSwitchDemo

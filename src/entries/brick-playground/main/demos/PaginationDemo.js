@@ -33,4 +33,6 @@ const PaginationDemo = () => {
     </div>
 }
 
+PaginationDemo.wrapName = 'PaginationDemo'
+
 export default PaginationDemo

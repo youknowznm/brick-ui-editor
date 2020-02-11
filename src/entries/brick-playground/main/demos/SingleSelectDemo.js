@@ -5,7 +5,6 @@ import wrapDemoComp from '../utils/wrapDemoComp'
 import {
     ComposedSingleSelect as _SingleSelect,
 } from "../composedComps/Select";
-
 const SingleSelect = wrapDemoComp(_SingleSelect)
 
 const SingleSelectDemo = () => {
@@ -51,5 +50,7 @@ const SingleSelectDemo = () => {
         {sizeList.map(renderSelectBySize)}
     </div>
 }
+
+SingleSelectDemo.wrapName = 'SingleSelectDemo'
 
 export default SingleSelectDemo

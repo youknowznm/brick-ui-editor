@@ -142,7 +142,7 @@ export default class DemoListView extends React.Component {
                             </h3>
                         }
                         let label = ''
-                        const regArr = /^(.+)Demo$/.exec(Demo.name)
+                        const regArr = /^(.+)Demo$/.exec(Demo.wrapName)
                         if (regArr) {
                             label = regArr[1]
                         }

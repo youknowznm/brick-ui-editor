@@ -49,4 +49,6 @@ const SuggestDemo = () => {
     </div>
 }
 
+SuggestDemo.wrapName = 'SuggestDemo'
+
 export default SuggestDemo

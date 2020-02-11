@@ -54,4 +54,6 @@ const TextareaDemo = () => {
     </div>
 }
 
+TextareaDemo.wrapName = 'TextareaDemo'
+
 export default TextareaDemo

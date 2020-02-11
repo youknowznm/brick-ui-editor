@@ -51,4 +51,6 @@ const BreadcrumbDemo = () => {
     </div>
 }
 
+BreadcrumbDemo.wrapName = 'BreadcrumbDemo'
+
 export default BreadcrumbDemo

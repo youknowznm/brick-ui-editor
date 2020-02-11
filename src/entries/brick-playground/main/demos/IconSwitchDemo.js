@@ -5,7 +5,6 @@ import wrapDemoComp from '../utils/wrapDemoComp'
 import {
     ComposedIconSwitch as _IconSwitch,
 } from "../composedComps/Switch";
-
 const IconSwitch = wrapDemoComp(_IconSwitch)
 
 const IconSwitchDemo = () => {
@@ -40,5 +39,7 @@ const IconSwitchDemo = () => {
         </div>
     </div>
 }
+
+IconSwitchDemo.wrapName = 'IconSwitchDemo'
 
 export default IconSwitchDemo
