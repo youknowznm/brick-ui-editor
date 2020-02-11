@@ -12,26 +12,24 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import TextField from "@material-ui/core/TextField";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
-import MenuList from "@material-ui/core/MenuList";
+import TextField from '@material-ui/core/TextField';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import MenuList from '@material-ui/core/MenuList';
 
-import {capitalize} from "lodash-es";
-
-import {findDOMNode} from "react-dom";
+import {capitalize} from 'lodash-es';
 
 import {Icon} from '@befe/brick'
 
 import {ICON_GROUP_MAP_MAIN} from '@befe/brick-icon/src/main/group-map'
 
-import getSvgByName from "../getSvgByName";
+import getSvgByName from '../getSvgByName';
 
 import './style.scss'
 
 export default class SvgPropEditor extends React.Component {
 
-    // static displayName = 'SvgPropEditor'
+    static displayName = 'SvgPropEditor'
 
     state = {
         visible: false,

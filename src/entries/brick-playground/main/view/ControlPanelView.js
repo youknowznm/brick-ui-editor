@@ -1,24 +1,20 @@
 import * as React from 'react'
 import {inject, observer} from 'mobx-react'
 
-import {getRaw, BP_ARCHIVE_DATA_KEY} from "../utils/storage";
-
 import PropTypes from 'prop-types'
 import {PropTypes as MobxPropTypes} from 'mobx-react'
 
 import Drawer from '@material-ui/core/Drawer'
 import Button from '@material-ui/core/Button'
-import MoreVerIcon from "@material-ui/icons/MoreHoriz"
+import MoreVerIcon from '@material-ui/icons/MoreHoriz'
 import FavoriteIcon from '@material-ui/icons/Favorite'
-import TextField from "@material-ui/core/TextField"
-import Dialog from "@material-ui/core/Dialog"
-import DialogTitle from "@material-ui/core/DialogTitle"
-import DialogContent from "@material-ui/core/DialogContent"
-import DialogContentText from "@material-ui/core/DialogContentText"
-import DialogActions from "@material-ui/core/DialogActions"
-import Typography from "@material-ui/core/Typography"
-
-import copyToClipboard from '../utils/copyToClipboard'
+import TextField from '@material-ui/core/TextField'
+import Dialog from '@material-ui/core/Dialog'
+import DialogTitle from '@material-ui/core/DialogTitle'
+import DialogContent from '@material-ui/core/DialogContent'
+import DialogContentText from '@material-ui/core/DialogContentText'
+import DialogActions from '@material-ui/core/DialogActions'
+import Typography from '@material-ui/core/Typography'
 
 import ControlPanelState from '../states/ControlPanelState'
 

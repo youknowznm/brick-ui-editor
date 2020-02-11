@@ -9,8 +9,8 @@ import {
     BP_LAST_MODIFIED_KEY,
     getStorage,
     setStorage
-} from "./utils/storage";
-import copyToClipboard from "./utils/copyToClipboard";
+} from './utils/storage';
+import copyToClipboard from './utils/copyToClipboard';
 
 class MainState extends BaseModel {
 

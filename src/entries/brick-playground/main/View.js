@@ -135,7 +135,7 @@ export default class extends React.Component {
     render() {
         const {props, local} = this
         const {mainState} = local
-        return <Provider root={mainState}>
+        return <Provider pushUsedCompData={mainState.pushUsedCompData}>
             <div className={c(
                 'index-page',
                 mainState.metaKeyPressing && 'meta-key-pressed'

@@ -10,7 +10,7 @@ import './style.scss'
 
 const wrapDemoComp = OriginComponent => {
 
-    @inject('root')
+    @inject('pushUsedCompData')
     @observer
     class ExtendedUIComponent extends React.Component {
 
@@ -44,7 +44,7 @@ const wrapDemoComp = OriginComponent => {
                         }
                     }
 
-                    delete ownProps.root
+                    delete ownProps.pushUsedCompData
                     delete ownProps.className
 
                     // 移除 Table 的特殊列
@@ -67,7 +67,7 @@ const wrapDemoComp = OriginComponent => {
         }
 
         dispatchCompToUse = () => {
-            this.props.root.pushUsedCompData({
+            this.props.pushUsedCompData({
                 id: this.generateId(),
                 originName: OriginComponent.displayName,
                 originProps: this.state.ownProps,

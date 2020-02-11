@@ -6,7 +6,7 @@ import {
     ComposedTextSwitch as _TextSwitch,
 } from "../composedComps/Switch";
 
-import {Divider} from "@material-ui/core";
+import {Divider} from '@material-ui/core';
 
 const TextSwitch = wrapDemoComp(_TextSwitch)
 

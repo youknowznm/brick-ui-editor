@@ -10,7 +10,7 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Typography from '@material-ui/core/Typography';
-import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import Drawer from '@material-ui/core/Drawer'
 
 import ButtonDemo from '../demos/ButtonDemo'
