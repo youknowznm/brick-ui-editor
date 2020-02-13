@@ -1,10 +1,7 @@
 import * as React from 'react'
 import {default as c} from 'classnames'
 import {inject, observer} from 'mobx-react'
-import {toJS, observable, action} from 'mobx'
 import {findDOMNode} from 'react-dom'
-
-import {COMP_TYPES} from "../../config"
 
 import './style.scss'
 
@@ -33,7 +30,7 @@ const wrapDemoComp = OriginComponent => {
             setTimeout(() => {
                 let wrapDOM = findDOMNode(this.ref)
                 if (wrapDOM) {
-                    const $wrapDOM = $(wrapDOM)
+                    // const $wrapDOM = $(wrapDOM)
                     const ownProps = Object.assign({}, reactElem.props)
                     for (let propKey in ownProps) {
                         if (ownProps.hasOwnProperty(propKey)) {
@@ -54,8 +51,18 @@ const wrapDemoComp = OriginComponent => {
                         })
                     }
 
-                    let wrapWidth = $wrapDOM.outerWidth()
-                    let wrapHeight = $wrapDOM.outerHeight()
+                    // let _wrapWidth = $wrapDOM.outerWidth()
+                    // let _wrapHeight = $wrapDOM.outerHeight()
+
+                    const computedStyle = document.defaultView.getComputedStyle(wrapDOM)
+
+                    let wrapWidth = parseInt(computedStyle.width, 10)
+                    let wrapHeight = parseInt(computedStyle.height, 10)
+
+                    // console.log(1, w)
+                    // console.log(2, h)
+                    // console.log(3, wrapWidth)
+                    // console.log(4, wrapHeight)
 
                     this.setState({
                         ownProps,
