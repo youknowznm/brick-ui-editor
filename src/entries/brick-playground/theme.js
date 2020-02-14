@@ -14,6 +14,5 @@ const lightTheme = createMuiTheme({
 })
 
 export {
-    // darkTheme,
     lightTheme,
 }

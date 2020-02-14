@@ -1,15 +1,8 @@
 import * as React from 'react'
-import {default as c} from 'classnames'
-import {toJS, computed, observable, action} from 'mobx'
-import {inject, observer} from 'mobx-react'
-
+import {observer} from 'mobx-react'
 import PropTypes from 'prop-types'
-import {PropTypes as MobxPropTypes} from 'mobx-react'
 
 import Typography from '@material-ui/core/Typography'
-import Switch from '@material-ui/core/Switch';
-
-import {withStyles} from '@material-ui/core/styles'
 import Drawer from '@material-ui/core/Drawer'
 import Button from '@material-ui/core/Button'
 import Divider from '@material-ui/core/Divider'

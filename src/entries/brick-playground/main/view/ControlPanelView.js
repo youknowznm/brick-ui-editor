@@ -1,8 +1,6 @@
 import * as React from 'react'
-import {inject, observer} from 'mobx-react'
-
+import {observer} from 'mobx-react'
 import PropTypes from 'prop-types'
-import {PropTypes as MobxPropTypes} from 'mobx-react'
 
 import Drawer from '@material-ui/core/Drawer'
 import Button from '@material-ui/core/Button'

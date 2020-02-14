@@ -14,5 +14,4 @@ const getSvgByName = string => {
     return null
 }
 
-
 export default getSvgByName

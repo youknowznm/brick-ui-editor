@@ -1,9 +1,6 @@
 import * as React from 'react'
-import {default as c} from 'classnames'
-import {toJS, computed, observable, action} from 'mobx'
-import {inject, observer} from 'mobx-react'
+import {observer} from 'mobx-react'
 import PropTypes from 'prop-types'
-import {PropTypes as MobxPropTypes} from 'mobx-react'
 
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
