@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {default as c} from 'classnames'
+import c from 'classnames'
 import {Provider, observer} from 'mobx-react'
 
 import DemoListView from './view/DemoListView'

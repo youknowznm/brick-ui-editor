@@ -4,6 +4,7 @@ import ComposedButton from './composedComps/Button.js'
 import ComposedIcon from './composedComps/Icon.js'
 import ComposedLink from './composedComps/Link.js'
 import Typography from './composedComps/Typography.js'
+import Section from './composedComps/Section.js'
 import ComposedCollapse from './composedComps/Collapse.js'
 import ComposedDialog from './composedComps/Dialog.js'
 import ComposedPopover from './composedComps/Popover.js'
@@ -298,6 +299,20 @@ export const COMP_TYPES = {
                     {value: 'bold', label: '粗体'},
                 ],
                 defaultValue: 'normal'
+            },
+        ]
+    },
+    Section: {
+        cnLabel: '区域',
+        enLabel: 'Section',
+        Element: Section,
+        widthEditable: true,
+        heightEditable: true,
+        editableProps: [
+            {
+                desc: '标题',
+                key: 'title',
+                type: 'string',
             },
         ]
     },

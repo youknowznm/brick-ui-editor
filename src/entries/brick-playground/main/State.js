@@ -61,8 +61,8 @@ class MainState extends BaseModel {
         // //     }
         // // }
         // data.originProps = originProps
-        data.deltaX = 0
-        data.deltaY = 0
+        data.deltaX = 100
+        data.deltaY = 80
         this.usedCompsDataArray.push(data)
         this.saveArchiveData()
         this.triggerDemoDrawer(false)

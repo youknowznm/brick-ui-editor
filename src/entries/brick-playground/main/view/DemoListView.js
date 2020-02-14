@@ -14,6 +14,7 @@ import ButtonDemo from '../demos/ButtonDemo'
 import IconDemo from '../demos/IconDemo'
 import LinkDemo from '../demos/LinkDemo'
 import TypographyDemo from '../demos/TypographyDemo'
+import SectionDemo from '../demos/SectionDemo'
 import CollapseDemo from '../demos/CollapseDemo'
 import DialogDemo from '../demos/DialogDemo'
 import PopoverDemo from '../demos/PopoverDemo'
@@ -57,8 +58,6 @@ export default class DemoListView extends React.Component {
         demoListState: new DemoListState(),
     }
 
-    componentDidMount() {}
-
     getCnLabel = label => {
         for (let item in COMP_TYPES) {
             if (COMP_TYPES[item].enLabel === label) {
@@ -87,6 +86,7 @@ export default class DemoListView extends React.Component {
             {
                 categoryName: '容器'
             },
+            SectionDemo,
             CollapseDemo,
             DialogDemo,
             PopoverDemo,
