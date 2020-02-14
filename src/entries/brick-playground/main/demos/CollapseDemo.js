@@ -34,6 +34,7 @@ const CollapseDemo = () => {
     ]
     return <div className="demo-block collapse-demo-block">
         {/* ===== 0 basic ===== */}
+        <h3 className="demo-type-desc">常规</h3>
         <div>
             <Collapse
                 singleExpanded={false}
@@ -43,6 +44,7 @@ const CollapseDemo = () => {
         </div>
         <Divider className="demo-block-separator" />
         {/* ===== 1 被禁用 ===== */}
+        <h3 className="demo-type-desc">禁用</h3>
         <div>
             <Collapse
                 singleExpanded={true}
@@ -54,6 +56,7 @@ const CollapseDemo = () => {
         </div>
         <Divider className="demo-block-separator" />
         {/* ===== 2 图标位置 ===== */}
+        <h3 className="demo-type-desc">图标位置</h3>
         <div>
             <Collapse
                 expandIconPosition="right"
@@ -64,6 +67,7 @@ const CollapseDemo = () => {
         </div>
         <Divider className="demo-block-separator" />
         {/* ===== 3 自定义内容 ===== */}
+        <h3 className="demo-type-desc">额外标题</h3>
         <div>
             <Collapse
                 singleExpanded={false}
@@ -73,6 +77,7 @@ const CollapseDemo = () => {
                 }))}
             />
         </div>
+        <Divider className="demo-block-separator" />
     </div>
 }
 

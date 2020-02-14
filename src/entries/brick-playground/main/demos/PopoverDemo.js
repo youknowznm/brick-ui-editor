@@ -33,6 +33,7 @@ const PopoverDemo = () => {
 
     return <div className="demo-block popover-demo-block">
         {/* ===== 0 basic ===== */}
+        <h3 className="demo-type-desc">弹出方向</h3>
         {placements.map((row, rowIdx) => (
             <div key={rowIdx} className={'trigger-row'}>
                 {row.map(renderPlacement)}

@@ -12,6 +12,7 @@ const ButtonDemo = () => {
     return <div className="demo-block">
         {/* <Divider className="demo-block-separator" /> */}
         {/* ===== 0 basic ===== */}
+        <h3 className="demo-type-desc">类型</h3>
         <div className="demo-group">
             <Button>普通</Button>
             <Button type={'intensive'}>加强</Button>
@@ -62,6 +63,7 @@ const ButtonDemo = () => {
         </div> */}
         <Divider className="demo-block-separator" />
         {/* ===== 1 size ===== */}
+        <h3 className="demo-type-desc">尺寸</h3>
         <div className="demo-group">
             <Button size={'xs'}>xs</Button>
             <Button size={'xs'}>超小号</Button>
@@ -109,6 +111,7 @@ const ButtonDemo = () => {
         </div>
         <Divider className="demo-block-separator" />
         {/* ===== 2 color ===== */}
+        <h3 className="demo-type-desc">颜色</h3>
         <div className="demo-group">
             <Button color={'primary'}>普通</Button>
             <Button color={'primary'} type={'intensive'}>加强</Button>
@@ -182,6 +185,7 @@ const ButtonDemo = () => {
         </div>
         <Divider className="demo-block-separator" />
         {/* ===== 3 loading ===== */}
+        <h3 className="demo-type-desc">加载中</h3>
         <div className="demo-group">
             <Button loading={loading} loadingDelayInMS={0}>普通</Button>
             <Button loading={loading} type={'intensive'}>加强</Button>
@@ -226,6 +230,7 @@ const ButtonDemo = () => {
         </div> */}
         <Divider className="demo-block-separator" />
         {/* ===== 6 shape ===== */}
+        <h3 className="demo-type-desc">形状</h3>
         <div className="demo-group">
             <Button shape={'capsule'}>normal</Button>
             <Button shape={'capsule'} type={'intensive'} >intensive</Button>
@@ -245,6 +250,7 @@ const ButtonDemo = () => {
             <Button shape={'capsule'} type={'ghost'} iconName="SvgEdit">幽灵</Button>
             <Button shape={'capsule'} type={'ghost'} iconName="SvgEdit" />
         </div> */}
+        <Divider className="demo-block-separator" />
     </div>
 }
 

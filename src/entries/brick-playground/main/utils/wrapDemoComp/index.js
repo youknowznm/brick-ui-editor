@@ -1,5 +1,4 @@
 import * as React from 'react'
-import {default as c} from 'classnames'
 import {inject, observer} from 'mobx-react'
 import {findDOMNode} from 'react-dom'
 

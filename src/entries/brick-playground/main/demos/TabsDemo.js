@@ -8,6 +8,7 @@ import _Tabs from "../composedComps/Tabs.js";
 const Tabs = wrapDemoComp(_Tabs)
 
 const TabsDemo = () => {
+
     const generatePanesData = num => {
         const result = []
         for (let i = 0; i < num; i ++) {
@@ -15,7 +16,6 @@ const TabsDemo = () => {
                 {
                     id: `tab${i}`,
                     label: `tab${i}`,
-                    disabled: i === 1,
                     content: `content-${i}`
                 }
             )
@@ -30,7 +30,6 @@ const TabsDemo = () => {
                 id: `tab${i}`,
                 key: `tab${i}`,
                 label: `tab${i}`,
-                disabled: i === 1,
                 content: `content-${i}`
             })
         }
@@ -44,7 +43,7 @@ const TabsDemo = () => {
                 id: `tab${i}`,
                 key: `tab${i}`,
                 label: `tab${i}`,
-                disabled: i === 1,
+                disabled: i === 3,
                 content: `content-${i}`,
                 status: (i === 0 || i === 1) ? 'error' : undefined,
                 deletable: deleteIndex.includes(i)
@@ -73,6 +72,7 @@ const TabsDemo = () => {
 
     return <div className="demo-block tabs-demo-block">
         {/* ===== 0 basic ===== */}
+        <h3 className="demo-type-desc">普通</h3>
         <div>
             <Tabs
                 className="demo-tabs"
@@ -81,7 +81,6 @@ const TabsDemo = () => {
             />
         </div>
         <Divider className="demo-block-separator" />
-        {/* ===== 1 Paper ===== */}
         <div>
             <Tabs
                 className="demo-tabs"
@@ -91,7 +90,17 @@ const TabsDemo = () => {
             />
         </div>
         <Divider className="demo-block-separator" />
+        <div>
+            <Tabs
+                className="demo-tabs"
+                type="button-group"
+                defaultActiveId={'tab0'}
+                data={generatePaperPanesData(5)}
+            />
+        </div>
+        <Divider className="demo-block-separator" />
         {/* ===== 2 addable ===== */}
+        <h3 className="demo-type-desc">错误状态 / 禁用 / 可删除 / 可添加</h3>
         <div>
             <Tabs
                 className="demo-tabs"
@@ -103,9 +112,9 @@ const TabsDemo = () => {
         </div>
         <Divider className="demo-block-separator" />
         {/* ===== 3 button group ===== */}
+        <h3 className="demo-type-desc">尺寸</h3>
         <div>
             <div className="demo-tabs">
-                <p>size: sm</p>
                 <Tabs
                     className="demo-tabs"
                     type={'button-group'}
@@ -114,7 +123,6 @@ const TabsDemo = () => {
                 />
             </div>
             <div className="demo-tabs">
-                <p>size: md</p>
                 <Tabs
                     size="md"
                     type={'button-group'}
@@ -126,6 +134,7 @@ const TabsDemo = () => {
         </div>
         <Divider className="demo-block-separator" />
         {/* ===== 4 long ===== */}
+        <h3 className="demo-type-desc">超长</h3>
         <div>
             <Tabs
                 className="demo-tabs"

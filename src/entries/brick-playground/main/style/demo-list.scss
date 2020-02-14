@@ -86,19 +86,25 @@
         .demo-block {
           position: relative;
           width: 100%;
-          padding: 14px;
+          padding: 14px 14px 0;
           background-color: #fff;
+          .demo-type-desc {
+            font-family: "Roboto";
+            display: inline-block;
+            margin: 0 0 15px;
+            border-bottom: 2px solid black;
+            font-style: italic;
+            &.inline {
+              display: inline-block;
+              margin-right: 15px;
+              margin-bottom: 10px;
+            }
+          }
         }
         .icon-demo-block {
-          .icon-type-desc {
-            font-size: 14px;
-            font-style: italic;
-          }
           .icon-list {
             li {
               display: inline-block;
-              // float: left;
-              // width: 150px;
               width: 20%;
               min-height: 70px;
               padding-top: 10px;
@@ -110,13 +116,9 @@
             }
           }
         }
-        .popover-confirm-demo-block {
-          padding-top: 40px;
-        }
+        .popover-confirm-demo-block {}
         .popover-demo-block {
           position: relative;
-          padding-top: 50px;
-          padding-bottom: 0;
           height: 300px;
           .trigger-row {
             text-align: center;

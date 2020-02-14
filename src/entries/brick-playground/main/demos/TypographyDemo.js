@@ -11,6 +11,7 @@ const TypographyDemo = () => {
 
     return <div className="demo-block typography-demo-block">
         {/* ===== 0 basic ===== */}
+        <h3 className="demo-type-desc">字号</h3>
         <div>
             <Typography
                 size="sm"
@@ -29,6 +30,7 @@ const TypographyDemo = () => {
             </Typography>
         </div>
         <Divider className="demo-block-separator" />
+        <h3 className="demo-type-desc">字重</h3>
         <div>
             <Typography
                 weight="normal"
@@ -50,6 +52,7 @@ const TypographyDemo = () => {
             </Typography>
         </div>
         <Divider className="demo-block-separator" />
+        <h3 className="demo-type-desc">类型</h3>
         <div>
             <Typography
                 size="lg"

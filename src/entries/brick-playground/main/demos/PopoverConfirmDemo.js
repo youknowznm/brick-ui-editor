@@ -27,6 +27,7 @@ const PopoverConfirmDemo = () => {
 
     return <div className="demo-block popover-confirm-demo-block">
         {/* ===== 1 confirm ===== */}
+        <h3 className="demo-type-desc">类型</h3>
         <div className="">
             <PopoverConfirm
                 confirmMessage="这是一段确认信息"

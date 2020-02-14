@@ -9,15 +9,6 @@ const Input = wrapDemoComp(_Input)
 
 const InputDemo = () => {
 
-    // const getInputWithFix = ({prefix = null, suffix = null} = {}) => {
-    //     return <div className="control-wrap">
-    //         <Input
-    //             prefix={prefix}
-    //             suffix={suffix}
-    //         />
-    //     </div>;
-    // }
-
     return <div className="demo-block input-demo-block">
         {/* ===== 0 basic ===== */}
         <div>
@@ -56,7 +47,6 @@ const InputDemo = () => {
             iconSuffix={'SvgSearch'}
         />
         <Divider className="demo-block-separator" />
-
     </div>
 }
 

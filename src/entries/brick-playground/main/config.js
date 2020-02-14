@@ -849,14 +849,14 @@ export const COMP_TYPES = {
                         defaultValue: false
                     },
                     {
-                        title: '禁用',
-                        field: 'disabled',
+                        title: '部分选择',
+                        field: 'indeterminate',
                         columnType: 'bool',
                         defaultValue: false
                     },
                     {
-                        title: '部分选择',
-                        field: 'indeterminate',
+                        title: '禁用',
+                        field: 'disabled',
                         columnType: 'bool',
                         defaultValue: false
                     },
@@ -1471,4 +1471,16 @@ export const COMP_TYPES = {
             },
         ]
     }
+}
+
+export const ICON_TYPES = {
+    direction: '方向',
+    file: '文件',
+    flow: '流程',
+    label: '标签',
+    misc: '混合',
+    raw: '扩展名',
+    sign: '符号',
+    system: '系统',
+    tool: '工具',
 }

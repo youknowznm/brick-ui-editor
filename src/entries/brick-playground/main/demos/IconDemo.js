@@ -5,6 +5,7 @@ import Divider from '@material-ui/core/Divider';
 import wrapDemoComp from '../utils/wrapDemoComp'
 
 import {ICON_GROUP_MAP_MAIN} from '@befe/brick-icon/src/main/group-map'
+import {ICON_TYPES} from '../config'
 
 import {capitalize} from "lodash-es";
 
@@ -28,7 +29,9 @@ const IconDemo = () => {
         const renderIcon = renderIconCreator(group)
         return (
             <div className={'icon-group'} key={groupName}>
-                <h4 className="icon-type-desc">{capitalize(groupName)}</h4>
+                <h3 className="demo-type-desc">
+                    {ICON_TYPES[groupName]} {capitalize(groupName)}
+                </h3>
                 <ul className={'icon-list'} >
                     {Object.keys(group).map(renderIcon)}
                 </ul>

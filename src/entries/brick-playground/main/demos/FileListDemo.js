@@ -50,16 +50,19 @@ const FileListDemo = () => {
     ];
 
     return <div className="demo-block file-list-demo-block">
-        {/* ===== 0 basic ===== */}
-        <FileList data={fileData}/>
-        <Divider className="demo-block-separator" />
         {/* ===== 1 layout ===== */}
-        <FileList data={fileData} layout={'horizontal'}/>
-        <FileList data={fileData} />
+        <h3 className="demo-type-desc">排列方式</h3>
+        <div>
+            <FileList data={fileData} layout={'horizontal'}/>
+            <FileList data={fileData} />
+        </div>
         <Divider className="demo-block-separator" />
         {/* ===== 2 actions ===== */}
-        <FileList data={fileDataWithActions} useRemove={true} layout={'horizontal'} downloadMethod={'get'}/>
-        <FileList data={fileDataWithActions} useRemove={true}/>
+        <h3 className="demo-type-desc">操作</h3>
+        <div>
+            <FileList data={fileDataWithActions} useRemove={true} layout={'horizontal'} downloadMethod={'get'}/>
+            <FileList data={fileDataWithActions} useRemove={true}/>
+        </div>
     </div>
 }
 

@@ -3,6 +3,7 @@ import * as React from 'react'
 import wrapDemoComp from '../utils/wrapDemoComp'
 
 import _Dialog from '../composedComps/Dialog'
+import Divider from "@material-ui/core/Divider";
 const Dialog = wrapDemoComp(_Dialog)
 
 const DialogDemo = () => {
@@ -14,6 +15,7 @@ const DialogDemo = () => {
         >
             弹窗内容
         </Dialog>
+        <Divider className="demo-block-separator" />
     </div>
 }
 
