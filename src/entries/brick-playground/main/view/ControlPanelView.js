@@ -34,7 +34,6 @@ export default class ControlPanelView extends React.Component {
         author: PropTypes.string,
         setAuthor: PropTypes.func,
         setArchiveName: PropTypes.func,
-        lastModified: PropTypes.string,
     }
 
     local = {
@@ -110,7 +109,6 @@ export default class ControlPanelView extends React.Component {
             setArchiveName,
             author,
             setAuthor,
-            lastModified,
             clearAll,
             copyStorageToClipboard,
             loadFromCopy,
@@ -176,16 +174,8 @@ export default class ControlPanelView extends React.Component {
                     setPlaygroundHeight(val)
                 }}
             />
-            {
-                lastModified !== '' && <Typography
-                    className="last-modified"
-                    variant="caption"
-                >
-                    更新于 {lastModified}
-                </Typography>
-            }
             <div className="actions-right">
-                <Tooltip title="复制当前画布，用于分享给其他同学">
+                <Tooltip title="复制当前画布，用于分享给其他同学" arrow>
                     <Button
                         className="btn-share"
                         variant="outlined"
@@ -199,7 +189,7 @@ export default class ControlPanelView extends React.Component {
                         复制
                     </Button>
                 </Tooltip>
-                <Tooltip title="读取其他同学完成的画布">
+                <Tooltip title="读取其他同学完成的画布" arrow>
                     <Button
                         className="btn-load"
                         variant="outlined"
@@ -257,7 +247,7 @@ export default class ControlPanelView extends React.Component {
                         </Button>
                     </DialogActions>
                 </Dialog>
-                <Tooltip title="重置并还原画布">
+                <Tooltip title="清空画布并还原宽高" arrow>
                     <Button
                         className="btn-clear"
                         color="secondary"

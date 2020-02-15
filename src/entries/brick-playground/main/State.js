@@ -100,9 +100,8 @@ class MainState extends BaseModel {
         }, duration)
     }
 
-    // 1920 * 900, 各减 100
-    @observable playgroundWidth = 1820
-    @observable playgroundHeight = 800
+    @observable playgroundWidth = window.innerWidth - 70
+    @observable playgroundHeight = window.innerHeight - 70
 
     // ##### 中间 实际内容(默认下的全屏) #####
 
@@ -151,24 +150,17 @@ class MainState extends BaseModel {
 
     @observable archiveName = ''
     @observable author = ''
-    @observable lastModified = ''
 
     // ##### 存储相关 #####
 
     saveArchiveData = () => {
         setStorage(BP_ARCHIVE_DATA_KEY, this.usedCompsDataArray)
-        // this.setProps({
-        //     lastModified: new Date().toLocaleString()
-        // })
     }
     saveAuthor = () => {
         setStorage(BP_AUTHOR_KEY, this.author)
     }
     saveArchiveName = () => {
         setStorage(BP_ARCHIVE_NAME_KEY, this.archiveName)
-    }
-    saveLastModified = () => {
-        setStorage(BP_LAST_MODIFIED_KEY, this.lastModified)
     }
     loadStorage = () => {
         const archive = getStorage(BP_ARCHIVE_DATA_KEY)
@@ -198,15 +190,6 @@ class MainState extends BaseModel {
         } else {
             this.saveArchiveName()
         }
-        // TODO: 更新时间
-        // const lastModified = getStorage(BP_LAST_MODIFIED)
-        // if (typeof lastModified === 'string') {
-        //     this.setProps({
-        //         lastModified
-        //     })
-        // } else {
-        //     this.saveLastModified()
-        // }
     }
     copyStorageToClipboard = () => {
         const copyTarget = {

@@ -163,7 +163,6 @@ export default class extends React.Component {
                         })
                         mainState.saveAuthor()
                     }}
-                    lastModified={mainState.lastModified}
                     copyStorageToClipboard={mainState.copyStorageToClipboard}
                     loadFromCopy={mainState.loadFromCopy}
                     playgroundWidth={mainState.playgroundWidth}
