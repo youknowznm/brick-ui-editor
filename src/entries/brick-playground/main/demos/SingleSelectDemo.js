@@ -47,6 +47,7 @@ const SingleSelectDemo = () => {
     }
 
     return <div className="demo-block select-demo-block">
+        <h3 className="demo-type-desc">尺寸</h3>
         {sizeList.map(renderSelectBySize)}
     </div>
 }

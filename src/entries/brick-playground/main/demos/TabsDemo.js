@@ -100,7 +100,7 @@ const TabsDemo = () => {
         </div>
         <Divider className="demo-block-separator" />
         {/* ===== 2 addable ===== */}
-        <h3 className="demo-type-desc">错误状态 / 禁用 / 可删除 / 可添加</h3>
+        <h3 className="demo-type-desc">错误 / 禁用 / 可删除 / 可添加</h3>
         <div>
             <Tabs
                 className="demo-tabs"
@@ -143,6 +143,7 @@ const TabsDemo = () => {
                 data={generatePaperPanesData(20)}
             />
         </div>
+        <Divider className="demo-block-separator" />
     </div>
 }
 

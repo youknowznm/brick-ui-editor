@@ -39,15 +39,20 @@ const BreadcrumbDemo = () => {
 
     return <div className="demo-block breadcrumb-demo-block">
         {/* ===== 0 basic ===== */}
-        <Breadcrumb data={dataList}/>
-        <Divider className="demo-block-separator" />
-        {/* ===== 1 size ===== */}
-        <Breadcrumb data={dataListForSize} size="sm" />
-        <Divider className="demo-block-separator" />
-        <Breadcrumb data={dataListForSize} size="md" />
+        <h3 className="demo-type-desc">尺寸</h3>
+        <div>
+            <Breadcrumb data={dataList} size="sm" />
+        </div>
+        <div>
+            <Breadcrumb data={dataList} size="md" />
+        </div>
         <Divider className="demo-block-separator" />
         {/* ===== 2 divider ===== */}
-        <Breadcrumb data={dataListForSize} divider='/'/>
+        <h3 className="demo-type-desc">自定义分隔符</h3>
+        <div>
+            <Breadcrumb data={dataList} divider='/'/>
+        </div>
+        <Divider className="demo-block-separator" />
     </div>
 }
 

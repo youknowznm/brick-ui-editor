@@ -85,6 +85,7 @@ const CheckboxDemo = () => {
                 ]}
             />
         </div>
+        <Divider className="demo-block-separator" />
     </div>
 }
 

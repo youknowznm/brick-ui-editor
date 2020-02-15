@@ -13,22 +13,18 @@ const PaginationDemo = () => {
         return (
             <div key={size}>
                 <Pagination total={100} size={size} />
-                <Divider className="demo-block-separator" />
             </div>
         )
     }
 
     return <div className="demo-block pagination-demo-block">
-        {/* ===== 0 basic ===== */}
-        <Pagination total={50}/>
-        <Divider className="demo-block-separator" />
-        <Pagination total={100}/>
-        <Divider className="demo-block-separator" />
         {/* ===== 1 size ===== */}
+        <h3 className="demo-type-desc">尺寸</h3>
         {
             ['xs', 'sm', 'md'].map(size => renderPaginationBySize(size))
         }
         {/* ===== 2 simple ===== */}
+        <h3 className="demo-type-desc">简单分页</h3>
         <Pagination total={50} simple/>
     </div>
 }

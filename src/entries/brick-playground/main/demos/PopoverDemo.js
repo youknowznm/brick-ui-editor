@@ -2,6 +2,8 @@ import * as React from 'react'
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
+import Divider from "@material-ui/core/Divider";
+
 import _Popover from '../composedComps/Popover.js'
 const Popover = wrapDemoComp(_Popover)
 
@@ -39,6 +41,7 @@ const PopoverDemo = () => {
                 {row.map(renderPlacement)}
             </div>
         ))}
+        <Divider className="demo-block-separator" />
     </div>
 }
 

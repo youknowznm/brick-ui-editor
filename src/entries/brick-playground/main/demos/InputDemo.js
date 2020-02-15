@@ -12,40 +12,58 @@ const InputDemo = () => {
     return <div className="demo-block input-demo-block">
         {/* ===== 0 basic ===== */}
         <div>
+            <h3 className="demo-type-desc inline">普通</h3>
             <Input
                 value={'内容'}
                 placeholder={'占位符'}
             />
-            <Input
-                value={'内容'}
-                placeholder={'占位符'}
-                status="error"
-            />
+        </div>
+        <div>
+            <h3 className="demo-type-desc inline">禁用</h3>
             <Input
                 value={'内容'}
                 placeholder={'占位符'}
                 disabled={true}
             />
         </div>
+        <div>
+            <h3 className="demo-type-desc inline">错误</h3>
+            <Input
+                value={'内容'}
+                placeholder={'占位符'}
+                status="error"
+            />
+        </div>
         <Divider className="demo-block-separator" />
         {/* ===== 1 size ??? 似乎未生效 ===== */}
         {/* ===== 2 前缀和后缀 ===== */}
-        <Input
-            textPrefix={'这是前缀'}
-        />
-        <Input
-            textSuffix={'这是后缀'}
-        />
-        <Input
-            iconPrefix={'SvgBell'}
-        />
-        <Input
-            iconSuffix={'SvgSearch'}
-        />
-        <Input
-            iconPrefix={'SvgBell'}
-            iconSuffix={'SvgSearch'}
-        />
+        <h3 className="demo-type-desc">前缀/后缀</h3>
+        <div>
+            <Input
+                textPrefix={'文字前缀'}
+            />
+        </div>
+        <div>
+            <Input
+                textSuffix={'文字后缀'}
+            />
+        </div>
+        <div>
+            <Input
+                iconPrefix={'SvgBell'}
+            />
+        </div>
+        <div>
+            <Input
+                iconSuffix={'SvgSearch'}
+            />
+        </div>
+        <div>
+            <Input
+                iconPrefix={'SvgBell'}
+                iconSuffix={'SvgSearch'}
+            />
+        </div>
         <Divider className="demo-block-separator" />
     </div>
 }

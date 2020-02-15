@@ -47,9 +47,8 @@ const MultipleSelectDemo = () => {
     }
 
     return <div className="demo-block select-demo-block">
-        <div>
-            {sizeList.map(renderSelectBySize)}
-        </div>
+        <h3 className="demo-type-desc">尺寸</h3>
+        {sizeList.map(renderSelectBySize)}
     </div>
 }
 

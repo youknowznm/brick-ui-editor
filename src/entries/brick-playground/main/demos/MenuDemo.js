@@ -32,27 +32,32 @@ const MenuDemo = () => {
     }
 
     return <div className="demo-block menu-demo-block">
-        <Menu
-            size={'sm'}
-            {...optionProps}
-        />
+        <h3 className="demo-type-desc">水平布局</h3>
+        <div>
+            <Menu
+                size={'sm'}
+                {...optionProps}
+            />
+            <Menu
+                size={'md'}
+                {...optionProps}
+            />
+        </div>
         <Divider className="demo-block-separator" />
-        <Menu
-            size={'md'}
-            {...optionProps}
-        />
+        <h3 className="demo-type-desc">垂直布局</h3>
+        <div>
+            <Menu
+                layout={'horizontal'}
+                size={'sm'}
+                {...optionProps}
+            />
+            <Menu
+                layout={'horizontal'}
+                size={'md'}
+                {...optionProps}
+            />
+        </div>
         <Divider className="demo-block-separator" />
-        <Menu
-            layout={'horizontal'}
-            size={'sm'}
-            {...optionProps}
-        />
-        <Divider className="demo-block-separator" />
-        <Menu
-            layout={'horizontal'}
-            size={'md'}
-            {...optionProps}
-        />
     </div>
 }
 

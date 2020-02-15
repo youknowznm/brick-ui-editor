@@ -19,30 +19,21 @@ const TextareaDemo = () => {
         {/* ===== 0 basic ===== */}
         <div>
             <div className="textarea-wrap">
-                <Textarea
-                    value={value}
-                    onChange={handleChange}
-                    placeholder={'leave description please'}
-                    maxLength={100}
-                />
-            </div>
-            <div className="textarea-wrap">
+                <h3 className="demo-type-desc inline">普通</h3>
                 <Textarea defaultValue={'overflow'} maxLength={5} />
             </div>
             <div className="textarea-wrap">
-                <Textarea defaultValue={'invalid'} maxLength={10} status={'error'} />
-            </div>
-        </div>
-        <div>
-            <div className="textarea-wrap">
-                <Textarea defaultValue={'这是一段描述'} disabled />
-            </div>
-            <div className="textarea-wrap">
+                <h3 className="demo-type-desc inline">禁用</h3>
                 <Textarea placeholder={'请描述'} disabled />
+            </div>
+            <div className="textarea-wrap">
+                <h3 className="demo-type-desc inline">错误</h3>
+                <Textarea defaultValue={'invalid'} maxLength={10} status={'error'} />
             </div>
         </div>
         <Divider className="demo-block-separator" />
         {/* ===== 1 size ===== */}
+        <h3 className="demo-type-desc inline">尺寸</h3>
         <div>
             <div className="textarea-wrap">
                 <Textarea size={'sm'} placeholder={'sm'} rows={2} />
@@ -51,6 +42,7 @@ const TextareaDemo = () => {
                 <Textarea size={'md'} placeholder={'md'} rows={2} />
             </div>
         </div>
+        <Divider className="demo-block-separator" />
     </div>
 }
 

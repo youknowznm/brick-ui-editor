@@ -70,7 +70,7 @@
             height: 64px;
             display: inline-block;
             font-weight: lighter;
-            font-family: "Roboto Mono";
+            font-family: Roboto Mono, serif;
             color: $mui-primary;
             transition: opacity .4s cubic-bezier(0.25, 0.8, 0.25, 1);
             &:after {
@@ -100,7 +100,7 @@
           text-align: right;
           height: 64px;
           line-height: 64px;
-          font-family: "Roboto Mono";
+          font-family: Roboto Mono, serif;
           font-weight: lighter;
           color: #ccc;
           font-size: 12px;
@@ -110,7 +110,6 @@
           }
         }
       }
-
     }
     .fake-trigger {
       border-top: 1px solid $border-color;

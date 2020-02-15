@@ -12,113 +12,95 @@ const TextSwitch = wrapDemoComp(_TextSwitch)
 const TextSwitchDemo = () => {
 
     return <div className="demo-block switch-demo-block">
-        <div className="switch-demo-wrap">
+        <h3 className="demo-type-desc inline">尺寸</h3>
+        <div>
             <TextSwitch
                 size="xs"
                 checked={true}
             />
-        </div>
-        <div className="switch-demo-wrap">
             <TextSwitch
                 size="xs"
                 checked={false}
             />
-        </div>
-        <div className="switch-demo-wrap">
             <TextSwitch
                 size="xs"
                 checked={true}
                 disabled={true}
             />
-        </div>
-        <div className="switch-demo-wrap">
             <TextSwitch
                 size="xs"
                 checked={false}
                 disabled={true}
             />
+
         </div>
-        <div className="switch-demo-wrap">
+        <div>
+            <TextSwitch
+                size="sm"
+                checked={true}
+            />
+            <TextSwitch
+                size="sm"
+                checked={false}
+            />
+            <TextSwitch
+                size="sm"
+                checked={true}
+                disabled={true}
+            />
+            <TextSwitch
+                size="sm"
+                checked={false}
+                disabled={true}
+            />
+
+        </div>
+        <div>
+            <TextSwitch
+                size="md"
+                checked={true}
+            />
+            <TextSwitch
+                size="md"
+                checked={false}
+            />
+            <TextSwitch
+                size="md"
+                checked={true}
+                disabled={true}
+            />
+            <TextSwitch
+                size="md"
+                checked={false}
+                disabled={true}
+            />
+
+        </div>
+        <Divider className="demo-block-separator" />
+        <h3 className="demo-type-desc inline">禁用</h3>
+        <div>
             <TextSwitch
                 size="xs"
+                loading={true}
+            />
+            <TextSwitch
+                size="sm"
+                loading={true}
+            />
+            <TextSwitch
+                size="md"
                 loading={true}
             />
         </div>
         <Divider className="demo-block-separator" />
-        <div className="switch-demo-wrap">
-            <TextSwitch
-                size="sm"
-                checked={true}
-            />
-        </div>
-        <div className="switch-demo-wrap">
-            <TextSwitch
-                size="sm"
-                checked={false}
-            />
-        </div>
-        <div className="switch-demo-wrap">
-            <TextSwitch
-                size="sm"
-                checked={true}
-                disabled={true}
-            />
-        </div>
-        <div className="switch-demo-wrap">
-            <TextSwitch
-                size="sm"
-                checked={false}
-                disabled={true}
-            />
-        </div>
-        <div className="switch-demo-wrap">
-            <TextSwitch
-                size="sm"
-                loading={true}
-            />
-        </div>
-        <Divider className="demo-block-separator" />
-        <div className="switch-demo-wrap">
-            <TextSwitch
-                size="md"
-                checked={true}
-            />
-        </div>
-        <div className="switch-demo-wrap">
-            <TextSwitch
-                size="md"
-                checked={false}
-            />
-        </div>
-        <div className="switch-demo-wrap">
-            <TextSwitch
-                size="md"
-                checked={true}
-                disabled={true}
-            />
-        </div>
-        <div className="switch-demo-wrap">
-            <TextSwitch
-                size="md"
-                checked={false}
-                disabled={true}
-            />
-        </div>
-        <div className="switch-demo-wrap">
-            <TextSwitch
-                size="md"
-                loading={true}
-            />
-        </div>
-        <div className="switch-demo-wrap">
+        <h3 className="demo-type-desc inline">文字标签</h3>
+        <div>
             <TextSwitch
                 size="md"
                 checkedLabel="启用"
                 // uncheckedLabel="停用"
                 checked={true}
             />
-        </div>
-        <div className="switch-demo-wrap">
             <TextSwitch
                 size="md"
                 // checkedLabel="启用"
@@ -126,7 +108,9 @@ const TextSwitchDemo = () => {
                 checked={false}
             />
         </div>
+        <Divider className="demo-block-separator" />
     </div>
+
 }
 
 TextSwitchDemo.wrapName = 'TextSwitchDemo'

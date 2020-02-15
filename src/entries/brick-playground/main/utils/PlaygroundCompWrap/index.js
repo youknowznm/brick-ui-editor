@@ -16,7 +16,7 @@ export default class PlaygroundCompWrap extends React.Component {
 
     // static displayName = `${OriginComponent.displayName}PlaygroundWrap`
 
-    contentDOM = null
+    // contentDOM = null
     wrapDOM = null
 
     state = {

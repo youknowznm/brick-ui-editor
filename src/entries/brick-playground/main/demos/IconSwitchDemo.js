@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import wrapDemoComp from '../utils/wrapDemoComp'
+import {Divider} from "@material-ui/core";
 
 import {
     ComposedIconSwitch as _IconSwitch,
@@ -37,6 +38,7 @@ const IconSwitchDemo = () => {
                 loading={true}
             />
         </div>
+        <Divider className="demo-block-separator" />
     </div>
 }
 

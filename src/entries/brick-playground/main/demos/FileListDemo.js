@@ -63,6 +63,7 @@ const FileListDemo = () => {
             <FileList data={fileDataWithActions} useRemove={true} layout={'horizontal'} downloadMethod={'get'}/>
             <FileList data={fileDataWithActions} useRemove={true}/>
         </div>
+        <Divider className="demo-block-separator" />
     </div>
 }
 

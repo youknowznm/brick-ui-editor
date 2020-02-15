@@ -10,7 +10,7 @@ const RadioGroup = wrapDemoComp(_RadioGroup)
 const RadioDemo = () => {
 
     return <div className="demo-block radio-group-demo-block">
-        {/* ===== 0 basic ===== */}
+        <h3 className="demo-type-desc">普通</h3>
         <div>
             <RadioGroup
                 defaultValue={['item_1']}
@@ -21,10 +21,6 @@ const RadioDemo = () => {
                     {value: 'item_4', label: 'item-4'},
                 ]}
             />
-        </div>
-        <Divider className="demo-block-separator" />
-        {/* ===== 2 intermidiate ===== */}
-        <div>
             <RadioGroup
                 defaultValue={['item_1']}
                 size={'md'}
@@ -37,7 +33,7 @@ const RadioDemo = () => {
             />
         </div>
         <Divider className="demo-block-separator" />
-        {/* ===== 3 intensive ===== */}
+        <h3 className="demo-type-desc">加强</h3>
         <div>
             <RadioGroup
                 type={'intensive'}
@@ -50,8 +46,6 @@ const RadioDemo = () => {
                 ]}
             />
         </div>
-        {/* ===== 4 large ===== */}
-        <Divider className="demo-block-separator" />
         <div>
             <RadioGroup
                 type={'intensive'}
@@ -65,6 +59,7 @@ const RadioDemo = () => {
                 ]}
             />
         </div>
+        <Divider className="demo-block-separator" />
     </div>
 }
 

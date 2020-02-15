@@ -89,13 +89,14 @@
           padding: 14px 14px 0;
           background-color: #fff;
           .demo-type-desc {
-            font-family: "Roboto";
+            font-family: Roboto, serif;
             display: inline-block;
             margin: 0 0 15px;
             border-bottom: 2px solid black;
             font-style: italic;
             &.inline {
               display: inline-block;
+              vertical-align: top;
               margin-right: 15px;
               margin-bottom: 10px;
             }

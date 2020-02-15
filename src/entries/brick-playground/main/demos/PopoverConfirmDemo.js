@@ -2,6 +2,8 @@ import * as React from 'react'
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
+import Divider from "@material-ui/core/Divider";
+
 import _PopoverConfirm from '../composedComps/PopoverConfirm.js'
 const PopoverConfirm = wrapDemoComp(_PopoverConfirm)
 
@@ -41,6 +43,7 @@ const PopoverConfirmDemo = () => {
             />
             {types.map(renderTypePopover)}
         </div>
+        <Divider className="demo-block-separator" />
     </div>
 }
 

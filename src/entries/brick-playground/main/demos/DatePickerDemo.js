@@ -42,13 +42,14 @@ const DatePickerDemo = () => {
         </div>
         <Divider className="demo-block-separator" />
         <div>
-            <h3 className="demo-type-desc inline">错误状态</h3>
+            <h3 className="demo-type-desc inline">错误</h3>
             <DatePicker
                 status="error"
                 defaultValue={new Date(2020, 1)}
                 getDisabledItem={(date, today) => date < today.subtract(4, 'day')}
             />
         </div>
+        <Divider className="demo-block-separator" />
     </div>
 }
 

@@ -11,13 +11,13 @@ export default class ComposedMenu extends React.Component {
         layout: 'vertical', // horizontal
         menuItems: [], // id, label
         group1Label: '',
-        group1Type: 'group', // popper
+        group1Type: 'popper', // popper
         group1MenuItems: [],
         group2Label: '',
-        group2Type: 'group', // popper
+        group2Type: 'popper', // popper
         group2MenuItems: [],
         group3Label: '',
-        group3Type: 'group', // popper
+        group3Type: 'popper', // popper
         group3MenuItems: [],
         width: 450,
     }

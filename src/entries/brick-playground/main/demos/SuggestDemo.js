@@ -33,6 +33,7 @@ const SuggestDemo = () => {
     return <div className="demo-block suggest-demo-block">
         {/* ===== 0 basic ===== */}
         <div>
+            <h3 className="demo-type-desc inline">普通</h3>
             <Suggest
                 placeholder={'请输入'}
                 {...optionProps}
@@ -40,6 +41,7 @@ const SuggestDemo = () => {
         </div>
         {/* ===== 1 disabled ===== */}
         <div>
+            <h3 className="demo-type-desc inline">禁用</h3>
             <Suggest
                 placeholder={'请输入'}
                 disabled={true}

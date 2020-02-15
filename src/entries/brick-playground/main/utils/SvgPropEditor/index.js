@@ -1,19 +1,11 @@
 import * as React from 'react'
-import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
-import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 
@@ -22,6 +14,7 @@ import {capitalize} from 'lodash-es';
 import {Icon} from '@befe/brick'
 
 import {ICON_GROUP_MAP_MAIN} from '@befe/brick-icon/src/main/group-map'
+import {ICON_TYPES} from "../../config";
 
 import getSvgByName from '../getSvgByName';
 
@@ -136,7 +129,7 @@ export default class SvgPropEditor extends React.Component {
                                         })
                                     }}
                                 >
-                                    {capitalize(type)}
+                                    {ICON_TYPES[type]} {capitalize(type)}
                                 </MenuItem>
                             })
                         }
@@ -160,7 +153,9 @@ export default class SvgPropEditor extends React.Component {
                                         svg={getSvgByName(item)} />
                                     <p
                                         className="icon-name"
-                                    >{item}</p>
+                                    >
+                                        {item}
+                                    </p>
                                 </Button>
                             })
                         }
@@ -168,6 +163,7 @@ export default class SvgPropEditor extends React.Component {
                 </DialogContent>
                 <DialogActions>
                     <Button
+                        color="secondary"
                         onClick={() => {
                             dispatchSelectedIcon('')
                             this.triggerVisible(false)

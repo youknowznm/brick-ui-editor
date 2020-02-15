@@ -2,6 +2,8 @@ import * as React from 'react'
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
+import Divider from '@material-ui/core/Divider';
+
 import _HeadNav from '../composedComps/HeadNav'
 const HeadNav = wrapDemoComp(_HeadNav)
 
@@ -38,6 +40,7 @@ const HeadNavDemo = () => {
                 {...menuItemProps}
             />
         </div>
+        <Divider className="demo-block-separator" />
     </div>
 }
 
