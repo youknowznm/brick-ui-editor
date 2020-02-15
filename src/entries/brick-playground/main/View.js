@@ -26,7 +26,6 @@ export default class extends React.Component {
         const {local, props} = this
         this.registerMetaKeyListener()
         this.registerBodyMouseEnterListener()
-        this.registerResizeListener()
         this.local.mainState.loadStorage()
     }
 
@@ -62,27 +61,6 @@ export default class extends React.Component {
                 metaKeyPressing: false
             })
         })
-    }
-
-    registerResizeListener = () => {
-        const {local} = this
-        const getPlaygroundSize = () => {
-            const playgroundDOM = document.querySelector('.playground-content')
-            if (playgroundDOM) {
-                const {
-                    width,
-                    height
-                } = document.defaultView.getComputedStyle(playgroundDOM)
-                local.mainState.setProps({
-                    playgroundWidth: parseInt(width, 10),
-                    playgroundHeight: parseInt(height, 10),
-                })
-            }
-        }
-        window.addEventListener('resize', event => {
-            getPlaygroundSize()
-        })
-        getPlaygroundSize()
     }
 
     renderControlPanelDrawerTrigger = () => {
@@ -188,6 +166,18 @@ export default class extends React.Component {
                     lastModified={mainState.lastModified}
                     copyStorageToClipboard={mainState.copyStorageToClipboard}
                     loadFromCopy={mainState.loadFromCopy}
+                    playgroundWidth={mainState.playgroundWidth}
+                    playgroundHeight={mainState.playgroundHeight}
+                    setPlaygroundWidth={val => {
+                        mainState.setProps({
+                            playgroundWidth: val
+                        })
+                    }}
+                    setPlaygroundHeight={val => {
+                        mainState.setProps({
+                            playgroundHeight: val
+                        })
+                    }}
                 />
                 <AttrEditorView
                     activeComponentData={mainState.activeComponentData}

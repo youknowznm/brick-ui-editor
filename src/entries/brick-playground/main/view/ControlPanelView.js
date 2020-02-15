@@ -13,6 +13,7 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogActions from '@material-ui/core/DialogActions'
 import Typography from '@material-ui/core/Typography'
+import Tooltip from '@material-ui/core/Tooltip';
 
 import ControlPanelState from '../states/ControlPanelState'
 
@@ -113,6 +114,10 @@ export default class ControlPanelView extends React.Component {
             clearAll,
             copyStorageToClipboard,
             loadFromCopy,
+            playgroundHeight,
+            playgroundWidth,
+            setPlaygroundHeight,
+            setPlaygroundWidth,
         } = props
         return <div className="control-panel-content">
             <TextField
@@ -141,6 +146,36 @@ export default class ControlPanelView extends React.Component {
                     setAuthor(evt.target.value.trim())
                 }}
             />
+            <TextField
+                className="playground-width"
+                size="small"
+                variant="filled"
+                label="画布宽度"
+                type="number"
+                value={playgroundWidth}
+                onChange={evt => {
+                    let val = +evt.target.value
+                    if (val < 500) {
+                        val = 500
+                    }
+                    setPlaygroundWidth(val)
+                }}
+            />
+            <TextField
+                className="playground-height"
+                size="small"
+                variant="filled"
+                label="画布高度"
+                type="number"
+                value={playgroundHeight}
+                onChange={evt => {
+                    let val = +evt.target.value
+                    if (val < 300) {
+                        val = 300
+                    }
+                    setPlaygroundHeight(val)
+                }}
+            />
             {
                 lastModified !== '' && <Typography
                     className="last-modified"
@@ -149,116 +184,124 @@ export default class ControlPanelView extends React.Component {
                     更新于 {lastModified}
                 </Typography>
             }
-            <Button
-                className="btn-clear"
-                color="secondary"
-                size="small"
-                variant="outlined"
-                disabled={this.isEmpty}
-                onClick={() => {
-                    triggerConfirmFlag(true)
-                }}
-            >
-                清空画布
-            </Button>
-            <Dialog
-                open={showClearConfirmFlag}
-                onClose={() => {
-                    triggerConfirmFlag(false)
-                }}
-            >
-                <DialogTitle>移除所有组件？</DialogTitle>
-                <DialogContent>
-                    <DialogContentText>
-                        移除的组件无法还原。
-                    </DialogContentText>
-                </DialogContent>
-                <DialogActions>
+            <div className="actions-right">
+                <Tooltip title="复制当前画布，用于分享给其他同学">
                     <Button
+                        className="btn-share"
+                        variant="outlined"
+                        size="small"
+                        disabled={this.isEmpty || archiveName === '' || author === ''}
+                        color="primary"
                         onClick={() => {
-                            triggerConfirmFlag(false)
-                            clearAll()
+                            copyStorageToClipboard()
                         }}
                     >
-                        确认
+                        复制
                     </Button>
+                </Tooltip>
+                <Tooltip title="读取其他同学完成的画布">
                     <Button
+                        className="btn-load"
+                        variant="outlined"
+                        size="small"
+                        color="primary"
                         onClick={() => {
-                            triggerConfirmFlag(false)
+                            triggerLoadArchiveConfirmFLag(true)
                         }}
                     >
-                        取消
+                        读取
                     </Button>
-                </DialogActions>
-            </Dialog>
-            <Button
-                className="btn-load"
-                variant="outlined"
-                size="small"
-                color="primary"
-                onClick={() => {
-                    triggerLoadArchiveConfirmFLag(true)
-                }}
-            >
-                读取存档
-            </Button>
-            <Dialog
-                open={showLoadArchiveConfirmFLag}
-                onClose={() => {
-                    triggerLoadArchiveConfirmFLag(false)
-                }}
-            >
-                <DialogTitle>读取存档</DialogTitle>
-                <DialogContent>
-                    <DialogContentText>
-                        请粘贴已有的存档。
-                    </DialogContentText>
-                    <TextField
-                        className="load-archive-dialog"
-                        autoFocus
-                        value={archiveJSON}
-                        onChange={evt => {
-                            local.controlPanelState.setProps({
-                                archiveJSON: evt.target.value
-                            })
-                        }}
-                        onBlur={evt => {
-                            local.controlPanelState.setProps({
-                                archiveJSON: evt.target.value.trim()
-                            })
-                        }}
-                    />
-                </DialogContent>
-                <DialogActions>
+                </Tooltip>
+                <Dialog
+                    open={showLoadArchiveConfirmFLag}
+                    onClose={() => {
+                        triggerLoadArchiveConfirmFLag(false)
+                    }}
+                >
+                    <DialogTitle>读取</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText>
+                            请粘贴已有的画布数据。
+                        </DialogContentText>
+                        <TextField
+                            className="load-archive-dialog"
+                            autoFocus
+                            value={archiveJSON}
+                            onChange={evt => {
+                                local.controlPanelState.setProps({
+                                    archiveJSON: evt.target.value
+                                })
+                            }}
+                            onBlur={evt => {
+                                local.controlPanelState.setProps({
+                                    archiveJSON: evt.target.value.trim()
+                                })
+                            }}
+                        />
+                    </DialogContent>
+                    <DialogActions>
+                        <Button
+                            onClick={() => {
+                                triggerLoadArchiveConfirmFLag(false)
+                                loadFromCopy(archiveJSON)
+                            }}
+                        >
+                            确认
+                        </Button>
+                        <Button
+                            onClick={() => {
+                                triggerLoadArchiveConfirmFLag(false)
+                            }}
+                        >
+                            取消
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+                <Tooltip title="重置并还原画布">
                     <Button
+                        className="btn-clear"
+                        color="secondary"
+                        size="small"
+                        variant="outlined"
+                        disabled={this.isEmpty}
                         onClick={() => {
-                            triggerLoadArchiveConfirmFLag(false)
-                            loadFromCopy(archiveJSON)
+                            triggerConfirmFlag(true)
                         }}
                     >
-                        确认
+                        重置
                     </Button>
-                    <Button
-                        onClick={() => {
-                            triggerLoadArchiveConfirmFLag(false)
-                        }}
-                    >
-                        取消
-                    </Button>
-                </DialogActions>
-            </Dialog>
-            <Button
-                className="btn-share"
-                variant="outlined"
-                size="small"
-                disabled={this.isEmpty || archiveName === '' || author === ''}
-                color="primary"
-                onClick={() => {
-                    copyStorageToClipboard()
-                }}
-            >
-                复制存档
-            </Button>
+                </Tooltip>
+                <Dialog
+                    open={showClearConfirmFlag}
+                    onClose={() => {
+                        triggerConfirmFlag(false)
+                    }}
+                >
+                    <DialogTitle>确认重置？</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText>
+                            移除的组件无法还原。
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button
+                            onClick={() => {
+                                triggerConfirmFlag(false)
+                                clearAll()
+                            }}
+                        >
+                            确认
+                        </Button>
+                        <Button
+                            onClick={() => {
+                                triggerConfirmFlag(false)
+                            }}
+                        >
+                            取消
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+            </div>
         </div>
     }
 

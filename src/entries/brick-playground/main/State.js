@@ -236,10 +236,10 @@ class MainState extends BaseModel {
                 this.saveAuthor()
                 this.toast('读取成功。')
             } else {
-                this.toast('请使用正确的数据。')
+                this.toast('请使用正确的画布数据。')
             }
         } catch (e) {
-            this.toast('请使用正确的数据。')
+            this.toast('请使用正确的画布数据。')
         }
     }
 }

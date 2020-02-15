@@ -29,6 +29,13 @@
         margin-top: 30px;
         margin-right: 20px;
       }
+      .playground-width,
+      .playground-height {
+        width: 100px;
+        float: left;
+        margin-top: 30px;
+        margin-right: 20px;
+      }
       .last-modified {
         float: left;
         margin-right: 20px;
@@ -37,21 +44,17 @@
         color: #ccc;
         user-select: none;
       }
-      .btn-share {
+      .actions-right {
+        position: relative;
         float: right;
-        margin-top: 39px;
-        margin-left: 15px;
+        .btn-share,
+        .btn-load,
+        .btn-clear {
+          margin-top: 39px;
+          margin-left: 15px;
+        }
       }
-      .btn-load {
-        float: right;
-        margin-top: 39px;
-        margin-left: 15px;
-      }
-      .btn-clear {
-        float: right;
-        margin-top: 39px;
-        margin-left: 15px;
-      }
+
     }
     .banner-wrap {
       position: relative;
