@@ -215,8 +215,7 @@ class MainState extends BaseModel {
 
         const playgroundWidth = getStorage(BP_PLAYGROUND_WIDTH_KEY)
         const playgroundHeight = getStorage(BP_PLAYGROUND_HEIGHT_KEY)
-        if (typeof playgroundWidth === 'number'
-            && typeof playgroundHeight === 'number' ) {
+        if (typeof playgroundWidth === 'number' && typeof playgroundHeight === 'number') {
             this.setProps({
                 playgroundWidth,
                 playgroundHeight
