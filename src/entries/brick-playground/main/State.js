@@ -6,7 +6,8 @@ import {
     BP_ARCHIVE_DATA_KEY,
     BP_AUTHOR_KEY,
     BP_ARCHIVE_NAME_KEY,
-    BP_LAST_MODIFIED_KEY,
+    BP_PLAYGROUND_WIDTH_KEY,
+    BP_PLAYGROUND_HEIGHT_KEY,
     getStorage,
     setStorage
 } from './utils/storage';
@@ -87,7 +88,11 @@ class MainState extends BaseModel {
 
     @observable msgToToast = ''
     @observable toastFlag = false
-    toast = (msgToToast, duration = 5000) => {
+    toast = (msgToToast, duration = 3000) => {
+        this.setProps({
+            msgToToast: '',
+            toastFlag: false
+        })
         this.setProps({
             msgToToast,
             toastFlag: true
@@ -100,8 +105,17 @@ class MainState extends BaseModel {
         }, duration)
     }
 
-    @observable playgroundWidth = window.innerWidth - 70
-    @observable playgroundHeight = window.innerHeight - 70
+    @observable playgroundWidth = 0
+    @observable playgroundHeight = 0
+
+    resizePlayground = () => {
+        this.setProps({
+            playgroundWidth: window.innerWidth - 60,
+            playgroundHeight: window.innerHeight - 60,
+        })
+        this.savePlaygroundWidth()
+        this.savePlaygroundHeight()
+    }
 
     // ##### 中间 实际内容(默认下的全屏) #####
 
@@ -162,6 +176,12 @@ class MainState extends BaseModel {
     saveArchiveName = () => {
         setStorage(BP_ARCHIVE_NAME_KEY, this.archiveName)
     }
+    savePlaygroundWidth = () => {
+        setStorage(BP_PLAYGROUND_WIDTH_KEY, this.playgroundWidth)
+    }
+    savePlaygroundHeight = () => {
+        setStorage(BP_PLAYGROUND_HEIGHT_KEY, this.playgroundHeight)
+    }
     loadStorage = () => {
         const archive = getStorage(BP_ARCHIVE_DATA_KEY)
         if (Array.isArray(archive)) {
@@ -174,6 +194,7 @@ class MainState extends BaseModel {
         } else {
             this.saveArchiveData()
         }
+
         const author = getStorage(BP_AUTHOR_KEY)
         if (typeof author === 'string') {
             this.setProps({
@@ -182,6 +203,7 @@ class MainState extends BaseModel {
         } else {
             this.saveAuthor()
         }
+
         const archiveName = getStorage(BP_ARCHIVE_NAME_KEY)
         if (typeof author === 'string') {
             this.setProps({
@@ -190,12 +212,26 @@ class MainState extends BaseModel {
         } else {
             this.saveArchiveName()
         }
+
+        const playgroundWidth = getStorage(BP_PLAYGROUND_WIDTH_KEY)
+        const playgroundHeight = getStorage(BP_PLAYGROUND_HEIGHT_KEY)
+        if (typeof playgroundWidth === 'number'
+            && typeof playgroundHeight === 'number' ) {
+            this.setProps({
+                playgroundWidth,
+                playgroundHeight
+            })
+        } else {
+            this.resizePlayground()
+        }
     }
     copyStorageToClipboard = () => {
         const copyTarget = {
             BP_ARCHIVE_NAME: this.archiveName,
             BP_AUTHOR: this.author,
             BP_ARCHIVE_DATA: this.usedCompsDataArray,
+            BP_PLAYGROUND_WIDTH: this.playgroundWidth,
+            BP_PLAYGROUND_HEIGHT: this.playgroundHeight,
         }
         copyToClipboard(JSON.stringify(copyTarget))
         this.toast('已复制到剪贴板。')
@@ -207,16 +243,22 @@ class MainState extends BaseModel {
                 BP_ARCHIVE_NAME,
                 BP_AUTHOR,
                 BP_ARCHIVE_DATA,
+                BP_PLAYGROUND_WIDTH,
+                BP_PLAYGROUND_HEIGHT
             } = copyTarget
             if (BP_ARCHIVE_NAME && BP_AUTHOR && BP_ARCHIVE_DATA) {
                 this.setProps({
                     usedCompsDataArray: BP_ARCHIVE_DATA,
                     author: BP_AUTHOR,
-                    archiveName: BP_ARCHIVE_NAME
+                    archiveName: BP_ARCHIVE_NAME,
+                    playgroundWidth: BP_PLAYGROUND_WIDTH,
+                    playgroundHeight: BP_PLAYGROUND_HEIGHT,
                 })
                 this.saveArchiveName()
                 this.saveArchiveData()
                 this.saveAuthor()
+                this.savePlaygroundWidth()
+                this.savePlaygroundHeight()
                 this.toast('读取成功。')
             } else {
                 this.toast('请使用正确的画布数据。')

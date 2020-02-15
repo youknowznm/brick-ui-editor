@@ -12,8 +12,8 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogActions from '@material-ui/core/DialogActions'
-import Typography from '@material-ui/core/Typography'
-import Tooltip from '@material-ui/core/Tooltip';
+import InputAdornment from '@material-ui/core/InputAdornment'
+// import Tooltip from '@material-ui/core/Tooltip';
 
 import ControlPanelState from '../states/ControlPanelState'
 
@@ -116,6 +116,7 @@ export default class ControlPanelView extends React.Component {
             playgroundWidth,
             setPlaygroundHeight,
             setPlaygroundWidth,
+            resizePlayground,
         } = props
         return <div className="control-panel-content">
             <TextField
@@ -147,38 +148,36 @@ export default class ControlPanelView extends React.Component {
             <TextField
                 className="playground-width"
                 size="small"
-                variant="filled"
+                // variant="filled"
                 label="画布宽度"
                 type="number"
                 value={playgroundWidth}
+                InputProps={{
+                    endAdornment: <InputAdornment position="end">px</InputAdornment>
+                }}
                 onChange={evt => {
-                    let val = +evt.target.value
-                    if (val < 500) {
-                        val = 500
-                    }
-                    setPlaygroundWidth(val)
+                    setPlaygroundWidth(+evt.target.value)
                 }}
             />
             <TextField
                 className="playground-height"
                 size="small"
-                variant="filled"
+                // variant="filled"
                 label="画布高度"
                 type="number"
                 value={playgroundHeight}
+                InputProps={{
+                    endAdornment: <InputAdornment position="end">px</InputAdornment>
+                }}
                 onChange={evt => {
-                    let val = +evt.target.value
-                    if (val < 300) {
-                        val = 300
-                    }
-                    setPlaygroundHeight(val)
+                    setPlaygroundHeight(+evt.target.value)
                 }}
             />
             <div className="actions-right">
-                <Tooltip title="复制当前画布，用于分享给其他同学" arrow>
+                {/*<Tooltip title="复制当前画布内容，用于分享给其他同学">*/}
                     <Button
                         className="btn-share"
-                        variant="outlined"
+                        variant="contained"
                         size="small"
                         disabled={this.isEmpty || archiveName === '' || author === ''}
                         color="primary"
@@ -186,13 +185,13 @@ export default class ControlPanelView extends React.Component {
                             copyStorageToClipboard()
                         }}
                     >
-                        复制
+                        分享
                     </Button>
-                </Tooltip>
-                <Tooltip title="读取其他同学完成的画布" arrow>
+                {/*</Tooltip>*/}
+                {/*<Tooltip title="读取其他同学完成的画布">*/}
                     <Button
                         className="btn-load"
-                        variant="outlined"
+                        variant="contained"
                         size="small"
                         color="primary"
                         onClick={() => {
@@ -201,7 +200,7 @@ export default class ControlPanelView extends React.Component {
                     >
                         读取
                     </Button>
-                </Tooltip>
+                {/*</Tooltip>*/}
                 <Dialog
                     open={showLoadArchiveConfirmFLag}
                     onClose={() => {
@@ -247,27 +246,27 @@ export default class ControlPanelView extends React.Component {
                         </Button>
                     </DialogActions>
                 </Dialog>
-                <Tooltip title="清空画布并还原宽高" arrow>
+                {/*<Tooltip title="清空画布并还原宽高">*/}
                     <Button
                         className="btn-clear"
                         color="secondary"
                         size="small"
-                        variant="outlined"
-                        disabled={this.isEmpty}
+                        variant="contained"
+                        // disabled={this.isEmpty}
                         onClick={() => {
                             triggerConfirmFlag(true)
                         }}
                     >
                         重置
                     </Button>
-                </Tooltip>
+                {/*</Tooltip>*/}
                 <Dialog
                     open={showClearConfirmFlag}
                     onClose={() => {
                         triggerConfirmFlag(false)
                     }}
                 >
-                    <DialogTitle>确认重置？</DialogTitle>
+                    <DialogTitle>确认重置画布？</DialogTitle>
                     <DialogContent>
                         <DialogContentText>
                             移除的组件无法还原。
@@ -278,6 +277,7 @@ export default class ControlPanelView extends React.Component {
                             onClick={() => {
                                 triggerConfirmFlag(false)
                                 clearAll()
+                                resizePlayground()
                             }}
                         >
                             确认

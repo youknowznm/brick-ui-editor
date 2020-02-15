@@ -171,12 +171,15 @@ export default class extends React.Component {
                         mainState.setProps({
                             playgroundWidth: val
                         })
+                        mainState.savePlaygroundWidth()
                     }}
                     setPlaygroundHeight={val => {
                         mainState.setProps({
                             playgroundHeight: val
                         })
+                        mainState.savePlaygroundHeight()
                     }}
+                    resizePlayground={mainState.resizePlayground}
                 />
                 <AttrEditorView
                     activeComponentData={mainState.activeComponentData}

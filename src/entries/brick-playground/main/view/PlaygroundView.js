@@ -136,13 +136,13 @@ export default class PlaygroundView extends React.Component {
         const {local, props} = this
         const {
             showDemoDrawer,
-            showControlPanelDrawer
+            // showControlPanelDrawer
         } = props
         // 减去 trigger 宽度
         return <div className="playground-wrap"
             style={{
                 marginLeft: `${showDemoDrawer ? 810 : 0}px`, // 830 - 20
-                marginTop: `${showControlPanelDrawer ? 173 : 0}px`, // 193 - 20
+                // marginTop: `${showControlPanelDrawer ? 173 : 0}px`, // 193 - 20
             }}
             >
             {this.renderPlaygroundContent()}

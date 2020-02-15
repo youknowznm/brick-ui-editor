@@ -3,7 +3,8 @@ import {toJS} from 'mobx'
 export const BP_ARCHIVE_DATA_KEY = 'BP_ARCHIVE_DATA'
 export const BP_ARCHIVE_NAME_KEY = 'BP_ARCHIVE_NAME'
 export const BP_AUTHOR_KEY = 'BP_AUTHOR'
-export const BP_LAST_MODIFIED_KEY = 'BP_LAST_MODIFIED'
+export const BP_PLAYGROUND_WIDTH_KEY = 'BP_PLAYGROUND_WIDTH'
+export const BP_PLAYGROUND_HEIGHT_KEY = 'BP_PLAYGROUND_HEIGHT'
 
 export const setStorage = (key, data) => {
     // console.log('save', toJS(data))
@@ -12,8 +13,4 @@ export const setStorage = (key, data) => {
 
 export const getStorage = key => {
     return JSON.parse(localStorage.getItem(key))
-}
-
-export const getRaw = key => {
-    return localStorage.getItem(key)
 }
