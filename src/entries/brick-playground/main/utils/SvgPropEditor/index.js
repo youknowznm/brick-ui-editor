@@ -1,22 +1,22 @@
 import * as React from 'react'
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogActions from '@material-ui/core/DialogActions';
-import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
-import MenuList from '@material-ui/core/MenuList';
+import Button from '@material-ui/core/Button'
+import Dialog from '@material-ui/core/Dialog'
+import DialogTitle from '@material-ui/core/DialogTitle'
+import DialogContent from '@material-ui/core/DialogContent'
+import DialogActions from '@material-ui/core/DialogActions'
+import Typography from '@material-ui/core/Typography'
+import TextField from '@material-ui/core/TextField'
+import MenuItem from '@material-ui/core/MenuItem'
+import MenuList from '@material-ui/core/MenuList'
 
-import {capitalize} from 'lodash-es';
+import {capitalize} from 'lodash-es'
 
 import {Icon} from '@befe/brick'
 
 import {ICON_GROUP_MAP_MAIN} from '@befe/brick-icon/src/main/group-map'
-import {ICON_TYPES} from "../../config";
+import {ICON_TYPES} from '../../config'
 
-import getSvgByName from '../getSvgByName';
+import getSvgByName from '../getSvgByName'
 
 import './style.scss'
 
