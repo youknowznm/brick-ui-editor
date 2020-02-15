@@ -11,7 +11,7 @@ export default class ComposedTable extends React.Component {
     static defaultProps = {
         data: [],
         columns: [],
-        maxBodyHeight: 1000,
+        // maxBodyHeight: 1000,
         useCheckbox: false,
         operationsLabelsJoined: "",
         width: 750,
@@ -23,9 +23,9 @@ export default class ComposedTable extends React.Component {
             columns,
             useCheckbox,
             operationsLabelsJoined,
-            maxBodyHeight,
+            // maxBodyHeight,
             width,
-            height,
+            // height,
         } = this.props
         let _data = toJS(data).map((item, index) => {
             return Object.assign({}, item, {
@@ -92,7 +92,7 @@ export default class ComposedTable extends React.Component {
                 rowId="_index"
                 data={_data}
                 columns={_columns}
-                maxBodyHeight={maxBodyHeight}
+                // maxBodyHeight={maxBodyHeight}
             />
         </div>
     }

@@ -41,7 +41,7 @@ const TableDemo = () => {
         {/*/>*/}
         {/*<Divider className="demo-block-separator" />*/}
         {/* ===== 1 ===== */}
-        <h3 className="demo-type-desc">普通</h3>
+        {/*<h3 className="demo-type-desc">普通</h3>*/}
         <Table
             data={data}
             columns={columns}
@@ -49,16 +49,16 @@ const TableDemo = () => {
             operationsLabelsJoined="编辑 删除"
         />
         <Divider className="demo-block-separator" />
-        {/* ===== 2 ===== */}
-        <h3 className="demo-type-desc">限制高度</h3>
-        <Table
-            data={data}
-            columns={columns}
-            useCheckbox={true}
-            operationsLabelsJoined="编辑 删除"
-            maxBodyHeight={120}
-        />
-        <Divider className="demo-block-separator" />
+        {/*/!* ===== 2 ===== *!/*/}
+        {/*<h3 className="demo-type-desc">限制高度</h3>*/}
+        {/*<Table*/}
+        {/*    data={data}*/}
+        {/*    columns={columns}*/}
+        {/*    useCheckbox={true}*/}
+        {/*    operationsLabelsJoined="编辑 删除"*/}
+        {/*    maxBodyHeight={120}*/}
+        {/*/>*/}
+        {/*<Divider className="demo-block-separator" />*/}
     </div>
 }
 

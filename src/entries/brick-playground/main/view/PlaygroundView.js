@@ -119,7 +119,6 @@ export default class PlaygroundView extends React.Component {
                         deltaX={item.deltaX}
                         deltaY={item.deltaY}
                         activeComponentId={activeComponentId}
-                        setActiveComponentId={setActiveComponentId}
                         triggerDemoDrawer={triggerDemoDrawer}
                         triggerControlPanelDrawer={triggerControlPanelDrawer}
                         playgroundWidth={playgroundWidth}
@@ -143,7 +142,7 @@ export default class PlaygroundView extends React.Component {
         return <div className="playground-wrap"
             style={{
                 marginLeft: `${showDemoDrawer ? 810 : 0}px`, // 830 - 20
-                marginTop: `${showControlPanelDrawer ? 172 : 0}px`, // 192 - 20
+                marginTop: `${showControlPanelDrawer ? 173 : 0}px`, // 193 - 20
             }}
             >
             {this.renderPlaygroundContent()}

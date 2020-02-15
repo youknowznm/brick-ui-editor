@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import wrapDemoComp from '../utils/wrapDemoComp'
+import Divider from '@material-ui/core/Divider';
 
 import {
     ComposedSingleSelect as _SingleSelect,
@@ -49,6 +50,7 @@ const SingleSelectDemo = () => {
     return <div className="demo-block select-demo-block">
         <h3 className="demo-type-desc">尺寸</h3>
         {sizeList.map(renderSelectBySize)}
+        <Divider className="demo-block-separator" />
     </div>
 }
 

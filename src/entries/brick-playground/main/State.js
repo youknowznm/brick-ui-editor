@@ -100,7 +100,8 @@ class MainState extends BaseModel {
         }, duration)
     }
 
-    @observable playgroundWidth = 1200
+    // 1920 * 900, 各减 100
+    @observable playgroundWidth = 1820
     @observable playgroundHeight = 800
 
     // ##### 中间 实际内容(默认下的全屏) #####

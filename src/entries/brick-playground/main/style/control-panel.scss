@@ -7,6 +7,9 @@
   //width: 100%;
   .control-panel-drawer {
     position: relative;
+    .MuiPaper-root {
+      overflow: hidden;
+    }
     .control-panel-content {
       position: relative;
       background: $gen-bg-color;

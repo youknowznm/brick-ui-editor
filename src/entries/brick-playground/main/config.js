@@ -702,6 +702,12 @@ export const COMP_TYPES = {
         Element: ComposedTable,
         widthEditable: true,
         editableProps: [
+            // {
+            //     desc: '内容最大高度',
+            //     key: 'maxBodyHeight',
+            //     type: 'number',
+            //     defaultValue: 1000
+            // },
             {
                 desc: '列定义',
                 key: 'columns',

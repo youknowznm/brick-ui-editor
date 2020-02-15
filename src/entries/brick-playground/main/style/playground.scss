@@ -5,8 +5,9 @@
   left: 20px;
   top: 20px;
   right: 0;
+  background-color: $gen-bg-color;
   bottom: 0;
-  overflow: hidden;
+  //overflow: hidden;
   transition: margin .3s cubic-bezier(0, 0, 0.2, 1);
   //transition: margin .3s cubic-bezier(0.4, 0, 0.2, 1);
   .playground-content {
