@@ -7,10 +7,11 @@
   right: 0;
   background-color: $gen-bg-color;
   bottom: 0;
-  //overflow: hidden;
+  z-index: 2;
   transition: margin .3s cubic-bezier(0, 0, 0.2, 1);
   .playground-content {
     position: relative;
+    z-index: 2;
     width: 100%;
     height: 100%;
     background: #fff;

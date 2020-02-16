@@ -30,7 +30,7 @@ $aligner-color: #419bf9;
     background-color: $gen-bg-color;
     top: 0;
     left: 0;
-    //z-index: 9999;
+    z-index: 3;
     .trigger-icon {
       position: absolute;
       left: 50%;
@@ -47,6 +47,7 @@ $aligner-color: #419bf9;
     height: 100%;
     top: 0;
     left: 0;
+    z-index: 3;
     .trigger-icon {
       position: absolute;
       top: 50%;

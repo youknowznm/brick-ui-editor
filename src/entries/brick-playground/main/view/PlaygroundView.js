@@ -19,7 +19,7 @@ export default class PlaygroundView extends React.Component {
 
     static propTypes = {
 
-        // playground 内容宽高
+        // playground 容器宽高
         playgroundWidth: PropTypes.number.isRequired,
         playgroundHeight: PropTypes.number.isRequired,
 
