@@ -1,7 +1,7 @@
 {
-    "name": "image-management-system",
+    "name": "brick-playground",
     "version": "1.0.0",
-    "description": "",
+    "description": "针对 Brick 组件库的原型设计工具",
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,7 +14,7 @@
         "dll:dev": "node scripts/dll dev",
         "dll:prod": "node scripts/dll prod"
     },
-    "author": "wujun07",
+    "author": "zhangenming",
     "license": "ISC",
     "devDependencies": {
         "@babel/cli": "^7.7.0",

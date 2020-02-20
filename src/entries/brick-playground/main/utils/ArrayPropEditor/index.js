@@ -204,23 +204,26 @@ export default class ArrayPropEditor extends React.Component {
                                     const newRowObj = {}
                                     columns.forEach(item => {
                                         // console.log({item})
-                                        let defaultValue
-                                        if (item.defaultValue !== undefined) {
-                                            defaultValue = item.defaultValue
-                                        } else {
-                                            switch (item.columnType) {
-                                                case 'string':
-                                                    defaultValue = ''
-                                                    break
-                                                case 'bool':
-                                                    defaultValue = false
-                                                    break
-                                                case 'number':
-                                                    defaultValue = 0
-                                                    break
+                                        // 不处理值为 null 的列描述
+                                        if (item !== null) {
+                                            let defaultValue
+                                            if (item.defaultValue !== undefined) {
+                                                defaultValue = item.defaultValue
+                                            } else {
+                                                switch (item.columnType) {
+                                                    case 'string':
+                                                        defaultValue = ''
+                                                        break
+                                                    case 'bool':
+                                                        defaultValue = false
+                                                        break
+                                                    case 'number':
+                                                        defaultValue = 0
+                                                        break
+                                                }
                                             }
+                                            newRowObj[item.field] = defaultValue
                                         }
-                                        newRowObj[item.field] = defaultValue
                                     })
                                     localList.push(newRowObj)
                                     this.setState({

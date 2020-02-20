@@ -69,7 +69,7 @@ export default class ControlPanelView extends React.Component {
                     </Button>
                 </a>
                 <a
-                    href="http://doc.eux.baidu.com/app/list/dc2565e3f8b9c733aa"
+                    href="http://linky.dev.weiyun.baidu.com:8339/pages/linky.html#/index?main=_s_thapzri718u5__20200220_1545&side=_s_thapzri718u5__20200220_1545"
                     target="_blank"
                 >
                     <Button
