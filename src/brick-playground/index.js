@@ -11,7 +11,7 @@ import './style.scss'
 import Main from './main/View'
 
 const App = hot(() => <ThemeProvider theme={lightTheme}>
-    <Main/>
+    <Main />
 </ThemeProvider>)
 
 start(App)

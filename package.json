@@ -21,6 +21,7 @@
     "babel-jest": "^26.6.0",
     "babel-loader": "8.1.0",
     "babel-plugin-named-asset-import": "^0.3.7",
+    "babel-plugin-typescript-to-proptypes": "^1.4.2",
     "babel-preset-react-app": "^10.0.0",
     "bfj": "^7.0.2",
     "camelcase": "^6.1.0",
@@ -101,15 +102,29 @@
   },
   "babel": {
     "presets": [
-      "react-app"
+      [
+        "@babel/env",
+        {
+          "loose": true,
+          "modules": false,
+          "targets": "> 1%, last 2 versions, ie 11",
+          "corejs": 3,
+          "useBuiltIns": "entry"
+        }
+      ],
+      "@babel/typescript",
+      "@babel/react"
     ],
     "plugins": [
+      "@babel/transform-runtime",
       [
         "@babel/plugin-proposal-decorators",
         {
           "legacy": true
         }
-      ]
+      ],
+      "@babel/proposal-class-properties",
+      "babel-plugin-typescript-to-proptypes"
     ]
   },
   "jest": {
