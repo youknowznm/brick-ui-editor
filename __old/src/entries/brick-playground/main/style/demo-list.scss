@@ -1,0 +1,173 @@
+@import "src/entries/brick-playground/main/style";
+
+.demo-list {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  .demo-list-drawer {
+    overflow: hidden;
+    .demo-list-wrap {
+      position: relative;
+      width: 830px;
+      height: 100%;
+      overflow: hidden;
+      .demo-list-content {
+        position: absolute;
+        width: 810px;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        .demo-cate {
+          position: relative;
+          width: 100%;
+          height: 50px;
+          margin: 0;
+          background: #e0f2f1;
+          border-top: 1px solid $border-color;
+          &:first-of-type {
+            border-top: 0;
+          }
+          .name {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            font-size: 18px;
+            //border-bottom: 2px solid;
+            font-weight: lighter;
+            color: #212121;
+            user-select: none;
+            cursor: auto;
+          }
+        }
+        .demo-exp-panel {
+          border: 1px solid $border-color;
+          box-shadow: none;
+          &:not(:last-of-type) {
+            border-bottom: 0;
+          }
+          &:last-of-type {
+            border-bottom: 0;
+          }
+          &:before {
+            display: none;
+          }
+          div.Mui-expanded {
+            margin-top: 0;
+            margin-bottom: 0;
+          }
+          &.Mui-expanded {
+            margin-top: 0;
+            margin-bottom: 0;
+            .title {
+              margin: 0;
+              min-height: 50px;
+            }
+          }
+          .title {
+            background-color: $gen-bg-color;
+            border-bottom: 1px solid $border-color;
+            margin-bottom: -1px;
+            min-height: 50px;
+            .cn-label {
+              color: #aaa;
+              font-weight: lighter;
+              margin-left: .5em;
+            }
+          }
+          .content {
+            padding-left: 10px;
+            padding-right: 10px;
+          }
+        }
+        .demo-block-separator {
+          margin: 15px 0;
+        }
+        .demo-block {
+          position: relative;
+          width: 100%;
+          padding: 14px 14px 0;
+          background-color: #fff;
+          .demo-type-desc {
+            font-family: Roboto, serif;
+            display: inline-block;
+            margin: 0 0 15px;
+            border-bottom: 2px solid black;
+            font-style: italic;
+            &.inline {
+              display: inline-block;
+              vertical-align: top;
+              margin-right: 15px;
+              margin-bottom: 10px;
+            }
+          }
+        }
+        .icon-demo-block {
+          .icon-list {
+            li {
+              display: inline-block;
+              width: 20%;
+              min-height: 70px;
+              padding-top: 10px;
+              margin: 0 15px;
+              text-align: center;
+              .brick-icon {
+                font-size: 14px;
+              }
+            }
+          }
+        }
+        .popover-confirm-demo-block {}
+        .popover-demo-block {
+          position: relative;
+          height: 300px;
+          .trigger-row {
+            text-align: center;
+          }
+          .trigger-row + .trigger-row {
+            margin-top: 10px;
+          }
+          .trigger-wrap {
+            display: inline-block;
+            + .trigger-wrap {
+              margin-left: 10px;
+            }
+          }
+          .control-wrap {
+            width: 200px;
+            padding-left: 10px;
+            padding-right: 10px;
+          }
+          .hover-hint {
+            display: inline-block;
+          }
+        }
+        .switch-demo-block {
+          .switch-demo-wrap {
+            display: inline-block;
+            margin-right: 10px;
+          }
+        }
+        .alert-demo-block {
+          .composed-alert {
+            margin-right: 15px;
+          }
+        }
+      }
+    }
+    .fake-trigger {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 20px;
+      height: 100%;
+      border-left: 1px solid $border-color;
+      background-color: $gen-bg-color;
+      .trigger-icon {
+        position: absolute;
+        top: 50%;
+        margin-top: -10px;
+      }
+    }
+  }
+}

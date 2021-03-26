@@ -1,0 +1,98 @@
+// 组合出的组件样式覆盖
+
+.brick-button {
+  * {
+    white-space: nowrap;
+  }
+}
+.brick-link {
+  display: inline-block;
+}
+.brick-dialog-wrap {
+  margin: 0 !important;
+  border: 1px solid #ccc;
+  .brick-close-x {
+    position: absolute;
+    right: 21px;
+    top: 13px;
+  }
+  .brick-dialog-foot {
+    text-align: center;
+  }
+}
+.composed-breadcrumb,
+.composed-alert {
+  display: inline-block;
+  white-space: normal;
+  ol {
+    margin: 0;
+  }
+}
+// typography 和 section 是额外写的
+.brick-playground-typography {
+  height: 20px;
+  line-height: 20px;
+  font-size: $font-size-md;
+  color: $color-text-primary;
+  // size
+  &.size-sm {
+    font-size: $font-size-sm;
+  }
+  &.size-md {
+    font-size: $font-size-md;
+  }
+  &.size-lg {
+    font-size: $font-size-lg;
+  }
+  // color
+  &.type-heading {
+    color: $color-text-heading;
+  }
+  &.type-primary {
+    color: $color-text-primary;
+  }
+  &.type-active {
+    color: $color-text-primary-active;
+  }
+  &.type-secondary {
+    color: $color-text-secondary;
+  }
+  &.type-hint {
+    color: $color-text-hint;
+  }
+  &.type-disabled {
+    color: $color-text-disabled;
+  }
+  // weight
+  &.weight-normal {
+    font-weight: $font-weight-normal;
+  }
+  &.weight-medium {
+    font-weight: $font-weight-medium;
+  }
+  &.weight-bold {
+    font-weight: $font-weight-bold;
+  }
+}
+.brick-playground-section {
+  position: relative;
+  background: #fff;
+  border: 1px solid #eee;
+  .section-title {
+    padding: 16px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    &:before {
+      content: " ";
+      position: absolute;
+      left: 0;
+      height: 1.5em;
+      width: 4px;
+      background: black;
+    }
+  }
+}

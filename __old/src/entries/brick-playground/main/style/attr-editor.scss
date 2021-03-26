@@ -1,0 +1,90 @@
+@import "src/entries/brick-playground/main/style";
+
+.attr-editor {
+  .attr-editor-drawer {
+    width: 360px;
+    .attr-editor-content {
+      position: relative;
+      width: 360px;
+      height: 100%;
+      overflow: hidden;
+      background: $gen-bg-color;
+      padding: 20px 0 0;
+      .label {
+        position: relative;
+        padding: 0 15px;
+        height: 50px;
+        .label-text {
+          line-height: 50px;
+          font-weight: lighter;
+          user-select: none;
+          //border-bottom: 2px solid;
+          .cn {
+            float: right;
+          }
+        }
+      }
+      .title {
+        position: relative;
+        padding: 0 20px 10px 20px;
+        .code {
+          font-size: 28px;
+          line-height: 30px;
+          font-weight: 300;
+          // letter-spacing: -.01em;
+          margin: 0 5px 0 0;
+          color: #212121;
+          word-break: normal;
+          word-wrap: break-word;
+        }
+        .name {
+          float: right;
+          font-weight: 300;
+          line-height: 30px;
+          margin: 0;
+          color: #999;
+          font-size: 28px;
+        }
+      }
+      .type-style {
+        position: relative;
+        padding: 10px 15px 10px;
+        .type-style-input {
+          width: 155px;
+          &.left,
+          &.width {
+            margin-right: 20px;
+          }
+        }
+      }
+      .type-props {
+        position: absolute;
+        top: 210px;
+        left: 15px;
+        right: 15px;
+        bottom: 100px;
+        margin: 0;
+        overflow: auto;
+        //.svg-option-icon {
+        //  margin: 0 5px;
+        //}
+      }
+      .remove-button-wrap {
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        height: 100px;
+        text-align: center;
+        .remove-button {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translateX(-50%) translateY(-50%);
+          width: 240px;
+        }
+      }
+    }
+  }
+
+}
+

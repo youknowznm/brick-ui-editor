@@ -1,0 +1,156 @@
+@import "src/entries/brick-playground/main/style";
+
+@mixin stripe-bg {
+  background: #fff linear-gradient(
+      45deg,
+      $stripe-color 0, $stripe-color 25%, transparent 25%, transparent 50%,
+      $stripe-color 50%, $stripe-color 75%, transparent 75%, transparent
+  );
+  background-size: $stripe-width $stripe-width;
+}
+
+@mixin stripe-bg-active {
+  background: #fff linear-gradient(
+      45deg,
+      $stripe-color-active 0, $stripe-color-active 25%, transparent 25%, transparent 50%,
+      $stripe-color-active 50%, $stripe-color-active 75%, transparent 75%, transparent
+  );
+  background-size: $stripe-width $stripe-width;
+}
+
+@mixin pos-abs-full-size {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.playground-comp-wrap {
+  position: absolute;
+  margin: 0;
+  .action-layer {
+    display: none;
+    z-index: 2000;
+    @include pos-abs-full-size;
+    // opacity: .5;
+    border: 1px solid $stripe-color;
+    background: #fff linear-gradient(
+        45deg,
+        $stripe-color 0, $stripe-color 25%, transparent 25%, transparent 50%,
+        $stripe-color 50%, $stripe-color 75%, transparent 75%, transparent
+    );
+    background-size: $stripe-width $stripe-width;
+    &:hover {
+      // opacity: .5;
+      @include stripe-bg-active;
+    }
+  }
+  .selected-layer {
+    display: none;
+    z-index: 2001;
+    @include pos-abs-full-size;
+    border: 1px solid $stripe-color-selected;
+    .spot {
+      //display: none;
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background-color: #fff;
+      border-radius: 50%;
+      border: 1px solid $stripe-color-selected;
+      $spot-offset: -3px;
+      &.tl {
+        top: $spot-offset;
+        left: $spot-offset;
+      }
+      &.tr {
+        top: $spot-offset;
+        right: $spot-offset;
+      }
+      &.br {
+        bottom: $spot-offset;
+        right: $spot-offset;
+      }
+      &.bl {
+        bottom:$spot-offset;
+        left: $spot-offset;
+      }
+    }
+  }
+  &.selected {
+    cursor: grab;
+    .selected-layer {
+      display: block;
+    }
+  }
+
+  .aligner {
+    display: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+    z-index: 1;
+    border-color: $aligner-color;
+    &.hor {
+      border-top-width: 1px;
+      border-top-style: dashed;
+    }
+    &.ver {
+      border-left-width: 1px;
+      border-left-style: dashed;
+    }
+    &.tl {
+      top: 0;
+      left: 0;
+    }
+    &.tr {
+      top: 0;
+      right: 0;
+    }
+    &.br {
+      bottom: 0;
+      right: 0;
+    }
+    &.bl {
+      bottom: 0;
+      left: 0;
+    }
+  }
+  &:hover {
+    .aligner {
+      display: block;
+    }
+  }
+  &.selected {
+    .aligner {
+      display: block;
+      border-color: $aligner-color-selected;
+    }
+  }
+  .aligner-border {
+    @include pos-abs-full-size;
+    width: 0;
+    height: 0;
+    &.top,
+    &.bottom {
+      border-top: 1px solid $aligner-color;
+    }
+    &.left,
+    &.right {
+      border-left: 1px solid $aligner-color;
+    }
+  }
+
+  .ruler {
+    position: absolute;
+    padding: 4px;
+    font-weight: bold;
+    color: #fff;
+    background: $aligner-color-selected;
+    font-size: 12px;
+    height: 20px;
+    line-height: 12px;
+    border-radius: 2px;
+  }
+}

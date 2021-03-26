@@ -1,0 +1,14 @@
+.DS_Store
+../.idea
+.vscode
+/node_modules/
+
+#dist
+/output/
+output.zip
+
+# folders for temp files
+/tmp/*
+/temp/*
+*.log
+

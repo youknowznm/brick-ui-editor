@@ -1,0 +1,113 @@
+@import "~@befe/brick-style/src/base";
+@include exports('comp-dialog') {
+  .brick-dialog {
+    @include reset();
+
+    &-wrap {
+      position: relative;
+      margin: $dialog-top-distance auto;
+      background: color-gray(1);
+      width: map_get($dialog-width, md);
+      border-radius: $border-radius-large;
+    }
+
+    @each $size in $dialog-size-list {
+      &-size-#{$size} {
+        .brick-dialog-wrap {
+          width: map_get($dialog-width, $size);
+        }
+      }
+    }
+
+    &-head,
+    &-body,
+    &-foot {}
+
+    &-head {
+      min-height: $dialog-head-min-height;
+      font-weight: $font-weight-medium;
+      padding: $dialog-head-padding-vertical $dialog-padding;
+      font-size: $dialog-head-font-size;
+    }
+
+    &-body {
+      padding: 0 $dialog-padding;
+      min-height: $dialog-min-height - $dialog-head-height  - $dialog-foot-height;
+      max-height: $dialog-max-height - $dialog-head-height  - $dialog-foot-height;
+      overflow: hidden;
+      // 尽量消除多余的边距
+      > *:last-child {
+        margin-bottom: 0;
+      }
+      &-overflow-x {
+        overflow-x: scroll;
+      }
+      &-overflow-y {
+        overflow-y: scroll;
+      }
+    }
+
+    &-foot {
+      padding: $dialog-padding;
+      text-align: right;
+      .brick-dialog-actions-align-right & {
+        text-align: right;
+      }
+      .brick-dialog-actions-align-center & {
+        text-align: center;
+      }
+      .brick-dialog-actions-align-left & {
+        text-align: left;
+      }
+    }
+
+    .brick-close-x {
+      @include closeXPosition($dialog-padding, $dialog-head-padding-vertical);
+    }
+
+    &-without-headline &-body {
+      $dialog-foot-height: map_get($btn-height, sm);
+      min-height: auto;
+      max-height: $dialog-max-height - $dialog-head-min-height  - $dialog-foot-height;
+    }
+  }
+
+  .brick-dialog-confirm {
+    .brick-dialog-wrap {
+      width: auto;
+      min-width: map_get($btn-min-width, 'sm') * 2 + $dialog-padding * 2 + map_get($btn-sibling-margin, 'sm');
+      max-width: $layout-fluid-max-width * .5;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    &-content {
+      position: relative;
+    }
+    &-icon {
+      @include icon-size($dialog-confirm-icon-size);
+      position: absolute;
+      top: 0;
+      left: 0;
+      line-height: $dialog-confirm-font-size * $line-height-normal;
+    }
+    @each $type in $alert-type-list {
+      &-type-#{$type} {
+        background-color: map_get($alert-bg-color, $type);
+        border-color: map_get($alert-border-color, $type);
+        .brick-dialog-confirm-icon .brick-icon {
+          color: map_get($alert-icon-color, $type);
+        }
+      }
+    }
+    &-content-inner {
+      p {
+        font-size: $dialog-confirm-font-size;
+        margin-bottom: 0;
+      }
+    }
+    &-icon + &-content-inner {
+      padding-left: $dialog-confirm-icon-size + $dialog-confirm-icon-margin;
+    }
+  }
+}

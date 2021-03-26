@@ -1,0 +1,14 @@
+@import "~@befe/brick-style/src/base";
+@include exports('comp-suggest') {
+  .brick-suggest {
+    @include reset();
+
+    &-clear-button {
+      margin: -2px;
+    }
+
+    &-disabled &-search-icon {
+      color: $color-text-disabled;
+    }
+  }
+}

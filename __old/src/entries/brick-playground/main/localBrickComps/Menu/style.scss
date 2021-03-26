@@ -1,0 +1,436 @@
+@import "~@befe/brick-style/src/base";
+@import "~@befe/brick-comp-checkbox/src/mixin";
+
+@function menu-item-padding-vertical($size: $form-control-default-size) {
+  $item-height: map_get($form-control-height, $size);
+  $item-line-height: form-control-font-size($size) * $line-height-normal;
+  @return ($item-height - $item-line-height) / 2;
+}
+
+// 生成垂直菜单的层级缩进
+// 从设计上来说，菜单层级深度应该是有限的才是有实际交互意义的
+// dls 规范限定为导航深度为3级， 树深度为4级
+// 故我们以穷举层级的纯 css 实现
+@mixin levelIndentSubmenu($level: 2, $max-level: $menu-max-level) {
+  @if $level == 1 {
+    &.brick-menu-layout-vertical {
+      @include levelIndentSubmenu($level + 1, $max-level);
+    }
+  } @else if $level <= $max-level {
+    > .brick-menu-submenu-type-folder > .brick-menu-submenu-menu {
+      .brick-menu-item-content {
+        padding-left: $menu-item-level-indent-base * $level;
+      }
+
+      @include levelIndentSubmenu($level + 1, $max-level);
+    }
+  }
+}
+
+@include exports('comp-menu') {
+  .brick-menu {
+    @include reset();
+
+    // reset ul
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    @include clearfix();
+
+    @include levelIndentSubmenu();
+
+    &,
+    &-layout-vertical {
+      border-right: border();
+
+      .brick-menu {
+        border-right: none;
+      }
+
+    }
+
+    &-item {
+      &-selected:not(&-disabled) {
+        .brick-menu-item-content {
+          color: color-brand();
+          background-color: color-brand(1);
+
+          &::after {
+            transform: scaleY(1);
+            opacity: 1;
+          }
+
+          &:hover,
+          &:focus {
+            color: color-brand(5);
+
+            &::after {
+              border-color: color-brand(5);
+            }
+          }
+
+          &:active {
+            color: color-brand(7);
+            background-color: color-brand(2);
+
+            &::after {
+              border-color: color-brand(7);
+            }
+          }
+        }
+      }
+
+      &-disabled {
+        .brick-menu-item-content {
+          &, &:hover, &:focus, &:active {
+            color: $color-text-disabled;
+            background: none;
+            cursor: not-allowed;
+          }
+
+          &::after {
+            content: none;
+          }
+        }
+      }
+    }
+
+    &-item-content {
+      position: relative;
+      margin: padding(1) 0;
+      padding: 0 $menu-item-padding-horizontal;
+      white-space: nowrap;
+      //width: calc(100% + #{$border-width-base});
+      color: $color-text-normal;
+      background: none;
+      cursor: pointer;
+      transition: color .3s ease,
+      border-color .3s ease,
+      background .3s ease,
+      padding .15s ease;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: -$border-width-base;
+        bottom: 0;
+        border-right: 2px solid color-brand();
+        transform: scaleY(0);
+        opacity: 0;
+        transition: transform .15s ease,
+        opacity .15s ease;
+      }
+
+      &:focus {
+        background-color: color-brand(1);
+        outline: none;
+      }
+
+      &:hover {
+        background-color: color-gray(3);
+      }
+
+      &:active {
+        color: $color-text-normal-active;
+        background-color: color-gray(4);
+      }
+
+      &-inner {
+        > .brick-checkbox {
+          margin-right: $checkbox-label-distance;
+        }
+        > a {
+          &, &:hover, &:active {
+            text-decoration: none;
+          }
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+          }
+        }
+      }
+    }
+
+    &-submenu {
+      margin: 0;
+      padding: 0;
+
+      &-type-group {
+        > .brick-menu-item-content {
+          &,
+          &:focus,
+          &:hover,
+          &:active {
+            color: $color-text-hint;
+            cursor: default;
+            background: none;
+          }
+        }
+      }
+
+      &-type-folder {
+      }
+
+      &-type-popper {
+        > .brick-menu-item-content {
+          padding-right: $menu-item-padding-horizontal * 2;
+        }
+      }
+
+      &-has-descendant-selected:not(.brick-menu-submenu-type-group) {
+        > .brick-menu-item-content {
+          color: color-brand();
+        }
+      }
+
+      &-arrow {
+        @include caret-arrow-shape();
+        right: padding(4);
+      }
+
+      &-collapsed {
+        > .brick-menu-item-content .brick-menu-submenu-arrow {
+          @include caret-arrow-direction('down');
+        }
+      }
+
+      &-expanded {
+        > .brick-menu-item-content .brick-menu-submenu-arrow {
+          @include caret-arrow-direction('up');
+        }
+      }
+
+      &-type-popper {
+        > .brick-menu-item-content .brick-menu-submenu-arrow {
+          @include caret-arrow-direction('right');
+        }
+      }
+    }
+
+    &-submenu-menu {
+
+    }
+
+    &-layout-horizontal {
+      border-right: none;
+      border-bottom: border();
+
+      > li {
+        display: inline-block;
+      }
+
+      .brick-menu-item-content {
+        margin: 0;
+
+        &, &-has-descendant-selected:not(.brick-menu-submenu-type-group) {
+          &::after {
+            top: initial;
+            left: $menu-item-padding-horizontal;
+            right: $menu-item-padding-horizontal;
+            bottom: 2px;
+            border-right: 0;
+            border-bottom: 2px solid color-brand();
+            transform: scaleX(0);
+          }
+        }
+
+        &:hover {
+          background: none;
+          color: $color-text-secondary;
+        }
+      }
+
+      .brick-menu-submenu-has-descendant-selected:not(.brick-menu-submenu-type-group),
+      .brick-menu-item-selected:not(.brick-menu-item-disabled) {
+        .brick-menu-item-content {
+          background: none;
+
+          &::after {
+            transform: scaleX(1);
+            opacity: 1;
+          }
+
+          &:active,
+          &:hover {
+            background: none;
+          }
+
+          &:focus {
+            background-color: color-brand(1);
+          }
+        }
+      }
+
+      .brick-menu-submenu {
+        &-type-popper {
+          > .brick-menu-item-content .brick-menu-submenu-arrow {
+            @include caret-arrow-direction('down');
+          }
+        }
+      }
+    }
+
+    &-multiple {
+    }
+
+    &-multiple-item-type-checkbox {
+      .brick-menu-item-selected:not(.brick-menu-item-disabled) .brick-menu-item-content {
+        // reset to normal
+        background: none;
+        color: $color-text-normal;
+        &:hover {
+          background-color: color-gray(3);
+        }
+      }
+      .brick-menu-item:not(.brick-menu-item-disabled) {
+        // menu-item 的 checkbox 只是一个类似 icon 的东西，应没有 focus 转态
+        .brick-checkbox-input:focus:not([disabled]) + .brick-checkbox-mark {
+          box-shadow: none;
+        }
+        .brick-menu-item-content:hover .brick-menu-item-content-inner {
+          > .brick-checkbox {
+            @include check-mark-hover('checkbox');
+          }
+          > .brick-checkbox-indeterminate,
+          > .brick-checkbox-checked {
+            @include check-mark-checked-hover('checkbox');
+          }
+        }
+        .brick-menu-item-content:active .brick-menu-item-content-inner {
+          > .brick-checkbox {
+            @include check-mark-active('checkbox');
+          }
+          > .brick-checkbox-indeterminate,
+          > .brick-checkbox-checked {
+            @include check-mark-checked-active('checkbox');
+          }
+        }
+      }
+    }
+
+    @each $size in $menu-size-list {
+      &-size-#{$size} {
+        font-size: map_get($menu-font-size, $size);
+
+        .brick-menu-item-content {
+          $item-height: map_get($menu-item-height, $size);
+          height: $item-height;
+          line-height: $item-height;
+        }
+
+        &.brick-menu-layout-horizontal {
+          .brick-menu-item-content {
+            $item-height-horizontal: map_get($menu-item-height-horizontal, $size);
+            height: $item-height-horizontal;
+            line-height: $item-height-horizontal;
+          }
+        }
+      }
+    }
+
+    &-popper {
+      &-loading,
+      &-empty-hint {
+        padding: $menu-popper-wrap-padding-vertical 0;
+        color: $color-text-hint;
+        text-align: center;
+        .brick-icon-spin {
+          color: $color-base-brand;
+        }
+      }
+
+      .brick-popper-inner {
+        > .brick-menu {
+          padding: $menu-popper-wrap-padding-top 0 $menu-popper-wrap-padding-bottom;
+        }
+
+        > .brick-menu-submenu-menu.brick-menu-layout-vertical.brick-menu-parent-layout-vertical {
+          margin-top: -$menu-popper-wrap-padding-top;
+        }
+      }
+
+      .brick-menu-item-select-all + li,
+      li + .brick-menu-submenu-type-group {
+        margin-top: padding(1);
+        border-top: border();
+      }
+
+      @each $size in $menu-popper-item-size-list {
+        &-size-#{$size} {
+          font-size: form-control-font-size($size);
+          .brick-menu-item-select-all + li,
+          li + .brick-menu-submenu-type-group {
+            padding-top: menu-item-padding-vertical($size);
+          }
+          .brick-menu {
+            font-size: form-control-font-size($size);
+
+            .brick-menu-item-content {
+              margin: 0;
+              height: map_get($form-control-height, $size);
+              line-height: map_get($form-control-height, $size);
+            }
+          }
+        }
+      }
+
+      .brick-menu {
+        border-right: none;
+
+        &-item {
+          .brick-menu-item-content {
+            width: auto;
+            &::after {
+              content: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .brick-menu-reverse-color.brick-menu {
+    .brick-menu {
+      &-item-content {
+        &, a {
+          color: $color-text-reverse;
+        }
+      }
+      &-submenu-arrow {
+        &::before,
+        &::after {
+          background-color: $color-text-reverse;
+        }
+      }
+
+    }
+    &.brick-menu-layout-horizontal {
+      border-bottom: none;
+
+      .brick-menu-item-content {
+        &::after {
+          border-bottom-color: $color-text-reverse;
+        }
+
+        &:hover {
+          background: color-brand(5);
+          color: $color-text-reverse  ;
+        }
+      }
+
+      .brick-menu-submenu {
+        &-type-popper {
+          > .brick-menu-item-content .brick-menu-submenu-arrow {
+            @include caret-arrow-direction('down');
+          }
+        }
+      }
+    }
+  }
+}

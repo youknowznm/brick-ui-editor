@@ -1,0 +1,36 @@
+@import "src/entries/brick-playground/main/style";
+
+.svg-prop-editor {
+
+}
+
+.svg-editor-dialog {
+  .icon-type-menu {
+    position: relative;
+    float: left;
+    height: 600px;
+  }
+  .icon-list {
+    position: relative;
+    float: left;
+    padding-left: 30px;
+    width: 750px;
+    height: 600px;
+    .icon-wrap {
+      position: relative;
+      display: inline-block;
+      width: 25%;
+      height: 100px;
+      .icon {
+        display: block;
+        margin-bottom: 5px;
+      }
+      .icon-name {
+        font-size: 12px;
+        font-weight: normal;
+        text-transform: none;
+      }
+    }
+  }
+
+}

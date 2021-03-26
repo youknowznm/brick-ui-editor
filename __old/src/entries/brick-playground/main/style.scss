@@ -1,0 +1,69 @@
+@import "src/style/main";
+
+$gen-bg-color: #f7f7f7; // #f1f3f4;
+$border-color: rgba(0, 0, 0, .12);
+
+$mui-primary: #009688;
+$mui-secondary: #9c27b0;
+
+$stripe-width: 15px;
+$stripe-color: #bdbdbd;
+$stripe-color-active: #419bf9;
+$stripe-color-selected: #EE6723;
+
+$aligner-color-selected: #EE6723;
+$aligner-color: #419bf9;
+
+.index-page {
+  position: relative;
+  min-width: 100%;
+  //min-width: 1200px;
+  //min-height: 600px;
+  min-height: 100%;
+  background: $gen-bg-color;
+  z-index: 2;
+  .top-actions-drawer-trigger {
+    position: fixed;
+    width: 100%;
+    height: 20px;
+    border-bottom: 1px solid $border-color;
+    background-color: $gen-bg-color;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    .trigger-icon {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -10px;
+      margin-top: -10px;
+    }
+  }
+  .demo-drawer-trigger {
+    position: fixed;
+    width: 20px;
+    border-right: 1px solid $border-color;
+    background-color: $gen-bg-color;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    .trigger-icon {
+      position: absolute;
+      top: 50%;
+      margin-top: -10px;
+    }
+  }
+  &.meta-key-pressed {
+    .action-layer {
+      display: block;
+    }
+    .playground-comp-wrap {
+      cursor: grab;
+      //.action-layer {
+      //  display: block;
+      //}
+    }
+  }
+}
+
