@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {lightTheme} from "./theme";
-import Main from "./brick-playground/main/View";
+import Main from "./main/View";
 
 import {ThemeProvider} from '@material-ui/core/styles'
 

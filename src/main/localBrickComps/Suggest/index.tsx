@@ -16,7 +16,7 @@ import {ConfigContext, createComponentLocale, getDefaultValueUsingContextTheme} 
 import {SvgDiscX, SvgSearch} from '@befe/brick-icon'
 import {Icon} from '@befe/brick-comp-icon'
 import {Button} from '@befe/brick-comp-button'
-import {ifNodeContains} from '@befe/brick-utils/src/dom/index'
+import {ifNodeContains} from '@befe/brick-utils'
 
 type SuggestPropsFromInput = Pick<InputProps, 'placeholder'>
 
