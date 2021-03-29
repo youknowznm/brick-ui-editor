@@ -13,7 +13,7 @@ import {capitalize} from 'lodash-es'
 
 import {Icon} from '@befe/brick'
 
-import {ICON_GROUP_MAP_MAIN} from '@befe/brick-icon/src/main/group-map'
+import {ICON_GROUP_MAP_MAIN} from '../../utils/ICON_GROUP_MAP'
 import {ICON_TYPES} from '../../config'
 
 import getSvgByName from '../getSvgByName'

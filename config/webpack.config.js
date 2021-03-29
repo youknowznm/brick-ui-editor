@@ -92,8 +92,6 @@ const postcssLoader = {
   },
 }
 
-const babelConfig = require('./babel.config')
-
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
 module.exports = function (webpackEnv) {
@@ -382,12 +380,6 @@ module.exports = function (webpackEnv) {
           use: [
             {
               loader: 'babel-loader',
-              options: {
-                ...babelConfig,
-                plugins: [
-                  ...babelConfig.plugins,
-                ].filter(Boolean),
-              },
             },
           ],
           exclude: {

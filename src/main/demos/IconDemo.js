@@ -4,7 +4,7 @@ import Divider from '@material-ui/core/Divider';
 
 import wrapDemoComp from '../utils/wrapDemoComp'
 
-import {ICON_GROUP_MAP_MAIN} from '@befe/brick-icon/src/main/group-map'
+import {ICON_GROUP_MAP_MAIN} from '../utils/ICON_GROUP_MAP'
 import {ICON_TYPES} from '../config'
 
 import {capitalize} from "lodash-es";

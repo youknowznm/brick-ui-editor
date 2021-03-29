@@ -93,7 +93,36 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js"
   },
-  "eslintConfig": {},
+  "eslintConfig": {
+    "parser": "babel-eslint"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/env",
+        {
+          "loose": true,
+          "modules": false,
+          "targets": "> 1%, last 2 versions, ie 11",
+          "corejs": 3,
+          "useBuiltIns": "entry"
+        }
+      ],
+      "@babel/typescript",
+      "@babel/react"
+    ],
+    "plugins": [
+      "@babel/transform-runtime",
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ],
+      "@babel/proposal-class-properties",
+      "babel-plugin-typescript-to-proptypes"
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",

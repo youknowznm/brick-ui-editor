@@ -31,7 +31,6 @@ function wrapCompWithSCU<T>(
     return WrappedComponent;
 }
 
-
 export const DatePicker = wrapCompWithSCU(
     InnerDatePicker,
     function (this: JSX.Element, nextProps: IDatePickerProps) {

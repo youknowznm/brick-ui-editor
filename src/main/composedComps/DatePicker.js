@@ -1,5 +1,4 @@
 import * as React from 'react'
-
 import {DatePicker} from '../localBrickComps/DatePicker'
 
 export default class ComposedDatePicker extends React.Component {
