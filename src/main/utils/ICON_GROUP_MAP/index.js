@@ -255,7 +255,7 @@ import {
     SvgViewMediaList,
     SvgViewTable,
     SvgViewTile
-} from '@befe/brick-icon'
+} from '@befe/brick-icon';
 
 export const ICON_GROUP_MAP_MAIN = {
     '_deprecated': {
@@ -574,4 +574,4 @@ export const ICON_GROUP_MAP_MAIN = {
         SvgViewTable,
         SvgViewTile,
     },
-}
+};
