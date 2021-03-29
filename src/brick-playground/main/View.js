@@ -16,7 +16,7 @@ import './style.scss'
 import MainState from './State'
 
 @observer
-export default class extends React.Component {
+class View extends React.Component {
 
     local = {
         mainState: new MainState(),
@@ -192,3 +192,5 @@ export default class extends React.Component {
         </Provider>
     }
 }
+
+export default View

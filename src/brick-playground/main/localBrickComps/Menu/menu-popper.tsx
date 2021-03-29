@@ -10,7 +10,7 @@ import {isUndefined} from 'lodash-es'
 
 import {omit, pick} from '@befe/brick-utils'
 import {PopperTrigger, Popper, PopperTriggerProps, PopperProps} from '@befe/brick-comp-popper'
-import {ConfigContext, getDefaultValueUsingContextTheme} from '@befe/brick-comp-config-provider'
+import {ConfigContext, getDefaultValueUsingContextTheme} from '@befe/brick-core'
 import {PropsFromPopper} from './common'
 import {Icon} from '@befe/brick-comp-icon'
 import {SvgLoading} from '@befe/brick-icon'

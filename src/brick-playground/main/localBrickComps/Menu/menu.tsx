@@ -12,7 +12,7 @@ import {MenuItemId, MenuLayout, MenuSize, MultipleItemType} from './common'
 import {MenuContextValue, MenuContext} from './menu-context'
 
 import {pickDerivedStateFromProps, safeInvoke, toggleSelectedList} from '@befe/brick-utils'
-import {getDefaultValueUsingContextTheme} from '@befe/brick-comp-config-provider'
+import {getDefaultValueUsingContextTheme} from '@befe/brick-core'
 
 export interface MenuProps {
     /**

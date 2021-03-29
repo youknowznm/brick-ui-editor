@@ -24,7 +24,7 @@ import AttrEditorState from '../states/AttrEditorState'
 import '../style/attr-editor.scss'
 
 @observer
-export default class AttrEditorView extends React.Component {
+class AttrEditorView extends React.Component {
 
     static propTypes = {
 
@@ -363,3 +363,5 @@ export default class AttrEditorView extends React.Component {
         </div>
     }
 }
+
+export default AttrEditorView

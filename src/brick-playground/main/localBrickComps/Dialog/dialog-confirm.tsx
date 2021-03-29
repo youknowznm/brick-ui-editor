@@ -12,7 +12,7 @@ import {ButtonProps} from '@befe/brick-comp-button'
 import {Dialog, DialogProps} from './dialog'
 import {pick, safeInvoke} from '@befe/brick-utils'
 import {DialogBody} from './dialog-body'
-import {getValueFromContextTheme} from '@befe/brick-comp-config-provider'
+import {getValueFromContextTheme} from '@befe/brick-core'
 import {Icon} from '@befe/brick-comp-icon'
 
 type PropsFromButton = Pick<ButtonProps, 'loadingDelayInMS'>

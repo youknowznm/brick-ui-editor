@@ -20,7 +20,7 @@ import ControlPanelState from '../states/ControlPanelState'
 import '../style/control-panel.scss'
 
 @observer
-export default class ControlPanelView extends React.Component {
+class ControlPanelView extends React.Component {
 
     static propTypes = {
 
@@ -319,3 +319,5 @@ export default class ControlPanelView extends React.Component {
         </div>
     }
 }
+
+export default ControlPanelView

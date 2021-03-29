@@ -16,7 +16,7 @@ import {
     createComponentLocale,
     getLocaleText,
     getValueFromContextTheme
-} from '@befe/brick-comp-config-provider'
+} from '@befe/brick-core'
 import {isUndefined} from 'lodash-es'
 
 const componentLocale = createComponentLocale('popover-confirm', {

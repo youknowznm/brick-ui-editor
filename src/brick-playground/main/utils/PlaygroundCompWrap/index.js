@@ -12,7 +12,7 @@ import {debounce} from 'lodash-es';
 import {COMP_TYPES} from '../../config'
 
 @observer
-export default class PlaygroundCompWrap extends React.Component {
+class PlaygroundCompWrap extends React.Component {
 
     // static displayName = `${OriginComponent.displayName}PlaygroundWrap`
 
@@ -262,3 +262,5 @@ export default class PlaygroundCompWrap extends React.Component {
         </Draggable>
     }
 }
+
+export default PlaygroundCompWrap

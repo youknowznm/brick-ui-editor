@@ -12,7 +12,7 @@ import {omit, pick, safeInvoke} from '@befe/brick-utils'
 import {CloseX} from '@befe/brick-comp-close-x'
 import {isUndefined} from 'lodash-es'
 import {Button} from '@befe/brick-comp-button'
-import {ConfigContext, getDefaultValueUsingContextTheme} from '@befe/brick-comp-config-provider'
+import {ConfigContext, getDefaultValueUsingContextTheme} from '@befe/brick-core'
 
 import {PortalContainerConsumer} from '../../utils/PortalContainerContext'
 

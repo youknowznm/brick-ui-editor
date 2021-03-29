@@ -15,7 +15,7 @@ import '../style/playground.scss'
 import {PortalContainerProvider} from "../utils/PortalContainerContext";
 
 @observer
-export default class PlaygroundView extends React.Component {
+class PlaygroundView extends React.Component {
 
     static propTypes = {
 
@@ -149,3 +149,5 @@ export default class PlaygroundView extends React.Component {
         </div>
     }
 }
+
+export default PlaygroundView

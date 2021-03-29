@@ -8,7 +8,7 @@ import * as React from 'react'
 import {default as c} from 'classnames'
 import {MenuItem, MenuItemProps} from './menu-item'
 import {omit, safeInvoke} from '@befe/brick-utils'
-import {ConfigContext, createComponentLocale} from '@befe/brick-comp-config-provider'
+import {ConfigContext, createComponentLocale} from '@befe/brick-core'
 
 export interface MenuItemSelectAllProps extends Omit<MenuItemProps, 'id'> {
     /**

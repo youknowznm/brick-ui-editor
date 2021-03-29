@@ -10,9 +10,9 @@ import {TabPaneId, TabsContext, TabsContextValue} from './tabs-context'
 import {TabPane, TabPaneProps} from './tab-pane'
 import {addEventListener, EventListenerHandler, pick, pickDerivedStateFromProps, safeInvoke} from '@befe/brick-utils'
 import {isUndefined} from 'lodash-es'
-import {ConfigContext, getDefaultValueUsingContextTheme} from '@befe/brick-comp-config-provider'
+import {ConfigContext, getDefaultValueUsingContextTheme} from '@befe/brick-core'
 import {Icon} from '@befe/brick-comp-icon'
-import {SvgMarkCross, SvgPlainDown, SvgPlainUp, SvgPlus, SvgSignExclamation} from '@befe/brick-icon'
+import {SvgMarkX, SvgPlainDown, SvgPlainUp, SvgMarkPlus, SvgSignExclamation} from '@befe/brick-icon'
 import {MenuPopper, MenuPopperProps} from '../Menu'
 import {RadioGroup, RadioGroupProps} from '@befe/brick-comp-radio'
 
@@ -399,7 +399,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
             if (this.props.type === 'card' && tab.deletable) {
                 return (
                     <div {...deleteIconProps}>
-                        <Icon svg={SvgMarkCross}/>
+                        <Icon svg={SvgMarkX}/>
                     </div>
                 )
             }
@@ -472,7 +472,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
         if (this.props.addable) {
             return (
                 <div className={'brick-tabs-add-button'} onClick={this.handleAddButtonClick}>
-                    <Icon className={'brick-tabs-add-button-icon'} svg={SvgPlus}/>
+                    <Icon className={'brick-tabs-add-button-icon'} svg={SvgMarkPlus}/>
                 </div>
             )
         }

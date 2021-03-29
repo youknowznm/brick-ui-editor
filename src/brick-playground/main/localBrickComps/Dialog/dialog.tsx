@@ -15,7 +15,7 @@ import {DialogHead} from './dialog-head'
 import {DialogBody} from './dialog-body'
 import {DialogFoot} from './dialog-foot'
 
-import {ConfigContext, createComponentLocale, getDefaultValueUsingContextTheme} from '@befe/brick-comp-config-provider'
+import {ConfigContext, createComponentLocale, getDefaultValueUsingContextTheme} from '@befe/brick-core'
 import {isUndefined} from 'lodash-es'
 import {CloseX} from '@befe/brick-comp-close-x'
 

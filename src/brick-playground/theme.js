@@ -1,6 +1,6 @@
 import {createMuiTheme} from '@material-ui/core/styles'
-import Teal from '@material-ui/core/colors/Teal'
-import Purple from '@material-ui/core/colors/Purple'
+import teal from '@material-ui/core/colors/teal'
+import purple from '@material-ui/core/colors/purple'
 
 const lightTheme = createMuiTheme({
     // transitions: {
@@ -8,8 +8,8 @@ const lightTheme = createMuiTheme({
     // },
     palette: {
         type: 'light',
-        primary: Teal,
-        secondary: Purple,
+        primary: teal,
+        secondary: purple,
     },
 })
 

@@ -10,7 +10,7 @@ import {default as c} from 'classnames'
 import {
     ConfigContext,
     getValueFromContextTheme,
-} from '@befe/brick-comp-config-provider'
+} from '@befe/brick-core'
 import {MenuItemProps, Menu, Submenu, MenuPopper, MenuItemId, MenuItem, MenuProps} from '../Menu'
 import {Icon} from '@befe/brick-comp-icon'
 import {SvgTriangleDown} from '@befe/brick-icon'
