@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import {lightTheme} from './theme';
 import Main from './main/View';
