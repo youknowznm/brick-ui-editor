@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import {Switch} from '@befe/brick'
+// import '@befe/brick-comp-switch/src/index.scss'
 
 export class ComposedIconSwitch extends React.Component {
 

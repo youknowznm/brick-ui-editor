@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import {Checkbox} from '@befe/brick'
+// import '@befe/brick-comp-checkbox/src/index.scss'
 
 export default class ComposedCheckboxGroup extends React.Component {
 

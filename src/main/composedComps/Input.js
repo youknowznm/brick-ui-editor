@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import {Input, Icon} from '@befe/brick'
+// import '@befe/brick-comp-input/src/index.scss'
 import getSvgByName from "../utils/getSvgByName";
 
 export default class ComposedInput extends React.Component {

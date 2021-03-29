@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import {Radio} from '@befe/brick'
+// import '@befe/brick-comp-radio/src/index.scss'
 
 export default class RadioGroup extends React.Component {
 

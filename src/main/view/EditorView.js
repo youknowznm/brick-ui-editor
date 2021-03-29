@@ -4,24 +4,24 @@ import {observer} from 'mobx-react'
 import PropTypes from 'prop-types'
 import {PropTypes as MobxPropTypes} from 'mobx-react'
 
-import PlaygroundCompWrap from '../utils/PlaygroundCompWrap'
+import EditorCompWrap from '../utils/EditorCompWrap'
 
 import Paper from '@material-ui/core/Paper'
 
-import PlaygroundState from '../states/PlaygroundState'
+import EditorState from '../states/EditorState'
 
-import '../style/playground.scss'
+import '../style/editor.scss'
 
 import {PortalContainerProvider} from "../utils/PortalContainerContext";
 
 @observer
-class PlaygroundView extends React.Component {
+class EditorView extends React.Component {
 
     static propTypes = {
 
-        // playground 容器宽高
-        playgroundWidth: PropTypes.number.isRequired,
-        playgroundHeight: PropTypes.number.isRequired,
+        // editor 容器宽高
+        editorWidth: PropTypes.number.isRequired,
+        editorHeight: PropTypes.number.isRequired,
 
         // 已使用的组件数据数组
         usedCompsDataArray: MobxPropTypes.arrayOrObservableArray.isRequired,
@@ -47,7 +47,7 @@ class PlaygroundView extends React.Component {
     }
 
     local = {
-        playgroundState: new PlaygroundState(),
+        editorState: new EditorState(),
     }
 
     constructor(props) {
@@ -55,11 +55,11 @@ class PlaygroundView extends React.Component {
         const {local} = this
     }
 
-    renderPlaygroundContent = () => {
+    renderEditorContent = () => {
         const {local, props} = this
         const {
-            playgroundWidth,
-            playgroundHeight,
+            editorWidth,
+            editorHeight,
             usedCompsDataArray,
             activeComponentId,
             setActiveComponentId,
@@ -68,16 +68,16 @@ class PlaygroundView extends React.Component {
             triggerControlPanelDrawer,
             compDragHandler,
         } = props
-        return <PortalContainerProvider value=".playground-content">
-            <Paper className="playground-content"
+        return <PortalContainerProvider value=".editor-content">
+            <Paper className="editor-content"
                    style={{
-                       width: playgroundWidth,
-                       height: playgroundHeight
+                       width: editorWidth,
+                       height: editorHeight
                    }}
                    onMouseOver={evt => {
                        // 滑过区域空白处时, 关闭所有抽屉
                        const {className} = evt.target
-                       if (className.indexOf && className.indexOf('playground-content') > -1) {
+                       if (className.indexOf && className.indexOf('editor-content') > -1) {
                            props.triggerDemoDrawer(false)
                            props.triggerControlPanelDrawer(false)
                        }
@@ -85,7 +85,7 @@ class PlaygroundView extends React.Component {
                    onClick={evt => {
                        // 点击区域空白处时, 取消组件编辑
                        const {className} = evt.target
-                       if (className.indexOf && className.indexOf('playground-content') > -1) {
+                       if (className.indexOf && className.indexOf('editor-content') > -1) {
                            props.setActiveComponentId('')
                        }
                    }}
@@ -109,7 +109,7 @@ class PlaygroundView extends React.Component {
                     //     disabled: false
                     //     loadingDelay: 300
                     // }
-                    return <PlaygroundCompWrap
+                    return <EditorCompWrap
                         key={item.id}
                         id={item.id}
                         originName={item.originName}
@@ -121,8 +121,8 @@ class PlaygroundView extends React.Component {
                         activeComponentId={activeComponentId}
                         triggerDemoDrawer={triggerDemoDrawer}
                         triggerControlPanelDrawer={triggerControlPanelDrawer}
-                        playgroundWidth={playgroundWidth}
-                        playgroundHeight={playgroundHeight}
+                        editorWidth={editorWidth}
+                        editorHeight={editorHeight}
                         setCompResizeHandler={setCompResizeHandler}
                         compDragHandler={compDragHandler}
                         setActiveComponentId={setActiveComponentId}
@@ -139,15 +139,15 @@ class PlaygroundView extends React.Component {
             // showControlPanelDrawer
         } = props
         // 减去 trigger 宽度
-        return <div className="playground-wrap"
+        return <div className="editor-wrap"
             style={{
                 marginLeft: `${showDemoDrawer ? 810 : 0}px`, // 830 - 20
                 // marginTop: `${showControlPanelDrawer ? 173 : 0}px`, // 193 - 20
             }}
             >
-            {this.renderPlaygroundContent()}
+            {this.renderEditorContent()}
         </div>
     }
 }
 
-export default PlaygroundView
+export default EditorView

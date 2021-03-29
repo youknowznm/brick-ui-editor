@@ -54,10 +54,11 @@ class ControlPanelView extends React.Component {
             <div className="banner">
                 <h3 className="title">
                     <span className="title-single-word">Brick</span>
-                    <span className="title-single-word">Playground</span>
+                    <span className="title-single-word">UI</span>
+                    <span className="title-single-word">Editor</span>
                 </h3>
                 <a
-                    href="http://icode.baidu.com/repos/baidu/erp/erp-ui-previewer"
+                    href="https://github.com/youknowznm/brick-ui-editor"
                     target="_blank" rel="noreferrer"
                 >
                     <Button
@@ -65,7 +66,7 @@ class ControlPanelView extends React.Component {
                         // variant="outlined"
                         size="small"
                     >
-                        iCode 仓库
+                        GitHub 仓库
                     </Button>
                 </a>
                 <a
@@ -112,11 +113,11 @@ class ControlPanelView extends React.Component {
             clearAll,
             copyStorageToClipboard,
             loadFromCopy,
-            playgroundHeight,
-            playgroundWidth,
-            setPlaygroundHeight,
-            setPlaygroundWidth,
-            resizePlayground,
+            editorHeight,
+            editorWidth,
+            setEditorHeight,
+            setEditorWidth,
+            resizeEditor,
         } = props
         return <div className="control-panel-content">
             <TextField
@@ -146,31 +147,31 @@ class ControlPanelView extends React.Component {
                 }}
             />
             <TextField
-                className="playground-width"
+                className="editor-width"
                 size="small"
                 // variant="filled"
                 label="画布宽度"
                 type="number"
-                value={playgroundWidth}
+                value={editorWidth}
                 InputProps={{
                     endAdornment: <InputAdornment position="end">px</InputAdornment>
                 }}
                 onChange={evt => {
-                    setPlaygroundWidth(+evt.target.value)
+                    setEditorWidth(+evt.target.value)
                 }}
             />
             <TextField
-                className="playground-height"
+                className="editor-height"
                 size="small"
                 // variant="filled"
                 label="画布高度"
                 type="number"
-                value={playgroundHeight}
+                value={editorHeight}
                 InputProps={{
                     endAdornment: <InputAdornment position="end">px</InputAdornment>
                 }}
                 onChange={evt => {
-                    setPlaygroundHeight(+evt.target.value)
+                    setEditorHeight(+evt.target.value)
                 }}
             />
             <div className="actions-right">
@@ -277,7 +278,7 @@ class ControlPanelView extends React.Component {
                             onClick={() => {
                                 triggerConfirmFlag(false)
                                 clearAll()
-                                resizePlayground()
+                                resizeEditor()
                             }}
                         >
                             确认

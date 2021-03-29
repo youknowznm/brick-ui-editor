@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import {Tabs, TabPane} from '../localBrickComps/Tabs'
+// import '@befe/brick-comp-tabs/src/index.scss'
 
 export default class ComposedTabs extends React.Component {
 

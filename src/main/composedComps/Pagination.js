@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import {Pagination} from '@befe/brick'
+// import '@befe/brick-comp-pagination/src/index.scss'
 
 export default class ComposedPagination extends React.Component {
 

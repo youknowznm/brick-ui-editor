@@ -1,5 +1,7 @@
 // 组合出的组件样式覆盖
 
+@import "~@befe/brick-style/src/themes/default.scss";
+
 .brick-button {
   * {
     white-space: nowrap;
@@ -29,7 +31,7 @@
   }
 }
 // typography 和 section 是额外写的
-.brick-playground-typography {
+.brick-editor-typography {
   height: 20px;
   line-height: 20px;
   font-size: $font-size-md;
@@ -74,7 +76,7 @@
     font-weight: $font-weight-bold;
   }
 }
-.brick-playground-section {
+.brick-editor-section {
   position: relative;
   background: #fff;
   border: 1px solid #eee;

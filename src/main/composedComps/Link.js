@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import {Link, Button, Icon} from '@befe/brick'
+// import '@befe/brick-comp-link/src/index.scss'
 
 export default class ComposedLink extends React.Component {
 

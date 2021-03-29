@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import {Suggest} from '../localBrickComps/Suggest'
+// import '@befe/brick-comp-suggest/src/index.scss'
 
 export default class ComposedSuggest extends React.Component {
 

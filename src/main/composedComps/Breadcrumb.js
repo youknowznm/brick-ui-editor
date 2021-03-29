@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import {Breadcrumb} from '@befe/brick'
+// import '@befe/brick-comp-breadcrumb/src/index.scss'
 
 export default class ComposedBreadcrumb extends React.Component {
 

@@ -6,8 +6,8 @@ import {
     BP_ARCHIVE_DATA_KEY,
     BP_AUTHOR_KEY,
     BP_ARCHIVE_NAME_KEY,
-    BP_PLAYGROUND_WIDTH_KEY,
-    BP_PLAYGROUND_HEIGHT_KEY,
+    BUE_WIDTH_KEY,
+    BUE_HEIGHT_KEY,
     getStorage,
     setStorage
 } from './utils/storage';
@@ -105,16 +105,16 @@ class MainState extends BaseModel {
         }, duration)
     }
 
-    @observable playgroundWidth = 0
-    @observable playgroundHeight = 0
+    @observable editorWidth = 0
+    @observable editorHeight = 0
 
-    resizePlayground = () => {
+    resizeEditor = () => {
         this.setProps({
-            playgroundWidth: window.innerWidth - 60,
-            playgroundHeight: window.innerHeight - 60,
+            editorWidth: window.innerWidth - 60,
+            editorHeight: window.innerHeight - 60,
         })
-        this.savePlaygroundWidth()
-        this.savePlaygroundHeight()
+        this.saveEditorWidth()
+        this.saveEditorHeight()
     }
 
     // ##### 中间 实际内容(默认下的全屏) #####
@@ -176,11 +176,11 @@ class MainState extends BaseModel {
     saveArchiveName = () => {
         setStorage(BP_ARCHIVE_NAME_KEY, this.archiveName)
     }
-    savePlaygroundWidth = () => {
-        setStorage(BP_PLAYGROUND_WIDTH_KEY, this.playgroundWidth)
+    saveEditorWidth = () => {
+        setStorage(BUE_WIDTH_KEY, this.editorWidth)
     }
-    savePlaygroundHeight = () => {
-        setStorage(BP_PLAYGROUND_HEIGHT_KEY, this.playgroundHeight)
+    saveEditorHeight = () => {
+        setStorage(BUE_HEIGHT_KEY, this.editorHeight)
     }
     loadStorage = () => {
         const archive = getStorage(BP_ARCHIVE_DATA_KEY)
@@ -213,15 +213,15 @@ class MainState extends BaseModel {
             this.saveArchiveName()
         }
 
-        const playgroundWidth = getStorage(BP_PLAYGROUND_WIDTH_KEY)
-        const playgroundHeight = getStorage(BP_PLAYGROUND_HEIGHT_KEY)
-        if (typeof playgroundWidth === 'number' && typeof playgroundHeight === 'number') {
+        const editorWidth = getStorage(BUE_WIDTH_KEY)
+        const editorHeight = getStorage(BUE_HEIGHT_KEY)
+        if (typeof editorWidth === 'number' && typeof editorHeight === 'number') {
             this.setProps({
-                playgroundWidth,
-                playgroundHeight
+                editorWidth,
+                editorHeight
             })
         } else {
-            this.resizePlayground()
+            this.resizeEditor()
         }
     }
     copyStorageToClipboard = () => {
@@ -229,8 +229,8 @@ class MainState extends BaseModel {
             BP_ARCHIVE_NAME: this.archiveName,
             BP_AUTHOR: this.author,
             BP_ARCHIVE_DATA: this.usedCompsDataArray,
-            BP_PLAYGROUND_WIDTH: this.playgroundWidth,
-            BP_PLAYGROUND_HEIGHT: this.playgroundHeight,
+            BUE_WIDTH: this.editorWidth,
+            BUE_HEIGHT: this.editorHeight,
         }
         copyToClipboard(JSON.stringify(copyTarget))
         this.toast('已复制到剪贴板。')
@@ -242,22 +242,22 @@ class MainState extends BaseModel {
                 BP_ARCHIVE_NAME,
                 BP_AUTHOR,
                 BP_ARCHIVE_DATA,
-                BP_PLAYGROUND_WIDTH,
-                BP_PLAYGROUND_HEIGHT
+                BUE_WIDTH,
+                BUE_HEIGHT
             } = copyTarget
             if (BP_ARCHIVE_NAME && BP_AUTHOR && BP_ARCHIVE_DATA) {
                 this.setProps({
                     usedCompsDataArray: BP_ARCHIVE_DATA,
                     author: BP_AUTHOR,
                     archiveName: BP_ARCHIVE_NAME,
-                    playgroundWidth: BP_PLAYGROUND_WIDTH,
-                    playgroundHeight: BP_PLAYGROUND_HEIGHT,
+                    editorWidth: BUE_WIDTH,
+                    editorHeight: BUE_HEIGHT,
                 })
                 this.saveArchiveName()
                 this.saveArchiveData()
                 this.saveAuthor()
-                this.savePlaygroundWidth()
-                this.savePlaygroundHeight()
+                this.saveEditorWidth()
+                this.saveEditorHeight()
                 this.toast('读取成功。')
             } else {
                 this.toast('请使用正确的画布数据。')

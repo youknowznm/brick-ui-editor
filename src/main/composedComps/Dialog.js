@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import {Dialog} from '../localBrickComps/Dialog'
+// import '@befe/brick-comp-dialog/src/index.scss'
 
 export default class ComposedDialog extends React.Component {
 

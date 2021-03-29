@@ -10,7 +10,7 @@ const wrapDemoComp = OriginComponent => {
     @observer
     class ExtendedUIComponent extends React.Component {
 
-        static displayName = `${OriginComponent.displayName}PlaygroundWrap`
+        static displayName = `${OriginComponent.displayName}EditorWrap`
 
         ref = null
 

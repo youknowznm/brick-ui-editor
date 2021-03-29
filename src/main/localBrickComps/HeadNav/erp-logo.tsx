@@ -6,32 +6,10 @@
 import * as React from 'react'
 // import * as PropTypes from 'prop-types'
 import {default as c} from 'classnames'
+import {NavLogo, HeadNavLogoProps} from './nav-logo'
+import {omit} from '@befe/brick-utils'
 
-export interface ErpLogoProps {
-    /**
-     * 用户可自定义 class
-     */
-    className?: string
-
-    /**
-     * logo 跳转链接
-     */
-    url?: string
-
-    /**
-     * 副标题
-     */
-    subhead?: React.ReactNode
-
-    /**
-     * 副标题跳转链接
-     */
-    subheadUrl?: string
-
-    /**
-     * 是否使用原色
-     */
-    originColor?: boolean
+export interface ErpLogoProps extends HeadNavLogoProps {
 }
 
 /**
@@ -51,23 +29,12 @@ export class ErpLogo extends React.Component<ErpLogoProps> {
         const {className, originColor} = this.props
         return c(
             'brick-erp-logo',
-            {
-                'brick-erp-logo-origin-color': originColor,
-            },
-            className
+            className,
         )
     }
 
     render() {
-        const {url, subhead, subheadUrl} = this.props
-        return (
-            <div className={this.className}>
-                <a className={'brick-erp-logo-main'} href={url} />
-                {subhead
-                    ? <a className={'brick-erp-logo-subhead'} href={subheadUrl || url}>{subhead}</a>
-                    : null
-                }
-            </div>
-        )
+        const props = omit(this.props, ['className'])
+        return <NavLogo className={this.className} {...props} />
     }
 }

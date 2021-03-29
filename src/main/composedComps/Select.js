@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import {Select} from '../localBrickComps/Select'
+// import '@befe/brick-comp-select/src/index.scss'
 
 const wrapComposedSelect = ({mode, displayName}) => {
 

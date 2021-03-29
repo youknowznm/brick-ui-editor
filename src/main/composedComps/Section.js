@@ -18,7 +18,7 @@ export default class Section extends React.Component {
         } = this.props
 
         return <div
-            className="brick-playground-section"
+            className="brick-editor-section"
             style={{
                 width: `${width}px`,
                 height: `${height}px`,

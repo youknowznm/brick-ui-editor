@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import {Collapse, CollapsePanel} from '@befe/brick'
+// import '@befe/brick-comp-collapse/src/index.scss'
 
 export default class ComposedCollapse extends React.Component {
 

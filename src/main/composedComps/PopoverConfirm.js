@@ -2,6 +2,7 @@ import * as React from 'react'
 
 import {Button} from '@befe/brick'
 import {PopoverConfirm} from "../localBrickComps/Popover";
+// import '@befe/brick-comp-popover/src/index.scss'
 
 export default class ComposedPopoverConfirm extends React.Component {
 

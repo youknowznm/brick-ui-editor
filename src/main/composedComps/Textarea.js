@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import {Textarea} from '@befe/brick'
+// import '@befe/brick-comp-textarea/src/index.scss'
 
 export default class ComposedTextarea extends React.Component {
 

@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import {Menu, MenuItem, Submenu} from '../localBrickComps/Menu'
+// import '@befe/brick-comp-menu/src/index.scss'
 
 export default class ComposedMenu extends React.Component {
 

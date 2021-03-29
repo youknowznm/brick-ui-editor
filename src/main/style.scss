@@ -1,4 +1,4 @@
-//@import "src/style/main.scss";
+@import "~@befe/brick/src/style/index.scss";
 
 $gen-bg-color: #f7f7f7; // #f1f3f4;
 $border-color: rgba(0, 0, 0, .12);
@@ -58,7 +58,7 @@ $aligner-color: #419bf9;
     .action-layer {
       display: block;
     }
-    .playground-comp-wrap {
+    .editor-comp-wrap {
       cursor: grab;
       //.action-layer {
       //  display: block;

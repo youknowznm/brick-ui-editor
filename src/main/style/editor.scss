@@ -1,6 +1,6 @@
 @import "src/main/style";
 
-.playground-wrap {
+.editor-wrap {
   position: absolute;
   left: 20px;
   top: 20px;
@@ -9,7 +9,7 @@
   bottom: 0;
   z-index: 2;
   transition: margin .3s cubic-bezier(0, 0, 0.2, 1);
-  .playground-content {
+  .editor-content {
     position: relative;
     z-index: 2;
     width: 100%;

@@ -1,6 +1,8 @@
 import * as React from 'react'
 
 import {Button} from '@befe/brick'
+// import '@befe/brick-comp-button/src/index.scss'
+
 import getSvgByName from "../utils/getSvgByName";
 
 export default class ComposedButton extends React.Component {

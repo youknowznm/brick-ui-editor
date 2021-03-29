@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import {Table, Button} from '@befe/brick'
+// import '@befe/brick-comp-table/src/index.scss'
 import {toJS} from "mobx";
 import {Checkbox} from "@befe/brick-comp-checkbox";
 

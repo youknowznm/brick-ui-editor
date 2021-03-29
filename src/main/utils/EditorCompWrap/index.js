@@ -12,9 +12,9 @@ import {debounce} from 'lodash-es';
 import {COMP_TYPES} from '../../config'
 
 @observer
-class PlaygroundCompWrap extends React.Component {
+class EditorCompWrap extends React.Component {
 
-    // static displayName = `${OriginComponent.displayName}PlaygroundWrap`
+    // static displayName = `${OriginComponent.displayName}EditorWrap`
 
     // contentDOM = null
     wrapDOM = null
@@ -25,8 +25,8 @@ class PlaygroundCompWrap extends React.Component {
     }
 
     static propTypes = {
-        // playgroundWidth: PropTypes.number.isRequired,
-        // playgroundHeight: PropTypes.number.isRequired,
+        // editorWidth: PropTypes.number.isRequired,
+        // editorHeight: PropTypes.number.isRequired,
         // deltaX,
         // deltaY,
     }
@@ -97,7 +97,7 @@ class PlaygroundCompWrap extends React.Component {
                 x: prevDeltaX,
                 y: prevDeltaY
             },
-            bounds:'.playground-content',
+            bounds:'.editor-content',
             handle: '.has-drag-cursor',
             onStart: () => {
                 this.props.setActiveComponentId(id)
@@ -138,8 +138,8 @@ class PlaygroundCompWrap extends React.Component {
         } = state
         const {
             id,
-            playgroundWidth,
-            playgroundHeight,
+            editorWidth,
+            editorHeight,
             wrapWidth,
             wrapHeight,
         } = props
@@ -179,28 +179,28 @@ class PlaygroundCompWrap extends React.Component {
                 top: -prevDeltaY
             }} />
             <i className="aligner tr hor" style={{
-                width: playgroundWidth - prevDeltaX - wrapWidth,
-                right: -(playgroundWidth - prevDeltaX - wrapWidth)
+                width: editorWidth - prevDeltaX - wrapWidth,
+                right: -(editorWidth - prevDeltaX - wrapWidth)
             }} />
             <i className="aligner tr ver" style={{
                 height: prevDeltaY,
                 top: -prevDeltaY
             }} />
             <i className="aligner br hor" style={{
-                width: playgroundWidth - prevDeltaX - wrapWidth,
-                right: -(playgroundWidth - prevDeltaX - wrapWidth)
+                width: editorWidth - prevDeltaX - wrapWidth,
+                right: -(editorWidth - prevDeltaX - wrapWidth)
             }} />
             <i className="aligner br ver" style={{
-                height: playgroundHeight - prevDeltaY - wrapHeight,
-                bottom: -(playgroundHeight - prevDeltaY - wrapHeight)
+                height: editorHeight - prevDeltaY - wrapHeight,
+                bottom: -(editorHeight - prevDeltaY - wrapHeight)
             }} />
             <i className="aligner bl hor" style={{
                 width: prevDeltaX,
                 left: -prevDeltaX
             }} />
             <i className="aligner bl ver" style={{
-                height: playgroundHeight - prevDeltaY - wrapHeight,
-                bottom: -(playgroundHeight - prevDeltaY - wrapHeight)
+                height: editorHeight - prevDeltaY - wrapHeight,
+                bottom: -(editorHeight - prevDeltaY - wrapHeight)
             }} />
             {/*<span className="ruler width" style={{*/}
             {/*    bottom: '-100%',*/}
@@ -241,7 +241,7 @@ class PlaygroundCompWrap extends React.Component {
         return <Draggable {...this.draggableWrapProps}>
             <div
                 className={c(
-                    'playground-comp-wrap',
+                    'editor-comp-wrap',
                     this.isSelected && 'selected',
                 )}
                 style={{
@@ -263,4 +263,4 @@ class PlaygroundCompWrap extends React.Component {
     }
 }
 
-export default PlaygroundCompWrap
+export default EditorCompWrap

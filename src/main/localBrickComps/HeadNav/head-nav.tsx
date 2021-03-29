@@ -5,29 +5,38 @@
  */
 import * as React from 'react'
 // import * as PropTypes from 'prop-types'
-import {default as c} from 'classnames'
+import c from 'classnames'
 
 import {
-    ConfigContext,
+    ConfiguredComponent,
     getValueFromContextTheme,
 } from '@befe/brick-core'
-import {MenuItemProps, Menu, Submenu, MenuPopper, MenuItemId, MenuItem, MenuProps} from '../Menu'
+import {
+    Menu,
+    Submenu,
+    MenuPopper,
+    MenuItemId,
+    MenuItem,
+    MenuProps,
+    MenuItemObject,
+    getControlledMenuIdsFromProps,
+    NavProps,
+} from '@befe/brick-comp-menu'
 import {Icon} from '@befe/brick-comp-icon'
 import {SvgTriangleDown} from '@befe/brick-icon'
-import {isUndefined} from 'lodash-es'
+import {isString, isUndefined} from 'lodash-es'
 import {safeInvoke} from '@befe/brick-utils'
 
-interface MenuItemObject extends MenuItemProps {
-    label: React.ReactNode
-    href?: string
-    target?: string
-    selected?: boolean
-    children?: MenuItemObject[]
+/**
+ * @public
+ */
+export interface HeadNavMenuItemObject extends Omit<MenuItemObject, 'type' | 'expanded'> {
 }
 
-type PropsFromMenu = Pick<MenuProps, 'reverseColor'>
+type PropsFromMenu = Pick<MenuProps, 'reverseColor' | 'onChangeSelectedIds'>
+type PropsFromNavProps = Omit<NavProps<HeadNavMenuItemObject>, 'menuExpandedIds' | 'menuDefaultExpandedIds'>
 
-export interface HeadNavProps extends PropsFromMenu {
+export interface HeadNavProps extends PropsFromMenu, PropsFromNavProps {
     /**
      * 用户可自定义 class
      */
@@ -37,21 +46,6 @@ export interface HeadNavProps extends PropsFromMenu {
      * logo
      */
     logo?: React.ReactNode
-
-    /**
-     * menu
-     */
-    menu?: MenuItemObject[]
-
-    /**
-     * menu 已选择的 id 列表的控制值
-     */
-    menuSelectedIds?: MenuItemId[]
-
-    /**
-     * menu item 的点击回调
-     */
-    onClickMenuItem?: (item: MenuItemObject, e: React.MouseEvent) => void
 
     /**
      * 头像 url
@@ -71,16 +65,33 @@ export interface HeadNavProps extends PropsFromMenu {
     /**
      * 用户菜单
      */
-    userMenu?: MenuItemObject[]
+    userMenu?: HeadNavMenuItemObject[]
 
     /**
-     * @todo 用户附加内容，预留，尚无设计细则
+     * @todo
+     * 用户旁附加内容，（预留）尚无设计细则
      */
     userExtra?: React.ReactNode
 }
 
 interface HeadNavState {
-    avatar?: string
+    // avatar?: string
+    menuSelectedIds: MenuItemId[]
+}
+
+function getControlledStateFromProps(props: HeadNavProps) {
+    const state: Partial<HeadNavState> = {}
+
+    const menuSelectedIds = getControlledMenuIdsFromProps<HeadNavMenuItemObject>(
+        props,
+        'menuSelectedIds',
+        (item: HeadNavMenuItemObject) => !item.disabled && !!item.selected,
+    )
+    if (menuSelectedIds) {
+        state.menuSelectedIds = menuSelectedIds
+    }
+
+    return state
 }
 
 /**
@@ -88,23 +99,37 @@ interface HeadNavState {
  * @description brick component HeadNav
  * @for-mobx
  */
-export class HeadNav extends React.Component<HeadNavProps, HeadNavState> {
+export class HeadNav extends ConfiguredComponent<HeadNavProps, HeadNavState> {
     static displayName = 'HeadNav'
     // static propTypes = {}
     static defaultProps = {
         className: '',
-        reverseColor: true
+        reverseColor: true,
     }
 
-    static contextType = ConfigContext
+    static getDerivedStateFromProps(nextProps: HeadNavProps) {
+        const state = getControlledStateFromProps(nextProps)
+        return Object.keys(state).length ? state : null
+    }
 
-    context!: React.ContextType<typeof ConfigContext>
+    state: HeadNavState
+
+    constructor(props: HeadNavProps) {
+        super(props)
+        const state = getControlledStateFromProps(props)
+        // 非控制型 menuSelectedIds
+        if (isUndefined(state.menuSelectedIds)) {
+            state.menuSelectedIds = props.menuDefaultSelectedIds || []
+        }
+
+        this.state = state as HeadNavState
+    }
 
     get className() {
         const {className} = this.props
         return c(
             'brick-head-nav',
-            className
+            className,
         )
     }
 
@@ -117,67 +142,41 @@ export class HeadNav extends React.Component<HeadNavProps, HeadNavState> {
         return !!(userMenu && userMenu.length)
     }
 
-    get menu() {
-        const {children, menu} = this.props
-        if (children) {
-            return children
-        }
+    handleChangeSelectedIds: MenuProps['onChangeSelectedIds'] = (menuSelectedIds) => {
+        isUndefined(this.props.menuSelectedIds)
+        && this.setState({
+            menuSelectedIds,
+        })
 
-        return menu && menu.map(this.renderMenuItem)
+        safeInvoke(this.props.onChangeSelectedIds, menuSelectedIds)
     }
 
-    get selectedMenuIds() {
-        const {menu, menuSelectedIds} = this.props
-
-        if (!isUndefined(menuSelectedIds)) {
-            return menuSelectedIds
-        }
-
-        const selectedIds: MenuItemId[] = []
-        const collectSelected = (item: MenuItemObject) => {
-            const {id, disabled, selected, children} = item
-            if (children) {
-                children.forEach(collectSelected)
-            }
-            if (id && !disabled && selected) {
-                selectedIds.push(id)
-            }
-        }
-
-        (menu || []).forEach(collectSelected)
-
-        return selectedIds
-    }
-
-    renderMenuItem = (item: MenuItemObject, index: number) => {
-        const {id, label, children, href, target, onClick} = item
-        const {onClickMenuItem} = this.props
+    renderMenuItem = (item: HeadNavMenuItemObject, index: number, level = 0) => {
+        const {id, label, title, children, href, target, onClick} = item
         const key = id || index
         const itemContent = href ? <a href={href} target={target}>{label}</a> : label
-
-        let onClickItem = onClick
-
-        if (isUndefined(onClickItem) && !isUndefined(onClickMenuItem)) {
-            onClickItem = e => {
-                safeInvoke(onClickMenuItem, item, e)
-            }
+        const itemProps = {
+            key,
+            id: key,
+            icon: level ? undefined : item.icon,
+            title,
+            onClick,
         }
 
         if (!isUndefined(children)) {
             return (
                 <Submenu
-                    key={key}
+                    {...itemProps}
                     type={'popper'}
                     itemContent={itemContent}
-                    onClick={onClickItem}
                 >
-                    {children.map(this.renderMenuItem)}
+                    {children.map((child, idx) => this.renderMenuItem(child, idx, level + 1))}
                 </Submenu>
             )
         }
 
         return (
-            <MenuItem key={key} id={id} onClick={onClickItem}>{itemContent}</MenuItem>
+            <MenuItem {...itemProps}>{itemContent}</MenuItem>
         )
     }
 
@@ -191,9 +190,7 @@ export class HeadNav extends React.Component<HeadNavProps, HeadNavState> {
 
     renderMenu() {
         const {children, reverseColor, menu} = this.props
-        const menuChildren = children
-            ? children
-            : menu && menu.map(this.renderMenuItem)
+        const menuChildren = children || menu && menu.map((item, idx) => this.renderMenuItem(item, idx))
 
         if (!menuChildren) {
             return null
@@ -201,7 +198,12 @@ export class HeadNav extends React.Component<HeadNavProps, HeadNavState> {
 
         return (
             <div className={'brick-head-nav-menu'}>
-                <Menu layout={'horizontal'} reverseColor={reverseColor} selectedIds={this.selectedMenuIds}>
+                <Menu
+                    layout={'horizontal'}
+                    reverseColor={reverseColor}
+                    selectedIds={this.state.menuSelectedIds}
+                    onChangeSelectedIds={this.handleChangeSelectedIds}
+                >
                     {menuChildren}
                 </Menu>
             </div>
@@ -218,70 +220,70 @@ export class HeadNav extends React.Component<HeadNavProps, HeadNavState> {
         )
     }
 
-    renderUserMenuItem(item: MenuItemObject) {
+    renderUserMenuItem(item: HeadNavMenuItemObject) {
         const {children, label, ...itemProps} = item
         const key = itemProps.id
         if (children && children.length) {
             return (
-                <Submenu key={key} type={'popper'} itemContent={label}>
+                <Submenu id={key} key={key} type={'popper'} itemContent={label}>
                     {children.map(userMenuitem => this.renderUserMenuItem(userMenuitem))}
                 </Submenu>
             )
         }
 
-        return <MenuItem key={key} {...itemProps}>{label}</MenuItem>
+        return <MenuItem id={key} key={key} {...itemProps}>{label}</MenuItem>
     }
 
-    getSelectedIds(menuItems: MenuItemObject[] | undefined = this.props.userMenu) {
+    getUserMenuSelectedIds(menuItems: HeadNavMenuItemObject[]) {
         let selectedIds: MenuItemId[] = []
-        if (menuItems && menuItems.length) {
+        selectedIds = selectedIds.concat(...menuItems.map(item => {
+            let selected: MenuItemId[] = []
+            if (item.selected && item.id) {
+                selected.push(item.id)
+            }
+            if (item.children) {
+                selected = selected.concat(this.getUserMenuSelectedIds(item.children))
+            }
 
-
-            selectedIds = selectedIds.concat(...menuItems.map(item => {
-                let selected: MenuItemId[] = []
-                if (item.selected && item.id) {
-                    selected.push(item.id)
-                }
-                if (item.children) {
-                    selected = selected.concat(this.getSelectedIds(item.children))
-                }
-
-
-                return selected
-            }))
-        }
+            return selected
+        }))
 
         return selectedIds
     }
 
     renderUserMenu() {
-        const {userMenu} = this.props
-        if (!userMenu) {
-            return null
-        }
-        const selectedIds = this.getSelectedIds()
+        const userMenu = this.props.userMenu!
+        const selectedIds = this.getUserMenuSelectedIds(userMenu)
 
         return (
             <Menu className={'brick-head-nav-user-menu'} selectedIds={selectedIds} size={'sm'}>
-                {userMenu.map((userMenuItem => this.renderUserMenuItem(userMenuItem)))}
+                {userMenu.map(userMenuItem => this.renderUserMenuItem(userMenuItem))}
             </Menu>
         )
     }
 
     renderUserInfo() {
         const hasUserMenu = this.hasUserMenu
+        const {userInfoPrimary, userInfoSecondary} = this.props
+        const titleTipPrimary = isString(userInfoPrimary) ? userInfoPrimary : ''
+        const titleTipSecondary = isString(userInfoSecondary) ? userInfoSecondary : ''
+
         const userInfo = (
             <div className={'brick-head-nav-user-info'}>
                 <div className={'brick-head-nav-user-info-avatar'}>
-                    <img src={this.props.avatar}/>
+                    <img src={this.props.avatar} />
                 </div>
                 <div className={'brick-head-nav-user-info-detail'}>
-                    <p className={'brick-head-nav-user-info-detail-primary'}>{this.props.userInfoPrimary}</p>
-                    <p className={'brick-head-nav-user-info-detail-secondary'}>{this.props.userInfoSecondary}</p>
+                    <p className={'brick-head-nav-user-info-detail-primary'} title={titleTipPrimary}>
+                        {userInfoPrimary}
+                    </p>
+                    <p className={'brick-head-nav-user-info-detail-secondary'} title={titleTipSecondary}>
+                        {userInfoSecondary}
+                    </p>
                 </div>
                 {this.hasUserMenu ? (
                     <div className={'brick-head-nav-user-info-arrow'}>
-                        <Icon svg={SvgTriangleDown}/>
+                        <Icon svg={SvgTriangleDown} />
                     </div>
                 ) : null}
             </div>
@@ -291,7 +293,8 @@ export class HeadNav extends React.Component<HeadNavProps, HeadNavState> {
             <MenuPopper
                 size={this.themeDefaultSize}
                 type={'hover'}
-                targetContent={userInfo}
+                targetNode={userInfo}
+                preventOverflowBoundary={'viewport'}
             >
                 {this.renderUserMenu()}
             </MenuPopper>
@@ -307,6 +310,7 @@ export class HeadNav extends React.Component<HeadNavProps, HeadNavState> {
         )
     }
 
+    /* istanbul ignore next 预留功能 */
     // 用来计算菜单宽度，以自适应屏幕宽度收起到"更多"
     renderShadowMenu() {
         return null

@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import {Icon} from '@befe/brick'
+// import '@befe/brick-comp-icon/src/index.scss'
 import getSvgByName from "../utils/getSvgByName";
 
 export default class ComposedIcon extends React.Component {

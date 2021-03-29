@@ -24,7 +24,7 @@ export default class Typography extends React.Component {
 
         return <span
             className={c(
-                'brick-playground-typography',
+                'brick-editor-typography',
                 `size-${size}`,
                 `weight-${weight}`,
                 `type-${type}`,

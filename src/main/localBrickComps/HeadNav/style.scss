@@ -1,4 +1,5 @@
-@import "~@befe/brick-style/src/base";
+@import "~@befe/brick-style/src/themes/base";
+@import "~@befe/brick-style/src/themes/head-nav";
 
 @include exports('comp-head-nav') {
   .brick-head-nav {
@@ -29,11 +30,9 @@
     &-logo {
       float: left;
       padding-top: 11px;
-      //padding-top: padding(3);
     }
     &-menu {
       padding-left: padding(15);
-      padding-right: padding(4);
     }
     &-user {
       float: right;
@@ -46,6 +45,7 @@
       vertical-align: middle;
       line-height: $head-nav-height;
       text-align: left;
+      padding-left: $head-nav-user-info-margin;
       &-avatar,
       &-detail {
         display: inline-block;
@@ -59,7 +59,7 @@
         background-color: color-gray(1);
         user-select: none;
         //background-image: url("~@befe/brick-icon/svg/main/system/user.svg");
-        background-image: url("./user.svg");
+        background-image: url("./assets/user.svg");
         background-size: $head-nav-avatar-placeholder-size $head-nav-avatar-placeholder-size;
         background-position: center bottom;
         img {
@@ -68,23 +68,21 @@
         }
       }
       &-detail {
-        // @todo: 待 ui 确认
-        max-width: 150px;
-        line-height: 20px;
+        max-width: $head-nav-user-info-detail-max-width;
+        //line-height: 20px;
         cursor: default;
         &-primary,
         &-secondary {
           @include ellipsis();
           margin-bottom: 0;
           color: $color-text-reverse;
+          line-height: $line-height-normal;
         }
         &-primary {
-          font-size: 13px;
-          line-height: 18px;
+          font-size: $head-nav-user-info-detail-primary-font-size;
         }
         &-secondary {
-          font-size: $font-size-sm;
-          line-height: $line-height-normal;
+          font-size: $head-nav-user-info-detail-secondary-font-size;
         }
       }
 
@@ -120,7 +118,7 @@
 
     .brick-menu-size-sm,
     .brick-menu-size-md {
-      &.brick-menu-layout-horizontal .brick-menu-item-content {
+      &.brick-menu-type-nav.brick-menu-layout-horizontal .brick-menu-item-content {
         height: $head-nav-height;
         line-height: $head-nav-height;
       }
@@ -129,7 +127,7 @@
     }
   }
 
-  .brick-erp-logo {
+  .brick-nav-logo {
 
     &-main,
     &-subhead {
@@ -137,44 +135,68 @@
     }
     &-main {
       display: inline-block;
-      height: $head-nav-erp-logo-height;
-      width: $head-nav-erp-logo-width;
-      background: url('./erp-logo.svg') no-repeat;
-      background-size: $head-nav-erp-logo-width $head-nav-erp-logo-height;
+      height: $head-nav-logo-height;
+      width: $head-nav-logo-width;
+      background: url('./assets/baidu-logo.svg') no-repeat;
+      background-size: $head-nav-logo-width $head-nav-logo-height;
       cursor: pointer;
     }
     &-origin-color &-main {
-      background: url("./erp-logo-origin.svg") no-repeat;
+      background: url("./assets/baidu-logo-origin.svg") no-repeat;
     }
 
     &-subhead {
       display: inline-block;
       position: relative;
-      height: $head-nav-erp-logo-subhead-height;
-      line-height: $head-nav-erp-logo-subhead-divider-height;
-      font-size: $head-nav-erp-logo-subhead-font-size;
+      height: $head-nav-logo-subhead-height;
+      line-height: $head-nav-logo-subhead-divider-height;
+      font-size: $head-nav-logo-subhead-font-size;
       padding-left: 10px;
       margin-left: 10px;
       img {
         position: relative;
-        height: $head-nav-erp-logo-subhead-height;
-        bottom: $head-nav-erp-logo-subhead-bottom-margin;
+        height: $head-nav-logo-subhead-height;
+        bottom: $head-nav-logo-subhead-bottom-margin;
       }
       &, &:hover {
         text-decoration-line: none;
         color: $color-text-reverse;
       }
       &:before {
-        $divider-padding: ($head-nav-erp-logo-subhead-height - $head-nav-erp-logo-subhead-divider-height) / 2;
+        $divider-padding: ($head-nav-logo-subhead-height - $head-nav-logo-subhead-divider-height) / 2;
         content: '';
         display: inline-block;
         position: absolute;
         left: 0;
-        bottom: $head-nav-erp-logo-subhead-bottom-margin - $divider-padding;
+        bottom: $head-nav-logo-subhead-bottom-margin - $divider-padding;
         width: 1px;
-        height: $head-nav-erp-logo-subhead-divider-height;
+        height: $head-nav-logo-subhead-divider-height;
         background: $color-text-reverse;
       }
     }
   }
+
+  .brick-erp-logo {
+    .brick-nav-logo-main {
+      //height: $head-nav-logo-height;
+      width: $head-nav-erp-logo-width;
+      background: url('./assets/erp-logo.svg') no-repeat;
+      background-size: $head-nav-erp-logo-width $head-nav-logo-height;
+    }
+    .brick-nav-logo-origin-color .brick-nav-logo-main {
+      background: url("./assets/erp-logo-origin.svg") no-repeat;
+    }
+  }
+
+  //.brick-baidu-logo {
+  //  .brick-nav-logo-main {
+  //    //height: $head-nav-logo-height;
+  //    width: $head-nav-baidu-logo-width;
+  //    background: url('./baidu-logo.svg') no-repeat;
+  //    background-size: $head-nav-baidu-logo-width $head-nav-logo-height;
+  //  }
+  //  .brick-nav-logo-origin-color .brick-nav-logo-main {
+  //    background: url("./baidu-logo-origin.svg") no-repeat;
+  //  }
+  //}
 }

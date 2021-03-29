@@ -4,7 +4,7 @@ import {Provider, observer} from 'mobx-react'
 
 import DemoListView from './view/DemoListView'
 import ControlPanelView from './view/ControlPanelView'
-import PlaygroundView from './view/PlaygroundView'
+import EditorView from './view/EditorView'
 import AttrEditorView from './view/AttrEditorView'
 
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
@@ -123,9 +123,9 @@ class View extends React.Component {
                     showDemoDrawer={mainState.showDemoDrawer}
                 />
                 {this.renderDemoDrawerTrigger()}
-                <PlaygroundView
-                    playgroundWidth={mainState.playgroundWidth}
-                    playgroundHeight={mainState.playgroundHeight}
+                <EditorView
+                    editorWidth={mainState.editorWidth}
+                    editorHeight={mainState.editorHeight}
                     usedCompsDataArray={mainState.usedCompsDataArray}
                     showDemoDrawer={mainState.showDemoDrawer}
                     showControlPanelDrawer={mainState.showControlPanelDrawer}
@@ -165,21 +165,21 @@ class View extends React.Component {
                     }}
                     copyStorageToClipboard={mainState.copyStorageToClipboard}
                     loadFromCopy={mainState.loadFromCopy}
-                    playgroundWidth={mainState.playgroundWidth}
-                    playgroundHeight={mainState.playgroundHeight}
-                    setPlaygroundWidth={val => {
+                    editorWidth={mainState.editorWidth}
+                    editorHeight={mainState.editorHeight}
+                    setEditorWidth={val => {
                         mainState.setProps({
-                            playgroundWidth: val
+                            editorWidth: val
                         })
-                        mainState.savePlaygroundWidth()
+                        mainState.saveEditorWidth()
                     }}
-                    setPlaygroundHeight={val => {
+                    setEditorHeight={val => {
                         mainState.setProps({
-                            playgroundHeight: val
+                            editorHeight: val
                         })
-                        mainState.savePlaygroundHeight()
+                        mainState.saveEditorHeight()
                     }}
-                    resizePlayground={mainState.resizePlayground}
+                    resizeEditor={mainState.resizeEditor}
                 />
                 <AttrEditorView
                     activeComponentData={mainState.activeComponentData}

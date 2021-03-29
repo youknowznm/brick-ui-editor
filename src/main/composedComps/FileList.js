@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import {FileList} from '@befe/brick'
+// import '@befe/brick-comp-file-list/src/index.scss'
 
 export default class ComposedFileList extends React.Component {
 

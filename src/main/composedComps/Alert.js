@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import {Alert} from '@befe/brick'
+// import '@befe/brick-comp-alert/src/index.scss'
 
 export default class ComposedAlert extends React.Component {
 
