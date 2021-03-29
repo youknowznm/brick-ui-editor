@@ -12,7 +12,7 @@ module.exports = {
     devServer: {
         contentBase: './dist',
     },
-    devtool: 'eval-cheap-source-map',
+    devtool: 'eval-cheap-module-source-map',
     module: {
         rules: [
             {
@@ -37,7 +37,6 @@ module.exports = {
                     'style-loader',
                     'css-loader',
                     'resolve-url-loader',
-                    'sass-loader',
                     {
                         loader: 'sass-loader',
                         options: {
