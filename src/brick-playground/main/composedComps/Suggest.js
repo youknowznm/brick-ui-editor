@@ -72,7 +72,7 @@ export default class ComposedSuggest extends React.Component {
                 placeholder={placeholder}
                 disabled={disabled}
                 onSearch={fakeSuggest}
-                loadingDelayInMS={200}
+                loadingDelay={200}
                 // mode={mode}
                 // status={'error'}
                 // size={size}

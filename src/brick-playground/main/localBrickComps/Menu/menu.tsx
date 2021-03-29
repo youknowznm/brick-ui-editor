@@ -135,9 +135,9 @@ export class Menu extends React.Component<MenuProps, MenuState> {
                 [`brick-menu-layout-${layout}`]: layout,
                 [`brick-menu-parent-layout-${parentLayout}`]: parentLayout,
                 [`brick-menu-size-${size}`]: size,
-                ['brick-menu-multiple']: multiple,
+                'brick-menu-multiple': multiple,
                 [`brick-menu-multiple-item-type-${multipleItemType}`]: multipleItemType,
-                ['brick-menu-reverse-color']: reverseColor,
+                'brick-menu-reverse-color': reverseColor,
             },
             className
         )

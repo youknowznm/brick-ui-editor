@@ -7,7 +7,7 @@ import * as React from 'react';
 import { SvgFC, AlertType } from '@befe/brick-core';
 import { ButtonProps } from '@befe/brick-comp-button';
 import { DialogProps } from './dialog';
-declare type PropsFromButton = Pick<ButtonProps, 'loadingDelayInMS'>;
+declare type PropsFromButton = Pick<ButtonProps, 'loadingDelay'>;
 declare type PropsFromDialog = Pick<DialogProps, 'size' | 'headline' | 'confirmLabel' | 'cancelLabel' | 'onConfirm' | 'onCancel'>;
 export interface DialogConfirmProps extends PropsFromButton, PropsFromDialog {
     /**

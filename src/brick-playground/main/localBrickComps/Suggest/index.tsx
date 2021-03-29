@@ -119,7 +119,7 @@ export interface SuggestProps extends SuggestPropsFromInput {
      * 单位 ms
      * 0 为立即显示
      */
-    loadingDelayInMS?: number
+    loadingDelay?: number
 
     /**
      * 是否使用 trimmed 过的 inputValue 作为 fetch 的 query 参数
@@ -156,7 +156,7 @@ export class Suggest extends React.Component<SuggestProps, SuggestState> {
         mode: 'single',
         trim: true,
         placement: 'bottom-start',
-        loadingDelayInMS: 300,
+        loadingDelay: 300,
         disabled: false
     }
 
@@ -196,7 +196,7 @@ export class Suggest extends React.Component<SuggestProps, SuggestState> {
         this.setState({
             loading: true
         })
-    }, this.props.loadingDelayInMS)
+    }, this.props.loadingDelay)
 
     constructor(props: SuggestProps) {
         super(props)
@@ -230,7 +230,7 @@ export class Suggest extends React.Component<SuggestProps, SuggestState> {
         return c(
             'brick-suggest',
             {
-                ['brick-suggest-disabled']: disabled
+                'brick-suggest-disabled': disabled
             },
             className
         )

@@ -44,7 +44,7 @@ class AttrEditorView extends React.Component {
         //     className: ""
         //     color: "normal"
         //     disabled: false
-        //     loadingDelayInMS: 300
+        //     loadingDelay: 300
         // }
         activeComponentData: PropTypes.object,
 

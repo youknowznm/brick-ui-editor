@@ -12,6 +12,12 @@ module.exports = {
     ],
     plugins: [
         '@babel/transform-runtime',
+        [
+            "@babel/plugin-proposal-decorators",
+            {
+                "legacy": true
+            }
+        ],
         '@babel/proposal-class-properties',
         'babel-plugin-typescript-to-proptypes',
     ],

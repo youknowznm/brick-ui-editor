@@ -52,7 +52,7 @@ export class ErpLogo extends React.Component<ErpLogoProps> {
         return c(
             'brick-erp-logo',
             {
-                ['brick-erp-logo-origin-color']: originColor,
+                'brick-erp-logo-origin-color': originColor,
             },
             className
         )

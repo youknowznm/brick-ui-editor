@@ -58,7 +58,7 @@ class ControlPanelView extends React.Component {
                 </h3>
                 <a
                     href="http://icode.baidu.com/repos/baidu/erp/erp-ui-previewer"
-                    target="_blank"
+                    target="_blank" rel="noreferrer"
                 >
                     <Button
                         className="link repo"
@@ -70,7 +70,7 @@ class ControlPanelView extends React.Component {
                 </a>
                 <a
                     href="http://linky.dev.weiyun.baidu.com:8339/pages/linky.html#/index?main=_s_thapzri718u5__20200220_1545&side=_s_thapzri718u5__20200220_1545"
-                    target="_blank"
+                    target="_blank" rel="noreferrer"
                 >
                     <Button
                         className="link guide"

@@ -107,7 +107,7 @@ class PlaygroundView extends React.Component {
                     //     className: ""
                     //     color: "normal"
                     //     disabled: false
-                    //     loadingDelayInMS: 300
+                    //     loadingDelay: 300
                     // }
                     return <PlaygroundCompWrap
                         key={item.id}
@@ -133,7 +133,7 @@ class PlaygroundView extends React.Component {
     }
 
     render() {
-        const {local, props} = this
+        const {props} = this
         const {
             showDemoDrawer,
             // showControlPanelDrawer

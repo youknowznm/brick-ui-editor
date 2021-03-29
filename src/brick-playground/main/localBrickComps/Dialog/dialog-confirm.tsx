@@ -15,7 +15,7 @@ import {DialogBody} from './dialog-body'
 import {getValueFromContextTheme} from '@befe/brick-core'
 import {Icon} from '@befe/brick-comp-icon'
 
-type PropsFromButton = Pick<ButtonProps, 'loadingDelayInMS'>
+type PropsFromButton = Pick<ButtonProps, 'loadingDelay'>
 type PropsFromDialog = Pick<DialogProps,
     | 'size'
     | 'headline'

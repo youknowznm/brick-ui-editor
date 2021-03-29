@@ -386,21 +386,18 @@ module.exports = function (webpackEnv) {
                 ...babelConfig,
                 plugins: [
                   ...babelConfig.plugins,
-                  // isDev && require.resolve('react-refresh/babel'),
                 ].filter(Boolean),
               },
             },
           ],
-          // exclude: /node_modules/,
-          // exclude: {
-          //     and: [
-          //         /node_modules/,
-          //     ],
-          //     // 这些 libs 存在 old browsers, IE 不支持的语法需要进行编译
-          //     not: [
-          //         // /color-covert/,
-          //     ],
-          // },
+          exclude: {
+              and: [
+                  /node_modules/,
+              ],
+              not: [
+                  /brick-utils|brick-icon/,
+              ],
+          },
         },
         {
           test: /\.css$/,

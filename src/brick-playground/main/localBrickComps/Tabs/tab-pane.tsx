@@ -64,7 +64,7 @@ export class TabPane extends React.Component<TabPaneProps> {
             'brick-tab-pane',
             `brick-tab-pane-${this.isActive ? 'active' : 'inactive'}`,
             {
-                ['brick-tabs-tab-deletable']: deletable,
+                'brick-tabs-tab-deletable': deletable,
                 [`brick-tabs-tab-${status}`]: status
             },
             className

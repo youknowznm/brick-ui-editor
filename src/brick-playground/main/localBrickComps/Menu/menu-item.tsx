@@ -76,9 +76,9 @@ export class MenuItem extends React.Component<MenuItemProps> {
         return c(
             'brick-menu-item',
             {
-                ['brick-menu-item-selected']: this.isSelected,
+                'brick-menu-item-selected': this.isSelected,
                 [`brick-menu-item-type-${type}`]: type,
-                ['brick-menu-item-disabled']: disabled,
+                'brick-menu-item-disabled': disabled,
             },
             className
         )

@@ -187,7 +187,7 @@ const ButtonDemo = () => {
         {/* ===== 3 loading ===== */}
         <h3 className="demo-type-desc">加载中</h3>
         <div className="demo-group">
-            <Button loading={loading} loadingDelayInMS={0}>普通</Button>
+            <Button loading={loading} loadingDelay={0}>普通</Button>
             <Button loading={loading} type={'intensive'}>加强</Button>
             <Button loading={loading} type={'important'}>重要</Button>
             <Button loading={loading} type={'translucent'}>半透明</Button>
@@ -207,7 +207,7 @@ const ButtonDemo = () => {
             <Button loading={loading} type={'ghost'} iconName="SvgEdit" />
         </div> */}
         <div className="demo-group">
-            <Button loading={loading} shape={'capsule'} loadingDelayInMS={0}>普通</Button>
+            <Button loading={loading} shape={'capsule'} loadingDelay={0}>普通</Button>
             <Button loading={loading} shape={'capsule'} type={'intensive'}>加强</Button>
             <Button loading={loading} shape={'capsule'} type={'important'}>重要</Button>
             <Button loading={loading} shape={'capsule'} type={'translucent'}>半透明</Button>

@@ -373,10 +373,10 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
         const tabClass = c(
             'brick-tabs-tab',
             {
-                ['brick-tabs-tab-invisible']: idx < visibleFrom || idx >= visibleTo,
-                ['brick-tabs-tab-active']: this.state.activeId === tab.id,
-                ['brick-tabs-tab-disabled']: tab.disabled,
-                ['brick-tabs-tab-deletable']: tab.deletable,
+                'brick-tabs-tab-invisible': idx < visibleFrom || idx >= visibleTo,
+                'brick-tabs-tab-active': this.state.activeId === tab.id,
+                'brick-tabs-tab-disabled': tab.disabled,
+                'brick-tabs-tab-deletable': tab.deletable,
                 [`brick-tabs-tab-${tab.status}`]: tab.status
             }
         )

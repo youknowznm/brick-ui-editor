@@ -159,9 +159,9 @@ export class Select extends React.Component<SelectProps, SelectState> {
             {
                 [`brick-select-mode-${mode}`]: mode,
                 [`brick-select-size-${size}`]: size,
-                ['brick-select-disabled']: disabled,
-                ['brick-select-with-max-number']: this.withMaxNumber,
-                ['brick-select-is-full']: this.isFull,
+                'brick-select-disabled': disabled,
+                'brick-select-with-max-number': this.withMaxNumber,
+                'brick-select-is-full': this.isFull,
 
             },
             className

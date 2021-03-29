@@ -44,8 +44,8 @@ export class DialogBody extends React.Component<DialogBodyProps, DialogBodyState
         return c(
             'brick-dialog-body',
             {
-                ['brick-dialog-body-overflow-x']: this.state.overflowX,
-                ['brick-dialog-body-overflow-y']: this.state.overflowY,
+                'brick-dialog-body-overflow-x': this.state.overflowX,
+                'brick-dialog-body-overflow-y': this.state.overflowY,
             },
             className
         )

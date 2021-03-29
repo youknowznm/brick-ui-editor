@@ -115,7 +115,7 @@ export class Dialog extends React.Component<DialogProps> {
             'brick-dialog',
             {
                 [`brick-dialog-size-${size}`]: size,
-                ['brick-dialog-without-headline']: !headline,
+                'brick-dialog-without-headline': !headline,
                 [`brick-dialog-actions-align-${actionsAlign}`]: actionsAlign
             },
             className

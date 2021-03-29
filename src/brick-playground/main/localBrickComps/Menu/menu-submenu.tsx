@@ -80,7 +80,7 @@ export class Submenu extends React.Component<MenuSubmenuProps> {
             `brick-menu-submenu-type-${type}`,
             {
                 [`brick-menu-submenu-${this.isExpanded ? 'expanded' : 'collapsed'}`]: type === 'folder',
-                ['brick-menu-submenu-has-descendant-selected']: this.hasDescendantSelected,
+                'brick-menu-submenu-has-descendant-selected': this.hasDescendantSelected,
             },
             className
         )

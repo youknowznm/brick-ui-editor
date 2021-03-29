@@ -16,6 +16,7 @@
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.3",
+    "@types/lodash-es": "^4.17.4",
     "@typescript-eslint/eslint-plugin": "^4.5.0",
     "@typescript-eslint/parser": "^4.5.0",
     "autoprefixer": "^10.2.5",
@@ -92,12 +93,7 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
+  "eslintConfig": {},
   "browserslist": {
     "production": [
       ">0.2%",
@@ -108,33 +104,6 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
-    ]
-  },
-  "babel": {
-    "presets": [
-      [
-        "@babel/env",
-        {
-          "loose": true,
-          "modules": false,
-          "targets": "> 1%, last 2 versions, ie 11",
-          "corejs": 3,
-          "useBuiltIns": "entry"
-        }
-      ],
-      "@babel/typescript",
-      "@babel/react"
-    ],
-    "plugins": [
-      "@babel/transform-runtime",
-      [
-        "@babel/plugin-proposal-decorators",
-        {
-          "legacy": true
-        }
-      ],
-      "@babel/proposal-class-properties",
-      "babel-plugin-typescript-to-proptypes"
     ]
   },
   "jest": {

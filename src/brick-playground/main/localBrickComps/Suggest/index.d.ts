@@ -84,7 +84,7 @@ export interface SuggestProps extends SuggestPropsFromInput {
      * 单位 ms
      * 0 为立即显示
      */
-    loadingDelayInMS?: number;
+    loadingDelay?: number;
     /**
      * 是否使用 trimmed 过的 inputValue 作为 fetch 的 query 参数
      */
@@ -114,7 +114,7 @@ export declare class Suggest extends React.Component<SuggestProps, SuggestState>
         mode: string;
         trim: boolean;
         placement: string;
-        loadingDelayInMS: number;
+        loadingDelay: number;
         disabled: boolean;
     };
     static contextType: React.Context<import("@befe/brick-comp-config-provider/src").ConfigContextValue>;
