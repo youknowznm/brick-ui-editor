@@ -22,8 +22,7 @@ type PropsFromDialog = Pick<DialogProps,
     | 'confirmLabel'
     | 'cancelLabel'
     | 'onConfirm'
-    | 'onCancel'
->
+    | 'onCancel'>
 
 export interface DialogConfirmProps extends PropsFromButton, PropsFromDialog {
     /**
@@ -103,7 +102,7 @@ export class DialogConfirm extends React.Component<DialogConfirmProps> {
         }
         return (
             <div className={'brick-dialog-confirm-icon'}>
-                <Icon svg={iconSvg} />
+                <Icon svg={iconSvg}/>
             </div>
         )
     }

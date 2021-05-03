@@ -17,26 +17,29 @@
     border: 1px solid $stripe-color;
     z-index: 2000;
     background: #fff linear-gradient(
-        45deg,
-        $stripe-color 0, $stripe-color 25%, transparent 25%, transparent 50%,
-        $stripe-color 50%, $stripe-color 75%, transparent 75%, transparent
+                    45deg,
+                    $stripe-color 0, $stripe-color 25%, transparent 25%, transparent 50%,
+                    $stripe-color 50%, $stripe-color 75%, transparent 75%, transparent
     );
     background-size: $stripe-width $stripe-width;
     cursor: pointer;
+
     &:hover {
       // background: stripe-color;
       background: #fff linear-gradient(
-          45deg,
-          $stripe-color-active 0, $stripe-color-active 25%, transparent 25%, transparent 50%,
-          $stripe-color-active 50%, $stripe-color-active 75%, transparent 75%, transparent
+                      45deg,
+                      $stripe-color-active 0, $stripe-color-active 25%, transparent 25%, transparent 50%,
+                      $stripe-color-active 50%, $stripe-color-active 75%, transparent 75%, transparent
       );
       border-color: $stripe-color-active;
       background-size: $stripe-width $stripe-width;
+
       .text {
         color: $stripe-color-active;
       }
     }
   }
+
   //&.meta-key-pressed {
   //      .action-layer {
   //        display: block;

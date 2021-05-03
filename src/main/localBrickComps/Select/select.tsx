@@ -80,7 +80,7 @@ export interface SelectState {
     popperVisible: boolean
 }
 
-function optionValuePropChecker(props: SelectProps,  propName: keyof SelectProps, componentName: string) {
+function optionValuePropChecker(props: SelectProps, propName: keyof SelectProps, componentName: string) {
     const {mode} = props
     const value = props[propName]
     if (isUndefined(value) || value === null) {
@@ -169,11 +169,11 @@ export class Select extends React.Component<SelectProps, SelectState> {
     }
 
     get size(): SelectProps['size'] {
-        return getDefaultValueUsingContextTheme(this,'size', 'defaultSize')!
+        return getDefaultValueUsingContextTheme(this, 'size', 'defaultSize')!
     }
 
     get menuSize() {
-        switch(this.size) {
+        switch (this.size) {
             case 'lg':
             case 'md':
                 return 'md'
@@ -214,8 +214,8 @@ export class Select extends React.Component<SelectProps, SelectState> {
         const {value} = this.state
         return !!(
             this.props.mode === 'multiple'
-            ? (value as OptionValue[]).length
-            : value
+                ? (value as OptionValue[]).length
+                : value
         )
     }
 
@@ -232,7 +232,7 @@ export class Select extends React.Component<SelectProps, SelectState> {
         const isAllSelected = (opt: OptionObject): boolean => {
             const {children} = opt
             if (opt.disabled) {
-                 return true
+                return true
             }
             if (isUndefined(children)) {
                 return value.includes(opt.value)
@@ -246,7 +246,7 @@ export class Select extends React.Component<SelectProps, SelectState> {
         return this.props.mode === 'multiple'
     }
 
-    get selectedIds(){
+    get selectedIds() {
         const {value} = this.state
         if (!value) {
             return []
@@ -303,8 +303,7 @@ export class Select extends React.Component<SelectProps, SelectState> {
                 const {value, children} = opt
                 if (!isUndefined(children)) {
                     children.forEach(doSelect)
-                }
-                else if (value && !opt.disabled && !selectedIds.includes(value)) {
+                } else if (value && !opt.disabled && !selectedIds.includes(value)) {
                     selectedIds.push(value)
                 }
             }
@@ -316,13 +315,12 @@ export class Select extends React.Component<SelectProps, SelectState> {
     }
 
     findOption(value: OptionValue, options: OptionObject[] = []): OptionObject | void {
-        for (let i = options.length; i-- > 0; ) {
+        for (let i = options.length; i-- > 0;) {
             const opt = options[i]
             const {children} = opt
             if (opt.value === value) {
                 return opt
-            }
-            else if (!isUndefined(children)) {
+            } else if (!isUndefined(children)) {
                 const found = this.findOption(value, children)
                 if (found) {
                     return found
@@ -339,8 +337,7 @@ export class Select extends React.Component<SelectProps, SelectState> {
 
                 if (opt.type === Option) {
                     option.label = children
-                }
-                else if (opt.type === OptionGroup && children) {
+                } else if (opt.type === OptionGroup && children) {
                     option.children = this.normalizeOptions(children)
                 }
 
@@ -359,7 +356,7 @@ export class Select extends React.Component<SelectProps, SelectState> {
     renderSuffix() {
         return (
             <div className={'brick-select-suffix'}>
-                <Icon className={'brick-select-suffix-arrow'} svg={SvgPlainDown} />
+                <Icon className={'brick-select-suffix-arrow'} svg={SvgPlainDown}/>
             </div>
         )
     }

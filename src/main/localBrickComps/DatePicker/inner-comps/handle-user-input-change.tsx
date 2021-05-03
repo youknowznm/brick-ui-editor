@@ -38,9 +38,9 @@ export function handleUserInputChange(
     if (
         tryParsedDate.isValid()
 
-    // @todo:review 考虑一下是否严格进行日期控制? 2019-11-1 到底合法不合法?
-    // 是否必须要进行严格的合规性校验?
-    // && tryParsedDate.format(itemFormat) === trimmedText
+        // @todo:review 考虑一下是否严格进行日期控制? 2019-11-1 到底合法不合法?
+        // 是否必须要进行严格的合规性校验?
+        // && tryParsedDate.format(itemFormat) === trimmedText
     ) {
         value = tryParsedDate;
         displayedDate = tryParsedDate;

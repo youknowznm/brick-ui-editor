@@ -140,6 +140,7 @@
         > .brick-checkbox {
           margin-right: $checkbox-label-distance;
         }
+
         > a {
           &, &:hover, &:active {
             text-decoration: none;
@@ -284,28 +285,34 @@
         // reset to normal
         background: none;
         color: $color-text-normal;
+
         &:hover {
           background-color: color-gray(3);
         }
       }
+
       .brick-menu-item:not(.brick-menu-item-disabled) {
         // menu-item 的 checkbox 只是一个类似 icon 的东西，应没有 focus 转态
         .brick-checkbox-input:focus:not([disabled]) + .brick-checkbox-mark {
           box-shadow: none;
         }
+
         .brick-menu-item-content:hover .brick-menu-item-content-inner {
           > .brick-checkbox {
             @include check-mark-hover('checkbox');
           }
+
           > .brick-checkbox-indeterminate,
           > .brick-checkbox-checked {
             @include check-mark-checked-hover('checkbox');
           }
         }
+
         .brick-menu-item-content:active .brick-menu-item-content-inner {
           > .brick-checkbox {
             @include check-mark-active('checkbox');
           }
+
           > .brick-checkbox-indeterminate,
           > .brick-checkbox-checked {
             @include check-mark-checked-active('checkbox');
@@ -340,6 +347,7 @@
         padding: $menu-popper-wrap-padding-vertical 0;
         color: $color-text-hint;
         text-align: center;
+
         .brick-icon-spin {
           color: $color-base-brand;
         }
@@ -364,10 +372,12 @@
       @each $size in $menu-popper-item-size-list {
         &-size-#{$size} {
           font-size: form-control-font-size($size);
+
           .brick-menu-item-select-all + li,
           li + .brick-menu-submenu-type-group {
             padding-top: menu-item-padding-vertical($size);
           }
+
           .brick-menu {
             font-size: form-control-font-size($size);
 
@@ -386,6 +396,7 @@
         &-item {
           .brick-menu-item-content {
             width: auto;
+
             &::after {
               content: none;
             }
@@ -402,6 +413,7 @@
           color: $color-text-reverse;
         }
       }
+
       &-submenu-arrow {
         &::before,
         &::after {
@@ -410,6 +422,7 @@
       }
 
     }
+
     &.brick-menu-layout-horizontal {
       border-bottom: none;
 
@@ -420,7 +433,7 @@
 
         &:hover {
           background: color-brand(5);
-          color: $color-text-reverse  ;
+          color: $color-text-reverse;
         }
       }
 

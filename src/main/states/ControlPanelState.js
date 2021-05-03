@@ -4,24 +4,24 @@ import BaseModel from '../utils/BaseModel'
 
 export default class State extends BaseModel {
 
-    @observable showClearConfirmFlag = false
+  @observable showClearConfirmFlag = false
 
-    triggerConfirmFlag = target => {
-        const result = typeof target === 'boolean' ? target : !this.showClearConfirmFlag
-        this.setProps({
-            showClearConfirmFlag: result
-        })
-    }
+  triggerConfirmFlag = target => {
+    const result = typeof target === 'boolean' ? target : !this.showClearConfirmFlag
+    this.setProps({
+      showClearConfirmFlag: result
+    })
+  }
 
-    @observable showLoadArchiveConfirmFLag = false
+  @observable showLoadArchiveConfirmFLag = false
 
-    triggerLoadArchiveConfirmFLag = target => {
-        const result = typeof target === 'boolean' ? target : !this.showLoadArchiveConfirmFLag
-        this.setProps({
-            showLoadArchiveConfirmFLag: result,
-            archiveJSON: target === false ? '' : this.archiveJSON
-        })
-    }
+  triggerLoadArchiveConfirmFLag = target => {
+    const result = typeof target === 'boolean' ? target : !this.showLoadArchiveConfirmFLag
+    this.setProps({
+      showLoadArchiveConfirmFLag: result,
+      archiveJSON: target === false ? '' : this.archiveJSON
+    })
+  }
 
-    @observable archiveJSON = ''
+  @observable archiveJSON = ''
 }

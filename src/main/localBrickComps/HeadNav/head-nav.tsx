@@ -271,7 +271,7 @@ export class HeadNav extends ConfiguredComponent<HeadNavProps, HeadNavState> {
         const userInfo = (
             <div className={'brick-head-nav-user-info'}>
                 <div className={'brick-head-nav-user-info-avatar'}>
-                    <img src={this.props.avatar} />
+                    <img src={this.props.avatar}/>
                 </div>
                 <div className={'brick-head-nav-user-info-detail'}>
                     <p className={'brick-head-nav-user-info-detail-primary'} title={titleTipPrimary}>
@@ -283,7 +283,7 @@ export class HeadNav extends ConfiguredComponent<HeadNavProps, HeadNavState> {
                 </div>
                 {this.hasUserMenu ? (
                     <div className={'brick-head-nav-user-info-arrow'}>
-                        <Icon svg={SvgTriangleDown} />
+                        <Icon svg={SvgTriangleDown}/>
                     </div>
                 ) : null}
             </div>
@@ -311,6 +311,7 @@ export class HeadNav extends ConfiguredComponent<HeadNavProps, HeadNavState> {
     }
 
     /* istanbul ignore next 预留功能 */
+
     // 用来计算菜单宽度，以自适应屏幕宽度收起到"更多"
     renderShadowMenu() {
         return null

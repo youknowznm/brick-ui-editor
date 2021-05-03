@@ -25,6 +25,7 @@ export class PopoverTrigger extends PopperTrigger {
         return React.isValidElement(child) && child.type === Popover
     }
 }
+
 // export class PopoverTrigger extends React.Component<PopoverTriggerProps> {
 //     static displayName = 'PopoverTrigger'
 //     // static propTypes = {}

@@ -43,8 +43,10 @@ $select-suffix-arrow-size-list: (
       float: left;
       max-width: 100%;
     }
+
     &-selected {
     }
+
     &-placeholder {
       color: $color-text-hint;
     }
@@ -53,6 +55,7 @@ $select-suffix-arrow-size-list: (
       display: inline-block;
       position: absolute;
       right: $form-control-box-padding-horizontal;
+
       &-arrow {
         position: absolute;
         top: 50%;
@@ -95,6 +98,7 @@ $select-suffix-arrow-size-list: (
 
     &-disabled {
       @include form-control-box-disabled();
+
       .brick-icon {
         color: $color-text-disabled;
       }

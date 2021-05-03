@@ -1,5 +1,5 @@
-本目录的几个组件和正式 brick 的区别: 
-本目录的几个组件和正式 brick 的区别: 
+本目录的几个组件和正式 brick 的区别:
+本目录的几个组件和正式 brick 的区别:
 
 1. 移除了 DatePicker 的 log
 2. 修改 Popper 的 ProtalContainer prop

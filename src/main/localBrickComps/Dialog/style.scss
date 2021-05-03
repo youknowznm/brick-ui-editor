@@ -1,4 +1,5 @@
 @import "~@befe/brick-style/src/base";
+
 @include exports('comp-dialog') {
   .brick-dialog {
     @include reset();
@@ -21,7 +22,8 @@
 
     &-head,
     &-body,
-    &-foot {}
+    &-foot {
+    }
 
     &-head {
       min-height: $dialog-head-min-height;
@@ -39,9 +41,11 @@
       > *:last-child {
         margin-bottom: 0;
       }
+
       &-overflow-x {
         overflow-x: scroll;
       }
+
       &-overflow-y {
         overflow-y: scroll;
       }
@@ -50,12 +54,15 @@
     &-foot {
       padding: $dialog-padding;
       text-align: right;
+
       .brick-dialog-actions-align-right & {
         text-align: right;
       }
+
       .brick-dialog-actions-align-center & {
         text-align: center;
       }
+
       .brick-dialog-actions-align-left & {
         text-align: left;
       }
@@ -81,9 +88,11 @@
       left: 50%;
       transform: translateX(-50%);
     }
+
     &-content {
       position: relative;
     }
+
     &-icon {
       @include icon-size($dialog-confirm-icon-size);
       position: absolute;
@@ -91,21 +100,25 @@
       left: 0;
       line-height: $dialog-confirm-font-size * $line-height-normal;
     }
+
     @each $type in $alert-type-list {
       &-type-#{$type} {
         background-color: map_get($alert-bg-color, $type);
         border-color: map_get($alert-border-color, $type);
+
         .brick-dialog-confirm-icon .brick-icon {
           color: map_get($alert-icon-color, $type);
         }
       }
     }
+
     &-content-inner {
       p {
         font-size: $dialog-confirm-font-size;
         margin-bottom: 0;
       }
     }
+
     &-icon + &-content-inner {
       padding-left: $dialog-confirm-icon-size + $dialog-confirm-icon-margin;
     }

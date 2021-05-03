@@ -147,7 +147,7 @@ export class PopoverConfirm extends React.Component<PopoverConfirmProps> {
 
         return (
             <div className={'brick-popover-confirm-icon'}>
-                <Icon svg={iconSvg} />
+                <Icon svg={iconSvg}/>
             </div>
         )
     }

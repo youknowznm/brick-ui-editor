@@ -7,29 +7,36 @@
     white-space: nowrap;
   }
 }
+
 .brick-link {
   display: inline-block;
 }
+
 .brick-dialog-wrap {
   margin: 0 !important;
   border: 1px solid #ccc;
+
   .brick-close-x {
     position: absolute;
     right: 21px;
     top: 13px;
   }
+
   .brick-dialog-foot {
     text-align: center;
   }
 }
+
 .composed-breadcrumb,
 .composed-alert {
   display: inline-block;
   white-space: normal;
+
   ol {
     margin: 0;
   }
 }
+
 // typography 和 section 是额外写的
 .brick-editor-typography {
   height: 20px;
@@ -40,46 +47,59 @@
   &.size-sm {
     font-size: $font-size-sm;
   }
+
   &.size-md {
     font-size: $font-size-md;
   }
+
   &.size-lg {
     font-size: $font-size-lg;
   }
+
   // color
   &.type-heading {
     color: $color-text-heading;
   }
+
   &.type-primary {
     color: $color-text-primary;
   }
+
   &.type-active {
     color: $color-text-primary-active;
   }
+
   &.type-secondary {
     color: $color-text-secondary;
   }
+
   &.type-hint {
     color: $color-text-hint;
   }
+
   &.type-disabled {
     color: $color-text-disabled;
   }
+
   // weight
   &.weight-normal {
     font-weight: $font-weight-normal;
   }
+
   &.weight-medium {
     font-weight: $font-weight-medium;
   }
+
   &.weight-bold {
     font-weight: $font-weight-bold;
   }
 }
+
 .brick-editor-section {
   position: relative;
   background: #fff;
   border: 1px solid #eee;
+
   .section-title {
     padding: 16px;
     font-size: 14px;
@@ -88,6 +108,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+
     &:before {
       content: " ";
       position: absolute;

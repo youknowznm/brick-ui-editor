@@ -9,12 +9,14 @@
     position: relative;
     width: 100%;
     background: $head-nav-bg-color;
+
     &-content {
       position: absolute;
       top: 0;;
       width: 100%;
       height: $head-nav-height;
       padding: 0 $head-nav-padding-vertical;
+
       &-inner {
         @include clearfix();
       }
@@ -31,9 +33,11 @@
       float: left;
       padding-top: 11px;
     }
+
     &-menu {
       padding-left: padding(15);
     }
+
     &-user {
       float: right;
     }
@@ -46,11 +50,13 @@
       line-height: $head-nav-height;
       text-align: left;
       padding-left: $head-nav-user-info-margin;
+
       &-avatar,
       &-detail {
         display: inline-block;
         vertical-align: middle;
       }
+
       &-avatar {
         @include size($head-nav-avatar-size);
         margin-right: padding(1);
@@ -62,15 +68,18 @@
         background-image: url("./assets/user.svg");
         background-size: $head-nav-avatar-placeholder-size $head-nav-avatar-placeholder-size;
         background-position: center bottom;
+
         img {
           width: $head-nav-avatar-size;
           vertical-align: top;
         }
       }
+
       &-detail {
         max-width: $head-nav-user-info-detail-max-width;
         //line-height: 20px;
         cursor: default;
+
         &-primary,
         &-secondary {
           @include ellipsis();
@@ -78,9 +87,11 @@
           color: $color-text-reverse;
           line-height: $line-height-normal;
         }
+
         &-primary {
           font-size: $head-nav-user-info-detail-primary-font-size;
         }
+
         &-secondary {
           font-size: $head-nav-user-info-detail-secondary-font-size;
         }
@@ -89,6 +100,7 @@
       &-arrow {
         display: inline-block;
         opacity: .5;
+
         .brick-icon {
           color: $color-text-reverse;
           @include icon-size(9px);
@@ -109,6 +121,7 @@
       height: $head-nav-height;
       line-height: $head-nav-height;
       vertical-align: middle;
+
       .brick-icon,
       .brick-link,
       & {
@@ -123,6 +136,7 @@
         line-height: $head-nav-height;
       }
     }
+
     &-reverse-color {
     }
   }
@@ -133,6 +147,7 @@
     &-subhead {
       vertical-align: bottom;
     }
+
     &-main {
       display: inline-block;
       height: $head-nav-logo-height;
@@ -141,6 +156,7 @@
       background-size: $head-nav-logo-width $head-nav-logo-height;
       cursor: pointer;
     }
+
     &-origin-color &-main {
       background: url("./assets/baidu-logo-origin.svg") no-repeat;
     }
@@ -153,15 +169,18 @@
       font-size: $head-nav-logo-subhead-font-size;
       padding-left: 10px;
       margin-left: 10px;
+
       img {
         position: relative;
         height: $head-nav-logo-subhead-height;
         bottom: $head-nav-logo-subhead-bottom-margin;
       }
+
       &, &:hover {
         text-decoration-line: none;
         color: $color-text-reverse;
       }
+
       &:before {
         $divider-padding: ($head-nav-logo-subhead-height - $head-nav-logo-subhead-divider-height) / 2;
         content: '';
@@ -183,6 +202,7 @@
       background: url('./assets/erp-logo.svg') no-repeat;
       background-size: $head-nav-erp-logo-width $head-nav-logo-height;
     }
+
     .brick-nav-logo-origin-color .brick-nav-logo-main {
       background: url("./assets/erp-logo-origin.svg") no-repeat;
     }

@@ -6,6 +6,6 @@ const PortalContainerProvider = ctx.Provider
 const PortalContainerConsumer = ctx.Consumer
 
 export {
-    PortalContainerProvider,
-    PortalContainerConsumer
+  PortalContainerProvider,
+  PortalContainerConsumer
 }

@@ -333,8 +333,7 @@ export class Suggest extends React.Component<SuggestProps, SuggestState> {
         const {inputValue} = this.state
         if (!inputValue) {
             this.search('')
-        }
-        else if (this.nodeInput) {
+        } else if (this.nodeInput) {
             this.nodeInput.elemInput.select()
         }
     }
@@ -457,7 +456,7 @@ export class Suggest extends React.Component<SuggestProps, SuggestState> {
     resetInputValue(value = this.getValue()) {
         let inputValue = ''
         if (!this.isMultiple && value) {
-            inputValue = value && (value  as SuggestOption).label || ''
+            inputValue = value && (value as SuggestOption).label || ''
         }
 
         if (inputValue !== this.state.inputValue) {
@@ -506,7 +505,7 @@ export class Suggest extends React.Component<SuggestProps, SuggestState> {
                 type={'plain'}
                 onClick={this.handleClickClear}
             />
-            : <Icon className={'brick-suggest-search-icon'} svg={SvgSearch} />
+            : <Icon className={'brick-suggest-search-icon'} svg={SvgSearch}/>
     }
 
     renderSingleSelection() {
@@ -519,7 +518,7 @@ export class Suggest extends React.Component<SuggestProps, SuggestState> {
             onChange: this.handleChangeInput,
             suffix: this.renderInputSuffix()
         }
-        return <Input {...inputProps} ref={this.refInput} />
+        return <Input {...inputProps} ref={this.refInput}/>
     }
 
     renderMultipleSelection() {
@@ -571,8 +570,7 @@ export class Suggest extends React.Component<SuggestProps, SuggestState> {
         let content
         if (this.isLoading) {
             content = 'loading'
-        }
-        else if (this.isFetched) {
+        } else if (this.isFetched) {
             content = 'not found'
         }
 

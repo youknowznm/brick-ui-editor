@@ -6,28 +6,28 @@ import getSvgByName from "../utils/getSvgByName";
 
 export default class ComposedIcon extends React.Component {
 
-    static displayName = 'ComposedIcon'
+  static displayName = 'ComposedIcon'
 
-    static defaultProps = {
-        svgName: ''
-    }
+  static defaultProps = {
+    svgName: ''
+  }
 
-    render() {
-        const {
-            svgName,
-            ...restProps
-        } = this.props
+  render() {
+    const {
+      svgName,
+      ...restProps
+    } = this.props
 
-        const svg = getSvgByName(svgName)
+    const svg = getSvgByName(svgName)
 
-        return <Icon
-            className="composed-icon"
-            style={{
-                // width: `${14}px`,
-                // height: `${14}px`,
-            }}
-            svg={svg}
-            {...restProps}
-        />
-    }
+    return <Icon
+      className="composed-icon"
+      style={{
+        // width: `${14}px`,
+        // height: `${14}px`,
+      }}
+      svg={svg}
+      {...restProps}
+    />
+  }
 }

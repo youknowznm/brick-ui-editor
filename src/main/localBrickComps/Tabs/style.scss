@@ -1,4 +1,5 @@
 @import "~@befe/brick-style/src/base";
+
 @include exports('comp-tabs') {
   $comp-name: '.brick-tabs';
 
@@ -55,6 +56,7 @@
           &-disabled {
             cursor: not-allowed;
             color: $tabs-tab-color-disabled;
+
             &:focus, &:hover, &:active {
               color: $tabs-tab-color-disabled;
             }

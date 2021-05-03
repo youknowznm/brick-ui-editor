@@ -1,46 +1,58 @@
 @import "src/main/style";
 
-.array-prop-editor {}
+.array-prop-editor {
+}
 
 .array-editor-dialog {
   position: relative;
   min-width: 800px;
+
   .MuiDialogContent-root {
     padding: 0 !important;
   }
+
   .array-table-wrap {
     position: relative;
     min-width: 800px;
+
     .row-action-button {
       margin: 0 5px;
     }
+
     th, td, tr {
       text-align: center;
     }
+
     th, td {
       &:last-child {
         width: 90px;
       }
     }
+
     .MuiButton-root {
       min-width: 45px;
     }
+
     .actions-tl {
       position: absolute;
       left: 20px;
       top: 20px;
+
       .add-row {
 
       }
     }
+
     .actions-tr {
       position: absolute;
       right: 20px;
       top: 20px;
+
       .btn-confirm {
         margin-right: 10px;
         width: 64px;
       }
+
       .btn-cancel {
         width: 64px;
       }

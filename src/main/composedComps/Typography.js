@@ -3,38 +3,38 @@ import c from 'classnames'
 
 export default class Typography extends React.Component {
 
-    static displayName = 'Typography'
+  static displayName = 'Typography'
 
-    static defaultProps = {
-        children: '',
-        type: 'primary', // heading primary active secondary hint disabled
-        size: 'sm',
-        width: 50,
-        weight: 'normal',
-    }
+  static defaultProps = {
+    children: '',
+    type: 'primary', // heading primary active secondary hint disabled
+    size: 'sm',
+    width: 50,
+    weight: 'normal',
+  }
 
-    render() {
-        const {
-            width,
-            size,
-            type,
-            weight,
-            ...restProps
-        } = this.props
+  render() {
+    const {
+      width,
+      size,
+      type,
+      weight,
+      ...restProps
+    } = this.props
 
-        return <span
-            className={c(
-                'brick-editor-typography',
-                `size-${size}`,
-                `weight-${weight}`,
-                `type-${type}`,
-            ) }
-            style={{
-                width: `${width}px`,
-            }}
-            {...restProps}
-        />
-    }
+    return <span
+      className={c(
+        'brick-editor-typography',
+        `size-${size}`,
+        `weight-${weight}`,
+        `type-${type}`,
+      )}
+      style={{
+        width: `${width}px`,
+      }}
+      {...restProps}
+    />
+  }
 }
 
 // themes/default.scss

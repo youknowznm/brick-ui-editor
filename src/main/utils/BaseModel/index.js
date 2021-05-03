@@ -3,16 +3,16 @@
 import {action} from 'mobx';
 
 const _setProps = action((target, props) => {
-    if (!props) {
-        return;
-    }
+  if (!props) {
+    return;
+  }
 
-    Object.assign(target, props);
+  Object.assign(target, props);
 });
 
 export default class BaseModel {
-    setProps(props) {
-        _setProps(this, props);
-        return this;
-    }
+  setProps(props) {
+    _setProps(this, props);
+    return this;
+  }
 }

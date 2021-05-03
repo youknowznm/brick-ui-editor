@@ -145,7 +145,7 @@ export class Popover extends React.Component<PopoverProps> {
 
     renderCloseX() {
         return this.withCloseX
-            ? <CloseX onClick={this.handleClickClose} />
+            ? <CloseX onClick={this.handleClickClose}/>
             : null
     }
 

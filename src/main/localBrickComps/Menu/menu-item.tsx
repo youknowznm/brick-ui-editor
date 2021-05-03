@@ -35,7 +35,7 @@ export interface MenuItemProps extends LiAttributes, PropsFromCheckbox {
      * 是否禁用
      */
     disabled?: boolean
-    
+
     /**
      * 点击回调
      */

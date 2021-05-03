@@ -4,12 +4,14 @@
  * @owner wujun07:2019-11-26
  */
 import * as React from 'react';
+
 export interface DialogHeadProps {
     /**
      * 用户可自定义 class
      */
     className?: string;
 }
+
 /**
  * DialogHead
  * @description brick component DialogHead
@@ -20,6 +22,8 @@ export declare class DialogHead extends React.Component<DialogHeadProps> {
     static defaultProps: {
         className: string;
     };
+
     get className(): string;
+
     render(): JSX.Element;
 }

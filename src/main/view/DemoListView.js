@@ -48,166 +48,166 @@ import '../style/demo-list.scss'
 @observer
 class DemoListView extends React.Component {
 
-    static propTypes = {
+  static propTypes = {
 
-        // 是否打开 demo 列表抽屉
-        showDemoDrawer: PropTypes.bool.isRequired,
+    // 是否打开 demo 列表抽屉
+    showDemoDrawer: PropTypes.bool.isRequired,
+  }
+
+  local = {
+    demoListState: new DemoListState(),
+  }
+
+  getCnLabel = label => {
+    for (let item in COMP_TYPES) {
+      if (COMP_TYPES[item].enLabel === label) {
+        return COMP_TYPES[item].cnLabel
+      }
     }
+    return ''
+  }
 
-    local = {
-        demoListState: new DemoListState(),
-    }
+  renderDemoPanels = () => {
+    const {local, props, getCnLabel} = this
+    const {demoListState} = local
+    const {
+      expandedDemoPanelLabel,
+      setExpandedDemoPanelLabel
+    } = demoListState
 
-    getCnLabel = label => {
-        for (let item in COMP_TYPES) {
-            if (COMP_TYPES[item].enLabel === label) {
-                return COMP_TYPES[item].cnLabel
-            }
-        }
-        return ''
-    }
+    const Demos = [
+      {
+        categoryName: '基础'
+      },
+      ButtonDemo,
+      IconDemo,
+      LinkDemo,
+      TypographyDemo,
+      {
+        categoryName: '容器'
+      },
+      SectionDemo,
+      CollapseDemo,
+      DialogDemo,
+      PopoverDemo,
+      PopoverConfirmDemo,
+      TabsDemo,
+      {
+        categoryName: '数据展示'
+      },
+      FileListDemo,
+      TableDemo,
+      {
+        categoryName: '数据输入'
+      },
+      CheckboxGroupDemo,
+      DatePickerDemo,
+      InputDemo,
+      RadioDemo,
+      SingleSelectDemo,
+      MultipleSelectDemo,
+      SuggestDemo,
+      TextSwitchDemo,
+      IconSwitchDemo,
+      TextareaDemo,
+      {
+        categoryName: '信息反馈'
+      },
+      AlertDemo,
+      // ToastDemo, // Toast 与 Alert UI 一致.
+      {
+        categoryName: '导航'
+      },
+      BreadcrumbDemo,
+      HeadNavDemo,
+      MenuDemo,
+      PaginationDemo
+    ]
 
-    renderDemoPanels = () => {
-        const {local, props, getCnLabel} = this
-        const {demoListState} = local
-        const {
-            expandedDemoPanelLabel,
-            setExpandedDemoPanelLabel
-        } = demoListState
-
-        const Demos = [
-            {
-                categoryName: '基础'
-            },
-            ButtonDemo,
-            IconDemo,
-            LinkDemo,
-            TypographyDemo,
-            {
-                categoryName: '容器'
-            },
-            SectionDemo,
-            CollapseDemo,
-            DialogDemo,
-            PopoverDemo,
-            PopoverConfirmDemo,
-            TabsDemo,
-            {
-                categoryName: '数据展示'
-            },
-            FileListDemo,
-            TableDemo,
-            {
-                categoryName: '数据输入'
-            },
-            CheckboxGroupDemo,
-            DatePickerDemo,
-            InputDemo,
-            RadioDemo,
-            SingleSelectDemo,
-            MultipleSelectDemo,
-            SuggestDemo,
-            TextSwitchDemo,
-            IconSwitchDemo,
-            TextareaDemo,
-            {
-                categoryName: '信息反馈'
-            },
-            AlertDemo,
-            // ToastDemo, // Toast 与 Alert UI 一致.
-            {
-                categoryName: '导航'
-            },
-            BreadcrumbDemo,
-            HeadNavDemo,
-            MenuDemo,
-            PaginationDemo
-        ]
-
-        return <PortalContainerProvider value=".demo-list-content">
-            <div>
-                {
-                    Demos.map((Demo, index) => {
-                        if (typeof Demo.categoryName === 'string') {
-                            return <h3
-                                className="demo-cate"
-                                key={index}
-                            >
+    return <PortalContainerProvider value=".demo-list-content">
+      <div>
+        {
+          Demos.map((Demo, index) => {
+            if (typeof Demo.categoryName === 'string') {
+              return <h3
+                className="demo-cate"
+                key={index}
+              >
                                 <span className="name">
                                     {Demo.categoryName}
                                 </span>
-                            </h3>
-                        }
-                        let label = ''
-                        const regArr = /^(.+)Demo$/.exec(Demo.wrapName)
-                        if (regArr) {
-                            label = regArr[1]
-                        }
-                        const isExpanded = expandedDemoPanelLabel === label
-                        // Dialog 必须从初始保持渲染状态
-                        const shouldRenderDemo = isExpanded
-                            || label === 'Dialog'
-                            || label === 'Table'
-                            || label === 'Button'
-                        return <ExpansionPanel
-                            className="demo-exp-panel"
-                            key={index}
-                            square={true}
-                            expanded={isExpanded}
-                            onChange={(evt, value) => {
-                                setExpandedDemoPanelLabel(value ? label : '')
-                            }}>
-                            {/*TransitionProps={{*/}
-                            {/*    unmountOnExit: true*/}
-                            {/*}}*/}
-                            <ExpansionPanelSummary
-                                className="title"
-                                expandIcon={<ExpandMoreIcon />}
-                            >
-                                <Typography>
-                                    <span>{label}</span>
-                                    <span className="cn-label">{getCnLabel(label)}</span>
-                                </Typography>
-                            </ExpansionPanelSummary>
-                            <ExpansionPanelDetails
-                                className="content"
-                            >
-                                {shouldRenderDemo && <Demo />}
-                            </ExpansionPanelDetails>
-                        </ExpansionPanel>
-                    })
-                }
-            </div>
-        </PortalContainerProvider>;
-    }
+              </h3>
+            }
+            let label = ''
+            const regArr = /^(.+)Demo$/.exec(Demo.wrapName)
+            if (regArr) {
+              label = regArr[1]
+            }
+            const isExpanded = expandedDemoPanelLabel === label
+            // Dialog 必须从初始保持渲染状态
+            const shouldRenderDemo = isExpanded
+              || label === 'Dialog'
+              || label === 'Table'
+              || label === 'Button'
+            return <ExpansionPanel
+              className="demo-exp-panel"
+              key={index}
+              square={true}
+              expanded={isExpanded}
+              onChange={(evt, value) => {
+                setExpandedDemoPanelLabel(value ? label : '')
+              }}>
+              {/*TransitionProps={{*/}
+              {/*    unmountOnExit: true*/}
+              {/*}}*/}
+              <ExpansionPanelSummary
+                className="title"
+                expandIcon={<ExpandMoreIcon/>}
+              >
+                <Typography>
+                  <span>{label}</span>
+                  <span className="cn-label">{getCnLabel(label)}</span>
+                </Typography>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails
+                className="content"
+              >
+                {shouldRenderDemo && <Demo/>}
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+          })
+        }
+      </div>
+    </PortalContainerProvider>;
+  }
 
-    render() {
-        const {local, props} = this
-        return <div className="demo-list">
-            <Drawer
-                className="demo-list-drawer"
-                anchor="left"
-                variant="persistent"
-                open={props.showDemoDrawer}
-            >
-                <div className="demo-list-wrap">
-                    <div
-                        className="demo-list-content"
-                    >
-                        {this.renderDemoPanels()}
-                    </div>
-                    <div
-                        className="fake-trigger"
-                    >
-                        <MoreHorizIcon
-                            className="trigger-icon"
-                            fontSize="small"
-                        />
-                    </div>
-                </div>
-            </Drawer>
+  render() {
+    const {local, props} = this
+    return <div className="demo-list">
+      <Drawer
+        className="demo-list-drawer"
+        anchor="left"
+        variant="persistent"
+        open={props.showDemoDrawer}
+      >
+        <div className="demo-list-wrap">
+          <div
+            className="demo-list-content"
+          >
+            {this.renderDemoPanels()}
+          </div>
+          <div
+            className="fake-trigger"
+          >
+            <MoreHorizIcon
+              className="trigger-icon"
+              fontSize="small"
+            />
+          </div>
         </div>
-    }
+      </Drawer>
+    </div>
+  }
 }
 
 export default DemoListView

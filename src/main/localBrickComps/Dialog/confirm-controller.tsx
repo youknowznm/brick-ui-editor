@@ -16,7 +16,9 @@ interface ConfirmObject {
 
 interface ConfirmMethod {
     (message: React.ReactNode, option?: ConfirmOption): ConfirmObject
+
     (headline: React.ReactNode, message?: React.ReactNode, option?: ConfirmOption): ConfirmObject
+
     (p1: React.ReactNode, p2?: React.ReactNode | ConfirmOption, p3?: ConfirmOption): ConfirmObject
 }
 
@@ -25,6 +27,7 @@ interface ConfirmMethod {
  */
 interface ConfirmController {
     (option: ConfirmOption): ConfirmObject
+
     info: ConfirmMethod
     success: ConfirmMethod
     warning: ConfirmMethod
@@ -50,8 +53,7 @@ function baseConfirm(option: ConfirmOption) {
                 // setTimeout 让 button 完成 async loading 再 destroy
                 setTimeout(destroy)
             })
-        }
-        else {
+        } else {
             destroy()
         }
 
@@ -86,8 +88,7 @@ ALERT_TYPES.forEach(type => {
             headline = p1
             message = p2
             opt = p3 as ConfirmOption
-        }
-        else {
+        } else {
             message = p1
             opt = p2 as ConfirmOption
         }

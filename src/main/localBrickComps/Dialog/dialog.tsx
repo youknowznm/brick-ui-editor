@@ -23,6 +23,7 @@ import {CloseX} from '@befe/brick-comp-close-x'
 type PropsFromModal = Omit<ModalProps, 'onClickMask'>
 
 export type DialogAction = ButtonProps['onClick']
+
 export interface DialogProps extends PropsFromModal {
     /**
      * 用户可自定义 class
@@ -176,7 +177,7 @@ export class Dialog extends React.Component<DialogProps> {
 
     renderCloseX() {
         return (
-            <CloseX onClick={this.handleClickCancel} />
+            <CloseX onClick={this.handleClickCancel}/>
         )
     }
 
@@ -242,17 +243,17 @@ export class Dialog extends React.Component<DialogProps> {
 
         return (
             // <Modal {...this.modalProps}>
-                <div
-                    style={{
-                        width: SIZE_MAP[this.props.size]
-                    }}
-                    className={'brick-dialog-wrap'}
-                >
-                    {this.renderCloseX()}
-                    {head || this.renderHead()}
-                    {body || this.renderBody()}
-                    {foot || this.renderFoot()}
-                </div>
+            <div
+                style={{
+                    width: SIZE_MAP[this.props.size]
+                }}
+                className={'brick-dialog-wrap'}
+            >
+                {this.renderCloseX()}
+                {head || this.renderHead()}
+                {body || this.renderBody()}
+                {foot || this.renderFoot()}
+            </div>
             // </Modal>
         )
     }

@@ -4,11 +4,13 @@
  * @owner wujun07:2019-11-26
  */
 import * as React from 'react';
-import { ButtonProps } from '@befe/brick-comp-button';
-import { ModalProps } from '@befe/brick-comp-modal';
-import { ConfigContext } from '@befe/brick-comp-config-provider';
+import {ButtonProps} from '@befe/brick-comp-button';
+import {ModalProps} from '@befe/brick-comp-modal';
+import {ConfigContext} from '@befe/brick-comp-config-provider';
+
 declare type PropsFromModal = Omit<ModalProps, 'onClickMask'>;
 export declare type DialogAction = ButtonProps['onClick'];
+
 export interface DialogProps extends PropsFromModal {
     /**
      * 用户可自定义 class
@@ -51,6 +53,7 @@ export interface DialogProps extends PropsFromModal {
      */
     actionsAlign?: 'left' | 'center' | 'right';
 }
+
 /**
  * Dialog
  * @description brick component Dialog
@@ -65,8 +68,11 @@ export declare class Dialog extends React.Component<DialogProps> {
     };
     static contextType: React.Context<import("@befe/brick-comp-config-provider/src").ConfigContextValue>;
     context: React.ContextType<typeof ConfigContext>;
+
     get className(): string;
+
     get actionAlign(): "left" | "right" | "center" | undefined;
+
     get modalProps(): {
         visible?: boolean | undefined;
         children?: React.ReactNode;
@@ -79,17 +85,29 @@ export declare class Dialog extends React.Component<DialogProps> {
         className: string;
         onClickMask: ((e: React.MouseEvent<Element, MouseEvent>) => void | Promise<any>) | undefined;
     };
+
     get childrenArray(): React.ReactNode[];
+
     get confirmLabel(): string;
+
     get cancelLabel(): string;
+
     getLocaleText(key: string, ...args: []): string;
+
     handleClickConfirm: (e: React.MouseEvent<Element, MouseEvent>) => void | Promise<any>;
     handleClickCancel: (e: React.MouseEvent<Element, MouseEvent>) => void | Promise<any>;
+
     renderCloseX(): JSX.Element;
+
     renderHead(): JSX.Element;
+
     renderBody(): JSX.Element | null;
+
     renderActions(): {} | null;
+
     renderFoot(): JSX.Element | null;
+
     render(): JSX.Element;
 }
+
 export {};

@@ -245,8 +245,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
 
             console.log(id)
             return
-        }
-        else if (isUndefined(this.props.activeId)) {
+        } else if (isUndefined(this.props.activeId)) {
             this.setState({
                 activeId: id
             })
@@ -296,7 +295,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
         let to = activeIndex
 
         while (from >= 0 || to <= tabCount) {
-            from --
+            from--
             if (from >= 0) {
                 const tempWidth = totalWidth + this.tabsWidthCache[from]
                 if (tempWidth > this.tabContainerWidthCache) {
@@ -306,7 +305,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
                 totalWidth = tempWidth
             }
 
-            to ++
+            to++
             if (to < tabCount) {
                 const tempWidth = totalWidth + this.tabsWidthCache[to]
                 if (tempWidth > this.tabContainerWidthCache) {
@@ -506,7 +505,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
         }
         return (
             <div className={'brick-tabs-container'} ref={this.tabsContainerRef}>
-                {this.renderTabs(this.tabsAll, 'brick-tabs-list',  this.bTabsRef)}
+                {this.renderTabs(this.tabsAll, 'brick-tabs-list', this.bTabsRef)}
                 {this.tabsEllipsis.length ? this.renderTabsEllipsis() : null}
                 {this.renderAddButton()}
             </div>
@@ -518,7 +517,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
         const validChildren = this.validChildren
         if (validChildren) {
             if (shouldDestroyInactivePane) {
-                return  validChildren.filter(tab => {
+                return validChildren.filter(tab => {
                     return this.state.activeId === tab.props.id
                 })
             }
@@ -560,7 +559,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
     }
 
     componentWillUnmount(): void {
-        if(this.windowResizeHandler) {
+        if (this.windowResizeHandler) {
             this.windowResizeHandler.remove()
         }
     }

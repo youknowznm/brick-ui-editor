@@ -8,8 +8,8 @@ import {ThemeProvider} from '@material-ui/core/styles';
 import style from './style.scss';
 
 ReactDOM.render(
-    <ThemeProvider theme={lightTheme}>
-        <Main style={style}/>
-    </ThemeProvider>,
-    document.getElementById('root')
+  <ThemeProvider theme={lightTheme}>
+    <Main style={style}/>
+  </ThemeProvider>,
+  document.getElementById('root')
 );

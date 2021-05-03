@@ -126,14 +126,14 @@ export class MenuPopper extends React.Component<MenuPopperProps> {
             // @todo: 样式细则待确认
             return (
                 <div className={'brick-menu-popper-loading'} onClick={this.handleClickNonMenu}>
-                    <Icon svg={SvgLoading} spin={true} />
+                    <Icon svg={SvgLoading} spin={true}/>
                 </div>
             )
         }
         const {children, emptyHint} = this.props
 
         if (!children && emptyHint) {
-            return  <div className={'brick-menu-popper-empty-hint'} onClick={this.handleClickNonMenu}>{emptyHint}</div>
+            return <div className={'brick-menu-popper-empty-hint'} onClick={this.handleClickNonMenu}>{emptyHint}</div>
         }
 
         return children

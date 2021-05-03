@@ -4,12 +4,12 @@ import BaseModel from '../utils/BaseModel'
 
 export default class State extends BaseModel {
 
-    @observable expandedDemoPanelLabel = ''
+  @observable expandedDemoPanelLabel = ''
 
-    setExpandedDemoPanelLabel = key => {
-        this.setProps({
-            expandedDemoPanelLabel: key
-        })
-    }
+  setExpandedDemoPanelLabel = key => {
+    this.setProps({
+      expandedDemoPanelLabel: key
+    })
+  }
 
 }

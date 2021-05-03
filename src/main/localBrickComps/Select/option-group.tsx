@@ -49,7 +49,7 @@ export class OptionGroup extends React.Component<SelectOptionGroupProps> {
         )
     }
 
-    get subMenuProps(): MenuSubmenuProps  {
+    get subMenuProps(): MenuSubmenuProps {
         const {label} = this.props
         return {
             ...omit(this.props, ['className', 'label']),

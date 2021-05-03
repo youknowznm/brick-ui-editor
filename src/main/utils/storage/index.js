@@ -7,10 +7,10 @@ export const BUE_WIDTH_KEY = 'BUE_WIDTH'
 export const BUE_HEIGHT_KEY = 'BUE_HEIGHT'
 
 export const setStorage = (key, data) => {
-    // console.log('save', toJS(data))
-    localStorage.setItem(key, JSON.stringify(toJS(data)))
+  // console.log('save', toJS(data))
+  localStorage.setItem(key, JSON.stringify(toJS(data)))
 }
 
 export const getStorage = key => {
-    return JSON.parse(localStorage.getItem(key))
+  return JSON.parse(localStorage.getItem(key))
 }

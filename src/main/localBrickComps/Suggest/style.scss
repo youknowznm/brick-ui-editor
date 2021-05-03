@@ -1,4 +1,5 @@
 @import "~@befe/brick-style/src/base";
+
 @include exports('comp-suggest') {
   .brick-suggest {
     @include reset();
