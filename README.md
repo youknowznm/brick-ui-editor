@@ -3,7 +3,7 @@
 个人设计和开发, 基于 react + mobx + material-ui, 面向团队内 PM 同学的的原型稿生成工具  
 演示请见[这里](https://youknowznm.github.io/demos/brick-ui-editor/)  
 
-截图在本文末尾
+截图见本文末尾
 
 ### 特点
 
