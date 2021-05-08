@@ -1,7 +1,9 @@
 # brick-ui-editor
 
-个人设计和开发, 基于 react + mobx + material-ui, 面向团队内 PM 同学的的原型稿生成工具.  
-演示请见[这里](https://youknowznm.github.io/demos/brick-ui-editor/).
+个人设计和开发, 基于 react + mobx + material-ui, 面向团队内 PM 同学的的原型稿生成工具  
+演示请见[这里](https://youknowznm.github.io/demos/brick-ui-editor/)  
+
+截图在本文末尾
 
 ### 特点
 
@@ -51,4 +53,22 @@
 
 ### 技术点
 
-详见 [TODO]().
+详见这篇[文章](https://youknowznm.com/article?id=WhycgKN)
+
+### 截图
+
+#### 1. hover 左侧抽屉, 查看和选取使用组件
+
+![](https://youknowznm.github.io/demos/images/brick-ui-editor/demo-1.png)
+
+#### 2. 出现在画布, 可编辑 UI 相关的 prop
+
+![](https://youknowznm.github.io/demos/images/brick-ui-editor/demo-2.png)
+
+#### 3. 分享或读取已有的画布
+
+![](https://youknowznm.github.io/demos/images/brick-ui-editor/demo-3.png)
+
+#### 4. 最终效果
+
+![](https://youknowznm.github.io/demos/images/brick-ui-editor/demo-4.png)
